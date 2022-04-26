@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.AI;
 using UnityEngine.InputSystem;
 
 namespace bts {
@@ -30,11 +29,9 @@ namespace bts {
 
     public void OnRightClick() {
       if (selected != null) {
-        if (selected.TryGetComponent(out Moveable moveable)) {
+        if (selected.TryGetComponent(out Unit unit)) {
           Ray ray = cam.ScreenPointToRay(screenPosition);
-          if (Physics.Raycast(ray, out RaycastHit hitInfo)) {
-            moveable.MoveTo(hitInfo.point);
-          }
+          unit.Execute(ray);
         }
       }
     }
