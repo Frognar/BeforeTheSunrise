@@ -25,7 +25,7 @@ namespace bts {
 
       if (target != null) {
         if (Vector3.Distance(transform.position, destination) < 2.5f) {
-          target.TakeDamage(1);
+          target.TakeDamage(5);
           target = null;
           destination = transform.position;
         }

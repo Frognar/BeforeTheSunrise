@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace bts {
   public class TimeTicker : MonoBehaviour {
+    public static EventHandler OnTick;
     public static EventHandler OnSecond;
 
     const int ticksPerSeconds = 5;
@@ -16,6 +17,7 @@ namespace bts {
       if (currentTime >= tickInterval) {
         tick++;
         currentTime = 0;
+        OnTick?.Invoke(this, EventArgs.Empty);
         if (tick % ticksPerSeconds == 0) {
           OnSecond?.Invoke(this, EventArgs.Empty);
         }
