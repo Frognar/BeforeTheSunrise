@@ -8,7 +8,7 @@ namespace bts {
 
     public void SetUp(Health health) {
       bar = transform.Find("Hook");
-      Health = new HealthAnimated(health, instantDecrease: false);
+      Health = new HealthAnimated(health);
       Health.OnValueChange += OnHealthChange;
     }
 

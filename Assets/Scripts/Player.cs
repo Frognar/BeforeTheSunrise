@@ -6,7 +6,7 @@ namespace bts {
   public class Player : MonoBehaviour {
     Camera cam;
     Vector2 screenPosition;
-    Transform selected;
+    Selectable selected;
 
     void Awake() {
       cam = Camera.main; 
@@ -17,19 +17,23 @@ namespace bts {
     }
 
     public void OnLeftClick() {
-      selected = null;
+      if (selected != null && (selected as Object) != null) { 
+        selected.Deselect();
+        selected = null;
+      }
+
       Ray ray = cam.ScreenPointToRay(screenPosition);
       if (Physics.Raycast(ray, out RaycastHit hitInfo)) {
         if (hitInfo.transform.TryGetComponent(out Selectable selectable)) {
           selectable.Select();
-          selected = hitInfo.transform;
+          selected = selectable;
         }
       }
     }
 
     public void OnRightClick() {
       if (selected != null) {
-        if (selected.TryGetComponent(out Unit unit)) {
+        if (selected.Transform.TryGetComponent(out Unit unit)) {
           Ray ray = cam.ScreenPointToRay(screenPosition);
           unit.Execute(ray);
         }

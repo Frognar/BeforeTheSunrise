@@ -3,31 +3,40 @@ using UnityEngine.AI;
 
 namespace bts {
   public class Unit : MonoBehaviour, Selectable, Moveable {
+    public Transform Transform => transform;
+
+    GameObject selected;
     NavMeshAgent agent;
     Vector3 destination;
     Damageable target;
+
+    float lastAttackTime;
+    float timeBetweenAttacks = 1f;
     
     void Awake() {
       agent = GetComponent<NavMeshAgent>();
-      destination = transform.position;
+      selected = transform.Find("Selected").gameObject;
     }
 
     public void Select() {
-      Debug.Log("Unit selected!");
+      selected.SetActive(true);
+    }
+
+    public void Deselect() {
+      selected.SetActive(false);
     }
 
     public void MoveTo(Vector3 positon) {
-      destination = positon;
+      agent.SetDestination(positon);
     }
 
     void Update() {
-      agent.destination = destination;
-
-      if (target != null) {
+      if (target != null && (target as Object) != null) {
         if (Vector3.Distance(transform.position, destination) < 2.5f) {
-          target.TakeDamage(5);
-          target = null;
-          destination = transform.position;
+          if (lastAttackTime + timeBetweenAttacks < Time.time) {
+            target?.TakeDamage(5);
+            lastAttackTime = Time.time;
+          }
         }
       }
     }
@@ -36,7 +45,8 @@ namespace bts {
       if (Physics.Raycast(ray, out RaycastHit hitInfo)) {
         if (hitInfo.transform.TryGetComponent(out Damageable damageable)) {
           target = damageable;
-          MoveTo(hitInfo.transform.position);
+          destination = hitInfo.transform.position;
+          MoveTo(destination);
         }
         else {
           target = null;
