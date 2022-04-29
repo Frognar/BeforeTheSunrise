@@ -1,20 +1,20 @@
+using Pathfinding;
 using UnityEngine;
-using UnityEngine.AI;
 
 namespace bts {
   public class Unit : MonoBehaviour, Selectable, Moveable {
     public Transform Transform => transform;
 
     GameObject selected;
-    NavMeshAgent agent;
+    AIPath aiPath;
     Vector3 destination;
     Damageable target;
 
     float lastAttackTime;
-    float timeBetweenAttacks = 1f;
+    const float timeBetweenAttacks = 1f;
     
     void Awake() {
-      agent = GetComponent<NavMeshAgent>();
+      aiPath = GetComponent<AIPath>();
       selected = transform.Find("Selected").gameObject;
     }
 
@@ -27,7 +27,7 @@ namespace bts {
     }
 
     public void MoveTo(Vector3 positon) {
-      agent.SetDestination(positon);
+      aiPath.destination = positon;
     }
 
     void Update() {
