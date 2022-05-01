@@ -8,7 +8,6 @@ namespace bts {
     Camera cam;
     Vector2 screenPosition;
     Vector3 startPosition;
-    bool isSelecting;
     List<Selectable> selected;
     PlayerControls inputControls;
     LineRenderer lineRenderer;
@@ -35,7 +34,7 @@ namespace bts {
     }
 
     void Update() {
-      if (isSelecting) {
+      if (lineRenderer.enabled) {
         Ray ray = cam.ScreenPointToRay(screenPosition);
         if (Physics.Raycast(ray, out RaycastHit hitInfo)) {
           Vector3 endPosition = hitInfo.point;
@@ -61,44 +60,83 @@ namespace bts {
 
     public void OnLeftClick(InputAction.CallbackContext context) {
       if (context.started) {
-        isSelecting = true;
-        Ray ray = cam.ScreenPointToRay(screenPosition);
-        if (Physics.Raycast(ray, out RaycastHit hitInfo)) {
-          startPosition = hitInfo.point;
-        }
+        StartSelectingArea();
       }
       
       if (context.canceled) {
-        isSelecting = false;
-        foreach (Selectable selectable in selected) {
-          selectable.Deselect();
-        }
-        
-        selected.Clear();
-        Ray ray = cam.ScreenPointToRay(screenPosition);
-        if (Physics.Raycast(ray, out RaycastHit hitInfo)) {
-          Vector3 endPosition = hitInfo.point;
-          Vector3 center = (startPosition + endPosition) / 2f;
-          Vector3 halfExtents = new Vector3(Mathf.Abs(startPosition.x - endPosition.x)/2, 2, Mathf.Abs(startPosition.z - endPosition.z)/2);
-          Collider[] objects = Physics.OverlapBox(center, halfExtents);
-          foreach (Collider obj in objects) {
-            if (obj.TryGetComponent(out Selectable selectable)) {
-              selected.Add(selectable);
-            }
-          }
+        StopSelectingArea();
+      }
+    }
 
-          List<Selectable> selectedUnit = selected.FindAll(s => s.Transform.TryGetComponent(out Unit _));
-          if (selectedUnit.Any()) {
-            selected = selectedUnit;
-          }
-        }
+    void StartSelectingArea() {
+      lineRenderer.enabled = true;
+      Ray ray = cam.ScreenPointToRay(screenPosition);
+      if (Physics.Raycast(ray, out RaycastHit hitInfo)) {
+        startPosition = hitInfo.point;
+      }
+    }
 
-        foreach (Selectable selectable in selected) {
-          selectable.Select();
+    void StopSelectingArea() {
+      lineRenderer.enabled = false;
+      DeselectAll();
+      IEnumerable<Collider> selectedColliders = GetCollidersUnderSelectionArea();
+      selected = FilterSelectable(selectedColliders).ToList();
+      Select();
+    }
+    
+    void DeselectAll() {
+      foreach (Selectable selectable in selected) {
+        selectable.Deselect();
+      }
+
+      selected.Clear();
+    }
+    
+    IEnumerable<Collider> GetCollidersUnderSelectionArea() {
+      (Vector3 center, Vector3 halfExtents) = GetSelectionArea();
+      return Physics.OverlapBox(center, halfExtents);
+    }
+    
+    (Vector3 center, Vector3 halfExtents) GetSelectionArea() {
+      Ray ray = cam.ScreenPointToRay(screenPosition);
+      if (Physics.Raycast(ray, out RaycastHit hitInfo)) {
+        Vector3 endPosition = hitInfo.point;
+        Vector3 center = (startPosition + endPosition) / 2f;
+        Vector3 halfExtents = new Vector3(Mathf.Abs(startPosition.x - endPosition.x) / 2, 2, Mathf.Abs(startPosition.z - endPosition.z) / 2);
+        return (center, halfExtents);
+      }
+
+      return (Vector3.zero, Vector3.zero);
+    }
+
+    IEnumerable<Selectable> FilterSelectable(IEnumerable<Collider> colliders) {
+      IEnumerable<Selectable> selectables = GetSelectables(colliders);
+      if (selectables.Any()) {
+        IEnumerable<Selectable> playerSelectables = selectables.Where(s => s.ObjectAffiliation == Selectable.Affiliation.Player);
+        if (playerSelectables.Any()) {
+          IEnumerable<Selectable> playerUnits = playerSelectables.Where(s => s.ObjectType == Selectable.Type.Unit);
+          return playerUnits.Any() ? playerUnits : new List<Selectable> { selectables.First() };
+        }
+        else {
+          return new List<Selectable> { selectables.First() };
         }
       }
 
-      lineRenderer.enabled = isSelecting;
+      return Enumerable.Empty<Selectable>();
+    }
+    
+    IEnumerable<Selectable> GetSelectables(IEnumerable<Collider> colliders) {
+      foreach (Collider collider in colliders) {
+        if (collider.TryGetComponent(out Selectable selectable)) {
+          yield return selectable;
+        }
+      }
+    }
+
+    void Select() {
+      foreach (Selectable selectable in selected) {
+        selectable.Select();
+      }
     }
 
     public void OnRightClick(InputAction.CallbackContext context) {

@@ -2,8 +2,10 @@ using Pathfinding;
 using UnityEngine;
 
 namespace bts {
-  public class Unit : MonoBehaviour, Selectable, Moveable {
+  public class Unit : MonoBehaviour, Selectable {
     public Transform Transform => transform;
+    public Selectable.Affiliation ObjectAffiliation => Selectable.Affiliation.Player;
+    public Selectable.Type ObjectType => Selectable.Type.Unit;
 
     GameObject selected;
     AIPath aiPath;
