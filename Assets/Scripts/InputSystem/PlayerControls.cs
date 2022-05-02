@@ -24,22 +24,40 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     ""name"": ""InputControls"",
     ""maps"": [
         {
-            ""name"": ""Cursor"",
-            ""id"": ""31d31c7a-a7cf-4db1-84c7-cfb3727429d7"",
+            ""name"": ""Mouse"",
+            ""id"": ""fd62e94d-83c1-4286-b165-1f3499de2bb0"",
             ""actions"": [
+                {
+                    ""name"": ""Zoom"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""4784b3e1-13ed-4fc2-a7e3-95362c02293e"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": ""Clamp(min=-1,max=1)"",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
                 {
                     ""name"": ""ScreenPosition"",
                     ""type"": ""Value"",
-                    ""id"": ""285fa899-756c-4cf1-b389-ec08147f83a4"",
+                    ""id"": ""1d6299bd-aeb0-43ef-991b-4878936f7e8d"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
                 },
                 {
+                    ""name"": ""ScreenPositionXChange"",
+                    ""type"": ""Value"",
+                    ""id"": ""7bd56e4e-59f8-4307-992d-8875c2de1f1f"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": ""Clamp(min=-1,max=1)"",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
                     ""name"": ""LeftClick"",
                     ""type"": ""Button"",
-                    ""id"": ""9289413c-1f12-4af6-91fb-e3ab007100fa"",
+                    ""id"": ""293f248b-6d19-47c1-9d8a-e2c0907a2d17"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -48,7 +66,16 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 {
                     ""name"": ""RightClick"",
                     ""type"": ""Button"",
-                    ""id"": ""64bc12b3-4991-4209-801f-a964fde65986"",
+                    ""id"": ""23bf4e16-14a1-474b-b80a-9ba3da3c1fc0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MiddleClick"",
+                    ""type"": ""Button"",
+                    ""id"": ""9a81cf66-b65d-460d-9a6a-d47212795b37"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -58,7 +85,18 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""b1576dc7-255e-42d7-b855-708c9fd9efb7"",
+                    ""id"": ""37a67a80-01c1-43e4-9d64-101b5c6361f6"",
+                    ""path"": ""<Mouse>/scroll/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Zoom"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4100393e-97a4-4d2e-a888-d47c2362007f"",
                     ""path"": ""<Mouse>/position"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -69,7 +107,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""a90acd5b-8591-43b6-a0bc-898ea9972bf0"",
+                    ""id"": ""e9750149-7f7d-4749-8a11-a866f58988e3"",
                     ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -80,7 +118,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""817b7fcd-7c2f-4e7e-bc06-5023df6c51c4"",
+                    ""id"": ""c3df95ed-b334-46dc-8aa7-5672ba6a9173"",
                     ""path"": ""<Mouse>/rightButton"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -88,32 +126,26 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""RightClick"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                }
-            ]
-        },
-        {
-            ""name"": ""Mouse"",
-            ""id"": ""fd62e94d-83c1-4286-b165-1f3499de2bb0"",
-            ""actions"": [
-                {
-                    ""name"": ""Zoom"",
-                    ""type"": ""PassThrough"",
-                    ""id"": ""b742348c-6ec7-486a-863d-6c9c9010ae0d"",
-                    ""expectedControlType"": ""Axis"",
-                    ""processors"": ""Clamp(min=-1,max=1)"",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                }
-            ],
-            ""bindings"": [
+                },
                 {
                     ""name"": """",
-                    ""id"": ""8347d9a6-be27-4b58-afb2-322ddcb9a3db"",
-                    ""path"": ""<Mouse>/scroll/y"",
+                    ""id"": ""e80e9751-5cb8-4ced-983c-6939903df2f2"",
+                    ""path"": ""<Mouse>/middleButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Zoom"",
+                    ""action"": ""MiddleClick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b438ff8f-0da2-4341-96ac-e398d1cb4ec7"",
+                    ""path"": ""<Mouse>/delta/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ScreenPositionXChange"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -122,14 +154,14 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     ],
     ""controlSchemes"": []
 }");
-        // Cursor
-        m_Cursor = asset.FindActionMap("Cursor", throwIfNotFound: true);
-        m_Cursor_ScreenPosition = m_Cursor.FindAction("ScreenPosition", throwIfNotFound: true);
-        m_Cursor_LeftClick = m_Cursor.FindAction("LeftClick", throwIfNotFound: true);
-        m_Cursor_RightClick = m_Cursor.FindAction("RightClick", throwIfNotFound: true);
         // Mouse
         m_Mouse = asset.FindActionMap("Mouse", throwIfNotFound: true);
         m_Mouse_Zoom = m_Mouse.FindAction("Zoom", throwIfNotFound: true);
+        m_Mouse_ScreenPosition = m_Mouse.FindAction("ScreenPosition", throwIfNotFound: true);
+        m_Mouse_ScreenPositionXChange = m_Mouse.FindAction("ScreenPositionXChange", throwIfNotFound: true);
+        m_Mouse_LeftClick = m_Mouse.FindAction("LeftClick", throwIfNotFound: true);
+        m_Mouse_RightClick = m_Mouse.FindAction("RightClick", throwIfNotFound: true);
+        m_Mouse_MiddleClick = m_Mouse.FindAction("MiddleClick", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -186,64 +218,25 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         return asset.FindBinding(bindingMask, out action);
     }
 
-    // Cursor
-    private readonly InputActionMap m_Cursor;
-    private ICursorActions m_CursorActionsCallbackInterface;
-    private readonly InputAction m_Cursor_ScreenPosition;
-    private readonly InputAction m_Cursor_LeftClick;
-    private readonly InputAction m_Cursor_RightClick;
-    public struct CursorActions
-    {
-        private @PlayerControls m_Wrapper;
-        public CursorActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @ScreenPosition => m_Wrapper.m_Cursor_ScreenPosition;
-        public InputAction @LeftClick => m_Wrapper.m_Cursor_LeftClick;
-        public InputAction @RightClick => m_Wrapper.m_Cursor_RightClick;
-        public InputActionMap Get() { return m_Wrapper.m_Cursor; }
-        public void Enable() { Get().Enable(); }
-        public void Disable() { Get().Disable(); }
-        public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(CursorActions set) { return set.Get(); }
-        public void SetCallbacks(ICursorActions instance)
-        {
-            if (m_Wrapper.m_CursorActionsCallbackInterface != null)
-            {
-                @ScreenPosition.started -= m_Wrapper.m_CursorActionsCallbackInterface.OnScreenPosition;
-                @ScreenPosition.performed -= m_Wrapper.m_CursorActionsCallbackInterface.OnScreenPosition;
-                @ScreenPosition.canceled -= m_Wrapper.m_CursorActionsCallbackInterface.OnScreenPosition;
-                @LeftClick.started -= m_Wrapper.m_CursorActionsCallbackInterface.OnLeftClick;
-                @LeftClick.performed -= m_Wrapper.m_CursorActionsCallbackInterface.OnLeftClick;
-                @LeftClick.canceled -= m_Wrapper.m_CursorActionsCallbackInterface.OnLeftClick;
-                @RightClick.started -= m_Wrapper.m_CursorActionsCallbackInterface.OnRightClick;
-                @RightClick.performed -= m_Wrapper.m_CursorActionsCallbackInterface.OnRightClick;
-                @RightClick.canceled -= m_Wrapper.m_CursorActionsCallbackInterface.OnRightClick;
-            }
-            m_Wrapper.m_CursorActionsCallbackInterface = instance;
-            if (instance != null)
-            {
-                @ScreenPosition.started += instance.OnScreenPosition;
-                @ScreenPosition.performed += instance.OnScreenPosition;
-                @ScreenPosition.canceled += instance.OnScreenPosition;
-                @LeftClick.started += instance.OnLeftClick;
-                @LeftClick.performed += instance.OnLeftClick;
-                @LeftClick.canceled += instance.OnLeftClick;
-                @RightClick.started += instance.OnRightClick;
-                @RightClick.performed += instance.OnRightClick;
-                @RightClick.canceled += instance.OnRightClick;
-            }
-        }
-    }
-    public CursorActions @Cursor => new CursorActions(this);
-
     // Mouse
     private readonly InputActionMap m_Mouse;
     private IMouseActions m_MouseActionsCallbackInterface;
     private readonly InputAction m_Mouse_Zoom;
+    private readonly InputAction m_Mouse_ScreenPosition;
+    private readonly InputAction m_Mouse_ScreenPositionXChange;
+    private readonly InputAction m_Mouse_LeftClick;
+    private readonly InputAction m_Mouse_RightClick;
+    private readonly InputAction m_Mouse_MiddleClick;
     public struct MouseActions
     {
         private @PlayerControls m_Wrapper;
         public MouseActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Zoom => m_Wrapper.m_Mouse_Zoom;
+        public InputAction @ScreenPosition => m_Wrapper.m_Mouse_ScreenPosition;
+        public InputAction @ScreenPositionXChange => m_Wrapper.m_Mouse_ScreenPositionXChange;
+        public InputAction @LeftClick => m_Wrapper.m_Mouse_LeftClick;
+        public InputAction @RightClick => m_Wrapper.m_Mouse_RightClick;
+        public InputAction @MiddleClick => m_Wrapper.m_Mouse_MiddleClick;
         public InputActionMap Get() { return m_Wrapper.m_Mouse; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -256,6 +249,21 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Zoom.started -= m_Wrapper.m_MouseActionsCallbackInterface.OnZoom;
                 @Zoom.performed -= m_Wrapper.m_MouseActionsCallbackInterface.OnZoom;
                 @Zoom.canceled -= m_Wrapper.m_MouseActionsCallbackInterface.OnZoom;
+                @ScreenPosition.started -= m_Wrapper.m_MouseActionsCallbackInterface.OnScreenPosition;
+                @ScreenPosition.performed -= m_Wrapper.m_MouseActionsCallbackInterface.OnScreenPosition;
+                @ScreenPosition.canceled -= m_Wrapper.m_MouseActionsCallbackInterface.OnScreenPosition;
+                @ScreenPositionXChange.started -= m_Wrapper.m_MouseActionsCallbackInterface.OnScreenPositionXChange;
+                @ScreenPositionXChange.performed -= m_Wrapper.m_MouseActionsCallbackInterface.OnScreenPositionXChange;
+                @ScreenPositionXChange.canceled -= m_Wrapper.m_MouseActionsCallbackInterface.OnScreenPositionXChange;
+                @LeftClick.started -= m_Wrapper.m_MouseActionsCallbackInterface.OnLeftClick;
+                @LeftClick.performed -= m_Wrapper.m_MouseActionsCallbackInterface.OnLeftClick;
+                @LeftClick.canceled -= m_Wrapper.m_MouseActionsCallbackInterface.OnLeftClick;
+                @RightClick.started -= m_Wrapper.m_MouseActionsCallbackInterface.OnRightClick;
+                @RightClick.performed -= m_Wrapper.m_MouseActionsCallbackInterface.OnRightClick;
+                @RightClick.canceled -= m_Wrapper.m_MouseActionsCallbackInterface.OnRightClick;
+                @MiddleClick.started -= m_Wrapper.m_MouseActionsCallbackInterface.OnMiddleClick;
+                @MiddleClick.performed -= m_Wrapper.m_MouseActionsCallbackInterface.OnMiddleClick;
+                @MiddleClick.canceled -= m_Wrapper.m_MouseActionsCallbackInterface.OnMiddleClick;
             }
             m_Wrapper.m_MouseActionsCallbackInterface = instance;
             if (instance != null)
@@ -263,18 +271,32 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Zoom.started += instance.OnZoom;
                 @Zoom.performed += instance.OnZoom;
                 @Zoom.canceled += instance.OnZoom;
+                @ScreenPosition.started += instance.OnScreenPosition;
+                @ScreenPosition.performed += instance.OnScreenPosition;
+                @ScreenPosition.canceled += instance.OnScreenPosition;
+                @ScreenPositionXChange.started += instance.OnScreenPositionXChange;
+                @ScreenPositionXChange.performed += instance.OnScreenPositionXChange;
+                @ScreenPositionXChange.canceled += instance.OnScreenPositionXChange;
+                @LeftClick.started += instance.OnLeftClick;
+                @LeftClick.performed += instance.OnLeftClick;
+                @LeftClick.canceled += instance.OnLeftClick;
+                @RightClick.started += instance.OnRightClick;
+                @RightClick.performed += instance.OnRightClick;
+                @RightClick.canceled += instance.OnRightClick;
+                @MiddleClick.started += instance.OnMiddleClick;
+                @MiddleClick.performed += instance.OnMiddleClick;
+                @MiddleClick.canceled += instance.OnMiddleClick;
             }
         }
     }
     public MouseActions @Mouse => new MouseActions(this);
-    public interface ICursorActions
-    {
-        void OnScreenPosition(InputAction.CallbackContext context);
-        void OnLeftClick(InputAction.CallbackContext context);
-        void OnRightClick(InputAction.CallbackContext context);
-    }
     public interface IMouseActions
     {
         void OnZoom(InputAction.CallbackContext context);
+        void OnScreenPosition(InputAction.CallbackContext context);
+        void OnScreenPositionXChange(InputAction.CallbackContext context);
+        void OnLeftClick(InputAction.CallbackContext context);
+        void OnRightClick(InputAction.CallbackContext context);
+        void OnMiddleClick(InputAction.CallbackContext context);
     }
 }

@@ -1,71 +1,91 @@
-using Cinemachine;
 using UnityEngine;
 
 namespace bts {
   public class CameraController : MonoBehaviour {
-    [SerializeField][Range(15f, 50f)] float panSpeed;
-    [SerializeField][Range(15f, 50f)] float zoomSpeed;
-    [SerializeField] Vector2 panLimitX;
-    [SerializeField] Vector2 panLimitZ;
-    [SerializeField] Vector2 zoomLimit;
-    CinemachineInputProvider inputProvider;
+    [SerializeField][Range(1f, 5f)] float movementSpeed;
+    [SerializeField][Range(1f, 5f)] float movementTime;
+    [SerializeField][Range(5f, 15f)] float rotationAmount;
+    [SerializeField] Vector3 zoomAmount;
+    [SerializeField] Vector2 positionLimitX;
+    [SerializeField] Vector2 positionLimitZ;
+
+    [SerializeField] Vector2 zoomLimits;
+
+    Vector3 newPosition;
+    Quaternion newRotation;
+    Vector3 newZoom;
+    Transform cameraTransform;
+    PlayerInputs playerInputs;
 
     void Awake() {
-      inputProvider = GetComponent<CinemachineInputProvider>();
+      playerInputs = FindObjectOfType<PlayerInputs>();
+      cameraTransform = Camera.main.transform;
+    }
+
+    void Start() {
+      newPosition = transform.position;
+      newRotation = transform.rotation;
+      newZoom = cameraTransform.localPosition;
     }
 
     void Update() {
-      HandlePan();
+      HandleMovement();
+      HandleRotation();
       HandleZoom();
     }
 
-    void HandlePan() {
-      float x = inputProvider.GetAxisValue(0);
-      float y = inputProvider.GetAxisValue(1);
-      if (x != 0 || y != 0) {
-        Pan(x, y);
+    void HandleMovement() {
+      if (!playerInputs.IsMiddleBtnPressed) {
+        Vector2 screenPosition = playerInputs.MouseScreenPosition;
+        if (screenPosition.x >= Screen.width * .95f) {
+          newPosition += transform.right * movementSpeed;
+        }
+        else if (screenPosition.x <= Screen.width * .05f) {
+          newPosition += transform.right * -movementSpeed;
+        }
+
+        if (screenPosition.y >= Screen.height * .95f) {
+          newPosition += transform.forward * movementSpeed;
+        }
+        else if (screenPosition.y <= Screen.height * .05f) {
+          newPosition += transform.forward * -movementSpeed;
+        }
+
+        newPosition.x = Mathf.Clamp(newPosition.x, positionLimitX.x, positionLimitX.y);
+        newPosition.z = Mathf.Clamp(newPosition.z, positionLimitZ.x, positionLimitZ.y);
+        transform.position = Vector3.Lerp(transform.position, newPosition, Time.deltaTime * movementTime);
       }
     }
-    
-    void Pan(float x, float y) {
-      Vector3 direction = CalculatePanDirection(x, y);
-      Vector3 newPosition = transform.localPosition + direction;
-      newPosition.x = Mathf.Clamp(newPosition.x, -panLimitX.x, panLimitX.y);
-      newPosition.z = Mathf.Clamp(newPosition.z, -panLimitZ.x, panLimitZ.y);
-      transform.localPosition = Vector3.Lerp(transform.localPosition, newPosition, Time.deltaTime * panSpeed);
-    }
 
-    Vector3 CalculatePanDirection(float x, float y) {
-      Vector3 direction = Vector3.zero;
-      if (x >= Screen.width * .95f) {
-        direction.x = 1;
-      }
-      else if (x <= Screen.width * .05f) {
-        direction.x = -1;
-      }
+    void HandleRotation() {
+      if (playerInputs.IsMiddleBtnPressed) {
+        float screenPositionXDelta = playerInputs.MouseScreenXDelta;
+        if (screenPositionXDelta is > 0.95f) {
+          newRotation *= Quaternion.Euler(Vector3.up * rotationAmount);
+        }
+        else if(screenPositionXDelta is < -0.95f) {
+          newRotation *= Quaternion.Euler(Vector3.up * -rotationAmount);
+        }
 
-      if (y >= Screen.height * .95f) {
-        direction.z = 1;
+        transform.rotation = Quaternion.Lerp(transform.rotation, newRotation, Time.deltaTime * rotationAmount);
       }
-      else if (y <= Screen.height * .05f) {
-        direction.z = -1;
-      }
-
-      return direction;
     }
 
     void HandleZoom() {
-      float scroll = inputProvider.GetAxisValue(2);
-      if (scroll != 0) {
-        Zoom(scroll);
-      }
-    }
+      float zoom = playerInputs.Zoom;
 
-    void Zoom(float scroll) {
-      Vector3 newPosition = transform.localPosition + transform.forward * scroll;
-      if (newPosition.y > zoomLimit.x && newPosition.y < zoomLimit.y) {
-        transform.localPosition = Vector3.Lerp(transform.localPosition, newPosition, Time.deltaTime * zoomSpeed);
+      if (zoom > 0f) {
+        if (newZoom.y > zoomLimits.x) {
+          newZoom -= zoomAmount;
+        }
       }
+      else if (zoom < 0f) {
+        if (newZoom.y < zoomLimits.y) {
+          newZoom += zoomAmount;
+        }
+      }
+
+      cameraTransform.localPosition = Vector3.Lerp(cameraTransform.localPosition, newZoom, Time.deltaTime * movementTime);
     }
   }
 }

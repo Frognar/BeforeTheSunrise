@@ -10,6 +10,11 @@ namespace bts {
       bar = transform.Find("Hook");
       Health = new HealthAnimated(health);
       Health.OnValueChange += OnHealthChange;
+      UpdateBar();
+    }
+
+    void LateUpdate() {
+      transform.LookAt(Camera.main.transform);
     }
 
     void OnDestroy() {
