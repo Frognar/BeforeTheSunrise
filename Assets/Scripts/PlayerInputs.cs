@@ -58,6 +58,10 @@ namespace bts {
       MouseScreenPosition = context.ReadValue<Vector2>();
     }
 
+    public Vector3 GetMouseWorldPosition() {
+      return GetWorldPosition(MouseScreenPosition);
+    }
+
     public Vector3 GetWorldPosition(Vector2 screenPosition) {
       Ray ray = mainCamera.ScreenPointToRay(screenPosition);
       return Physics.Raycast(ray, out RaycastHit hitInfo) ? hitInfo.point : Vector3.zero;
