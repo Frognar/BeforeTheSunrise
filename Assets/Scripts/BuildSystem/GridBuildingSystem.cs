@@ -4,40 +4,52 @@ using UnityEngine;
 
 namespace bts {
   public class GridBuildingSystem : MonoBehaviour {
+    public GridXZ<GridObject> Grid { get; private set; }
     [SerializeField][Range(1, 1000)] int gridWidth;
     [SerializeField][Range(1, 1000)] int gridHeight;
     [SerializeField][Range(1f, 50f)] float cellSize;
     [SerializeField] Vector3 gridOrigin;
     [SerializeField] PlacedObjectTypeSO buildingSO;
-
-    GridXZ<GridObject> grid;
+    GhostObject currentGhost;
     PlayerInputs playerInputs;
 
     void Awake() {
+      Grid = new GridXZ<GridObject>(gridWidth, gridHeight, cellSize, gridOrigin, (g, x, z) => new GridObject(g, x, z));
       playerInputs = FindObjectOfType<PlayerInputs>();
-      grid = new GridXZ<GridObject>(gridWidth, gridHeight, cellSize, gridOrigin, (g, x, z) => new GridObject(g, x, z));
+    }
+
+    void Start() {
+      currentGhost = Instantiate(buildingSO.ghost).GetComponent<GhostObject>();
     }
 
     void Update() {
       if (playerInputs.IsLeftBtnDawn) {
-        Vector3Int cords = grid.GetCords(playerInputs.GetMouseWorldPosition());
-        List<Vector3Int> gridPositions = buildingSO.GetGridPositions(cords);
-        List<GridObject> gridObjects = gridPositions.ConvertAll(p => grid.GetGridObject(p.x, p.z));
-        if (gridObjects.All(o => o.CanBuild())) {
-          PlacedObject placedObject = PlacedObject.Create(grid.GetWorldPosition(cords), cords, buildingSO);
-          gridObjects.ForEach(o => o.SetPlacedObject(placedObject));
-        }
+        Build(playerInputs.GetMouseWorldPosition());
       }
 
       if (playerInputs.IsRightBtnDawn) {
-        GridObject gridObject = grid.GetGridObject(playerInputs.GetMouseWorldPosition());
-        PlacedObject placedObject = gridObject.PlacedObject;
-        if (placedObject != null) {
-          List<Vector3Int> gridPositions = placedObject.GetGridPositions();
-          List<GridObject> gridObjects = gridPositions.ConvertAll(p => grid.GetGridObject(p.x, p.z));
-          gridObjects.ForEach(o => o.ClearPlacedObject());
-          placedObject.DestroySelf();
-        }
+        Demolish(playerInputs.GetMouseWorldPosition());
+      }
+    }
+
+    public void Build(Vector3 mouseWorldPosition) {
+      Vector3Int cords = Grid.GetCords(mouseWorldPosition);
+      List<Vector3Int> gridPositions = buildingSO.GetGridPositions(cords);
+      List<GridObject> gridObjects = gridPositions.ConvertAll(p => Grid.GetGridObject(p.x, p.z));
+      if (gridObjects.All(o => o.CanBuild())) {
+        PlacedObject placedObject = PlacedObject.Create(Grid.GetWorldPosition(cords), cords, buildingSO);
+        gridObjects.ForEach(o => o.SetPlacedObject(placedObject));
+      }
+    }
+
+    public void Demolish(Vector3 mouseWorldPosition) {
+      GridObject gridObject = Grid.GetGridObject(mouseWorldPosition);
+      PlacedObject placedObject = gridObject.PlacedObject;
+      if (placedObject != null) {
+        List<Vector3Int> gridPositions = placedObject.GetGridPositions();
+        List<GridObject> gridObjects = gridPositions.ConvertAll(p => Grid.GetGridObject(p.x, p.z));
+        gridObjects.ForEach(o => o.ClearPlacedObject());
+        placedObject.DestroySelf();
       }
     }
 

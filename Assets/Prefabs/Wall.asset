@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: Wall
   prefab: {fileID: 15494893612748968, guid: 6de03e226f7b0154e9134ffb82a2dda6, type: 3}
-  ghost: {fileID: 15494893612748968, guid: 6de03e226f7b0154e9134ffb82a2dda6, type: 3}
+  ghost: {fileID: 15494893612748968, guid: 65fafdb73a2356d41ae7f6642da5ada5, type: 3}
   width: 2
   height: 2
