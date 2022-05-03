@@ -36,7 +36,7 @@ namespace bts {
       }
     }
 
-    void OnTriggerEnter(Collider other) {
+    void OnTriggerStay(Collider other) {
       canBuild = false;
     }
 

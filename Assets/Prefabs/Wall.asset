@@ -17,3 +17,4 @@ MonoBehaviour:
   ghost: {fileID: 15494893612748968, guid: 65fafdb73a2356d41ae7f6642da5ada5, type: 3}
   width: 2
   height: 2
+  isBuilding: 1
