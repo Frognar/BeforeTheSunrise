@@ -15,8 +15,8 @@ namespace bts {
       }
     }
 
-    int Width { get; }
-    int Height { get; }
+    public int Width { get; private set; }
+    public int Height { get; private set; }
     float CellSize { get; }
     Vector3 OriginPosition { get; }
     T[,] Grid2D { get; }

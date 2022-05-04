@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 2610586063416816716}
   - component: {fileID: 2610586063416816723}
   - component: {fileID: 2610586063416816722}
-  - component: {fileID: 2610586063416816718}
+  - component: {fileID: -2953132057846551189}
   - component: {fileID: 2610586063416816719}
   m_Layer: 7
-  m_Name: Obstacle
+  m_Name: Rocks2x2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
@@ -88,7 +88,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &2610586063416816718
+--- !u!114 &-2953132057846551189
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -97,7 +97,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2610586063416816720}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ede11a698a42bb64385676a82851b30b, type: 3}
+  m_Script: {fileID: 11500000, guid: c27e9536b718cd841b9336f5194a22d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!65 &2610586063416816719

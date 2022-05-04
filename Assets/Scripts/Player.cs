@@ -99,9 +99,9 @@ namespace bts {
     IEnumerable<Selectable> FilterSelectable(IEnumerable<Collider> colliders) {
       IEnumerable<Selectable> selectables = GetSelectables(colliders);
       if (selectables.Any()) {
-        IEnumerable<Selectable> playerSelectables = selectables.Where(s => s.ObjectAffiliation == Selectable.Affiliation.Player);
+        IEnumerable<Selectable> playerSelectables = selectables.Where(s => s.ObjectAffiliation == Affiliation.Player);
         if (playerSelectables.Any()) {
-          IEnumerable<Selectable> playerUnits = playerSelectables.Where(s => s.ObjectType == Selectable.Type.Unit);
+          IEnumerable<Selectable> playerUnits = playerSelectables.Where(s => s.ObjectType == Type.Unit);
           return playerUnits.Any() ? playerUnits : new List<Selectable> { selectables.First() };
         }
         else {

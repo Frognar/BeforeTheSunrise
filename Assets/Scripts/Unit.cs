@@ -4,12 +4,12 @@ using UnityEngine;
 namespace bts {
   public class Unit : MonoBehaviour, Selectable {
     public Transform Transform => transform;
-    public Selectable.Affiliation ObjectAffiliation => Selectable.Affiliation.Player;
-    public Selectable.Type ObjectType => Selectable.Type.Unit;
+    public Affiliation ObjectAffiliation => Affiliation.Player;
+    public Type ObjectType => Type.Unit;
+    public GameObject Selected { get; private set; }
 
     PlayerInputs playerInputs;
     Camera cam;
-    GameObject selected;
     AIPath aiPath;
     Vector3 destination;
     Damageable target;
@@ -22,16 +22,16 @@ namespace bts {
       playerInputs = FindObjectOfType<PlayerInputs>();
       cam = Camera.main;
       aiPath = GetComponent<AIPath>();
-      selected = transform.Find("Selected").gameObject;
+      Selected = transform.Find("Selected").gameObject;
     }
 
     public void Select() {
-      selected.SetActive(true);
+      Selected.SetActive(true);
       isSelected = true;
     }
 
     public void Deselect() {
-      selected.SetActive(false);
+      Selected.SetActive(false);
       isSelected = false;
     }
 
@@ -43,7 +43,7 @@ namespace bts {
       if (isSelected && playerInputs.IsRightBtnDawn) {
         Ray ray = cam.ScreenPointToRay(playerInputs.MouseScreenPosition);
         if (Physics.Raycast(ray, out RaycastHit hitInfo)) {
-          if (hitInfo.transform.TryGetComponent(out Damageable damageable)) {
+          if (hitInfo.transform.TryGetComponent(out Damageable damageable) && damageable.ObjectAffiliation != Affiliation.Player) {
             target = damageable;
             destination = hitInfo.transform.position;
             MoveTo(destination);
