@@ -20,37 +20,28 @@ namespace bts {
 
     void Update() {
       if (playerInputs.IsLeftBtnDawn) {
-        StartSelectingArea();
+        StartSelectingArea(playerInputs.MouseScreenPosition);
       }
 
       if (lineRenderer.enabled) {
-        DrawSelectionArea();
+        DrawSelectionArea(playerInputs.MouseScreenPosition);
       }
 
       if (playerInputs.IsLeftBtnUp) {
-        StopSelectingArea();
-      }
-
-      if (playerInputs.IsRightBtnDawn) {
-        foreach (Selectable selectable in selected) {
-          if (selectable.Transform.TryGetComponent(out Unit unit)) {
-            Ray ray = cam.ScreenPointToRay(playerInputs.MouseScreenPosition);
-            unit.Execute(ray);
-          }
-        }
+        StopSelectingArea(playerInputs.MouseScreenPosition);
       }
     }
     
-    void StartSelectingArea() {
+    void StartSelectingArea(Vector3 startPosition) {
       lineRenderer.enabled = true;
-      Ray ray = cam.ScreenPointToRay(playerInputs.MouseScreenPosition);
+      Ray ray = cam.ScreenPointToRay(startPosition);
       if (Physics.Raycast(ray, out RaycastHit hitInfo)) {
-        startPosition = hitInfo.point;
+        this.startPosition = hitInfo.point;
       }
     }
 
-    void DrawSelectionArea() {
-      Ray ray = cam.ScreenPointToRay(playerInputs.MouseScreenPosition);
+    void DrawSelectionArea(Vector3 currentPosition) {
+      Ray ray = cam.ScreenPointToRay(currentPosition);
       if (Physics.Raycast(ray, out RaycastHit hitInfo)) {
         Vector3 endPosition = hitInfo.point;
         Vector3 lowerLeft = new Vector3(
@@ -72,10 +63,10 @@ namespace bts {
       }
     }
 
-    void StopSelectingArea() {
+    void StopSelectingArea(Vector3 endPosition) {
       lineRenderer.enabled = false;
       DeselectAll();
-      IEnumerable<Collider> selectedColliders = GetCollidersUnderSelectionArea();
+      IEnumerable<Collider> selectedColliders = GetCollidersUnderSelectionArea(endPosition);
       selected = FilterSelectable(selectedColliders).ToList();
       Select();
     }
@@ -88,17 +79,17 @@ namespace bts {
       selected.Clear();
     }
     
-    IEnumerable<Collider> GetCollidersUnderSelectionArea() {
-      (Vector3 center, Vector3 halfExtents) = GetSelectionArea();
+    IEnumerable<Collider> GetCollidersUnderSelectionArea(Vector3 endPosition) {
+      (Vector3 center, Vector3 halfExtents) = GetSelectionArea(endPosition);
       return Physics.OverlapBox(center, halfExtents);
     }
     
-    (Vector3 center, Vector3 halfExtents) GetSelectionArea() {
-      Ray ray = cam.ScreenPointToRay(playerInputs.MouseScreenPosition);
+    (Vector3 center, Vector3 halfExtents) GetSelectionArea(Vector3 endPosition) {
+      Ray ray = cam.ScreenPointToRay(endPosition);
       if (Physics.Raycast(ray, out RaycastHit hitInfo)) {
-        Vector3 endPosition = hitInfo.point;
-        Vector3 center = (startPosition + endPosition) / 2f;
-        Vector3 halfExtents = new Vector3(Mathf.Abs(startPosition.x - endPosition.x) / 2, 2, Mathf.Abs(startPosition.z - endPosition.z) / 2);
+        Vector3 endPoint = hitInfo.point;
+        Vector3 center = (startPosition + endPoint) / 2f;
+        Vector3 halfExtents = new Vector3(Mathf.Abs(startPosition.x - endPoint.x) / 2, 2, Mathf.Abs(startPosition.z - endPoint.z) / 2);
         return (center, halfExtents);
       }
 
