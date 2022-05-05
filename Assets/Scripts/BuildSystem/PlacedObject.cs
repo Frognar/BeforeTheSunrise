@@ -7,7 +7,7 @@ namespace bts {
     static readonly WaitForFixedUpdate waitForFixedUpdate = new WaitForFixedUpdate();
     static Transform parent;
     
-    public static PlacedObject Create(Vector3 worldPosition, Vector3Int origin, PlacedObjectTypeSO placedObjectType) {
+    public static PlacedObject Create(Vector3 worldPosition, Vector3Int origin, PlacedObjectTypeSO placedObjectType, GridBuildingSystem gridBuildingSystem) {
       if (parent == null) {
         parent = new GameObject("Buildings|Obstacles").transform;
       }
@@ -16,6 +16,7 @@ namespace bts {
       PlacedObject placedObject = placedObjectTransform.GetComponent<PlacedObject>();
       placedObject.placedObjectType = placedObjectType;
       placedObject.origin = origin;
+      placedObject.gridBuildingSystem = gridBuildingSystem;
       return placedObject;
     }
 
@@ -29,11 +30,12 @@ namespace bts {
     Collider obstacle;
 
     PlacedObjectTypeSO placedObjectType;
+    GridBuildingSystem gridBuildingSystem;
     Vector3Int origin;
 
     void Awake() {
       obstacle = GetComponent<Collider>();
-      health = new Health(100);
+      health = new Health(10);
       bar = GetComponentInChildren<WorldHealthBar>();
       Selected = transform.Find("Selected").gameObject;
     }
@@ -51,7 +53,7 @@ namespace bts {
     public void TakeDamage(int amount) {
       health.Damage(amount);
       if (health.CurrentHealth == 0) {
-        DestroySelf();
+        gridBuildingSystem.Demolish(transform.position);
       }
     }
 
@@ -60,9 +62,11 @@ namespace bts {
     }
 
     IEnumerator DestroySelfAfterDelay() {
+      yield return waitForFixedUpdate;
       obstacle.enabled = false;
       yield return waitForFixedUpdate;
       AstarPath.active.UpdateGraphs(obstacle.bounds);
+      yield return waitForFixedUpdate;
       yield return waitForFixedUpdate;
       obstacle.enabled = true;
       yield return waitForFixedUpdate;

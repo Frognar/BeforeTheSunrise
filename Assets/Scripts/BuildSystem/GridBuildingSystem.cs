@@ -26,10 +26,6 @@ namespace bts {
       if (playerInputs.IsLeftBtnDawn) {
         Build(playerInputs.GetMouseWorldPosition(), buildingSO);
       }
-
-      if (playerInputs.IsRightBtnDawn) {
-        Demolish(playerInputs.GetMouseWorldPosition());
-      }
     }
 
     public void Build(Vector3 mouseWorldPosition, PlacedObjectTypeSO placedObjectType) {
@@ -41,7 +37,7 @@ namespace bts {
       List<Vector3Int> gridPositions = buildingSO.GetGridPositions(cords);
       List<GridObject> gridObjects = gridPositions.ConvertAll(p => Grid.GetGridObject(p.x, p.z));
       if (gridObjects.All(o => o?.CanBuild() ?? false)) {
-        PlacedObject placedObject = PlacedObject.Create(Grid.GetWorldPosition(cords), cords, placedObjectType);
+        PlacedObject placedObject = PlacedObject.Create(Grid.GetWorldPosition(cords), cords, placedObjectType, this);
         gridObjects.ForEach(o => o.SetPlacedObject(placedObject));
       }
     }
