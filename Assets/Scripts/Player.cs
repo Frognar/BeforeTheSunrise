@@ -1,9 +1,21 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace bts {
   public class Player : MonoBehaviour {
+    public class OnSelectionEventArgs : EventArgs {
+      public List<Selectable> Selected { get; }
+
+      public OnSelectionEventArgs(List<Selectable> selected) {
+        Selected = selected;
+      }
+    }
+
+    public event EventHandler<OnSelectionEventArgs> OnSelection;
+
     PlayerInputs playerInputs;
     Camera cam;
     Vector3 startPosition;
@@ -20,15 +32,16 @@ namespace bts {
 
     void Update() {
       if (playerInputs.IsLeftBtnDawn) {
-        StartSelectingArea(playerInputs.MouseScreenPosition);
+        if (!EventSystem.current.IsPointerOverGameObject()) {
+          StartSelectingArea(playerInputs.MouseScreenPosition);
+        }
       }
 
       if (lineRenderer.enabled) {
         DrawSelectionArea(playerInputs.MouseScreenPosition);
-      }
-
-      if (playerInputs.IsLeftBtnUp) {
-        StopSelectingArea(playerInputs.MouseScreenPosition);
+        if (playerInputs.IsLeftBtnUp) {
+          StopSelectingArea(playerInputs.MouseScreenPosition);
+        }
       }
     }
     
@@ -124,6 +137,8 @@ namespace bts {
       foreach (Selectable selectable in selected) {
         selectable.Select();
       }
+
+      OnSelection?.Invoke(this, new OnSelectionEventArgs(selected));
     }
   }
 }

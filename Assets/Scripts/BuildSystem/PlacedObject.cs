@@ -20,6 +20,7 @@ namespace bts {
       return placedObject;
     }
 
+    public string Name => placedObjectType.name;
     public Transform Transform => transform;
     public Affiliation ObjectAffiliation => placedObjectType.objectAffiliation;
     public Type ObjectType => placedObjectType.objectType;

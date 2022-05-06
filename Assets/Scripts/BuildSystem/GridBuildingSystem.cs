@@ -9,23 +9,9 @@ namespace bts {
     [SerializeField][Range(1, 1000)] int gridHeight;
     [SerializeField][Range(1f, 50f)] float cellSize;
     [SerializeField] Vector3 gridOrigin;
-    [SerializeField] PlacedObjectTypeSO buildingSO;
-    GhostObject currentGhost;
-    PlayerInputs playerInputs;
 
     void Awake() {
       Grid = new GridXZ<GridObject>(gridWidth, gridHeight, cellSize, gridOrigin, (g, x, z) => new GridObject(g, x, z));
-      playerInputs = FindObjectOfType<PlayerInputs>();
-    }
-
-    void Start() {
-      currentGhost = Instantiate(buildingSO.ghost).GetComponent<GhostObject>();
-    }
-
-    void Update() {
-      if (playerInputs.IsLeftBtnDawn) {
-        Build(playerInputs.GetMouseWorldPosition(), buildingSO);
-      }
     }
 
     public void Build(Vector3 mouseWorldPosition, PlacedObjectTypeSO placedObjectType) {
@@ -34,7 +20,7 @@ namespace bts {
     }
 
     public void Build(Vector3Int cords, PlacedObjectTypeSO placedObjectType) {
-      List<Vector3Int> gridPositions = buildingSO.GetGridPositions(cords);
+      List<Vector3Int> gridPositions = placedObjectType.GetGridPositions(cords);
       List<GridObject> gridObjects = gridPositions.ConvertAll(p => Grid.GetGridObject(p.x, p.z));
       if (gridObjects.All(o => o?.CanBuild() ?? false)) {
         PlacedObject placedObject = PlacedObject.Create(Grid.GetWorldPosition(cords), cords, placedObjectType, this);
