@@ -27,7 +27,6 @@ namespace bts {
       CellSize = cellSize;
       OriginPosition = originPosition;
       Grid2D = new T[Width, Height];
-
       Color color = Color.white;
       for (int x = 0; x < Grid2D.GetLength(0); x++) {
         for (int z = 0; z < Grid2D.GetLength(1); z++) {
@@ -36,7 +35,7 @@ namespace bts {
           Debug.DrawLine(GetWorldPosition(x, z), GetWorldPosition(x, z + 1), color, 100f);
         }
       }
-      
+
       Debug.DrawLine(GetWorldPosition(0, Height), GetWorldPosition(Width, Height), color, 100f);
       Debug.DrawLine(GetWorldPosition(Width, 0), GetWorldPosition(Width, Height), color, 100f);
     }
@@ -49,7 +48,7 @@ namespace bts {
     }
 
     public void TriggerOnGridObjectChanged(int x, int z) {
-        OnGridObjectChanged?.Invoke(this, new GridObjectChangedEventArgs(x, z));
+      OnGridObjectChanged?.Invoke(this, new GridObjectChangedEventArgs(x, z));
     }
 
     public void SetGridObject(Vector3 worldPosition, T value) {
@@ -82,8 +81,8 @@ namespace bts {
     }
 
     public Vector3Int GetCords(Vector3 worldPosition) {
-      int x = Mathf.CeilToInt((worldPosition - OriginPosition).x / CellSize);
-      int z = Mathf.CeilToInt((worldPosition - OriginPosition).z / CellSize);
+      int x = Mathf.FloorToInt((worldPosition - OriginPosition).x / CellSize);
+      int z = Mathf.FloorToInt((worldPosition - OriginPosition).z / CellSize);
       return new Vector3Int(x, 0, z);
     }
   }
