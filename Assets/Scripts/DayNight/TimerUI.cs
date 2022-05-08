@@ -5,10 +5,15 @@ using UnityEngine;
 namespace bts {
   public class TimerUI : MonoBehaviour {
     [SerializeField] TextMeshProUGUI timerText;
-    [SerializeField] DayNightCycle dayNightCycle;
+    
+    DayNighStateManager dayNightCycle;
+
+    void Awake() {
+      dayNightCycle = FindObjectOfType<DayNighStateManager>();
+    }
 
     void Start() {
-      UpdateTimer();
+      UpdateTimer(null, EventArgs.Empty);
     }
 
     void OnEnable() {
@@ -20,11 +25,7 @@ namespace bts {
     }
 
     void UpdateTimer(object sender, EventArgs e) {
-      UpdateTimer();
-    }
-
-    void UpdateTimer() {
-      timerText.text = dayNightCycle.GetReamaningTime() + "s";
+      timerText.text = dayNightCycle.ReamaningTime + "s";
     }
   }
 }

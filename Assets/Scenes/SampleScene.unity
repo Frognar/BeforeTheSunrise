@@ -1350,7 +1350,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerText: {fileID: 1045488835}
-  dayNightCycle: {fileID: 1552859099}
 --- !u!1 &1141388425
 GameObject:
   m_ObjectHideFlags: 0
@@ -1820,7 +1819,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1552859097}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f461a2f638cd8447acc7e373237ba33, type: 3}
+  m_Script: {fileID: 11500000, guid: e184a1f1ad8e5604b99f899010c6c662, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   dayDuration: 8

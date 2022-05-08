@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -11,27 +12,20 @@ namespace bts {
     [SerializeField] float fadeDuration = 2f;
 
     void OnEnable() {
-      DayNightCycle.DayTimeChanged += ChangeDayTime;
+      DayState.OnDayStarted += ChangeToDay;
+      NightState.OnNightStarted += ChangeToNight;
     }
 
     void OnDisable() {
-      DayNightCycle.DayTimeChanged -= ChangeDayTime;
+      DayState.OnDayStarted -= ChangeToDay;
+      NightState.OnNightStarted -= ChangeToNight;
     }
 
-    void ChangeDayTime(object sender, DayTime dayTime) {
-      if (dayTime == DayTime.Day) {
-        ChangeToDay();
-      }
-      else {
-        ChangeToNight();
-      }
-    }
-
-    void ChangeToDay() {
+    void ChangeToDay(object sender, EventArgs e) {
       _ = StartCoroutine(FadeSun(nightLightIntensity, dayLightIntensity, nightLightTemperature, dayLightTemperature));
     }
 
-    void ChangeToNight() {
+    void ChangeToNight(object sender, EventArgs e) {
       _ = StartCoroutine(FadeSun(dayLightIntensity, nightLightIntensity, dayLightTemperature, nightLightTemperature));
     }
 
