@@ -1,12 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Pathfinding;
 using UnityEngine;
 
 namespace bts {
   public class PlacedObject : MonoBehaviour, Selectable, Damageable {
-    static readonly WaitForFixedUpdate waitForFixedUpdate = new WaitForFixedUpdate();
     static Transform parent;
-    
+
     public static PlacedObject Create(Vector3 worldPosition, Vector3Int origin, PlacedObjectTypeSO placedObjectType, GridBuildingSystem gridBuildingSystem) {
       if (parent == null) {
         parent = new GameObject("Buildings|Obstacles").transform;
@@ -59,21 +58,10 @@ namespace bts {
     }
 
     public void DestroySelf() {
-      _ = StartCoroutine(DestroySelfAfterDelay());
-    }
-
-    IEnumerator DestroySelfAfterDelay() {
-      yield return waitForFixedUpdate;
-      obstacle.enabled = false;
-      yield return waitForFixedUpdate;
-      AstarPath.active.UpdateGraphs(obstacle.bounds);
-      yield return waitForFixedUpdate;
-      yield return waitForFixedUpdate;
-      obstacle.enabled = true;
-      yield return waitForFixedUpdate;
-      gameObject.transform.position = new Vector3(-10000, -10000, -10000);
-      yield return waitForFixedUpdate;
-      Destroy(gameObject);
+      Bounds b = obstacle.bounds;
+      transform.position = new Vector3(-10000, -10000, -10000);
+      Destroy(gameObject, 0.1f);
+      AstarPath.active.UpdateGraphs(new GraphUpdateObject(b));
     }
   }
 }
