@@ -42,7 +42,6 @@ namespace bts {
       Selected.SetActive(false);
       isSelected = false;
       buildingToPlace = null;
-      Debug.Log("Deselect");
       if (currentGhost != null) {
         Destroy(currentGhost.gameObject);
         currentGhost = null;
