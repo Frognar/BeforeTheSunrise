@@ -6,10 +6,10 @@ namespace bts {
   public class TimerUI : MonoBehaviour {
     [SerializeField] TextMeshProUGUI timerText;
     
-    DayNighStateManager dayNightCycle;
+    DayNightStateManager dayNightCycle;
 
     void Awake() {
-      dayNightCycle = FindObjectOfType<DayNighStateManager>();
+      dayNightCycle = FindObjectOfType<DayNightStateManager>();
     }
 
     void Start() {

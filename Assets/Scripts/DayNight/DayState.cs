@@ -4,15 +4,16 @@ namespace bts {
   public class DayState : DayNightBaseState {
     public static event EventHandler OnDayStarted;
 
-    public DayState(int duration) : base(duration) {
+    public DayState(DayNightStateManager context, DayNightStateFactory factory)
+      : base(context, factory, context.DayDuration) {
     }
 
-    public override void EnterState(DayNighStateManager context) {
+    public override void EnterState() {
       OnDayStarted?.Invoke(this, EventArgs.Empty);
     }
 
-    public override void ExitState(DayNighStateManager context) {
-      context.SwitchState(context.NightState);
+    public override void ExitState() {
+      Context.SwitchState(StateFactory.Night);
     }
   }
 }

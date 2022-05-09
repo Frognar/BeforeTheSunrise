@@ -1,21 +1,26 @@
 ﻿namespace bts {
   public abstract class DayNightBaseState {
-    readonly int dayTimeDuration;
     public int ReamaningTime { get; private set; }
-    public DayNightBaseState(int duration) {
+    protected DayNightStateManager Context { get; private set; }
+    protected DayNightStateFactory StateFactory { get; private set; }
+    readonly int dayTimeDuration;
+
+    public DayNightBaseState(DayNightStateManager context, DayNightStateFactory factory, int duration) {
+      Context = context;
+      StateFactory = factory;
       dayTimeDuration = duration;
-      ReamaningTime = duration;
+      ReamaningTime = dayTimeDuration;
     }
 
-    public abstract void EnterState(DayNighStateManager context);
+    public abstract void EnterState();
 
-    public void UpdateState(DayNighStateManager context) {
+    public void UpdateState() {
       if (--ReamaningTime <= 0) {
         ReamaningTime = dayTimeDuration;
-        ExitState(context);
+        ExitState();
       }
     }
-    
-    public abstract void ExitState(DayNighStateManager context);
+
+    public abstract void ExitState();
   }
 }
