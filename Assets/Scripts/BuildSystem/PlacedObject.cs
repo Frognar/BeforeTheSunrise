@@ -24,6 +24,7 @@ namespace bts {
     public Affiliation ObjectAffiliation => placedObjectType.objectAffiliation;
     public Type ObjectType => placedObjectType.objectType;
     public GameObject Selected { get; private set; }
+    public Vector3 Position => obstacle.bounds.center;
 
     Health health;
     WorldHealthBar bar;
