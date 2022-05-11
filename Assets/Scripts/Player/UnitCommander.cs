@@ -2,13 +2,13 @@
 
 namespace bts {
   public class UnitCommander : MonoBehaviour {
-    Unit unit;
+    UnitStateManager unit;
     PlayerInputs playerInputs;
     PlacedObjectTypeSO buildingToPlace;
     GhostObject currentGhost;
 
     void Awake() {
-      unit = FindObjectOfType<Unit>();
+      unit = FindObjectOfType<UnitStateManager>();
       playerInputs = FindObjectOfType<PlayerInputs>();
     }
 
@@ -16,14 +16,14 @@ namespace bts {
       if (unit.IsSelected && playerInputs.IsRightBtnDawn) {
         if (Physics.Raycast(playerInputs.GetRayFromMouseToWorld(), out RaycastHit hitInfo)) {
           if (buildingToPlace != null) {
-            unit.Build(buildingToPlace, hitInfo.point);
+            unit.SetBuildOrder(buildingToPlace, hitInfo.point);
             ClearBuildingToBuild();
           }
           else if (hitInfo.transform.TryGetComponent(out Damageable damageable) && damageable.ObjectAffiliation != Affiliation.Player) {
-            unit.Attack(damageable);
+            unit.SetAttackOrder(damageable);
           }
           else {
-            unit.MoveTo(hitInfo.point);
+            unit.SetMoveOrder(hitInfo.point);
           }
         }
       }

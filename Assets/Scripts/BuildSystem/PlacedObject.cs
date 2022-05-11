@@ -25,6 +25,7 @@ namespace bts {
     public Type ObjectType => placedObjectType.objectType;
     public GameObject Selected { get; private set; }
     public Vector3 Position => obstacle.bounds.center;
+    public bool IsDead => health.CurrentHealth == 0;
 
     Health health;
     WorldHealthBar bar;
