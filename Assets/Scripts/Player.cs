@@ -45,16 +45,16 @@ namespace bts {
       }
     }
     
-    void StartSelectingArea(Vector3 startPosition) {
+    void StartSelectingArea(Vector2 screenPosition) {
       lineRenderer.enabled = true;
-      Ray ray = cam.ScreenPointToRay(startPosition);
+      Ray ray = cam.ScreenPointToRay(screenPosition);
       if (Physics.Raycast(ray, out RaycastHit hitInfo)) {
-        this.startPosition = hitInfo.point;
+        startPosition = hitInfo.point;
       }
     }
 
-    void DrawSelectionArea(Vector3 currentPosition) {
-      Ray ray = cam.ScreenPointToRay(currentPosition);
+    void DrawSelectionArea(Vector2 screenPosition) {
+      Ray ray = cam.ScreenPointToRay(screenPosition);
       if (Physics.Raycast(ray, out RaycastHit hitInfo)) {
         Vector3 endPosition = hitInfo.point;
         Vector3 lowerLeft = new Vector3(
@@ -76,10 +76,10 @@ namespace bts {
       }
     }
 
-    void StopSelectingArea(Vector3 endPosition) {
+    void StopSelectingArea(Vector2 screenPosition) {
       lineRenderer.enabled = false;
       DeselectAll();
-      IEnumerable<Collider> selectedColliders = GetCollidersUnderSelectionArea(endPosition);
+      IEnumerable<Collider> selectedColliders = GetCollidersUnderSelectionArea(screenPosition);
       selected = FilterSelectable(selectedColliders).ToList();
       Select();
     }
@@ -92,13 +92,13 @@ namespace bts {
       selected.Clear();
     }
     
-    IEnumerable<Collider> GetCollidersUnderSelectionArea(Vector3 endPosition) {
-      (Vector3 center, Vector3 halfExtents) = GetSelectionArea(endPosition);
+    IEnumerable<Collider> GetCollidersUnderSelectionArea(Vector2 screenPosition) {
+      (Vector3 center, Vector3 halfExtents) = GetSelectionArea(screenPosition);
       return Physics.OverlapBox(center, halfExtents);
     }
     
-    (Vector3 center, Vector3 halfExtents) GetSelectionArea(Vector3 endPosition) {
-      Ray ray = cam.ScreenPointToRay(endPosition);
+    (Vector3 center, Vector3 halfExtents) GetSelectionArea(Vector2 screenPosition) {
+      Ray ray = cam.ScreenPointToRay(screenPosition);
       if (Physics.Raycast(ray, out RaycastHit hitInfo)) {
         Vector3 endPoint = hitInfo.point;
         Vector3 center = (startPosition + endPoint) / 2f;

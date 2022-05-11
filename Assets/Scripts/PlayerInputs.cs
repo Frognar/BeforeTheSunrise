@@ -10,7 +10,6 @@ namespace bts {
     public bool IsMiddleBtnPressed { get; private set; }
     public Vector2 MouseScreenPosition { get; private set; }
     public float MouseScreenXDelta { get; private set; }
-    public Vector3 MouseWorldPosition { get; private set; }
     public float Zoom { get; private set; }
 
     Camera mainCamera;
@@ -65,6 +64,10 @@ namespace bts {
     public Vector3 GetWorldPosition(Vector2 screenPosition) {
       Ray ray = mainCamera.ScreenPointToRay(screenPosition);
       return Physics.Raycast(ray, out RaycastHit hitInfo) ? hitInfo.point : Vector3.zero;
+    }
+
+    public Ray GetRayFromMouseToWorld() {
+      return mainCamera.ScreenPointToRay(MouseScreenPosition);
     }
 
     public void OnZoom(InputAction.CallbackContext context) {

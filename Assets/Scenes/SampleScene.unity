@@ -682,8 +682,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2120320739}
-        m_TargetAssemblyTypeName: bts.Unit, Assembly-CSharp
+      - m_Target: {fileID: 2120320743}
+        m_TargetAssemblyTypeName: bts.UnitCommander, Assembly-CSharp
         m_MethodName: SetBuildingToBuild
         m_Mode: 2
         m_Arguments:
@@ -816,8 +816,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2120320739}
-        m_TargetAssemblyTypeName: bts.Unit, Assembly-CSharp
+      - m_Target: {fileID: 2120320743}
+        m_TargetAssemblyTypeName: bts.UnitCommander, Assembly-CSharp
         m_MethodName: ClearBuildingToBuild
         m_Mode: 1
         m_Arguments:
@@ -1418,13 +1418,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   data:
-    dataString: UEsDBBQAAAgIAAAIIex+d4duaQIAACgFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFlVMty4jAQ/BVK5yVlnMTA3nYdQvaQhAq7lYsvwhpjFUJy6REgKf59R7KNjXPCdPfM9DzsL8KlqSC3Si81Z8+KAfk5Iv6Z/Bh15BMc6VbJNf+EVvPOmS29iAbNG7VcIT7xYUbtwWqe/5Jb4cURgk7yQun9gm0hVcYahAsqDCCllfXREqGvETk2Aafm99P/js74lIO0oDvV+PZmNrlL5tN4uhhHySBmnNxEs9k8mSM3DfFO5oLuK2C+jy7NJGrL4VMQSuyx0fh+ciUEN41BYk9VGEBKK+OwPRQwTrHhYM3rS+Db0uKfuB/8WhQGbGNQ09MD1zi3Oiv5reph7qnZ1c4+qHDBQDwLnuqkz9/45DbQhVb7p7Zu3ZEteb57o6ecGtubdh9+uDbu5IGKHd0IeC9BvqilVk4yJK12PtQZiB96qS69pSXku05Xex2Arvq+30m333Po/pgKvt945OauBtZChXnPfQxo3MwfNBzuxTSZEPUm/hn4S7f9w2qIR66NRaopKL27jXLaS8kizMw342yqtIQAN54rkFTY0wrT2OEKB1yv7IB5pP4Vaoo3XPtmDEIC3OmjaECt1OGyLFOqwzOY8tVZwSV0pj3xgnNKlZT1hZlr0ketnS5o3ovaOs6uL4vEd4wmjE3n83wTxXE0ntHZfbyZbHK4TxKAWxJOj0tsk4pV7bOZDi5Ndsklnln7YRktNa3CsTNND0v+uVc9f1wWap1rAPlaZ2gnZEBjEXwp2YJxnM8arOUyrJt8ZUSofAcsuyTKQqeLo9U067JkpOIfynokI2n4nGTEw5dLXmn44HDwxdtkZ3L+D1BLAwQUAAAICAAACCHsUkl2yW0AAAB4AAAACQAkAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAatWKkstKs7Mz1OyUjDRM9IzNNdRUEovSizIKAaKGII4pZkpIHa0kpFJSqJZSoq5pWVykoGRkYGuRaKFqVGSYVJyqqmZWWqqsVIsUH1JZUGqX2JuKkRPQGJJRlpmXkpmXrqee1FmijvIaKXYWgBQSwECLQAUAAAICAAACCHsfneHbmkCAAAoBQAACwAkAAAAAAAAAAAAAAAAAAAAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwECLQAUAAAICAAACCHsUkl2yW0AAAB4AAAACQAkAAAAAAAAAAAAAAC2AgAAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsFBgAAAAACAAIAuAAAAG4DAAAAAA==
+    dataString: UEsDBBQAAAgIAAAIIexbqA+DagIAACoFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQF1VMtyozAQ/BWXzusUJgm297ZLHGcPSVxxtnLhIqPBqCwkSo/YTsr/viMBhji1J0R3z6jnAZ+ES1NDbpVeas4eFQPyc0T8mfwY9eQDHOhWyTX/gE7zxpktvYgGzQu1XCE+8WFGVWA1z3/JrfDiCEEneaF0tWBbSJWxBuGCCgNIaWV9tEToc0QObcCxfX745+iEpxykBd2rxtdXs8lNMp/G08U4Si5ixslVNJvNkzly0xDvZC5oVQPzdfRpJlF3HZ6CUGKNrcbXkyshuGkNEnusQwNSWhuH5aGAcYoFB2teXwLflhZf4mHwc1EYsK1BTY93XGPfmqzkt2qaWVGza5y9U+GCgXgWPDVJH7/xyXWgC62qh+7epiJb8nz3Qo85NXbQ7SF899W4k3sqdnQj4K0E+aSWWjnJkLTa+VBnIL4bpDrXlpaQ73pd47UDO7Wrvw940g/4FMo/pIJXG49c3TTAWqjQ8LmPAY2j+YOOw8KYNhOi3sVfA690O9yslrjn2lik2gult7dRTnspWYSm+WqcTZWWoIcZapBU2OMK89jLIV5w/4+6p/4jam9vue7buAgJcK+PogtqpfbncZlS7R/BlM/OCi6h778nnrBRqZKy2THzlfRRa6cLmg+ito6zr7tF4htGE8am83m+ieI4Gs/o7DbeTDY53CYJwDUJy8cllknFqvHZdgenJvvkEhet+7WMlprWYd2Zpvsl/6jUwB+XhVrnGkA+Nxm6DhnQeAl+lmzBOPZnDdZyGeZNPjMiVL4Dlp0TZaHSxcFqmvVZMlLzd2U9kpE0/FAy4uHzLq80vHPY+8u7ZCdy+gdQSwMEFAAACAgAAAgh7FJJdsltAAAAeAAAAAkAJABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQGrVipLLSrOzM9TslIw0TPSMzTXUVBKL0osyCgGihiCOKWZKSB2tJKRSUqiWUqKuaVlcpKBkZGBrkWihalRkmFScqqpmVlqqrFSLFB9SWVBql9ibipET0BiSUZaZl5KZl66nntRZoo7yGil2FoAUEsBAi0AFAAACAgAAAgh7FuoD4NqAgAAKgUAAAsAJAAAAAAAAAAAAAAAAAAAAGdyYXBoMC5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsBAi0AFAAACAgAAAgh7FJJdsltAAAAeAAAAAkAJAAAAAAAAAAAAAAAtwIAAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLBQYAAAAAAgACALgAAABvAwAAAAA=
     upgradeData: 
     file_cachedStartup: {fileID: 0}
     data_cachedStartup: 
     cacheStartup: 0
   showNavGraphs: 1
-  showUnwalkableNodes: 0
+  showUnwalkableNodes: 1
   debugMode: 0
   debugFloor: 0
   debugRoof: 1
@@ -2009,18 +2009,38 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2120320739 stripped
+--- !u!114 &2120320743 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4085809703577258809, guid: f7db9d6726e6a0d499a3ba8cbdce4e16,
+  m_CorrespondingSourceObject: {fileID: 4843340433099357607, guid: f7db9d6726e6a0d499a3ba8cbdce4e16,
     type: 3}
   m_PrefabInstance: {fileID: 4085809705026302187}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 2127252375}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 085bb83de7bd49043abe78062e948e46, type: 3}
+  m_Script: {fileID: 11500000, guid: 612b9f3aa20482f458e0234fac09ff70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &2127252375 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4085809703577258788, guid: f7db9d6726e6a0d499a3ba8cbdce4e16,
+    type: 3}
+  m_PrefabInstance: {fileID: 4085809705026302187}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2127252381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2127252375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9679e68a0f1144e79c664d9a11ca121, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  target: {fileID: 0}
 --- !u!1001 &4085809705026302187
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2086,21 +2106,6 @@ PrefabInstance:
     - target: {fileID: 4085809703577258810, guid: f7db9d6726e6a0d499a3ba8cbdce4e16,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4085809703577258814, guid: f7db9d6726e6a0d499a3ba8cbdce4e16,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4085809703577258814, guid: f7db9d6726e6a0d499a3ba8cbdce4e16,
-        type: 3}
-      propertyPath: m_Size.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4085809703577258815, guid: f7db9d6726e6a0d499a3ba8cbdce4e16,
-        type: 3}
-      propertyPath: drawGizmos
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
