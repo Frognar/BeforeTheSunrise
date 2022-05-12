@@ -31,30 +31,28 @@ namespace bts {
     }
 
     void Update() {
-      if (playerInputs.IsLeftBtnDawn) {
+      if (playerInputs.StartSelecting) {
         if (!EventSystem.current.IsPointerOverGameObject()) {
-          StartSelectingArea(playerInputs.MouseScreenPosition);
+          StartSelectingArea(playerInputs.RayToWorld);
         }
       }
 
       if (lineRenderer.enabled) {
-        DrawSelectionArea(playerInputs.MouseScreenPosition);
-        if (playerInputs.IsLeftBtnUp) {
-          StopSelectingArea(playerInputs.MouseScreenPosition);
+        DrawSelectionArea(playerInputs.RayToWorld);
+        if (playerInputs.StopSelecting) {
+          StopSelectingArea(playerInputs.ScreenPosition);
         }
       }
     }
     
-    void StartSelectingArea(Vector2 screenPosition) {
+    void StartSelectingArea(Ray ray) {
       lineRenderer.enabled = true;
-      Ray ray = cam.ScreenPointToRay(screenPosition);
       if (Physics.Raycast(ray, out RaycastHit hitInfo)) {
         startPosition = hitInfo.point;
       }
     }
 
-    void DrawSelectionArea(Vector2 screenPosition) {
-      Ray ray = cam.ScreenPointToRay(screenPosition);
+    void DrawSelectionArea(Ray ray) {
       if (Physics.Raycast(ray, out RaycastHit hitInfo)) {
         Vector3 endPosition = hitInfo.point;
         Vector3 lowerLeft = new Vector3(

@@ -20,7 +20,7 @@ namespace bts {
     }
 
     void Update() {
-      Vector3Int cords = grid.GetCords(playerInputs.GetMouseWorldPosition());
+      Vector3Int cords = grid.GetCords(playerInputs.WorldPosition);
       transform.position = grid.GetWorldPosition(cords);
 
       if (lastCanBuild != canBuild) {

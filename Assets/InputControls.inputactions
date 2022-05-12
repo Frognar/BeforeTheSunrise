@@ -2,7 +2,7 @@
     "name": "InputControls",
     "maps": [
         {
-            "name": "Mouse",
+            "name": "Player",
             "id": "fd62e94d-83c1-4286-b165-1f3499de2bb0",
             "actions": [
                 {
@@ -24,7 +24,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "ScreenPositionXChange",
+                    "name": "CameraRotationDirection",
                     "type": "Value",
                     "id": "7bd56e4e-59f8-4307-992d-8875c2de1f1f",
                     "expectedControlType": "Axis",
@@ -33,7 +33,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "LeftClick",
+                    "name": "Select",
                     "type": "Button",
                     "id": "293f248b-6d19-47c1-9d8a-e2c0907a2d17",
                     "expectedControlType": "Button",
@@ -42,7 +42,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "RightClick",
+                    "name": "SendCommand",
                     "type": "Button",
                     "id": "23bf4e16-14a1-474b-b80a-9ba3da3c1fc0",
                     "expectedControlType": "Button",
@@ -51,9 +51,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "MiddleClick",
+                    "name": "EnableCameraRotation",
                     "type": "Button",
                     "id": "9a81cf66-b65d-460d-9a6a-d47212795b37",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "EnableCommendQueuing",
+                    "type": "Button",
+                    "id": "aa97e346-a200-4bdd-bf79-1c31341603f1",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -90,7 +99,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "LeftClick",
+                    "action": "Select",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -101,7 +110,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "RightClick",
+                    "action": "SendCommand",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -112,7 +121,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "MiddleClick",
+                    "action": "EnableCameraRotation",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -123,7 +132,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ScreenPositionXChange",
+                    "action": "CameraRotationDirection",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a4e590ed-abc1-4fe1-9376-1682bc8e5470",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "EnableCommendQueuing",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

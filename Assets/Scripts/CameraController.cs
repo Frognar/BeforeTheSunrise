@@ -35,8 +35,8 @@ namespace bts {
     }
 
     void HandleMovement() {
-      if (!playerInputs.IsMiddleBtnPressed) {
-        Vector2 screenPosition = playerInputs.MouseScreenPosition;
+      if (!playerInputs.IsCameraRotationEnable) {
+        Vector2 screenPosition = playerInputs.ScreenPosition;
         if (screenPosition.x >= Screen.width * .95f) {
           newPosition += transform.right * movementSpeed;
         }
@@ -58,8 +58,8 @@ namespace bts {
     }
 
     void HandleRotation() {
-      if (playerInputs.IsMiddleBtnPressed) {
-        float screenPositionXDelta = playerInputs.MouseScreenXDelta;
+      if (playerInputs.IsCameraRotationEnable) {
+        float screenPositionXDelta = playerInputs.CameraRotationDirection;
         if (screenPositionXDelta is > 0.95f) {
           newRotation *= Quaternion.Euler(Vector3.up * rotationAmount);
         }

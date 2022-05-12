@@ -2,15 +2,17 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace bts {
-  public class PlayerInputs : MonoBehaviour, PlayerControls.IMouseActions {
-    public bool IsLeftBtnDawn { get; private set; }
-    public bool IsLeftBtnPressed { get; private set; }
-    public bool IsLeftBtnUp { get; private set; }
-    public bool IsRightBtnDawn { get; private set; }
-    public bool IsMiddleBtnPressed { get; private set; }
-    public Vector2 MouseScreenPosition { get; private set; }
-    public float MouseScreenXDelta { get; private set; }
+  public class PlayerInputs : MonoBehaviour, PlayerControls.IPlayerActions {
+    public bool StartSelecting { get; private set; }
+    public bool StopSelecting { get; private set; }
+    public bool SendCommand { get; private set; }
+    public bool IsCameraRotationEnable { get; private set; }
+    public Vector2 ScreenPosition { get; private set; }
+    public Ray RayToWorld => mainCamera.ScreenPointToRay(ScreenPosition);
+    public Vector3 WorldPosition => Physics.Raycast(RayToWorld, out RaycastHit hitInfo) ? hitInfo.point : Vector3.zero;
+    public float CameraRotationDirection { get; private set; }
     public float Zoom { get; private set; }
+    public bool IsCommandQueuingEnabled { get; private set;}
 
     Camera mainCamera;
     PlayerControls inputControls;
@@ -18,8 +20,9 @@ namespace bts {
     void Awake() {
       mainCamera = Camera.main;
       inputControls = new PlayerControls();
-      inputControls.Mouse.SetCallbacks(this);
+      inputControls.Player.SetCallbacks(this);
     }
+
     void OnEnable() {
       inputControls.Enable();
     }
@@ -29,62 +32,54 @@ namespace bts {
     }
 
     void LateUpdate() {
-      IsLeftBtnDawn = false;
-      IsLeftBtnUp = false;
-      IsRightBtnDawn = false;
-    }
-
-    public void OnLeftClick(InputAction.CallbackContext context) {
-      if (context.started) {
-        IsLeftBtnDawn = true;
-        IsLeftBtnPressed = true;
-        IsLeftBtnUp = false;
-      }
-      else if (context.canceled) {
-        IsLeftBtnDawn = false;
-        IsLeftBtnPressed = false;
-        IsLeftBtnUp = true;
-      }
-    }
-
-    public void OnRightClick(InputAction.CallbackContext context) {
-      if (context.started) {
-        IsRightBtnDawn = true;
-      }
+      SendCommand = false;
+      StartSelecting = false;
+      StopSelecting = false;
     }
 
     public void OnScreenPosition(InputAction.CallbackContext context) {
-      MouseScreenPosition = context.ReadValue<Vector2>();
-    }
-
-    public Vector3 GetMouseWorldPosition() {
-      return GetWorldPosition(MouseScreenPosition);
-    }
-
-    public Vector3 GetWorldPosition(Vector2 screenPosition) {
-      Ray ray = mainCamera.ScreenPointToRay(screenPosition);
-      return Physics.Raycast(ray, out RaycastHit hitInfo) ? hitInfo.point : Vector3.zero;
-    }
-
-    public Ray GetRayFromMouseToWorld() {
-      return mainCamera.ScreenPointToRay(MouseScreenPosition);
+      ScreenPosition = context.ReadValue<Vector2>();
     }
 
     public void OnZoom(InputAction.CallbackContext context) {
       Zoom = context.ReadValue<float>();
     }
 
-    public void OnMiddleClick(InputAction.CallbackContext context) {
+    public void OnCameraRotationDirection(InputAction.CallbackContext context) {
+      CameraRotationDirection = context.ReadValue<float>();
+    }
+
+    public void OnSelect(InputAction.CallbackContext context) {
       if (context.started) {
-        IsMiddleBtnPressed = true;
+        StartSelecting = true;
       }
       else if (context.canceled) {
-        IsMiddleBtnPressed = false;
+        StopSelecting = true;
       }
     }
 
-    public void OnScreenPositionXChange(InputAction.CallbackContext context) {
-      MouseScreenXDelta = context.ReadValue<float>();
+    public void OnSendCommand(InputAction.CallbackContext context) {
+      if (context.started) {
+        SendCommand = true;
+      }
+    }
+
+    public void OnEnableCameraRotation(InputAction.CallbackContext context) {
+      if (context.started) {
+        IsCameraRotationEnable = true;
+      }
+      else if (context.canceled) {
+        IsCameraRotationEnable = false;
+      }
+    }
+
+    public void OnEnableCommendQueuing(InputAction.CallbackContext context) {
+      if (context.started) {
+        IsCommandQueuingEnabled = true;
+      }
+      else if (context.canceled) {
+        IsCommandQueuingEnabled = false;
+      }
     }
   }
 }

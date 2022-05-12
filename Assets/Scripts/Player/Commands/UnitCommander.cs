@@ -3,27 +3,39 @@
 namespace bts {
   public class UnitCommander : MonoBehaviour {
     UnitStateManager unit;
+    UnitCommandInvoker invoker;
     PlayerInputs playerInputs;
     PlacedObjectTypeSO buildingToPlace;
     GhostObject currentGhost;
 
     void Awake() {
       unit = FindObjectOfType<UnitStateManager>();
+      invoker = FindObjectOfType<UnitCommandInvoker>();
       playerInputs = FindObjectOfType<PlayerInputs>();
     }
 
     void Update() {
-      if (unit.IsSelected && playerInputs.IsRightBtnDawn) {
-        if (Physics.Raycast(playerInputs.GetRayFromMouseToWorld(), out RaycastHit hitInfo)) {
+      if (unit.IsSelected && playerInputs.SendCommand) {
+        if (Physics.Raycast(playerInputs.RayToWorld, out RaycastHit hitInfo)) {
+          Command command;
           if (buildingToPlace != null) {
-            unit.SetBuildOrder(buildingToPlace, hitInfo.point);
-            ClearBuildingToBuild();
+            command = new UnitBuildCommand(unit, buildingToPlace, hitInfo.point);
+            if (!playerInputs.IsCommandQueuingEnabled) {
+              ClearBuildingToBuild();
+            }
           }
           else if (hitInfo.transform.TryGetComponent(out Damageable damageable) && damageable.ObjectAffiliation != Affiliation.Player) {
-            unit.SetAttackOrder(damageable);
+            command = new UnitAttackCommand(unit, damageable);
           }
           else {
-            unit.SetMoveOrder(hitInfo.point);
+            command = new UnitMoveCommand(unit, hitInfo.point);
+          }
+
+          if (!playerInputs.IsCommandQueuingEnabled) {
+            invoker.ForceCommandExecution(command);
+          }
+          else {
+            invoker.AddCommand(command);
           }
         }
       }

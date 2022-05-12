@@ -14,13 +14,14 @@ namespace bts {
     public AIDestinationSetter AIDestinationSetter { get; private set; }
     public Vector3 CurrentPosition => transform.position;
 
+    public bool IsIdle { get; set; }
+
     public float BuildRange => 2f;
     public bool IsOrderedToBuild { get; set; }
     public PlacedObjectTypeSO BuildingToPlace { get; set; }
 
     public float StopDistance => 1f;
     public bool IsOrderedToMove { get; set; }
-    public bool ReachedDestination => Vector3.Distance(transform.position, Destination) <= AiPath.endReachedDistance;
     public Vector3 Destination { get; set; }
 
     public int DamageAmount => 5;
@@ -48,22 +49,6 @@ namespace bts {
 
     void Update() {
       currentState.UpdateState();
-    }
-
-    public void SetMoveOrder(Vector3 destination) {
-      IsOrderedToMove = true;
-      Destination = destination;
-    }
-
-    public void SetBuildOrder(PlacedObjectTypeSO buildingType, Vector3 position) {
-      IsOrderedToBuild = true;
-      BuildingToPlace = buildingType;
-      Destination = position;
-    }
-
-    public void SetAttackOrder(Damageable target) {
-      IsOrderedToAttack = true;
-      Target = target;
     }
   }
 }
