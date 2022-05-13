@@ -14,6 +14,10 @@ namespace bts {
 
       Transform placedObjectTransform = Instantiate(placedObjectType.prefab, worldPosition, Quaternion.identity, parent);
       Placeable placedObject = placedObjectTransform.GetComponent<Placeable>();
+
+      placedObject.center = new GameObject("Center").transform;
+      placedObject.center.parent = placedObject.transform;
+      placedObject.center.transform.localPosition = new Vector3(placedObjectType.width / 2, 0, placedObjectType.height / 2);
       placedObject.placedObjectType = placedObjectType;
       placedObject.origin = origin;
       placedObject.gridBuildingSystem = gridBuildingSystem;
@@ -24,6 +28,7 @@ namespace bts {
     protected PlacedObjectTypeSO placedObjectType;
     protected Vector3Int origin;
     protected Collider obstacle;
+    protected Transform center;
 
     public List<Vector3Int> GetGridPositions() {
       return placedObjectType.GetGridPositions(origin);

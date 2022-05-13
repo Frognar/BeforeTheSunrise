@@ -5,8 +5,8 @@ namespace bts {
     public string Name => gemstoneType.ToString();
     public Affiliation ObjectAffiliation => Affiliation.Neutral;
     public Type ObjectType => Type.Resources;
-    public Transform Transform => transform;
-    public Vector3 Position => transform.position;
+    public Transform Transform => center;
+    public Vector3 Position => center.position;
     public GameObject Selected { get; private set; }
     [SerializeField] GemstoneType gemstoneType;
     public GemstoneType GemstoneType => gemstoneType;
