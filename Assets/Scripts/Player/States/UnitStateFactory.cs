@@ -5,6 +5,7 @@
     public UnitBaseState Move { get; }
     public UnitBaseState Attack { get; }
     public UnitBaseState Build { get; }
+    public UnitBaseState Gather { get; }
 
     public UnitStateFactory(UnitStateManager context) {
       Context = context;
@@ -12,6 +13,7 @@
       Move = new UnitMoveState(Context, factory: this);
       Attack = new UnitAttackState(Context, factory: this);
       Build = new UnitBuildState(Context, factory: this);
+      Gather = new UnitGatherState(Context, factory: this);
     }
   }
 }

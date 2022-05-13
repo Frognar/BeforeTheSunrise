@@ -23,14 +23,14 @@ namespace bts {
       List<Vector3Int> gridPositions = placedObjectType.GetGridPositions(cords);
       List<GridObject> gridObjects = gridPositions.ConvertAll(p => Grid.GetGridObject(p.x, p.z));
       if (gridObjects.All(o => o?.CanBuild() ?? false)) {
-        PlacedObject placedObject = PlacedObject.Create(Grid.GetWorldPosition(cords), cords, placedObjectType, this);
+        Placeable placedObject = Placeable.Create(Grid.GetWorldPosition(cords), cords, placedObjectType, this);
         gridObjects.ForEach(o => o.SetPlacedObject(placedObject));
       }
     }
 
     public void Demolish(Vector3 mouseWorldPosition) {
       GridObject gridObject = Grid.GetGridObject(mouseWorldPosition);
-      PlacedObject placedObject = gridObject.PlacedObject;
+      Placeable placedObject = gridObject.PlacedObject;
       if (placedObject != null) {
         List<Vector3Int> gridPositions = placedObject.GetGridPositions();
         List<GridObject> gridObjects = gridPositions.ConvertAll(p => Grid.GetGridObject(p.x, p.z));
@@ -43,7 +43,7 @@ namespace bts {
       int X { get; }
       int Z { get; }
       GridXZ<GridObject> Grid { get; }
-      public PlacedObject PlacedObject { get; private set; }
+      public Placeable PlacedObject { get; private set; }
 
       public GridObject(GridXZ<GridObject> grid, int x, int y) {
         Grid = grid;
@@ -51,7 +51,7 @@ namespace bts {
         Z = y;
       }
 
-      public void SetPlacedObject(PlacedObject placedObject) {
+      public void SetPlacedObject(Placeable placedObject) {
         PlacedObject = placedObject;
         Grid.TriggerOnGridObjectChanged(X, Z);
       }

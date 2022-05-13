@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using Pathfinding;
 using UnityEngine;
 
@@ -16,6 +18,14 @@ namespace bts {
 
     public bool IsIdle { get; set; }
 
+    [SerializeField] GemstoneStorage gemstoneStorage;
+    public GemstoneStorage GemstoneStorage => gemstoneStorage;
+    public float GatherRange => 2f;
+    public float TimeBetweenGathers => 1f;
+    public Dictionary<GemstoneType, int> GatherBonuses { get; private set; }
+    public bool IsOrderedToGather { get; set; }
+    public Gemstone TargerGemstone { get; set; }
+    
     public float BuildRange => 2f;
     public bool IsOrderedToBuild { get; set; }
     public PlacedObjectTypeSO BuildingToPlace { get; set; }
@@ -34,6 +44,11 @@ namespace bts {
     UnitStateFactory stateFactory;
 
     void Awake() {
+      GatherBonuses = new Dictionary<GemstoneType, int>();
+      foreach (GemstoneType type in Enum.GetValues(typeof(GemstoneType))) {
+        GatherBonuses[type] = 1;
+      }
+
       GridBuildingSystem = FindObjectOfType<GridBuildingSystem>();
       AiPath = GetComponent<AIPath>();
       AIDestinationSetter = GetComponent<AIDestinationSetter>();

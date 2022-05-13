@@ -24,6 +24,7 @@
         Context.Target = null;
         Context.AIDestinationSetter.target = null;
         Context.BuildingToPlace = null;
+        Context.TargerGemstone = null;
         SwitchState(StateFactory.Move);
         return true;
       }
@@ -32,6 +33,7 @@
         ClearOrders();
         Context.Target = null;
         Context.AIDestinationSetter.target = null;
+        Context.TargerGemstone = null;
         SwitchState(StateFactory.Build);
         return true;
       }
@@ -39,7 +41,17 @@
       if (Context.IsOrderedToAttack) {
         ClearOrders();
         Context.BuildingToPlace = null;
+        Context.TargerGemstone = null;
         SwitchState(StateFactory.Attack);
+        return true;
+      }
+
+      if (Context.IsOrderedToGather) {
+        ClearOrders();
+        Context.Target = null;
+        Context.AIDestinationSetter.target = null;
+        Context.BuildingToPlace = null;
+        SwitchState(StateFactory.Gather);
         return true;
       }
 
@@ -50,6 +62,7 @@
       Context.IsOrderedToMove = false;
       Context.IsOrderedToAttack = false;
       Context.IsOrderedToBuild = false;
+      Context.IsOrderedToGather = false;
     }
   }
 }

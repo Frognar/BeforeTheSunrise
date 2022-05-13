@@ -3,5 +3,6 @@
     Unit = 1,
     Building = 2,
     Obstacle = 4,
+    Resources = 8,
   }
 }

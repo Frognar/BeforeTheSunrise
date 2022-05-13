@@ -1685,8 +1685,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12d7a2ce9b4015342852fd5e11d303f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildingBlocks:
-  - {fileID: 11400000, guid: 354ecd62c9f1a0545acecae79d93af15, type: 2}
+  obstaclePrefab: {fileID: 11400000, guid: 354ecd62c9f1a0545acecae79d93af15, type: 2}
+  resourcesPrefabs:
+  - {fileID: 11400000, guid: 84681dbc79ec6494bba3078746af2600, type: 2}
+  - {fileID: 11400000, guid: 841a352a67276444780669c9c037d315, type: 2}
+  - {fileID: 11400000, guid: 81651d0b4b6473942862d73b2cb321fe, type: 2}
+  - {fileID: 11400000, guid: 3c883a4ce9df1f54582c644a6ed027a3, type: 2}
+  - {fileID: 11400000, guid: a6a22c4fa35d7f14da2badbbd9bba843, type: 2}
 --- !u!1 &1467381959
 GameObject:
   m_ObjectHideFlags: 0
@@ -2033,6 +2038,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Unit
       objectReference: {fileID: 0}
+    - target: {fileID: 4085809703577258809, guid: f7db9d6726e6a0d499a3ba8cbdce4e16,
+        type: 3}
+      propertyPath: gemstoneStorage
+      value: 
+      objectReference: {fileID: 11400000, guid: 71f3ad2114ea85541984677a4e20ebac,
+        type: 2}
+    - target: {fileID: 4085809703577258809, guid: f7db9d6726e6a0d499a3ba8cbdce4e16,
+        type: 3}
+      propertyPath: gamestoneStorage
+      value: 
+      objectReference: {fileID: 11400000, guid: 71f3ad2114ea85541984677a4e20ebac,
+        type: 2}
     - target: {fileID: 4085809703577258810, guid: f7db9d6726e6a0d499a3ba8cbdce4e16,
         type: 3}
       propertyPath: m_RootOrder

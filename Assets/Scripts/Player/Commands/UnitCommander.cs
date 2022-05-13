@@ -27,6 +27,9 @@ namespace bts {
           else if (hitInfo.transform.TryGetComponent(out Damageable damageable) && damageable.ObjectAffiliation != Affiliation.Player) {
             command = new UnitAttackCommand(unit, damageable);
           }
+          else if (hitInfo.transform.TryGetComponent(out Gemstone gemstone)) {
+            command = new UnitGatherCommand(unit, gemstone);
+          }
           else {
             command = new UnitMoveCommand(unit, hitInfo.point);
           }
