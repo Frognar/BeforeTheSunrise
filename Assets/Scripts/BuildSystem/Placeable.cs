@@ -35,10 +35,10 @@ namespace bts {
     }
 
     public virtual void DestroySelf() {
-      Bounds b = obstacle.bounds;
+      Bounds bounds = obstacle.bounds;
       transform.position = new Vector3(-10000, -10000, -10000);
-      Destroy(gameObject, 0.1f);
-      AstarPath.active.UpdateGraphs(new GraphUpdateObject(b));
+      AstarPath.active.UpdateGraphs(bounds);
+      Destroy(gameObject);
     }
 
     void Awake() {

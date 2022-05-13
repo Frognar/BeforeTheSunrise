@@ -7,7 +7,7 @@ namespace bts {
     [SerializeField] List<PlacedObjectTypeSO> resourcesPrefabs;
     GridBuildingSystem gridBuildingSystem;
 
-    PlacedObjectTypeSO RandomResource => resourcesPrefabs[Random.Range(0, resourcesPrefabs.Count - 1)];
+    PlacedObjectTypeSO RandomResource => resourcesPrefabs[Random.Range(0, resourcesPrefabs.Count)];
 
     void Awake() {
       gridBuildingSystem = FindObjectOfType<GridBuildingSystem>();  

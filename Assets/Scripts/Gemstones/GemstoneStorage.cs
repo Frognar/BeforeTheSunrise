@@ -5,12 +5,13 @@ using UnityEngine;
 namespace bts {
   [CreateAssetMenu()]
   public class GemstoneStorage : ScriptableObject {
-    Dictionary<GemstoneType, int> gemstoneStorage;
+    public event EventHandler StorageChanged;
+    public Dictionary<GemstoneType, int> Gemstones { get; private set; }
 
     void OnEnable() {
-      gemstoneStorage = new Dictionary<GemstoneType, int>();
+      Gemstones = new Dictionary<GemstoneType, int>();
       foreach (GemstoneType type in Enum.GetValues(typeof(GemstoneType))) {
-        gemstoneStorage[type] = 0;
+        Gemstones[type] = 0;
       }
     }
 
@@ -25,27 +26,33 @@ namespace bts {
     }
 
     public bool CanAfford(GemstoneType type, int amount) {
-      return gemstoneStorage[type] >= amount;
+      return Gemstones[type] >= amount;
     }
 
     public void Store(Dictionary<GemstoneType, int> gemstones) {
       foreach (KeyValuePair<GemstoneType, int> gemstone in gemstones) {
-        Store(gemstone.Key, gemstone.Value);
+        Gemstones[gemstone.Key] += gemstone.Value;
       }
+
+      StorageChanged?.Invoke(this, EventArgs.Empty);
     }
     
     public void Store(GemstoneType type, int amount) {
-      gemstoneStorage[type] += amount;
+      Gemstones[type] += amount;
+      StorageChanged?.Invoke(this, EventArgs.Empty);
     }
 
     public void Discard(Dictionary<GemstoneType, int> gemstones) {
       foreach (KeyValuePair<GemstoneType, int> gemstone in gemstones) {
-        Discard(gemstone.Key, gemstone.Value);
+        Gemstones[gemstone.Key] -= gemstone.Value;
       }
+
+      StorageChanged?.Invoke(this, EventArgs.Empty);
     }
    
     public void Discard(GemstoneType type, int amount) {
-      gemstoneStorage[type] -= amount;
+      Gemstones[type] -= amount;
+      StorageChanged?.Invoke(this, EventArgs.Empty);
     }
   }
 }
