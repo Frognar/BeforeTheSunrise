@@ -3,12 +3,15 @@
 namespace bts {
   public class UnitBuildState : UnitBaseState {
     bool InBuildRange => Vector3.Distance(Context.CurrentPosition, Context.Destination) <= Context.BuildRange;
+    float prevStopDistance;
 
     public UnitBuildState(UnitStateManager context, UnitStateFactory factory)
       : base(context, factory) {
     }
 
     public override void EnterState() {
+      prevStopDistance = Context.AiPath.endReachedDistance;
+      Context.AiPath.endReachedDistance = Context.AttackRange - 2f;
       Context.IsOrderedToBuild = false;
       Context.AiPath.destination = Context.Destination;
     }
@@ -25,9 +28,13 @@ namespace bts {
         }
           
         Context.BuildingToPlace = null;
-        Context.AiPath.destination = Context.CurrentPosition;
         SwitchState(StateFactory.Idle);
       }
+    }
+
+    public override void ExitState() {
+      Context.AiPath.destination = Context.CurrentPosition;
+      Context.AiPath.endReachedDistance = prevStopDistance;
     }
   }
 }

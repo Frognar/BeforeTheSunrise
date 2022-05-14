@@ -20,13 +20,13 @@ namespace bts {
 
     [SerializeField] GemstoneStorage gemstoneStorage;
     public GemstoneStorage GemstoneStorage => gemstoneStorage;
-    public float GatherRange => 2f;
+    public float GatherRange => 3f;
     public float TimeBetweenGathers => 1f;
     public Dictionary<GemstoneType, int> GatherBonuses { get; private set; }
     public bool IsOrderedToGather { get; set; }
     public Gemstone TargerGemstone { get; set; }
-    
-    public float BuildRange => 3f;
+
+    public float BuildRange => 3.5f;
     public bool IsOrderedToBuild { get; set; }
     public PlacedObjectTypeSO BuildingToPlace { get; set; }
 
@@ -36,7 +36,7 @@ namespace bts {
 
     public int DamageAmount => 5;
     public float TimeBetweenAttacks => 1f;
-    public float AttackRange => 1.8f;
+    public float AttackRange => 4f;
     public bool IsOrderedToAttack { get; set; }
     public Damageable Target { get; set; }
 
