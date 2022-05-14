@@ -86,7 +86,7 @@ csharp_style_expression_bodied_indexers = when_on_single_line:suggestion
 csharp_style_expression_bodied_lambdas = when_on_single_line:suggestion
 csharp_style_expression_bodied_local_functions = when_on_single_line:suggestion
 csharp_style_expression_bodied_methods = false:warning
-csharp_style_expression_bodied_operators = false:warning
+csharp_style_expression_bodied_operators = true:warning
 csharp_style_expression_bodied_properties = when_on_single_line:suggestion
 
 # Pattern matching preferences

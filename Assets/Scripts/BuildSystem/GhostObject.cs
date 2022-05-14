@@ -2,12 +2,12 @@ using UnityEngine;
 
 namespace bts {
   public class GhostObject : MonoBehaviour {
+    [SerializeField] BoolVariable canBuild;
     [SerializeField] Material canPlaceMaterial;
     [SerializeField] Material cantPlaceMaterial;
     GridXZ<GridBuildingSystem.GridObject> grid;
     MeshRenderer[] meshRenderers;
     PlayerInputs playerInputs;
-    bool canBuild;
     bool lastCanBuild;
 
     void Awake() {
@@ -22,7 +22,6 @@ namespace bts {
     void Update() {
       Vector3Int cords = grid.GetCords(playerInputs.WorldPosition);
       transform.position = grid.GetWorldPosition(cords);
-
       if (lastCanBuild != canBuild) {
         lastCanBuild = canBuild;
         if (canBuild) {
@@ -35,11 +34,11 @@ namespace bts {
     }
 
     void OnTriggerStay(Collider other) {
-      canBuild = false;
+      canBuild.Value = false;
     }
 
     void OnTriggerExit(Collider other) {
-      canBuild = true;
+      canBuild.Value = true;
     }
 
     void ChangeMaterial(Material material) {

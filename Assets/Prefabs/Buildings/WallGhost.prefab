@@ -131,6 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c9ced4a4c0201644b4a083d219a4e2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canBuild: {fileID: 11400000, guid: 8c8afa02e181f0e4fa4c26228cfb63d4, type: 2}
   canPlaceMaterial: {fileID: 2100000, guid: a4788a469e1883549a8dfc582a7c8886, type: 2}
   cantPlaceMaterial: {fileID: 2100000, guid: de614348d9acf1447b23f0db228d8448, type: 2}
 --- !u!65 &9199683872321090193

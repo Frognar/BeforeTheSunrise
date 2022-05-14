@@ -52,6 +52,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 612b9f3aa20482f458e0234fac09ff70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canBuild: {fileID: 11400000, guid: 8c8afa02e181f0e4fa4c26228cfb63d4, type: 2}
 --- !u!114 &7880791257872491866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76,6 +77,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 085bb83de7bd49043abe78062e948e46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gemstoneStorage: {fileID: 11400000, guid: 71f3ad2114ea85541984677a4e20ebac, type: 2}
 --- !u!114 &4085809703577258815
 MonoBehaviour:
   m_ObjectHideFlags: 0
