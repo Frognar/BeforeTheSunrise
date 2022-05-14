@@ -112,5 +112,10 @@ PrefabInstance:
       propertyPath: gemstoneType
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8431993066421182533, guid: 988387a355fafe249927d0aaf33627e6,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1bb3acb2e4628f74eb2b2456feb441e2, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 988387a355fafe249927d0aaf33627e6, type: 3}
