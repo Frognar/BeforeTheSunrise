@@ -26,7 +26,7 @@ namespace bts {
     public bool IsOrderedToGather { get; set; }
     public Gemstone TargerGemstone { get; set; }
     
-    public float BuildRange => 2f;
+    public float BuildRange => 3f;
     public bool IsOrderedToBuild { get; set; }
     public PlacedObjectTypeSO BuildingToPlace { get; set; }
 

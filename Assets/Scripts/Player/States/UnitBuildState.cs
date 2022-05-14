@@ -25,6 +25,7 @@ namespace bts {
         }
           
         Context.BuildingToPlace = null;
+        Context.AiPath.destination = Context.CurrentPosition;
         SwitchState(StateFactory.Idle);
       }
     }
