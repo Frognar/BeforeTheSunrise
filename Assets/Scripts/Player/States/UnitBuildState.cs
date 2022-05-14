@@ -19,7 +19,11 @@ namespace bts {
       }
 
       if (InBuildRange) {
-        Context.GridBuildingSystem.Build(Context.Destination, Context.BuildingToPlace);
+        if (Context.GemstoneStorage.CanAfford(Context.BuildingToPlace.gemstoneCosts)) {
+          Context.GemstoneStorage.Discard(Context.BuildingToPlace.gemstoneCosts);
+          Context.GridBuildingSystem.Build(Context.Destination, Context.BuildingToPlace);
+        }
+          
         Context.BuildingToPlace = null;
         SwitchState(StateFactory.Idle);
       }

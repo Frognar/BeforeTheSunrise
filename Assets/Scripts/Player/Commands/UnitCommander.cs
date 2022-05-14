@@ -52,7 +52,7 @@ namespace bts {
     }
 
     void HandleBuildCommand(Vector3 position) {
-      if (canBuild) {
+      if (canBuild && unit.GemstoneStorage.CanAfford(buildingToPlace.gemstoneCosts)) {
         SendCommand(new UnitBuildCommand(unit, buildingToPlace, position));
         if (!playerInputs.IsCommandQueuingEnabled) {
           ClearBuildingToBuild();

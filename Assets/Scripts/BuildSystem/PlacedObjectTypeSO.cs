@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,6 +12,7 @@ namespace bts {
     public int height;
     public Affiliation objectAffiliation;
     public Type objectType;
+    public GemstoneDictionary gemstoneCosts;
 
     public List<Vector3Int> GetGridPositions(Vector3Int offset) {
       List<Vector3Int> gridPositions = new List<Vector3Int>();
