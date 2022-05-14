@@ -3,9 +3,11 @@ using UnityEngine.InputSystem;
 
 namespace bts {
   public class PlayerInputs : MonoBehaviour, PlayerControls.IPlayerActions {
+    [SerializeField] BoolVariable inBuildMode;
     public bool StartSelecting { get; private set; }
     public bool StopSelecting { get; private set; }
     public bool SendCommand { get; private set; }
+    public bool SendBuildCommand { get; private set; }
     public bool IsCameraRotationEnable { get; private set; }
     public Vector2 ScreenPosition { get; private set; }
     public Ray RayToWorld => mainCamera.ScreenPointToRay(ScreenPosition);
@@ -32,6 +34,7 @@ namespace bts {
     }
 
     void LateUpdate() {
+      SendBuildCommand = false;
       SendCommand = false;
       StartSelecting = false;
       StopSelecting = false;
@@ -51,7 +54,12 @@ namespace bts {
 
     public void OnSelect(InputAction.CallbackContext context) {
       if (context.started) {
-        StartSelecting = true;
+        if (inBuildMode) {
+          SendBuildCommand = true;
+        }
+        else {
+          StartSelecting = true;
+        }
       }
       else if (context.canceled) {
         StopSelecting = true;

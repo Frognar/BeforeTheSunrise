@@ -53,6 +53,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBuild: {fileID: 11400000, guid: 8c8afa02e181f0e4fa4c26228cfb63d4, type: 2}
+  inBuildMode: {fileID: 11400000, guid: b35fe1f3d9bfc8e488a2b4f7a13a3de7, type: 2}
 --- !u!114 &7880791257872491866
 MonoBehaviour:
   m_ObjectHideFlags: 0

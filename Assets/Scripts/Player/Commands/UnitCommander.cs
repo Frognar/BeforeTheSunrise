@@ -3,6 +3,7 @@
 namespace bts {
   public class UnitCommander : MonoBehaviour {
     [SerializeField] BoolVariable canBuild;
+    [SerializeField] BoolVariable inBuildMode;
     UnitStateManager unit;
     UnitCommandInvoker invoker;
     PlayerInputs playerInputs;
@@ -16,8 +17,17 @@ namespace bts {
     }
 
     void Update() {
-      if (unit.IsSelected && playerInputs.SendCommand) {
-        HandleSendingCommands();
+      inBuildMode.Value = buildingToPlace != null;
+
+      if (unit.IsSelected) {
+        if (playerInputs.SendCommand) {
+          HandleSendingCommands();
+        }
+        else if (playerInputs.SendBuildCommand) {
+          if (Physics.Raycast(playerInputs.RayToWorld, out RaycastHit hitInfo)) {
+            HandleBuildCommand(hitInfo.point);
+          }
+        }
       }
       else if (!unit.IsSelected) {
         ClearBuildingToBuild();
@@ -26,57 +36,36 @@ namespace bts {
 
     void HandleSendingCommands() {
       if (Physics.Raycast(playerInputs.RayToWorld, out RaycastHit hitInfo)) {
-        if (buildingToPlace != null) {
-          if (canBuild) {
-            SendBuildCommand(hitInfo.point);
-          }
+        if (inBuildMode) {
+          HandleBuildCommand(hitInfo.point);
         }
         else if (hitInfo.transform.TryGetComponent(out Damageable damageable) && damageable.ObjectAffiliation != Affiliation.Player) {
-          SendAttackCommand(damageable);
+          SendCommand(new UnitAttackCommand(unit, damageable));
         }
         else if (hitInfo.transform.TryGetComponent(out Gemstone gemstone)) {
-          SendGatherCommand(gemstone);
+          SendCommand(new UnitGatherCommand(unit, gemstone));
         }
         else {
-          SendMoveCommand(hitInfo.point);
+          SendCommand(new UnitMoveCommand(unit, hitInfo.point));
         }
       }
     }
 
-    void SendBuildCommand(Vector3 position) {
-      if (!playerInputs.IsCommandQueuingEnabled) {
-        invoker.ForceCommandExecution(new UnitBuildCommand(unit, buildingToPlace, position));
-        ClearBuildingToBuild();
-      }
-      else {
-        invoker.AddCommand(new UnitBuildCommand(unit, buildingToPlace, position));
-      }
-    }
-
-    void SendAttackCommand(Damageable target) {
-      if (!playerInputs.IsCommandQueuingEnabled) {
-        invoker.ForceCommandExecution(new UnitAttackCommand(unit, target));
-      }
-      else {
-        invoker.AddCommand(new UnitAttackCommand(unit, target));
+    void HandleBuildCommand(Vector3 position) {
+      if (canBuild) {
+        SendCommand(new UnitBuildCommand(unit, buildingToPlace, position));
+        if (!playerInputs.IsCommandQueuingEnabled) {
+          ClearBuildingToBuild();
+        }
       }
     }
 
-    void SendGatherCommand(Gemstone gemstone) {
-      if (!playerInputs.IsCommandQueuingEnabled) {
-        invoker.ForceCommandExecution(new UnitGatherCommand(unit, gemstone));
+    void SendCommand(Command command) {
+      if (playerInputs.IsCommandQueuingEnabled) {
+        invoker.AddCommand(command);
       }
       else {
-        invoker.AddCommand(new UnitGatherCommand(unit, gemstone));
-      }
-    }
-
-    void SendMoveCommand(Vector3 position) {
-      if (!playerInputs.IsCommandQueuingEnabled) {
-        invoker.ForceCommandExecution(new UnitMoveCommand(unit, position));
-      }
-      else {
-        invoker.AddCommand(new UnitMoveCommand(unit, position));
+        invoker.ForceCommandExecution(command);
       }
     }
 
