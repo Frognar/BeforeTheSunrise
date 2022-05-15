@@ -17,6 +17,10 @@ namespace bts {
     }
 
     void Update() {
+      if (playerInputs.Canceled) {
+        ClearBuildingToBuild();
+      }
+
       inBuildMode.Value = buildingToPlace != null;
 
       if (unit.IsSelected) {
