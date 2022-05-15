@@ -1,7 +1,9 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace bts {
   public class Gemstone : Placeable, Selectable {
+    public List<Mesh> AvaliableMeshes;
     public string Name => gemstoneType.ToString();
     public Affiliation ObjectAffiliation => Affiliation.Neutral;
     public Type ObjectType => Type.Resources;
@@ -14,6 +16,7 @@ namespace bts {
 
     void Start() {
       Selected = transform.Find("Selected").gameObject;
+      GetComponentInChildren<MeshFilter>().mesh = AvaliableMeshes[Random.Range(0, AvaliableMeshes.Count)];
       bool isInfused = Random.value < 0.1f;
       if (isInfused) {
         BaseGatherAmount = 2;
