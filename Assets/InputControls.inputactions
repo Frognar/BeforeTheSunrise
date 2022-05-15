@@ -6,33 +6,6 @@
             "id": "fd62e94d-83c1-4286-b165-1f3499de2bb0",
             "actions": [
                 {
-                    "name": "Zoom",
-                    "type": "PassThrough",
-                    "id": "4784b3e1-13ed-4fc2-a7e3-95362c02293e",
-                    "expectedControlType": "Axis",
-                    "processors": "Clamp(min=-1,max=1)",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "ScreenPosition",
-                    "type": "Value",
-                    "id": "1d6299bd-aeb0-43ef-991b-4878936f7e8d",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
-                    "name": "CameraRotationDirection",
-                    "type": "Value",
-                    "id": "7bd56e4e-59f8-4307-992d-8875c2de1f1f",
-                    "expectedControlType": "Axis",
-                    "processors": "Clamp(min=-1,max=1)",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
                     "name": "Select",
                     "type": "Button",
                     "id": "293f248b-6d19-47c1-9d8a-e2c0907a2d17",
@@ -51,15 +24,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "EnableCameraRotation",
-                    "type": "Button",
-                    "id": "9a81cf66-b65d-460d-9a6a-d47212795b37",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "EnableCommendQueuing",
                     "type": "Button",
                     "id": "aa97e346-a200-4bdd-bf79-1c31341603f1",
@@ -67,31 +31,18 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Cancel",
+                    "type": "Button",
+                    "id": "d73c23ae-089c-4e7b-a847-9107d23df77f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
-                {
-                    "name": "",
-                    "id": "37a67a80-01c1-43e4-9d64-101b5c6361f6",
-                    "path": "<Mouse>/scroll/y",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Zoom",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "4100393e-97a4-4d2e-a888-d47c2362007f",
-                    "path": "<Mouse>/position",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "ScreenPosition",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
                 {
                     "name": "",
                     "id": "e9750149-7f7d-4749-8a11-a866f58988e3",
@@ -116,18 +67,115 @@
                 },
                 {
                     "name": "",
-                    "id": "e80e9751-5cb8-4ced-983c-6939903df2f2",
-                    "path": "<Mouse>/middleButton",
+                    "id": "a4e590ed-abc1-4fe1-9376-1682bc8e5470",
+                    "path": "<Keyboard>/shift",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "EnableCameraRotation",
+                    "action": "EnableCommendQueuing",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "b438ff8f-0da2-4341-96ac-e398d1cb4ec7",
+                    "id": "1f206c40-021a-4f04-810f-aa4fa17851d0",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Cancel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Camera",
+            "id": "4fa9c010-f1d2-4c71-bce7-83aa4c660c3f",
+            "actions": [
+                {
+                    "name": "Focus",
+                    "type": "Button",
+                    "id": "5464a8a7-9840-448f-9f66-9a514f0c9857",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Zoom",
+                    "type": "PassThrough",
+                    "id": "03320fc5-8b34-4076-8478-9ed89d50ccba",
+                    "expectedControlType": "Axis",
+                    "processors": "Clamp(min=-1,max=1)",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ScreenPosition",
+                    "type": "Value",
+                    "id": "e7fae129-cce3-4c2c-b96c-22d503da83ef",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "CameraRotationDirection",
+                    "type": "Value",
+                    "id": "bbfb9165-b74e-4c8c-a8f9-19167fb7522a",
+                    "expectedControlType": "Axis",
+                    "processors": "Clamp(min=-1,max=1)",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "EnableCameraRotation",
+                    "type": "Button",
+                    "id": "291c9503-3aae-47aa-ae4f-f43374094915",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "c5c3aacc-9843-4671-b8b0-d11fd9f1730f",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Focus",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "46ef788c-3539-4768-87e9-d07d32218aaf",
+                    "path": "<Mouse>/scroll/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Zoom",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "efef31de-e6de-4887-978d-feea7e2a16fc",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ScreenPosition",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "00856612-2f55-476e-b48c-82b3de2b4bad",
                     "path": "<Mouse>/delta/x",
                     "interactions": "",
                     "processors": "",
@@ -138,12 +186,12 @@
                 },
                 {
                     "name": "",
-                    "id": "a4e590ed-abc1-4fe1-9376-1682bc8e5470",
-                    "path": "<Keyboard>/shift",
+                    "id": "292dcaa5-38b3-456e-86c2-21bb54f11ba2",
+                    "path": "<Mouse>/middleButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "EnableCommendQueuing",
+                    "action": "EnableCameraRotation",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

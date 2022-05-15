@@ -28,33 +28,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
             ""id"": ""fd62e94d-83c1-4286-b165-1f3499de2bb0"",
             ""actions"": [
                 {
-                    ""name"": ""Zoom"",
-                    ""type"": ""PassThrough"",
-                    ""id"": ""4784b3e1-13ed-4fc2-a7e3-95362c02293e"",
-                    ""expectedControlType"": ""Axis"",
-                    ""processors"": ""Clamp(min=-1,max=1)"",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""ScreenPosition"",
-                    ""type"": ""Value"",
-                    ""id"": ""1d6299bd-aeb0-43ef-991b-4878936f7e8d"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""CameraRotationDirection"",
-                    ""type"": ""Value"",
-                    ""id"": ""7bd56e4e-59f8-4307-992d-8875c2de1f1f"",
-                    ""expectedControlType"": ""Axis"",
-                    ""processors"": ""Clamp(min=-1,max=1)"",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                },
-                {
                     ""name"": ""Select"",
                     ""type"": ""Button"",
                     ""id"": ""293f248b-6d19-47c1-9d8a-e2c0907a2d17"",
@@ -73,15 +46,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""EnableCameraRotation"",
-                    ""type"": ""Button"",
-                    ""id"": ""9a81cf66-b65d-460d-9a6a-d47212795b37"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""EnableCommendQueuing"",
                     ""type"": ""Button"",
                     ""id"": ""aa97e346-a200-4bdd-bf79-1c31341603f1"",
@@ -89,31 +53,18 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Cancel"",
+                    ""type"": ""Button"",
+                    ""id"": ""d73c23ae-089c-4e7b-a847-9107d23df77f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""37a67a80-01c1-43e4-9d64-101b5c6361f6"",
-                    ""path"": ""<Mouse>/scroll/y"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Zoom"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""4100393e-97a4-4d2e-a888-d47c2362007f"",
-                    ""path"": ""<Mouse>/position"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""ScreenPosition"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
                 {
                     ""name"": """",
                     ""id"": ""e9750149-7f7d-4749-8a11-a866f58988e3"",
@@ -138,18 +89,115 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""e80e9751-5cb8-4ced-983c-6939903df2f2"",
-                    ""path"": ""<Mouse>/middleButton"",
+                    ""id"": ""a4e590ed-abc1-4fe1-9376-1682bc8e5470"",
+                    ""path"": ""<Keyboard>/shift"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""EnableCameraRotation"",
+                    ""action"": ""EnableCommendQueuing"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""b438ff8f-0da2-4341-96ac-e398d1cb4ec7"",
+                    ""id"": ""1f206c40-021a-4f04-810f-aa4fa17851d0"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Cancel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Camera"",
+            ""id"": ""4fa9c010-f1d2-4c71-bce7-83aa4c660c3f"",
+            ""actions"": [
+                {
+                    ""name"": ""Focus"",
+                    ""type"": ""Button"",
+                    ""id"": ""5464a8a7-9840-448f-9f66-9a514f0c9857"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Zoom"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""03320fc5-8b34-4076-8478-9ed89d50ccba"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": ""Clamp(min=-1,max=1)"",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ScreenPosition"",
+                    ""type"": ""Value"",
+                    ""id"": ""e7fae129-cce3-4c2c-b96c-22d503da83ef"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""CameraRotationDirection"",
+                    ""type"": ""Value"",
+                    ""id"": ""bbfb9165-b74e-4c8c-a8f9-19167fb7522a"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": ""Clamp(min=-1,max=1)"",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""EnableCameraRotation"",
+                    ""type"": ""Button"",
+                    ""id"": ""291c9503-3aae-47aa-ae4f-f43374094915"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""c5c3aacc-9843-4671-b8b0-d11fd9f1730f"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Focus"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""46ef788c-3539-4768-87e9-d07d32218aaf"",
+                    ""path"": ""<Mouse>/scroll/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Zoom"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""efef31de-e6de-4887-978d-feea7e2a16fc"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ScreenPosition"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""00856612-2f55-476e-b48c-82b3de2b4bad"",
                     ""path"": ""<Mouse>/delta/x"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -160,12 +208,12 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""a4e590ed-abc1-4fe1-9376-1682bc8e5470"",
-                    ""path"": ""<Keyboard>/shift"",
+                    ""id"": ""292dcaa5-38b3-456e-86c2-21bb54f11ba2"",
+                    ""path"": ""<Mouse>/middleButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""EnableCommendQueuing"",
+                    ""action"": ""EnableCameraRotation"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -176,13 +224,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
 }");
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
-        m_Player_Zoom = m_Player.FindAction("Zoom", throwIfNotFound: true);
-        m_Player_ScreenPosition = m_Player.FindAction("ScreenPosition", throwIfNotFound: true);
-        m_Player_CameraRotationDirection = m_Player.FindAction("CameraRotationDirection", throwIfNotFound: true);
         m_Player_Select = m_Player.FindAction("Select", throwIfNotFound: true);
         m_Player_SendCommand = m_Player.FindAction("SendCommand", throwIfNotFound: true);
-        m_Player_EnableCameraRotation = m_Player.FindAction("EnableCameraRotation", throwIfNotFound: true);
         m_Player_EnableCommendQueuing = m_Player.FindAction("EnableCommendQueuing", throwIfNotFound: true);
+        m_Player_Cancel = m_Player.FindAction("Cancel", throwIfNotFound: true);
+        // Camera
+        m_Camera = asset.FindActionMap("Camera", throwIfNotFound: true);
+        m_Camera_Focus = m_Camera.FindAction("Focus", throwIfNotFound: true);
+        m_Camera_Zoom = m_Camera.FindAction("Zoom", throwIfNotFound: true);
+        m_Camera_ScreenPosition = m_Camera.FindAction("ScreenPosition", throwIfNotFound: true);
+        m_Camera_CameraRotationDirection = m_Camera.FindAction("CameraRotationDirection", throwIfNotFound: true);
+        m_Camera_EnableCameraRotation = m_Camera.FindAction("EnableCameraRotation", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -242,24 +294,18 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     // Player
     private readonly InputActionMap m_Player;
     private IPlayerActions m_PlayerActionsCallbackInterface;
-    private readonly InputAction m_Player_Zoom;
-    private readonly InputAction m_Player_ScreenPosition;
-    private readonly InputAction m_Player_CameraRotationDirection;
     private readonly InputAction m_Player_Select;
     private readonly InputAction m_Player_SendCommand;
-    private readonly InputAction m_Player_EnableCameraRotation;
     private readonly InputAction m_Player_EnableCommendQueuing;
+    private readonly InputAction m_Player_Cancel;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
         public PlayerActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Zoom => m_Wrapper.m_Player_Zoom;
-        public InputAction @ScreenPosition => m_Wrapper.m_Player_ScreenPosition;
-        public InputAction @CameraRotationDirection => m_Wrapper.m_Player_CameraRotationDirection;
         public InputAction @Select => m_Wrapper.m_Player_Select;
         public InputAction @SendCommand => m_Wrapper.m_Player_SendCommand;
-        public InputAction @EnableCameraRotation => m_Wrapper.m_Player_EnableCameraRotation;
         public InputAction @EnableCommendQueuing => m_Wrapper.m_Player_EnableCommendQueuing;
+        public InputAction @Cancel => m_Wrapper.m_Player_Cancel;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -269,31 +315,87 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         {
             if (m_Wrapper.m_PlayerActionsCallbackInterface != null)
             {
-                @Zoom.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnZoom;
-                @Zoom.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnZoom;
-                @Zoom.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnZoom;
-                @ScreenPosition.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnScreenPosition;
-                @ScreenPosition.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnScreenPosition;
-                @ScreenPosition.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnScreenPosition;
-                @CameraRotationDirection.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCameraRotationDirection;
-                @CameraRotationDirection.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCameraRotationDirection;
-                @CameraRotationDirection.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCameraRotationDirection;
                 @Select.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelect;
                 @Select.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelect;
                 @Select.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelect;
                 @SendCommand.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSendCommand;
                 @SendCommand.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSendCommand;
                 @SendCommand.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSendCommand;
-                @EnableCameraRotation.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEnableCameraRotation;
-                @EnableCameraRotation.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEnableCameraRotation;
-                @EnableCameraRotation.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEnableCameraRotation;
                 @EnableCommendQueuing.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEnableCommendQueuing;
                 @EnableCommendQueuing.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEnableCommendQueuing;
                 @EnableCommendQueuing.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEnableCommendQueuing;
+                @Cancel.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCancel;
+                @Cancel.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCancel;
+                @Cancel.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCancel;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
             {
+                @Select.started += instance.OnSelect;
+                @Select.performed += instance.OnSelect;
+                @Select.canceled += instance.OnSelect;
+                @SendCommand.started += instance.OnSendCommand;
+                @SendCommand.performed += instance.OnSendCommand;
+                @SendCommand.canceled += instance.OnSendCommand;
+                @EnableCommendQueuing.started += instance.OnEnableCommendQueuing;
+                @EnableCommendQueuing.performed += instance.OnEnableCommendQueuing;
+                @EnableCommendQueuing.canceled += instance.OnEnableCommendQueuing;
+                @Cancel.started += instance.OnCancel;
+                @Cancel.performed += instance.OnCancel;
+                @Cancel.canceled += instance.OnCancel;
+            }
+        }
+    }
+    public PlayerActions @Player => new PlayerActions(this);
+
+    // Camera
+    private readonly InputActionMap m_Camera;
+    private ICameraActions m_CameraActionsCallbackInterface;
+    private readonly InputAction m_Camera_Focus;
+    private readonly InputAction m_Camera_Zoom;
+    private readonly InputAction m_Camera_ScreenPosition;
+    private readonly InputAction m_Camera_CameraRotationDirection;
+    private readonly InputAction m_Camera_EnableCameraRotation;
+    public struct CameraActions
+    {
+        private @PlayerControls m_Wrapper;
+        public CameraActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Focus => m_Wrapper.m_Camera_Focus;
+        public InputAction @Zoom => m_Wrapper.m_Camera_Zoom;
+        public InputAction @ScreenPosition => m_Wrapper.m_Camera_ScreenPosition;
+        public InputAction @CameraRotationDirection => m_Wrapper.m_Camera_CameraRotationDirection;
+        public InputAction @EnableCameraRotation => m_Wrapper.m_Camera_EnableCameraRotation;
+        public InputActionMap Get() { return m_Wrapper.m_Camera; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(CameraActions set) { return set.Get(); }
+        public void SetCallbacks(ICameraActions instance)
+        {
+            if (m_Wrapper.m_CameraActionsCallbackInterface != null)
+            {
+                @Focus.started -= m_Wrapper.m_CameraActionsCallbackInterface.OnFocus;
+                @Focus.performed -= m_Wrapper.m_CameraActionsCallbackInterface.OnFocus;
+                @Focus.canceled -= m_Wrapper.m_CameraActionsCallbackInterface.OnFocus;
+                @Zoom.started -= m_Wrapper.m_CameraActionsCallbackInterface.OnZoom;
+                @Zoom.performed -= m_Wrapper.m_CameraActionsCallbackInterface.OnZoom;
+                @Zoom.canceled -= m_Wrapper.m_CameraActionsCallbackInterface.OnZoom;
+                @ScreenPosition.started -= m_Wrapper.m_CameraActionsCallbackInterface.OnScreenPosition;
+                @ScreenPosition.performed -= m_Wrapper.m_CameraActionsCallbackInterface.OnScreenPosition;
+                @ScreenPosition.canceled -= m_Wrapper.m_CameraActionsCallbackInterface.OnScreenPosition;
+                @CameraRotationDirection.started -= m_Wrapper.m_CameraActionsCallbackInterface.OnCameraRotationDirection;
+                @CameraRotationDirection.performed -= m_Wrapper.m_CameraActionsCallbackInterface.OnCameraRotationDirection;
+                @CameraRotationDirection.canceled -= m_Wrapper.m_CameraActionsCallbackInterface.OnCameraRotationDirection;
+                @EnableCameraRotation.started -= m_Wrapper.m_CameraActionsCallbackInterface.OnEnableCameraRotation;
+                @EnableCameraRotation.performed -= m_Wrapper.m_CameraActionsCallbackInterface.OnEnableCameraRotation;
+                @EnableCameraRotation.canceled -= m_Wrapper.m_CameraActionsCallbackInterface.OnEnableCameraRotation;
+            }
+            m_Wrapper.m_CameraActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Focus.started += instance.OnFocus;
+                @Focus.performed += instance.OnFocus;
+                @Focus.canceled += instance.OnFocus;
                 @Zoom.started += instance.OnZoom;
                 @Zoom.performed += instance.OnZoom;
                 @Zoom.canceled += instance.OnZoom;
@@ -303,30 +405,26 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @CameraRotationDirection.started += instance.OnCameraRotationDirection;
                 @CameraRotationDirection.performed += instance.OnCameraRotationDirection;
                 @CameraRotationDirection.canceled += instance.OnCameraRotationDirection;
-                @Select.started += instance.OnSelect;
-                @Select.performed += instance.OnSelect;
-                @Select.canceled += instance.OnSelect;
-                @SendCommand.started += instance.OnSendCommand;
-                @SendCommand.performed += instance.OnSendCommand;
-                @SendCommand.canceled += instance.OnSendCommand;
                 @EnableCameraRotation.started += instance.OnEnableCameraRotation;
                 @EnableCameraRotation.performed += instance.OnEnableCameraRotation;
                 @EnableCameraRotation.canceled += instance.OnEnableCameraRotation;
-                @EnableCommendQueuing.started += instance.OnEnableCommendQueuing;
-                @EnableCommendQueuing.performed += instance.OnEnableCommendQueuing;
-                @EnableCommendQueuing.canceled += instance.OnEnableCommendQueuing;
             }
         }
     }
-    public PlayerActions @Player => new PlayerActions(this);
+    public CameraActions @Camera => new CameraActions(this);
     public interface IPlayerActions
     {
+        void OnSelect(InputAction.CallbackContext context);
+        void OnSendCommand(InputAction.CallbackContext context);
+        void OnEnableCommendQueuing(InputAction.CallbackContext context);
+        void OnCancel(InputAction.CallbackContext context);
+    }
+    public interface ICameraActions
+    {
+        void OnFocus(InputAction.CallbackContext context);
         void OnZoom(InputAction.CallbackContext context);
         void OnScreenPosition(InputAction.CallbackContext context);
         void OnCameraRotationDirection(InputAction.CallbackContext context);
-        void OnSelect(InputAction.CallbackContext context);
-        void OnSendCommand(InputAction.CallbackContext context);
         void OnEnableCameraRotation(InputAction.CallbackContext context);
-        void OnEnableCommendQueuing(InputAction.CallbackContext context);
     }
 }

@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 
 namespace bts {
@@ -8,7 +9,6 @@ namespace bts {
     [SerializeField] Vector3 zoomAmount;
     [SerializeField] Vector2 positionLimitX;
     [SerializeField] Vector2 positionLimitZ;
-
     [SerializeField] Vector2 zoomLimits;
 
     Vector3 newPosition;
@@ -16,10 +16,28 @@ namespace bts {
     Vector3 newZoom;
     Transform cameraTransform;
     PlayerInputs playerInputs;
+    Player player;
+    Selectable selected;
 
     void Awake() {
       playerInputs = FindObjectOfType<PlayerInputs>();
       cameraTransform = Camera.main.transform;
+      player = FindObjectOfType<Player>();
+    }
+
+    void OnEnable() {
+      player.OnSelection += SelectionChanged;
+    }
+
+    void OnDisable() {
+      player.OnSelection -= SelectionChanged;
+    }
+
+    void SelectionChanged(object sender, Player.OnSelectionEventArgs e) {
+      selected = null;
+      if (e.Selected.Count > 0) {
+        selected = e.Selected.First();
+      }
     }
 
     void Start() {
@@ -32,6 +50,7 @@ namespace bts {
       HandleMovement();
       HandleRotation();
       HandleZoom();
+      HandleFocus();
     }
 
     void HandleMovement() {
@@ -86,6 +105,14 @@ namespace bts {
       }
 
       cameraTransform.localPosition = Vector3.Lerp(cameraTransform.localPosition, newZoom, Time.deltaTime * movementTime);
+    }
+
+    void HandleFocus() {
+      if (playerInputs.Focus && selected != null) {
+        Vector3 selectedPosition = selected.Transform.position;
+        newPosition.x = selectedPosition.x;
+        newPosition.z = selectedPosition.z;
+      }
     }
   }
 }

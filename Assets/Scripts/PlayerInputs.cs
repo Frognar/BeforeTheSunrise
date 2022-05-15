@@ -2,19 +2,22 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace bts {
-  public class PlayerInputs : MonoBehaviour, PlayerControls.IPlayerActions {
+  public class PlayerInputs : MonoBehaviour, PlayerControls.IPlayerActions, PlayerControls.ICameraActions {
     [SerializeField] BoolVariable inBuildMode;
     public bool StartSelecting { get; private set; }
     public bool StopSelecting { get; private set; }
     public bool SendCommand { get; private set; }
     public bool SendBuildCommand { get; private set; }
+    public bool IsCommandQueuingEnabled { get; private set; }
+    public bool Canceled { get; private set; }
+
+    public float Zoom { get; private set; }
     public bool IsCameraRotationEnable { get; private set; }
+    public float CameraRotationDirection { get; private set; }
     public Vector2 ScreenPosition { get; private set; }
     public Ray RayToWorld => mainCamera.ScreenPointToRay(ScreenPosition);
     public Vector3 WorldPosition => Physics.Raycast(RayToWorld, out RaycastHit hitInfo) ? hitInfo.point : Vector3.zero;
-    public float CameraRotationDirection { get; private set; }
-    public float Zoom { get; private set; }
-    public bool IsCommandQueuingEnabled { get; private set;}
+    public bool Focus { get; private set; }
 
     Camera mainCamera;
     PlayerControls inputControls;
@@ -23,6 +26,7 @@ namespace bts {
       mainCamera = Camera.main;
       inputControls = new PlayerControls();
       inputControls.Player.SetCallbacks(this);
+      inputControls.Camera.SetCallbacks(this);
     }
 
     void OnEnable() {
@@ -38,18 +42,8 @@ namespace bts {
       SendCommand = false;
       StartSelecting = false;
       StopSelecting = false;
-    }
-
-    public void OnScreenPosition(InputAction.CallbackContext context) {
-      ScreenPosition = context.ReadValue<Vector2>();
-    }
-
-    public void OnZoom(InputAction.CallbackContext context) {
-      Zoom = context.ReadValue<float>();
-    }
-
-    public void OnCameraRotationDirection(InputAction.CallbackContext context) {
-      CameraRotationDirection = context.ReadValue<float>();
+      Canceled = false;
+      Focus = false;
     }
 
     public void OnSelect(InputAction.CallbackContext context) {
@@ -72,6 +66,29 @@ namespace bts {
       }
     }
 
+    public void OnEnableCommendQueuing(InputAction.CallbackContext context) {
+      if (context.started) {
+        IsCommandQueuingEnabled = true;
+      }
+      else if (context.canceled) {
+        IsCommandQueuingEnabled = false;
+      }
+    }
+
+    public void OnCancel(InputAction.CallbackContext context) {
+      if (context.started) {
+        Canceled = true;
+      }
+    }
+
+    public void OnScreenPosition(InputAction.CallbackContext context) {
+      ScreenPosition = context.ReadValue<Vector2>();
+    }
+
+    public void OnZoom(InputAction.CallbackContext context) {
+      Zoom = context.ReadValue<float>();
+    }
+
     public void OnEnableCameraRotation(InputAction.CallbackContext context) {
       if (context.started) {
         IsCameraRotationEnable = true;
@@ -81,12 +98,13 @@ namespace bts {
       }
     }
 
-    public void OnEnableCommendQueuing(InputAction.CallbackContext context) {
+    public void OnCameraRotationDirection(InputAction.CallbackContext context) {
+      CameraRotationDirection = context.ReadValue<float>();
+    }
+
+    public void OnFocus(InputAction.CallbackContext context) {
       if (context.started) {
-        IsCommandQueuingEnabled = true;
-      }
-      else if (context.canceled) {
-        IsCommandQueuingEnabled = false;
+        Focus = true;
       }
     }
   }
