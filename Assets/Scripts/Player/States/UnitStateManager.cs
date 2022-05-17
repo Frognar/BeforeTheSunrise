@@ -10,6 +10,19 @@ namespace bts {
     public Affiliation ObjectAffiliation => Affiliation.Player;
     public Type ObjectType => Type.Unit;
     public GameObject Selected { get; private set; }
+    public IEnumerable<ObjectAction> Actions => CombineActions();
+    [SerializeField] List<ObjectBuildAction> buildActions;
+    [SerializeField] ObjectCancelBuildAction cancelBuildAction;
+    IEnumerable<ObjectAction> CombineActions() {
+      foreach (ObjectBuildAction action in buildActions) {
+        action.Commander = commander;
+        yield return action;
+      }
+
+      cancelBuildAction.Commander = commander;
+      yield return cancelBuildAction;
+    }
+
     public bool IsSelected => Selected.activeSelf;
     public GridBuildingSystem GridBuildingSystem { get; private set; }
     public AIPath AiPath { get; private set; }
@@ -42,8 +55,10 @@ namespace bts {
 
     UnitBaseState currentState;
     UnitStateFactory stateFactory;
+    UnitCommander commander;
 
     void Awake() {
+      commander = GetComponent<UnitCommander>();
       GatherBonuses = new Dictionary<GemstoneType, int>();
       foreach (GemstoneType type in Enum.GetValues(typeof(GemstoneType))) {
         GatherBonuses[type] = 1;

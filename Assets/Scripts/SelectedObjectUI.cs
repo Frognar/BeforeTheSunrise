@@ -30,7 +30,7 @@ namespace bts {
       if (isSomethingSelected) {
         infoPanel.UpdateUI(e);
         Selectable selected = e.Selected.First();
-        if (selected.ObjectType == Type.Unit) { 
+        if (selected.Actions.Any()) {
           actionsPanel.gameObject.SetActive(true);
           actionsPanel.UpdateUI(selected);
         }

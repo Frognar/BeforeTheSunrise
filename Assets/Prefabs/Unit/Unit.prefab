@@ -78,6 +78,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 085bb83de7bd49043abe78062e948e46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <BuildActions>k__BackingField:
+  - {fileID: 11400000, guid: b720a670f37789e41824d18a117a3466, type: 2}
+  cancelBuildAction: {fileID: 11400000, guid: f5fde2c7c851684428bde6ed647e55db, type: 2}
   gemstoneStorage: {fileID: 11400000, guid: 71f3ad2114ea85541984677a4e20ebac, type: 2}
 --- !u!114 &4085809703577258815
 MonoBehaviour:
@@ -156,13 +159,13 @@ MonoBehaviour:
   targetCompatibility: {fileID: 0}
   maxAcceleration: -2.5
   rotationSpeed: 360
-  slowdownDistance: 0.6
+  slowdownDistance: 0
   pickNextWaypointDist: 2
-  endReachedDistance: 0.2
+  endReachedDistance: 1
   alwaysDrawGizmos: 1
   slowWhenNotFacingTarget: 0
   whenCloseToDestination: 0
-  constrainInsideGraph: 0
+  constrainInsideGraph: 1
 --- !u!65 &4085809703577258814
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace bts {
@@ -7,6 +9,7 @@ namespace bts {
     Type ObjectType { get; }
     Transform Transform { get; }
     GameObject Selected { get; }
+    IEnumerable<ObjectAction> Actions => Enumerable.Empty<ObjectAction>();
 
     public void Select() {
       Selected.SetActive(true);
