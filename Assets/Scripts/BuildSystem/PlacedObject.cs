@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace bts {
   public class PlacedObject : Placeable, Selectable, Damageable {
@@ -12,11 +10,12 @@ namespace bts {
     public Vector3 Position => center.position;
     public bool IsDead => health.CurrentHealth == 0;
 
+    [SerializeField] int healthAmount = 10;
     Health health;
     WorldHealthBar bar;
 
-    void Start() {
-      health = new Health(10);
+    protected virtual void Start() {
+      health = new Health(healthAmount);
       Selected = transform.Find("Selected").gameObject;
       bar = GetComponentInChildren<WorldHealthBar>();
       bar.SetUp(health);

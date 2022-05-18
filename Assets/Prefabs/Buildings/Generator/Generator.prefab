@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2749573904061358543}
-  - component: {fileID: 7941580670039303932}
+  - component: {fileID: 1525452458522169957}
   - component: {fileID: 1194418127207659034}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Generator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,7 +36,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7941580670039303932
+--- !u!114 &1525452458522169957
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -45,9 +45,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2206846249002830920}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c27e9536b718cd841b9336f5194a22d5, type: 3}
+  m_Script: {fileID: 11500000, guid: 7ac9a763c2fa18149814ce2afbb2669e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthAmount: 10
+  energyPerSecond: 10
+  range: 15
 --- !u!65 &1194418127207659034
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -123,6 +126,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -3061904764030682015, guid: 9859d4adc26374940a7970a73fbde2db,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 41484396df44b2a43b70b7ce122efb31, type: 2}
     - target: {fileID: 919132149155446097, guid: 9859d4adc26374940a7970a73fbde2db,
         type: 3}
       propertyPath: m_Name
@@ -268,7 +276,7 @@ PrefabInstance:
     - target: {fileID: 6770395561470611050, guid: 2f58453cd52fc9f498355103330f6f79,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.1
+      value: 1.7
       objectReference: {fileID: 0}
     - target: {fileID: 6770395561470611050, guid: 2f58453cd52fc9f498355103330f6f79,
         type: 3}

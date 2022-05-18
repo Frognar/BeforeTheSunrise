@@ -6539,7 +6539,7 @@ PrefabInstance:
     - target: {fileID: 4085809703577258809, guid: f7db9d6726e6a0d499a3ba8cbdce4e16,
         type: 3}
       propertyPath: buildActions.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4085809703577258809, guid: f7db9d6726e6a0d499a3ba8cbdce4e16,
         type: 3}
@@ -6550,6 +6550,84 @@ PrefabInstance:
     - target: {fileID: 4085809703577258809, guid: f7db9d6726e6a0d499a3ba8cbdce4e16,
         type: 3}
       propertyPath: buildActions.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 803dc44c46f09ef4a9bbab42ae76dba6,
+        type: 2}
+    - target: {fileID: 4085809703577258809, guid: f7db9d6726e6a0d499a3ba8cbdce4e16,
+        type: 3}
+      propertyPath: buildActions.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 936b3c79be93871468d2f286bbeeb686,
+        type: 2}
+    - target: {fileID: 4085809703577258809, guid: f7db9d6726e6a0d499a3ba8cbdce4e16,
+        type: 3}
+      propertyPath: buildActions.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 803dc44c46f09ef4a9bbab42ae76dba6,
+        type: 2}
+    - target: {fileID: 4085809703577258809, guid: f7db9d6726e6a0d499a3ba8cbdce4e16,
+        type: 3}
+      propertyPath: buildActions.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: 803dc44c46f09ef4a9bbab42ae76dba6,
+        type: 2}
+    - target: {fileID: 4085809703577258809, guid: f7db9d6726e6a0d499a3ba8cbdce4e16,
+        type: 3}
+      propertyPath: buildActions.Array.data[5]
+      value: 
+      objectReference: {fileID: 11400000, guid: 803dc44c46f09ef4a9bbab42ae76dba6,
+        type: 2}
+    - target: {fileID: 4085809703577258809, guid: f7db9d6726e6a0d499a3ba8cbdce4e16,
+        type: 3}
+      propertyPath: buildActions.Array.data[6]
+      value: 
+      objectReference: {fileID: 11400000, guid: 803dc44c46f09ef4a9bbab42ae76dba6,
+        type: 2}
+    - target: {fileID: 4085809703577258809, guid: f7db9d6726e6a0d499a3ba8cbdce4e16,
+        type: 3}
+      propertyPath: buildActions.Array.data[7]
+      value: 
+      objectReference: {fileID: 11400000, guid: 803dc44c46f09ef4a9bbab42ae76dba6,
+        type: 2}
+    - target: {fileID: 4085809703577258809, guid: f7db9d6726e6a0d499a3ba8cbdce4e16,
+        type: 3}
+      propertyPath: buildActions.Array.data[8]
+      value: 
+      objectReference: {fileID: 11400000, guid: 803dc44c46f09ef4a9bbab42ae76dba6,
+        type: 2}
+    - target: {fileID: 4085809703577258809, guid: f7db9d6726e6a0d499a3ba8cbdce4e16,
+        type: 3}
+      propertyPath: buildActions.Array.data[9]
+      value: 
+      objectReference: {fileID: 11400000, guid: 803dc44c46f09ef4a9bbab42ae76dba6,
+        type: 2}
+    - target: {fileID: 4085809703577258809, guid: f7db9d6726e6a0d499a3ba8cbdce4e16,
+        type: 3}
+      propertyPath: buildActions.Array.data[10]
+      value: 
+      objectReference: {fileID: 11400000, guid: 803dc44c46f09ef4a9bbab42ae76dba6,
+        type: 2}
+    - target: {fileID: 4085809703577258809, guid: f7db9d6726e6a0d499a3ba8cbdce4e16,
+        type: 3}
+      propertyPath: buildActions.Array.data[11]
+      value: 
+      objectReference: {fileID: 11400000, guid: 803dc44c46f09ef4a9bbab42ae76dba6,
+        type: 2}
+    - target: {fileID: 4085809703577258809, guid: f7db9d6726e6a0d499a3ba8cbdce4e16,
+        type: 3}
+      propertyPath: buildActions.Array.data[12]
+      value: 
+      objectReference: {fileID: 11400000, guid: 803dc44c46f09ef4a9bbab42ae76dba6,
+        type: 2}
+    - target: {fileID: 4085809703577258809, guid: f7db9d6726e6a0d499a3ba8cbdce4e16,
+        type: 3}
+      propertyPath: buildActions.Array.data[13]
+      value: 
+      objectReference: {fileID: 11400000, guid: 803dc44c46f09ef4a9bbab42ae76dba6,
+        type: 2}
+    - target: {fileID: 4085809703577258809, guid: f7db9d6726e6a0d499a3ba8cbdce4e16,
+        type: 3}
+      propertyPath: buildActions.Array.data[14]
       value: 
       objectReference: {fileID: 11400000, guid: 803dc44c46f09ef4a9bbab42ae76dba6,
         type: 2}

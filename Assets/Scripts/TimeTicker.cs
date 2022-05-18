@@ -6,8 +6,8 @@ namespace bts {
     public static EventHandler OnTick;
     public static EventHandler OnSecond;
 
-    const int ticksPerSeconds = 5;
-    const float tickInterval = 1f / ticksPerSeconds;
+    public const int ticksPerSecond = 5;
+    const float tickInterval = 1f / ticksPerSecond;
 
     int tick;
     float currentTime;
@@ -18,7 +18,7 @@ namespace bts {
         tick++;
         currentTime = 0;
         OnTick?.Invoke(this, EventArgs.Empty);
-        if (tick % ticksPerSeconds == 0) {
+        if (tick % ticksPerSecond == 0) {
           OnSecond?.Invoke(this, EventArgs.Empty);
         }
       }
