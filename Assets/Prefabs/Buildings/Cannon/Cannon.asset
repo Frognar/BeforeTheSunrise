@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ea5cabab7f443e14593e34d3cdcba3f1, type: 3}
-  m_Name: UselessDevice
+  m_Name: Cannon
   m_EditorClassIdentifier: 
   objectName: Electric Device
   prefab: {fileID: 2749573904061358543, guid: 92cea9a8cbd0a754696d5353adb1665b, type: 3}

@@ -10,9 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 2749573904061358543}
   - component: {fileID: 3051614331381182697}
+  - component: {fileID: 7194066481571063517}
+  - component: {fileID: 7218332745048676410}
   - component: {fileID: 1194418127207659034}
   m_Layer: 7
-  m_Name: UselessDevice
+  m_Name: Cannon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -50,9 +52,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthAmount: 10
-  energyPerAttack: 5
-  particles: {fileID: 2819013430014471476}
+  <Damage>k__BackingField: 2
+  <EnergyPerAttack>k__BackingField: 10
+  <Range>k__BackingField: 10
   <MaxEnergy>k__BackingField: 500
+--- !u!114 &7194066481571063517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2206846249002830920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6f37b5a5911ad34abf229ab3823e93f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7218332745048676410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2206846249002830920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 647b9aef3117db244a38fe19452bedf5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!65 &1194418127207659034
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5091,7 +5118,7 @@ PrefabInstance:
     - target: {fileID: 6770395561470611050, guid: 2f58453cd52fc9f498355103330f6f79,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.1
+      value: 1.7
       objectReference: {fileID: 0}
     - target: {fileID: 6770395561470611050, guid: 2f58453cd52fc9f498355103330f6f79,
         type: 3}

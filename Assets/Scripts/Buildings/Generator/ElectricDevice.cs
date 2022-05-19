@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-namespace bts {
+﻿namespace bts {
   public interface ElectricDevice {
     float MaxEnergy { get; }
     float CurrentEnergy { get; protected set; }

@@ -50,7 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthAmount: 10
   energyPerSecond: 10
-  range: 15
+  range: 5
 --- !u!65 &1194418127207659034
 BoxCollider:
   m_ObjectHideFlags: 0
