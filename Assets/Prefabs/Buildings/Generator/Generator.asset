@@ -14,34 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: Generator
   prefab: {fileID: 2749573904061358543, guid: 4947a3073de274a46aca269823e9a504, type: 3}
-  ghost: {fileID: 15494893612748968, guid: 28c65d86f8f51774d810f7e276b057cb, type: 3}
   width: 2
   height: 2
   objectAffiliation: 4
   objectType: 2
-  gemstoneCosts:
-    reorderableList:
-      canAdd: 1
-      canRemove: 1
-      draggable: 1
-      expandable: 1
-      multipleSelection: 1
-      isExpanded: 1
-      label:
-        m_Text: Keys
-        m_Image: {fileID: 0}
-        m_Tooltip: 
-      headerHeight: 18
-      footerHeight: 13
-      slideEasing: 0.15
-      verticalSpacing: 2
-      showDefaultBackground: 1
-      elementDisplayType: 0
-      elementNameProperty: 
-      elementNameOverride: 
-      elementIcon: {fileID: 0}
-    reqReferences: {fileID: 0}
-    isExpanded: 1
-    _keyValues: 02000000
-    _keys: 02000000
-    _values: 14000000
+  customData: {fileID: 11400000, guid: 74944a60a9fab3e4fab6ecc91a30c378, type: 2}

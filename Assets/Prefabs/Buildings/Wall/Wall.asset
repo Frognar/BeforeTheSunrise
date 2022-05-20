@@ -14,34 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: Wall
   prefab: {fileID: 15494893612748968, guid: 6de03e226f7b0154e9134ffb82a2dda6, type: 3}
-  ghost: {fileID: 15494893612748968, guid: 65fafdb73a2356d41ae7f6642da5ada5, type: 3}
   width: 2
   height: 2
   objectAffiliation: 4
   objectType: 2
-  gemstoneCosts:
-    reorderableList:
-      canAdd: 1
-      canRemove: 1
-      draggable: 1
-      expandable: 1
-      multipleSelection: 1
-      isExpanded: 1
-      label:
-        m_Text: Keys
-        m_Image: {fileID: 0}
-        m_Tooltip: 
-      headerHeight: 18
-      footerHeight: 13
-      slideEasing: 0.15
-      verticalSpacing: 2
-      showDefaultBackground: 1
-      elementDisplayType: 0
-      elementNameProperty: 
-      elementNameOverride: 
-      elementIcon: {fileID: 0}
-    reqReferences: {fileID: 0}
-    isExpanded: 1
-    _keyValues: 01000000
-    _keys: 01000000
-    _values: 14000000
+  customData: {fileID: 11400000, guid: e20b7ecb9ee232a4589ca2d9363450e0, type: 2}

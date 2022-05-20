@@ -4,16 +4,17 @@ namespace bts {
   public class UnitCommander : MonoBehaviour {
     [SerializeField] BoolVariable canBuild;
     [SerializeField] BoolVariable inBuildMode;
+    [SerializeField] GhostObject currentGhost;
     UnitStateManager unit;
     UnitCommandInvoker invoker;
     PlayerInputs playerInputs;
     PlacedObjectTypeSO buildingToPlace;
-    GhostObject currentGhost;
 
     void Awake() {
       unit = FindObjectOfType<UnitStateManager>();
       invoker = FindObjectOfType<UnitCommandInvoker>();
       playerInputs = FindObjectOfType<PlayerInputs>();
+      currentGhost.gameObject.SetActive(false);
     }
 
     void Update() {
@@ -22,7 +23,6 @@ namespace bts {
       }
 
       inBuildMode.Value = buildingToPlace != null;
-
       if (unit.IsSelected) {
         if (playerInputs.SendCommand) {
           HandleSendingCommands();
@@ -56,7 +56,7 @@ namespace bts {
     }
 
     void HandleBuildCommand(Vector3 position) {
-      if (canBuild && unit.GemstoneStorage.CanAfford(buildingToPlace.gemstoneCosts)) {
+      if (canBuild && unit.GemstoneStorage.CanAfford((buildingToPlace.customData as CustomBuildingData).buildingCosts)) {
         SendCommand(new UnitBuildCommand(unit, buildingToPlace, position));
         if (!playerInputs.IsCommandQueuingEnabled) {
           ClearBuildingToBuild();
@@ -79,17 +79,14 @@ namespace bts {
     }
 
     void ClearGhost() {
-      if (currentGhost != null) {
-        Destroy(currentGhost.gameObject);
-        currentGhost = null;
-      }
+      currentGhost.gameObject.SetActive(false);
     }
 
     public void SetBuildingToBuild(PlacedObjectTypeSO buildingType) {
       if (unit.IsSelected) {
         buildingToPlace = buildingType;
-        ClearGhost();
-        currentGhost = Instantiate(buildingType.ghost).GetComponent<GhostObject>();
+        currentGhost.SetUp(buildingType);
+        currentGhost.gameObject.SetActive(true);
       }
     }
   }

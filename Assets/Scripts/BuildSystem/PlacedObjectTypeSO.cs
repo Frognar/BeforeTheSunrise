@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,13 +6,12 @@ namespace bts {
   public class PlacedObjectTypeSO : ScriptableObject {
     public string objectName;
     public Transform prefab;
-    public Transform ghost;
     public int width;
     public int height;
     public Affiliation objectAffiliation;
     public Type objectType;
-    public GemstoneDictionary gemstoneCosts;
-
+    public CustomPlacedObjectData customData;
+    
     public List<Vector3Int> GetGridPositions(Vector3Int offset) {
       List<Vector3Int> gridPositions = new List<Vector3Int>();
       for (int x = 0; x < width; x++) {

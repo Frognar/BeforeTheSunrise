@@ -22,8 +22,8 @@ namespace bts {
       }
 
       if (InBuildRange) {
-        if (Context.GemstoneStorage.CanAfford(Context.BuildingToPlace.gemstoneCosts)) {
-          Context.GemstoneStorage.Discard(Context.BuildingToPlace.gemstoneCosts);
+        if (Context.GemstoneStorage.CanAfford((Context.BuildingToPlace.customData as CustomBuildingData).buildingCosts)) {
+          Context.GemstoneStorage.Discard((Context.BuildingToPlace.customData as CustomBuildingData).buildingCosts);
           Context.GridBuildingSystem.Build(Context.Destination, Context.BuildingToPlace);
         }
           

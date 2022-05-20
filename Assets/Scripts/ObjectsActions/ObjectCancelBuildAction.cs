@@ -2,7 +2,7 @@
 using UnityEngine;
 
 namespace bts {
-  [CreateAssetMenu()]
+  [CreateAssetMenu(menuName = "ObjectActions/CancelBuildAction", fileName = "CancelBuildAction")]
   public class ObjectCancelBuildAction : ObjectAction {
     public UnitCommander Commander { private get; set; }
     public override string TootlipHeader => string.Empty;

@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 namespace bts {
@@ -17,12 +16,22 @@ namespace bts {
 
     void Start() {
       Selected = transform.Find("Selected").gameObject;
+      float selectedScale = Mathf.Max(placedObjectType.width, placedObjectType.height) + 0.5f;
+      Selected.transform.localScale = new Vector3(selectedScale, selectedScale, 1f);
       GetComponentInChildren<MeshFilter>().mesh = AvaliableMeshes[Random.Range(0, AvaliableMeshes.Count)];
       bool isInfused = Random.value < 0.1f;
       if (isInfused) {
         BaseGatherAmount = 2;
         GetComponentInChildren<ParticleSystem>().Play();
       }
+    }
+
+    public void Select() {
+      Selected.SetActive(true);
+    }
+
+    public void Deselect() {
+      Selected.SetActive(false);
     }
   }
 }

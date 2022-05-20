@@ -23,7 +23,7 @@ namespace bts {
       yield return cancelBuildAction;
     }
 
-    public bool IsSelected => Selected.activeSelf;
+    public bool IsSelected { get; private set; }
     public GridBuildingSystem GridBuildingSystem { get; private set; }
     public AIPath AiPath { get; private set; }
     public AIDestinationSetter AIDestinationSetter { get; private set; }
@@ -79,6 +79,16 @@ namespace bts {
 
     void Update() {
       currentState.UpdateState();
+    }
+
+    public void Select() {
+      Selected.SetActive(true);
+      IsSelected = true;
+    }
+
+    public void Deselect() {
+      Selected.SetActive(false);
+      IsSelected = false;
     }
   }
 }

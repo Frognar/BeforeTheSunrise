@@ -28,5 +28,13 @@ namespace bts {
         Destroy(gameObject, 0.1f);
       }
     }
+
+    public void Select() {
+      Selected.SetActive(true);
+    }
+
+    public void Deselect() {
+      Selected.SetActive(false);
+    }
   }
 }

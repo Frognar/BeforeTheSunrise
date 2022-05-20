@@ -10,13 +10,7 @@ namespace bts {
     Transform Transform { get; }
     GameObject Selected { get; }
     IEnumerable<ObjectAction> Actions => Enumerable.Empty<ObjectAction>();
-
-    public void Select() {
-      Selected.SetActive(true);
-    }
-
-    public void Deselect() {
-      Selected.SetActive(false);
-    }
+    void Select();
+    void Deselect();
   }
 }

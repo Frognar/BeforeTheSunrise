@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: Rocks2x2
   prefab: {fileID: 2610586063416816716, guid: ce3479d0de8822b4992f30330ab12d4d, type: 3}
-  ghost: {fileID: 2610586063416816716, guid: ce3479d0de8822b4992f30330ab12d4d, type: 3}
   width: 2
   height: 2
   objectAffiliation: 1
   objectType: 4
+  customData: {fileID: 0}
