@@ -7,6 +7,6 @@ namespace bts {
     public int damage;
     public float energyPerAttack;
     public float maxEnergy;
-    public float attackSpeed;
+    public float timeBetweenAttacks;
   }
 }

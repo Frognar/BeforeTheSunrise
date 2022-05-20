@@ -3,18 +3,10 @@
 
 // Must be placed within a folder named "Editor"
 using System;
-using System.Reflection;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
-using Object = UnityEngine.Object;
 
-/// <summary>
-/// Extends how ScriptableObject object references are displayed in the inspector
-/// Shows you all values under the object reference
-/// Also provides a button to create a new ScriptableObject if property is null.
-/// </summary>
 [CustomPropertyDrawer(typeof(ScriptableObject), true)]
 public class ExtendedScriptableObjectDrawer : PropertyDrawer {
 

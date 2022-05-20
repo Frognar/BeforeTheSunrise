@@ -1,5 +1,12 @@
-﻿namespace bts {
+﻿using UnityEngine;
+
+namespace bts {
   public class CannonAttackState : CannonBaseState {
+    bool HasTarget => Context.Target != null;
+    bool IsTargetInRange => Vector3.Distance(Context.Target.Position, Context.Position) <= Context.Range;
+    float lastAttackTime;
+    bool IsTimeToAttack => lastAttackTime + Context.TimeBetweenAttacks <= Time.time;
+
     public CannonAttackState(Cannon context, CannonStateFactory factory)
       : base(context, factory) {
     }
@@ -9,13 +16,16 @@
         return;
       }
 
-      if (Context.HasTarget) {
-        if (Context.TargetInRange) {
-          if (ElectricContext.CanAfford(Context.EnergyPerAttack)) {
-            Context.Target.TakeDamage(Context.Damage);
-            if (Context.Target.IsDead) {
-              Context.Target = null;
-              SwitchState(Factory.Idle);
+      if (HasTarget) {
+        if (IsTargetInRange) {
+          if (IsTimeToAttack) {
+            if (ElectricContext.CanAfford(Context.EnergyPerAttack)) {
+              lastAttackTime = Time.time;
+              Context.Target.TakeDamage(Context.Damage);
+              if (Context.Target.IsDead) {
+                Context.Target = null;
+                SwitchState(Factory.Idle);
+              }
             }
           }
         }

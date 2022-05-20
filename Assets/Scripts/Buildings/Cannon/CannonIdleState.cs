@@ -25,8 +25,9 @@ namespace bts {
         }
       }
 
-      if (enemiesInRange.Any()) {
-        Context.Target = enemiesInRange.First();
+      Damageable target = enemiesInRange.FirstOrDefault(t => !t.IsDead);
+      if (target != null) {
+        Context.Target = target;
         SwitchState(Factory.Attack);
       }
     }

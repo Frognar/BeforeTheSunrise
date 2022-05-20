@@ -40,7 +40,7 @@ namespace bts {
       Destroy(gameObject);
     }
 
-    void Awake() {
+    protected virtual void Awake() {
       obstacle = GetComponent<Collider>();
       AstarPath.active.UpdateGraphs(obstacle.bounds);
     }

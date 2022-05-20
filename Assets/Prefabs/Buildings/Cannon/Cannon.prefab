@@ -51,9 +51,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e149b755f37b3624cb07083c947fd883, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Damage>k__BackingField: 2
-  <EnergyPerAttack>k__BackingField: 10
-  <MaxEnergy>k__BackingField: 500
 --- !u!114 &7194066481571063517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -89,7 +86,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: 1, z: 2}
+  m_Size: {x: 1.95, y: 1, z: 1.95}
   m_Center: {x: 1, y: 0.5, z: 1}
 --- !u!1001 &2905858676769601201
 PrefabInstance:
