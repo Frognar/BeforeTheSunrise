@@ -37,7 +37,7 @@ MonoBehaviour:
     isExpanded: 1
     _keyValues: 01000000
     _keys: 01000000
-    _values: 14000000
+    _values: 00000000
   healthAmount: 500
-  ghostMesh: {fileID: 2534964839176971238, guid: b33b763044579e7429259ee8efef672c,
+  ghostMesh: {fileID: 8733429697405204941, guid: b33b763044579e7429259ee8efef672c,
     type: 3}
