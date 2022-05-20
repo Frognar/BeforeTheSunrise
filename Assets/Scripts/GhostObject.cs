@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace bts {
   public class GhostObject : MonoBehaviour {
-    [SerializeField] BoolVariable canBuild;
+    [SerializeField] BoolAsset canBuild;
     [SerializeField] Material canPlaceMaterial;
     [SerializeField] Material cantPlaceMaterial;
     [SerializeField] MeshFilter meshFilter;
@@ -50,11 +50,11 @@ namespace bts {
     }
 
     void OnTriggerStay(Collider other) {
-      canBuild.Value = false;
+      canBuild.value = false;
     }
 
     void OnTriggerExit(Collider other) {
-      canBuild.Value = true;
+      canBuild.value = true;
     }
   }
 }

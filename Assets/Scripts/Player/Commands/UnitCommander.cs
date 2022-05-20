@@ -2,8 +2,8 @@
 
 namespace bts {
   public class UnitCommander : MonoBehaviour {
-    [SerializeField] BoolVariable canBuild;
-    [SerializeField] BoolVariable inBuildMode;
+    [SerializeField] BoolAsset canBuild;
+    [SerializeField] BoolAsset inBuildMode;
     [SerializeField] GhostObject currentGhost;
     UnitStateManager unit;
     UnitCommandInvoker invoker;
@@ -22,7 +22,7 @@ namespace bts {
         ClearBuildingToBuild();
       }
 
-      inBuildMode.Value = buildingToPlace != null;
+      inBuildMode.value = buildingToPlace != null;
       if (unit.IsSelected) {
         if (playerInputs.SendCommand) {
           HandleSendingCommands();

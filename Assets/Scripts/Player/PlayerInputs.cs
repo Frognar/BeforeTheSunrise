@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 namespace bts {
   public class PlayerInputs : MonoBehaviour, PlayerControls.IPlayerActions, PlayerControls.ICameraActions {
-    [SerializeField] BoolVariable inBuildMode;
+    [SerializeField] BoolAsset inBuildMode;
     public bool StartSelecting { get; private set; }
     public bool StopSelecting { get; private set; }
     public bool SendCommand { get; private set; }
