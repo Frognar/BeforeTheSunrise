@@ -1,15 +1,11 @@
-﻿using System;
-
-namespace bts {
+﻿namespace bts {
   public class DayState : DayNightBaseState {
-    public static event EventHandler OnDayStarted;
-
     public DayState(DayNightStateManager context, DayNightStateFactory factory)
       : base(context, factory, context.DayDuration) {
     }
 
     public override void EnterState() {
-      OnDayStarted?.Invoke(this, EventArgs.Empty);
+      Context.DayStarted.Invoke();
     }
 
     public override void ExitState() {

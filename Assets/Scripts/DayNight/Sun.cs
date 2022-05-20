@@ -4,6 +4,8 @@ using UnityEngine;
 
 namespace bts {
   public class Sun : MonoBehaviour {
+    [SerializeField] VoidEventChannel dayStarted;
+    [SerializeField] VoidEventChannel nightStarted;
     [SerializeField] Light sun;
     [SerializeField] float dayLightIntensity = 2f;
     [SerializeField] int dayLightTemperature = 5000;
@@ -12,13 +14,13 @@ namespace bts {
     [SerializeField] float fadeDuration = 2f;
 
     void OnEnable() {
-      DayState.OnDayStarted += ChangeToDay;
-      NightState.OnNightStarted += ChangeToNight;
+      dayStarted.OnEventInvoked += ChangeToDay;
+      nightStarted.OnEventInvoked += ChangeToNight;
     }
 
     void OnDisable() {
-      DayState.OnDayStarted -= ChangeToDay;
-      NightState.OnNightStarted -= ChangeToNight;
+      dayStarted.OnEventInvoked -= ChangeToDay;
+      nightStarted.OnEventInvoked -= ChangeToNight;
     }
 
     void ChangeToDay(object sender, EventArgs e) {

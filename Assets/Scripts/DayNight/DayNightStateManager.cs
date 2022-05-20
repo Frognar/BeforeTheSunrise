@@ -3,10 +3,10 @@ using UnityEngine;
 
 namespace bts {
   public class DayNightStateManager : MonoBehaviour {
-    [SerializeField] int dayDuration = 80;
-    [SerializeField] int nightDuration = 120;
-    public int DayDuration => dayDuration;
-    public int NightDuration => nightDuration;
+    [field: SerializeField] public VoidEventChannel DayStarted { get; private set; }
+    [field: SerializeField] public VoidEventChannel NightStarted { get; private set; }
+    [field: SerializeField] public int DayDuration { get; private set; } = 80;
+    [field: SerializeField] public int NightDuration { get; private set; } = 120;
     public int ReamaningTime => CurrentState.ReamaningTime;
 
     public DayNightBaseState CurrentState { get; private set; }

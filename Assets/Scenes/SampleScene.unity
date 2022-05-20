@@ -1964,6 +1964,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80e5347061c6e594a9fa34324b6f5fc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dayStarted: {fileID: 11400000, guid: ba696d58e6b750a4396f8d5fba9a80ea, type: 2}
+  nightStarted: {fileID: 11400000, guid: 3fd151616b2c6d746bca7aecc6b50f94, type: 2}
   sun: {fileID: 410087040}
   dayLightIntensity: 2
   dayLightTemperature: 5000
@@ -4841,8 +4843,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d4dbdfcfdbd0ef42bde34f74fa47f48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dayDuration: 80
-  nightDuration: 120
+  <DayStarted>k__BackingField: {fileID: 11400000, guid: ba696d58e6b750a4396f8d5fba9a80ea,
+    type: 2}
+  <NightStarted>k__BackingField: {fileID: 11400000, guid: 3fd151616b2c6d746bca7aecc6b50f94,
+    type: 2}
+  <DayDuration>k__BackingField: 80
+  <NightDuration>k__BackingField: 120
 --- !u!1 &1559340354
 GameObject:
   m_ObjectHideFlags: 0
