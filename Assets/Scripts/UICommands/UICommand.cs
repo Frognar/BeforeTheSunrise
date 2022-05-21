@@ -10,6 +10,11 @@ namespace bts {
       TooltipData = tooltipData;
     }
 
+    protected UICommand(UICommandData commandData) {
+      ButtonIcon = commandData.ButtonIcon;
+      TooltipData = commandData.TooltipData;
+    }
+
     public abstract void Execute();
   }
 }

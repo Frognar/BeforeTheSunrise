@@ -138,5 +138,10 @@ namespace bts {
 
       OnSelection?.Invoke(this, new OnSelectionEventArgs(selected));
     }
+
+    public void Deselect(Selectable selectedObject) {
+      selected.Remove(selectedObject);
+      OnSelection?.Invoke(this, new OnSelectionEventArgs(selected));
+    }
   }
 }

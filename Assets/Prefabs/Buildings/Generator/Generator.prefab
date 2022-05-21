@@ -49,6 +49,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ac9a763c2fa18149814ce2afbb2669e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  storage: {fileID: 11400000, guid: 71f3ad2114ea85541984677a4e20ebac, type: 2}
+  demolishUICommandData: {fileID: 11400000, guid: a57fb880238e1c348a901aab017e0b09,
+    type: 2}
   energyPerSecond: 10
 --- !u!65 &1194418127207659034
 BoxCollider:

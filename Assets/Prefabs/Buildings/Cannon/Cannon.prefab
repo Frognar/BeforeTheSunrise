@@ -51,6 +51,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e149b755f37b3624cb07083c947fd883, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  storage: {fileID: 11400000, guid: 71f3ad2114ea85541984677a4e20ebac, type: 2}
+  demolishUICommandData: {fileID: 11400000, guid: a57fb880238e1c348a901aab017e0b09,
+    type: 2}
 --- !u!114 &7194066481571063517
 MonoBehaviour:
   m_ObjectHideFlags: 0

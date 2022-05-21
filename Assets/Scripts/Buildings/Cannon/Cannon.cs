@@ -1,7 +1,10 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace bts {
   public class Cannon : PlacedObject, ElectricDevice {
+    [SerializeField] GemstoneStorage storage;
+    [SerializeField] DemolishUICommandData demolishUICommandData;
     CannonData data;
     public int Damage => data.damage;
     public float EnergyPerAttack => data.energyPerAttack;
@@ -23,6 +26,7 @@ namespace bts {
     GameObject rangeVisuals;
 
     protected override void Start() {
+      UICommands = new List<UICommand>() { new DemolishUICommand(demolishUICommandData, this, storage) };
       base.Start();
       data = placedObjectType.customData as CannonData;
       rangeVisuals = transform.Find("Range").gameObject;

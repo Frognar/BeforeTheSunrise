@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
 
 namespace bts {
   public class PlacedObject : Placeable, Selectable, Damageable {
@@ -9,9 +11,12 @@ namespace bts {
     public GameObject Selected { get; private set; }
     public Vector3 Position => center.position;
     public bool IsDead => health.CurrentHealth == 0;
+    public GemstoneDictionary BuildingCosts => (placedObjectType.customData as CustomBuildingData).buildingCosts;
+    public virtual IEnumerable<UICommand> UICommands { get; protected set; } = Enumerable.Empty<UICommand>();
 
     Health health;
     WorldHealthBar bar;
+    Player selector;
 
     protected virtual void Start() {
       if (placedObjectType.customData is CustomBuildingData buildingData) {
@@ -26,6 +31,7 @@ namespace bts {
       Selected.transform.localScale = new Vector3(selectedScale, selectedScale, 1f);
       bar = GetComponentInChildren<WorldHealthBar>();
       bar.SetUp(health);
+      selector = FindObjectOfType<Player>();
     }
 
     public void TakeDamage(int amount) {
@@ -41,6 +47,15 @@ namespace bts {
 
     public virtual void Deselect() {
       Selected.SetActive(false);
+    }
+
+    public override void DestroySelf() {
+      if (Selected.activeSelf) {
+        selector.Deselect(this);
+        Deselect();
+      }
+
+      base.DestroySelf();
     }
   }
 }

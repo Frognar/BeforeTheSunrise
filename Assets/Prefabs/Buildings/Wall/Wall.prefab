@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 15494893612748968}
-  - component: {fileID: 7445552840548937943}
+  - component: {fileID: -741773924312245404}
   - component: {fileID: 1110986482009296692}
   m_Layer: 7
   m_Name: Wall
@@ -36,7 +36,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7445552840548937943
+--- !u!114 &-741773924312245404
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -45,9 +45,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 7037293398815512519}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c27e9536b718cd841b9336f5194a22d5, type: 3}
+  m_Script: {fileID: 11500000, guid: 021b3beefa7f4c34292a026660f0d3ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  storage: {fileID: 11400000, guid: 71f3ad2114ea85541984677a4e20ebac, type: 2}
+  demolishUICommandData: {fileID: 11400000, guid: a57fb880238e1c348a901aab017e0b09,
+    type: 2}
 --- !u!65 &1110986482009296692
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -6,8 +6,7 @@ namespace bts {
   [CreateAssetMenu()]
   public class GemstoneStorage : ScriptableObject {
     public event EventHandler StorageChanged;
-    [SerializeField] GemstoneDictionary gemstones;
-    public GemstoneDictionary Gemstones => gemstones;
+    [field: SerializeField] public GemstoneDictionary Gemstones { get; private set; }
 
     void OnEnable() {
       foreach (GemstoneType type in Enum.GetValues(typeof(GemstoneType))) {
@@ -41,6 +40,14 @@ namespace bts {
     public void Discard(IDictionary<GemstoneType, int> gemstones) {
       foreach (KeyValuePair<GemstoneType, int> gemstone in gemstones) {
         Gemstones[gemstone.Key] -= gemstone.Value;
+      }
+
+      StorageChanged?.Invoke(this, EventArgs.Empty);
+    }
+
+    public void Refund(IDictionary<GemstoneType, int> costs, float refundRate) {
+      foreach (KeyValuePair<GemstoneType, int> gemstone in costs) {
+        Gemstones[gemstone.Key] += Mathf.FloorToInt(gemstone.Value * refundRate);
       }
 
       StorageChanged?.Invoke(this, EventArgs.Empty);

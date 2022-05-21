@@ -4,6 +4,8 @@ using UnityEngine;
 
 namespace bts {
   public class Generator : PlacedObject {
+    [SerializeField] GemstoneStorage storage;
+    [SerializeField] DemolishUICommandData demolishUICommandData;
     [SerializeField] float energyPerSecond;
     float energyPerTick;
     public float Range => (placedObjectType.customData as GeneratorData).range;
@@ -11,6 +13,7 @@ namespace bts {
 
     protected override void Start() {
       base.Start();
+      UICommands = new List<UICommand>() { new DemolishUICommand(demolishUICommandData, this, storage) };
       energyPerTick = energyPerSecond / TimeTicker.ticksPerSecond;
       rangeVisuals = transform.Find("Range").gameObject;
       rangeVisuals.transform.localScale = new Vector3(Range * 2, Range * 2, 1f);

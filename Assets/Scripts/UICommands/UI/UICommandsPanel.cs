@@ -24,11 +24,12 @@ namespace bts {
       DisableAllButtons();
       CurrentPage = 0;
       commands = selected.UICommands.ToList();
-      if (commands.Count < 12) {
+      if (commands.Count <= buttons.Count) {
         ShowAllOnFirstPage();
       }
       else {
-        Pages = Mathf.CeilToInt(commands.Count / 10f);
+        Debug.Log("On multiple pages");
+        Pages = 1 + commands.Count / (buttons.Count - 2);
         ShowFirstPage();
         SetUpPrevPageButton();
         SetUpNextPageButton();
@@ -43,30 +44,30 @@ namespace bts {
     }
 
     void ShowFirstPage() {
-      for (int i = 0; i < 10; i++) {
+      for (int i = 0; i < buttons.Count - 2; i++) {
         buttons[i].SetUp(commands[i]);
         buttons[i].gameObject.SetActive(true);
       }
     }
 
     void SetUpPrevPageButton() {
-      buttons[10].SetUp(prevPageCommand);
-      buttons[10].gameObject.SetActive(true);
-      buttons[10].DisableButton();
+      buttons[^2].SetUp(prevPageCommand);
+      buttons[^2].gameObject.SetActive(true);
+      buttons[^2].DisableButton();
     }
 
     void SetUpNextPageButton() {
-      buttons[11].SetUp(nextPageCommand);
-      buttons[11].gameObject.SetActive(true);
+      buttons[^1].SetUp(nextPageCommand);
+      buttons[^1].gameObject.SetActive(true);
     }
 
     public void ShowNextPage() {
       if (CurrentPage < Pages) {
         CurrentPage++;
         DisableCommandButtons();
-        int commandsLeft = (commands.Count - 10 * CurrentPage) % 11;
+        int commandsLeft = (commands.Count - (buttons.Count - 2) * CurrentPage) % (buttons.Count - 1);
         for (int i = 0; i < commandsLeft; i++) {
-          buttons[i].SetUp(commands[i + 10 * CurrentPage]);
+          buttons[i].SetUp(commands[i + (buttons.Count - 2) * CurrentPage]);
           buttons[i].gameObject.SetActive(true);
         }
       }
@@ -75,8 +76,8 @@ namespace bts {
     public void ShowPrevPage() {
       if (CurrentPage > 0) {
         CurrentPage--;
-        for (int i = 0; i < 10; i++) {
-          buttons[i].SetUp(commands[i + 10 * CurrentPage]);
+        for (int i = 0; i < buttons.Count - 2; i++) {
+          buttons[i].SetUp(commands[i + (buttons.Count - 2) * CurrentPage]);
           buttons[i].gameObject.SetActive(true);
         }
       }
