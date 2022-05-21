@@ -29,10 +29,10 @@ namespace bts {
       gameObject.SetActive(false);
     }
 
-    public void SetTooltip(string header, string content, IDictionary<GemstoneType, int> gemstones) {
-      SetText(header, headerField);
-      SetText(content, contentField);
-      SetGamestones(gemstones);
+    public void SetTooltip(TooltipData tooltipData) {
+      SetText(tooltipData.Header, headerField);
+      SetText(tooltipData.Content, contentField);
+      SetGamestones(tooltipData.Gemstones);
       HandleLayoutElement();
     }
 

@@ -2315,34 +2315,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 573b260344d28674cab123c822270751, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Header>k__BackingField: 
-  <Content>k__BackingField: Rubby
-  <Gemstones>k__BackingField:
-    reorderableList:
-      canAdd: 1
-      canRemove: 1
-      draggable: 1
-      expandable: 1
-      multipleSelection: 1
+  tooltipData:
+    <Header>k__BackingField: 
+    <Content>k__BackingField: Rubby
+    <Gemstones>k__BackingField:
+      reorderableList:
+        canAdd: 1
+        canRemove: 1
+        draggable: 1
+        expandable: 1
+        multipleSelection: 1
+        isExpanded: 0
+        label:
+          m_Text: Keys
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        headerHeight: 18
+        footerHeight: 13
+        slideEasing: 0.15
+        verticalSpacing: 2
+        showDefaultBackground: 1
+        elementDisplayType: 0
+        elementNameProperty: 
+        elementNameOverride: 
+        elementIcon: {fileID: 0}
+      reqReferences: {fileID: 0}
       isExpanded: 0
-      label:
-        m_Text: Keys
-        m_Image: {fileID: 0}
-        m_Tooltip: 
-      headerHeight: 18
-      footerHeight: 13
-      slideEasing: 0.15
-      verticalSpacing: 2
-      showDefaultBackground: 1
-      elementDisplayType: 0
-      elementNameProperty: 
-      elementNameOverride: 
-      elementIcon: {fileID: 0}
-    reqReferences: {fileID: 0}
-    isExpanded: 0
-    _keyValues: 
-    _keys: 
-    _values: 
+      _keyValues: 
+      _keys: 
+      _values: 
 --- !u!1 &645130397
 GameObject:
   m_ObjectHideFlags: 0
@@ -2969,34 +2970,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 573b260344d28674cab123c822270751, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Header>k__BackingField: Day/Night time
-  <Content>k__BackingField: Time unitl end of current time of day
-  <Gemstones>k__BackingField:
-    reorderableList:
-      canAdd: 1
-      canRemove: 1
-      draggable: 1
-      expandable: 1
-      multipleSelection: 1
+  tooltipData:
+    <Header>k__BackingField: Day/Night Time
+    <Content>k__BackingField: Time to end of current day time
+    <Gemstones>k__BackingField:
+      reorderableList:
+        canAdd: 1
+        canRemove: 1
+        draggable: 1
+        expandable: 1
+        multipleSelection: 1
+        isExpanded: 0
+        label:
+          m_Text: Keys
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        headerHeight: 18
+        footerHeight: 13
+        slideEasing: 0.15
+        verticalSpacing: 2
+        showDefaultBackground: 1
+        elementDisplayType: 0
+        elementNameProperty: 
+        elementNameOverride: 
+        elementIcon: {fileID: 0}
+      reqReferences: {fileID: 0}
       isExpanded: 0
-      label:
-        m_Text: Keys
-        m_Image: {fileID: 0}
-        m_Tooltip: 
-      headerHeight: 18
-      footerHeight: 13
-      slideEasing: 0.15
-      verticalSpacing: 2
-      showDefaultBackground: 1
-      elementDisplayType: 0
-      elementNameProperty: 
-      elementNameOverride: 
-      elementIcon: {fileID: 0}
-    reqReferences: {fileID: 0}
-    isExpanded: 0
-    _keyValues: 
-    _keys: 
-    _values: 
+      _keyValues: 
+      _keys: 
+      _values: 
 --- !u!1 &871219464
 GameObject:
   m_ObjectHideFlags: 0
@@ -5366,34 +5368,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 573b260344d28674cab123c822270751, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Header>k__BackingField: 
-  <Content>k__BackingField: Emerald
-  <Gemstones>k__BackingField:
-    reorderableList:
-      canAdd: 1
-      canRemove: 1
-      draggable: 1
-      expandable: 1
-      multipleSelection: 1
+  tooltipData:
+    <Header>k__BackingField: 
+    <Content>k__BackingField: Emerald
+    <Gemstones>k__BackingField:
+      reorderableList:
+        canAdd: 1
+        canRemove: 1
+        draggable: 1
+        expandable: 1
+        multipleSelection: 1
+        isExpanded: 0
+        label:
+          m_Text: Keys
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        headerHeight: 18
+        footerHeight: 13
+        slideEasing: 0.15
+        verticalSpacing: 2
+        showDefaultBackground: 1
+        elementDisplayType: 0
+        elementNameProperty: 
+        elementNameOverride: 
+        elementIcon: {fileID: 0}
+      reqReferences: {fileID: 0}
       isExpanded: 0
-      label:
-        m_Text: Keys
-        m_Image: {fileID: 0}
-        m_Tooltip: 
-      headerHeight: 18
-      footerHeight: 13
-      slideEasing: 0.15
-      verticalSpacing: 2
-      showDefaultBackground: 1
-      elementDisplayType: 0
-      elementNameProperty: 
-      elementNameOverride: 
-      elementIcon: {fileID: 0}
-    reqReferences: {fileID: 0}
-    isExpanded: 0
-    _keyValues: 
-    _keys: 
-    _values: 
+      _keyValues: 
+      _keys: 
+      _values: 
 --- !u!1001 &1673918411
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5745,34 +5748,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 573b260344d28674cab123c822270751, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Header>k__BackingField: 
-  <Content>k__BackingField: Amethyst
-  <Gemstones>k__BackingField:
-    reorderableList:
-      canAdd: 1
-      canRemove: 1
-      draggable: 1
-      expandable: 1
-      multipleSelection: 1
+  tooltipData:
+    <Header>k__BackingField: 
+    <Content>k__BackingField: Amethyst
+    <Gemstones>k__BackingField:
+      reorderableList:
+        canAdd: 1
+        canRemove: 1
+        draggable: 1
+        expandable: 1
+        multipleSelection: 1
+        isExpanded: 0
+        label:
+          m_Text: Keys
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        headerHeight: 18
+        footerHeight: 13
+        slideEasing: 0.15
+        verticalSpacing: 2
+        showDefaultBackground: 1
+        elementDisplayType: 0
+        elementNameProperty: 
+        elementNameOverride: 
+        elementIcon: {fileID: 0}
+      reqReferences: {fileID: 0}
       isExpanded: 0
-      label:
-        m_Text: Keys
-        m_Image: {fileID: 0}
-        m_Tooltip: 
-      headerHeight: 18
-      footerHeight: 13
-      slideEasing: 0.15
-      verticalSpacing: 2
-      showDefaultBackground: 1
-      elementDisplayType: 0
-      elementNameProperty: 
-      elementNameOverride: 
-      elementIcon: {fileID: 0}
-    reqReferences: {fileID: 0}
-    isExpanded: 0
-    _keyValues: 
-    _keys: 
-    _values: 
+      _keyValues: 
+      _keys: 
+      _values: 
 --- !u!1 &1797427460
 GameObject:
   m_ObjectHideFlags: 0
@@ -6132,34 +6136,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 573b260344d28674cab123c822270751, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Header>k__BackingField: 
-  <Content>k__BackingField: Topaz
-  <Gemstones>k__BackingField:
-    reorderableList:
-      canAdd: 1
-      canRemove: 1
-      draggable: 1
-      expandable: 1
-      multipleSelection: 1
+  tooltipData:
+    <Header>k__BackingField: 
+    <Content>k__BackingField: Topaz
+    <Gemstones>k__BackingField:
+      reorderableList:
+        canAdd: 1
+        canRemove: 1
+        draggable: 1
+        expandable: 1
+        multipleSelection: 1
+        isExpanded: 0
+        label:
+          m_Text: Keys
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        headerHeight: 18
+        footerHeight: 13
+        slideEasing: 0.15
+        verticalSpacing: 2
+        showDefaultBackground: 1
+        elementDisplayType: 0
+        elementNameProperty: 
+        elementNameOverride: 
+        elementIcon: {fileID: 0}
+      reqReferences: {fileID: 0}
       isExpanded: 0
-      label:
-        m_Text: Keys
-        m_Image: {fileID: 0}
-        m_Tooltip: 
-      headerHeight: 18
-      footerHeight: 13
-      slideEasing: 0.15
-      verticalSpacing: 2
-      showDefaultBackground: 1
-      elementDisplayType: 0
-      elementNameProperty: 
-      elementNameOverride: 
-      elementIcon: {fileID: 0}
-    reqReferences: {fileID: 0}
-    isExpanded: 0
-    _keyValues: 
-    _keys: 
-    _values: 
+      _keyValues: 
+      _keys: 
+      _values: 
 --- !u!1 &1947423581
 GameObject:
   m_ObjectHideFlags: 0
@@ -6401,34 +6406,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 573b260344d28674cab123c822270751, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Header>k__BackingField: 
-  <Content>k__BackingField: Sapphire
-  <Gemstones>k__BackingField:
-    reorderableList:
-      canAdd: 1
-      canRemove: 1
-      draggable: 1
-      expandable: 1
-      multipleSelection: 1
+  tooltipData:
+    <Header>k__BackingField: 
+    <Content>k__BackingField: Sapphire
+    <Gemstones>k__BackingField:
+      reorderableList:
+        canAdd: 1
+        canRemove: 1
+        draggable: 1
+        expandable: 1
+        multipleSelection: 1
+        isExpanded: 0
+        label:
+          m_Text: Keys
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        headerHeight: 18
+        footerHeight: 13
+        slideEasing: 0.15
+        verticalSpacing: 2
+        showDefaultBackground: 1
+        elementDisplayType: 0
+        elementNameProperty: 
+        elementNameOverride: 
+        elementIcon: {fileID: 0}
+      reqReferences: {fileID: 0}
       isExpanded: 0
-      label:
-        m_Text: Keys
-        m_Image: {fileID: 0}
-        m_Tooltip: 
-      headerHeight: 18
-      footerHeight: 13
-      slideEasing: 0.15
-      verticalSpacing: 2
-      showDefaultBackground: 1
-      elementDisplayType: 0
-      elementNameProperty: 
-      elementNameOverride: 
-      elementIcon: {fileID: 0}
-    reqReferences: {fileID: 0}
-    isExpanded: 0
-    _keyValues: 
-    _keys: 
-    _values: 
+      _keyValues: 
+      _keys: 
+      _values: 
 --- !u!1 &2012840612
 GameObject:
   m_ObjectHideFlags: 0
