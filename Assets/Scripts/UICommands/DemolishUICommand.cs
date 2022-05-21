@@ -13,7 +13,7 @@
 
     public override void Execute() {
       GemstoneStorage.Refund(Building.BuildingCosts, RefundRate);
-      Building.Demolish();
+      Building.DestroySelf();
     }
   }
 }

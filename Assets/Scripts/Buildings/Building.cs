@@ -31,6 +31,10 @@ namespace bts {
       }
     }
 
+    public void DestroySelf() {
+      GridBuildingSystem.Demolish(Position);
+    }
+
     public override void Demolish() {
       if (Selected.activeSelf) {
         selector.Deselect(this);
