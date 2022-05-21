@@ -12,7 +12,7 @@ namespace bts {
     public GameObject Selected { get; private set; }
     [SerializeField] List<BuildUICommandData> buildCommandsData;
     [SerializeField] CancelBuildUICommandData cancelBuildCommandData;
-    public IEnumerable<UICommand> Actions { get; private set; }
+    public IEnumerable<UICommand> UICommands { get; private set; }
     public bool IsSelected { get; private set; }
     public GridBuildingSystem GridBuildingSystem { get; private set; }
     public AIPath AiPath { get; private set; }
@@ -47,7 +47,7 @@ namespace bts {
     UnitStateFactory stateFactory;
 
     void Awake() {
-      Actions = CreateActions();
+      UICommands = CreateActions();
       GatherBonuses = new Dictionary<GemstoneType, int>();
       foreach (GemstoneType type in Enum.GetValues(typeof(GemstoneType))) {
         GatherBonuses[type] = 1;

@@ -9,7 +9,7 @@ namespace bts {
     Type ObjectType { get; }
     Transform Transform { get; }
     GameObject Selected { get; }
-    IEnumerable<UICommand> Actions => Enumerable.Empty<UICommand>();
+    IEnumerable<UICommand> UICommands => Enumerable.Empty<UICommand>();
     void Select();
     void Deselect();
   }

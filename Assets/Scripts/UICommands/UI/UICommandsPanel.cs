@@ -3,33 +3,32 @@ using System.Linq;
 using UnityEngine;
 
 namespace bts {
-  public class SelectedObjectActionsPanel : MonoBehaviour {
+  public class UICommandsPanel : MonoBehaviour {
     [SerializeField] List<UICommandButton> buttons;
-    UICommandButton PrevButton => buttons[^2];
-    UICommandButton NextButton => buttons[^1];
-    List<UICommand> actions;
-    [SerializeField] Sprite nextArrow;
-    [SerializeField] Sprite prevArrow;
-    NextPageAction nextPageAction;
-    PrevPageAction prevPageAction;
+    [SerializeField] SimpleUICommandData nextButtonData;
+    [SerializeField] SimpleUICommandData prevButtonData;
+
+    List<UICommand> commands;
+    NextPageUICommand nextPageCommand;
+    PrevPageUICommand prevPageCommand;
+
     public int CurrentPage { get; private set; }
     public int Pages { get; private set; }
 
     void Awake() {
-      GemstoneDictionary empty = new GemstoneDictionary();
-      nextPageAction = new NextPageAction(nextArrow, new TooltipData(string.Empty, "Next", empty), this, PrevButton, NextButton);
-      prevPageAction = new PrevPageAction(prevArrow, new TooltipData(string.Empty, "Prev", empty), this, PrevButton, NextButton);
+      nextPageCommand = new NextPageUICommand(nextButtonData, this, buttons[^2], buttons[^1]);
+      prevPageCommand = new PrevPageUICommand(prevButtonData, this, buttons[^2], buttons[^1]);
     }
 
     public void UpdateUI(Selectable selected) {
       DisableAllButtons();
       CurrentPage = 0;
-      actions = selected.Actions.ToList();
-      if (actions.Count < 12) {
+      commands = selected.UICommands.ToList();
+      if (commands.Count < 12) {
         ShowAllOnFirstPage();
       }
       else {
-        Pages = Mathf.CeilToInt(actions.Count / 10f);
+        Pages = Mathf.CeilToInt(commands.Count / 10f);
         ShowFirstPage();
         SetUpPrevPageButton();
         SetUpNextPageButton();
@@ -37,37 +36,37 @@ namespace bts {
     }
 
     void ShowAllOnFirstPage() {
-      for (int i = 0; i < actions.Count; i++) {
-        buttons[i].SetUp(actions[i]);
+      for (int i = 0; i < commands.Count; i++) {
+        buttons[i].SetUp(commands[i]);
         buttons[i].gameObject.SetActive(true);
       }
     }
 
     void ShowFirstPage() {
       for (int i = 0; i < 10; i++) {
-        buttons[i].SetUp(actions[i]);
+        buttons[i].SetUp(commands[i]);
         buttons[i].gameObject.SetActive(true);
       }
     }
 
     void SetUpPrevPageButton() {
-      buttons[10].SetUp(prevPageAction);
+      buttons[10].SetUp(prevPageCommand);
       buttons[10].gameObject.SetActive(true);
       buttons[10].DisableButton();
     }
 
     void SetUpNextPageButton() {
-      buttons[11].SetUp(nextPageAction);
+      buttons[11].SetUp(nextPageCommand);
       buttons[11].gameObject.SetActive(true);
     }
 
     public void ShowNextPage() {
       if (CurrentPage < Pages) {
         CurrentPage++;
-        DisableActionButtons();
-        int actionsLeft = (actions.Count - 10 * CurrentPage) % 11;
-        for (int i = 0; i < actionsLeft; i++) {
-          buttons[i].SetUp(actions[i + 10 * CurrentPage]);
+        DisableCommandButtons();
+        int commandsLeft = (commands.Count - 10 * CurrentPage) % 11;
+        for (int i = 0; i < commandsLeft; i++) {
+          buttons[i].SetUp(commands[i + 10 * CurrentPage]);
           buttons[i].gameObject.SetActive(true);
         }
       }
@@ -77,13 +76,13 @@ namespace bts {
       if (CurrentPage > 0) {
         CurrentPage--;
         for (int i = 0; i < 10; i++) {
-          buttons[i].SetUp(actions[i + 10 * CurrentPage]);
+          buttons[i].SetUp(commands[i + 10 * CurrentPage]);
           buttons[i].gameObject.SetActive(true);
         }
       }
     }
 
-    void DisableActionButtons() {
+    void DisableCommandButtons() {
       for (int i = 0; i < 10; i++) {
         buttons[i].gameObject.SetActive(false);
       }
