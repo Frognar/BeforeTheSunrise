@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -6,16 +5,7 @@ using UnityEngine.EventSystems;
 
 namespace bts {
   public class Player : MonoBehaviour {
-    public class OnSelectionEventArgs : EventArgs {
-      public List<Selectable> Selected { get; }
-
-      public OnSelectionEventArgs(List<Selectable> selected) {
-        Selected = selected;
-      }
-    }
-
-    public event EventHandler<OnSelectionEventArgs> OnSelection;
-
+    [SerializeField] SelectablesEventChannel selectablesEventChannel;
     PlayerInputs playerInputs;
     Camera cam;
     Vector3 startPosition;
@@ -136,13 +126,21 @@ namespace bts {
         selectable.Select();
       }
 
-      OnSelection?.Invoke(this, new OnSelectionEventArgs(selected));
+      selectablesEventChannel.Invoke(selected);
     }
 
-    public void Deselect(Selectable selectedObject) {
+    void OnEnable() {
+      selectablesEventChannel.OnDeselect += Deselect;
+    }
+
+    void OnDisable() {
+      selectablesEventChannel.OnDeselect -= Deselect;
+    }
+
+    void Deselect(object sender, Selectable selectedObject) {
       _ = selected.Remove(selectedObject);
       selectedObject.Deselect();
-      OnSelection?.Invoke(this, new OnSelectionEventArgs(selected));
+      selectablesEventChannel.Invoke(selected);
     }
   }
 }

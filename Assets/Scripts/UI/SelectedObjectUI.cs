@@ -1,38 +1,38 @@
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 namespace bts {
   public class SelectedObjectUI : MonoBehaviour {
+    [SerializeField] SelectablesEventChannel selectablesEventChannel;
     SelectedObjectInfoPanel infoPanel;
     UICommandsPanel commandsPanel;
-    Player player;
 
     void Awake() {
       infoPanel = GetComponentInChildren<SelectedObjectInfoPanel>();
       infoPanel.gameObject.SetActive(false);
       commandsPanel = GetComponentInChildren<UICommandsPanel>();
       commandsPanel.gameObject.SetActive(false);
-      player = FindObjectOfType<Player>();
     }
 
     void OnEnable() {
-      player.OnSelection += UpdateUI;  
+      selectablesEventChannel.OnSelectionInvoked += UpdateUI;
     }
 
     void OnDisable() {
-      player.OnSelection -= UpdateUI;
+      selectablesEventChannel.OnSelectionInvoked -= UpdateUI;
     }
 
-    void UpdateUI(object sender, Player.OnSelectionEventArgs e) {
-      bool isSomethingSelected = e.Selected.Count > 0;
+    void UpdateUI(object sender, List<Selectable> selected) {
+      bool isSomethingSelected = selected.Count > 0;
       infoPanel.gameObject.SetActive(isSomethingSelected);
       commandsPanel.gameObject.SetActive(false);
       if (isSomethingSelected) {
-        infoPanel.UpdateUI(e);
-        Selectable selected = e.Selected.First();
-        if (selected.UICommands.Any()) {
+        infoPanel.UpdateUI(selected);
+        Selectable first = selected.First();
+        if (first.UICommands.Any()) {
           commandsPanel.gameObject.SetActive(true);
-          commandsPanel.UpdateUI(selected);
+          commandsPanel.UpdateUI(first);
         }
       }
     }

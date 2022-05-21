@@ -10,6 +10,7 @@ namespace bts {
     public GameObject Selected { get; private set; }
     public Vector3 Position => center.position;
     public bool IsDead => health.CurrentHealth == 0;
+    [field: SerializeField] public SelectablesEventChannel SelectablesEventChannel { get; private set; }
 
     [SerializeField] int healthAmount = 10;
     Health health;
@@ -35,6 +36,12 @@ namespace bts {
 
     public void Deselect() {
       Selected.SetActive(false);
+    }
+
+    void OnDestroy() {
+      if (Selected.activeSelf) {
+        SelectablesEventChannel.Invoke(this);
+      }
     }
   }
 }

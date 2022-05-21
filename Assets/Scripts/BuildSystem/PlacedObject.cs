@@ -12,6 +12,7 @@ namespace bts {
     public Type ObjectType => PlaceableObjectType.objectType;
     public Affiliation ObjectAffiliation => PlaceableObjectType.objectAffiliation;
     [field: SerializeField] public GameObject Selected { get; private set; }
+    [field: SerializeField] public SelectablesEventChannel SelectablesEventChannel { get; private set; }
 
     public void Init(GridBuildingSystem gridBuildingSystem, PlacedObjectTypeSO objectType, Vector3Int origin, Transform center) {
       GridBuildingSystem = gridBuildingSystem;
@@ -41,6 +42,12 @@ namespace bts {
 
     public virtual void Deselect() {
       Selected.SetActive(false);
+    }
+
+    protected virtual void OnDestroy() {
+      if (Selected.activeSelf) {
+        SelectablesEventChannel.Invoke(this);
+      }
     }
   }
 }

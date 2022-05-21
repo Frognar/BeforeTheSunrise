@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.172768, g: 0.21589169, b: 0.29782546, a: 1}
+  m_IndirectSpecularColor: {r: 0.17276844, g: 0.21589246, b: 0.2978263, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -688,6 +688,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3615b15c7561d5a448b616b82d2d044b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectablesEventChannel: {fileID: 11400000, guid: 3c1fda043d4369741a6aac78f1308909,
+    type: 2}
 --- !u!1 &185741597
 GameObject:
   m_ObjectHideFlags: 0
@@ -2447,6 +2449,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b58ef8a09d40f7e4f900447e4947c3de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectablesEventChannel: {fileID: 11400000, guid: 3c1fda043d4369741a6aac78f1308909,
+    type: 2}
 --- !u!4 &657447543
 Transform:
   m_ObjectHideFlags: 0
@@ -2592,6 +2596,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b534a05a11b2b89449a3e3ad0ad6b73a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectablesEventChannel: {fileID: 11400000, guid: 3c1fda043d4369741a6aac78f1308909,
+    type: 2}
   movementSpeed: 1
   movementTime: 5
   rotationAmount: 10
@@ -4724,6 +4730,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   center: {fileID: 1766920480}
+  <SelectablesEventChannel>k__BackingField: {fileID: 11400000, guid: 3c1fda043d4369741a6aac78f1308909,
+    type: 2}
   healthAmount: 10
 --- !u!1 &1467381959
 GameObject:
@@ -6971,6 +6979,12 @@ PrefabInstance:
       propertyPath: buildCommandsData.Array.data[11]
       value: 
       objectReference: {fileID: 11400000, guid: ec70ce81e70c4b749887e95daebc255f,
+        type: 2}
+    - target: {fileID: 4085809703577258809, guid: f7db9d6726e6a0d499a3ba8cbdce4e16,
+        type: 3}
+      propertyPath: <SelectablesEventChannel>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: 3c1fda043d4369741a6aac78f1308909,
         type: 2}
     - target: {fileID: 4085809703577258810, guid: f7db9d6726e6a0d499a3ba8cbdce4e16,
         type: 3}

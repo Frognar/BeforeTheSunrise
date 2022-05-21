@@ -10,6 +10,7 @@ namespace bts {
     public Affiliation ObjectAffiliation => Affiliation.Player;
     public Type ObjectType => Type.Unit;
     public GameObject Selected { get; private set; }
+    [field: SerializeField] public SelectablesEventChannel SelectablesEventChannel { get; private set; }
     [SerializeField] List<BuildUICommandData> buildCommandsData;
     [SerializeField] CancelBuildUICommandData cancelBuildCommandData;
     public IEnumerable<UICommand> UICommands { get; private set; }
@@ -90,6 +91,12 @@ namespace bts {
     public void Deselect() {
       Selected.SetActive(false);
       IsSelected = false;
+    }
+
+    void OnDestroy() {
+      if (IsSelected) {
+        SelectablesEventChannel.Invoke(this);
+      }
     }
   }
 }

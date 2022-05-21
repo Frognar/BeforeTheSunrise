@@ -1,8 +1,10 @@
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 namespace bts {
   public class CameraController : MonoBehaviour {
+    [SerializeField] SelectablesEventChannel selectablesEventChannel;
     [SerializeField][Range(1f, 5f)] float movementSpeed;
     [SerializeField][Range(1f, 5f)] float movementTime;
     [SerializeField][Range(5f, 15f)] float rotationAmount;
@@ -16,28 +18,23 @@ namespace bts {
     Vector3 newZoom;
     Transform cameraTransform;
     PlayerInputs playerInputs;
-    Player player;
-    Selectable selected;
+    Selectable focus;
 
     void Awake() {
       playerInputs = FindObjectOfType<PlayerInputs>();
       cameraTransform = Camera.main.transform;
-      player = FindObjectOfType<Player>();
     }
 
     void OnEnable() {
-      player.OnSelection += SelectionChanged;
+      selectablesEventChannel.OnSelectionInvoked += SelectionChanged;
     }
 
     void OnDisable() {
-      player.OnSelection -= SelectionChanged;
+      selectablesEventChannel.OnSelectionInvoked -= SelectionChanged;
     }
 
-    void SelectionChanged(object sender, Player.OnSelectionEventArgs e) {
-      selected = null;
-      if (e.Selected.Count > 0) {
-        selected = e.Selected.First();
-      }
+    void SelectionChanged(object sender, List<Selectable> selected) {
+      focus = (selected.Count > 0) ? selected.First() : null;
     }
 
     void Start() {
@@ -108,8 +105,8 @@ namespace bts {
     }
 
     void HandleFocus() {
-      if (playerInputs.Focus && selected != null) {
-        Vector3 selectedPosition = selected.Transform.position;
+      if (playerInputs.Focus && focus != null) {
+        Vector3 selectedPosition = focus.Transform.position;
         newPosition.x = selectedPosition.x;
         newPosition.z = selectedPosition.z;
       }

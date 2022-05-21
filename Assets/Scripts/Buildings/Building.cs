@@ -11,13 +11,11 @@ namespace bts {
     public bool IsDead => health.CurrentHealth == 0;
 
     [SerializeField] WorldHealthBar bar;
-    Player selector;
     Health health;
     protected CustomBuildingData buildingData;
 
     protected override void Start() {
       base.Start();
-      selector = FindObjectOfType<Player>();
       buildingData = PlaceableObjectType.customData as CustomBuildingData;
       health = new Health(buildingData.healthAmount);
       bar.SetUp(health);
@@ -33,14 +31,6 @@ namespace bts {
 
     public void DestroySelf() {
       GridBuildingSystem.Demolish(Position);
-    }
-
-    public override void Demolish() {
-      if (Selected.activeSelf) {
-        selector.Deselect(this);
-      }
-
-      base.Demolish();
     }
   }
 }

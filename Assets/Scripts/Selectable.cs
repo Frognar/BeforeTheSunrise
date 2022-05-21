@@ -10,6 +10,7 @@ namespace bts {
     Transform Transform { get; }
     GameObject Selected { get; }
     IEnumerable<UICommand> UICommands => Enumerable.Empty<UICommand>();
+    SelectablesEventChannel SelectablesEventChannel { get; }
     void Select();
     void Deselect();
   }

@@ -4874,6 +4874,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Selected>k__BackingField: {fileID: 1220668128405100383}
+  <SelectablesEventChannel>k__BackingField: {fileID: 11400000, guid: 3c1fda043d4369741a6aac78f1308909,
+    type: 2}
   avaliableMeshes:
   - {fileID: 4702925393065980420, guid: 7758838d4e6536e4e98f9028d209b717, type: 3}
   - {fileID: 4702925393065980420, guid: 46f6f9becf44e49478894d4ffc46ec9f, type: 3}
