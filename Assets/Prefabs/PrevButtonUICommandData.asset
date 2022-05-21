@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: f8db8e81c2e675244ae14c9d0ad6b2a4, type: 3}
   m_Name: PrevButtonUICommandData
   m_EditorClassIdentifier: Assembly-CSharp:bts:SimpleUICommandData
   <ButtonIcon>k__BackingField: {fileID: 21300000, guid: 686e302b19f91db4bbbb8980c7b496ea,

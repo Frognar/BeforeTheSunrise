@@ -2,7 +2,7 @@
 
 namespace bts {
   public class CannonAttackState : CannonBaseState {
-    bool HasTarget => Context.Target != null;
+    bool HasTarget => Context.Target != null && (Context.Target as Object) != null;
     bool IsTargetInRange => Vector3.Distance(Context.Target.Position, Context.Position) <= Context.Range;
     float lastAttackTime;
     bool IsTimeToAttack => lastAttackTime + Context.TimeBetweenAttacks <= Time.time;
