@@ -21,6 +21,7 @@ namespace bts {
           if (IsTimeToAttack) {
             if (ElectricContext.CanAfford(Context.EnergyPerAttack)) {
               lastAttackTime = Time.time;
+              ElectricContext.Use(Context.EnergyPerAttack);
               Context.Target.TakeDamage(Context.Damage);
               if (Context.Target.IsDead) {
                 Context.Target = null;

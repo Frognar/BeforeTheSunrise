@@ -140,7 +140,8 @@ namespace bts {
     }
 
     public void Deselect(Selectable selectedObject) {
-      selected.Remove(selectedObject);
+      _ = selected.Remove(selectedObject);
+      selectedObject.Deselect();
       OnSelection?.Invoke(this, new OnSelectionEventArgs(selected));
     }
   }

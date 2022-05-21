@@ -19,9 +19,9 @@ namespace bts {
       for (int x = 0; x < grid.Width; x++) {
         for (int z = 0; z < grid.Height; z++) {
           if (z <= grid.Height / 2 + 5 
-           && z >= grid.Height / 2 - 5
+           && z >= grid.Height / 2 - 6
            && x <= grid.Width / 2 + 5
-           && x >= grid.Width / 2 - 5) {
+           && x >= grid.Width / 2 - 6) {
             continue;
           }
 

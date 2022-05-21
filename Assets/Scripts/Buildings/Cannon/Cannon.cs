@@ -1,18 +1,14 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace bts {
-  public class Cannon : PlacedObject, ElectricDevice {
-    [SerializeField] GemstoneStorage storage;
-    [SerializeField] DemolishUICommandData demolishUICommandData;
+  public class Cannon : Building, ElectricDevice {
     CannonData data;
-    public int Damage => data.damage;
-    public float EnergyPerAttack => data.energyPerAttack;
-    public float Range => data.range;
-    public float MaxEnergy => data.maxEnergy;
-    public float TimeBetweenAttacks => data.timeBetweenAttacks;
-    float ElectricDevice.CurrentEnergy { get; set; }
-
+    public int Damage => DataLoaded ? data.damage : 0;
+    public float EnergyPerAttack => DataLoaded ? data.energyPerAttack : 0;
+    public float Range => DataLoaded ? data.range : 0;
+    public float MaxEnergy => DataLoaded ? data.maxEnergy : 0;
+    public float TimeBetweenAttacks => DataLoaded ? data.timeBetweenAttacks : 0;
+    public float CurrentEnergy { get; private set; }
     public bool IsOrderedToStop { get; set; }
     public bool IsOrderedToAttack { get; set; }
 
@@ -23,26 +19,26 @@ namespace bts {
     public bool IsSelected { get; private set; }
     public bool IsIdle { get; set; }
     
-    GameObject rangeVisuals;
+    [SerializeField] GameObject rangeVisuals;
+    bool DataLoaded => data != null;
 
     protected override void Start() {
-      UICommands = new List<UICommand>() { new DemolishUICommand(demolishUICommandData, this, storage) };
       base.Start();
-      data = placedObjectType.customData as CannonData;
-      rangeVisuals = transform.Find("Range").gameObject;
+      data = buildingData as CannonData;
       rangeVisuals.transform.localScale = new Vector3(Range * 2, Range * 2, 1f);
+      rangeVisuals.SetActive(false);
       stateFactory = new CannonStateFactory(context: this);
       SwitchState(stateFactory.Idle);
     }
 
     public override void Select() {
-      Selected.SetActive(true);
+      base.Select();
       rangeVisuals.SetActive(true);
       IsSelected = true;
     }
 
     public override void Deselect() {
-      Selected.SetActive(false);
+      base.Deselect();
       rangeVisuals.SetActive(false);
       IsSelected = false;
     }
@@ -54,6 +50,20 @@ namespace bts {
 
     void Update() {
       CurrentState.UpdateState();
+    }
+
+    public void Use(float energy) {
+      CurrentEnergy -= energy;
+      if (CurrentEnergy < 0) {
+        CurrentEnergy = 0;
+      }
+    }
+
+    public void Store(float energy) {
+      CurrentEnergy += energy;
+      if (CurrentEnergy > MaxEnergy) {
+        CurrentEnergy = MaxEnergy;
+      }
     }
   }
 }

@@ -9,8 +9,10 @@ namespace bts {
     [SerializeField][Range(1, 1000)] int gridHeight;
     [SerializeField][Range(1f, 50f)] float cellSize;
     [SerializeField] Vector3 gridOrigin;
+    PlaceableFactory placeableFactory;
 
     void Awake() {
+      placeableFactory = GetComponent<PlaceableFactory>();
       Grid = new GridXZ<GridObject>(gridWidth, gridHeight, cellSize, gridOrigin, (g, x, z) => new GridObject(g, x, z));
     }
 
@@ -23,7 +25,7 @@ namespace bts {
       List<Vector3Int> gridPositions = placedObjectType.GetGridPositions(cords);
       List<GridObject> gridObjects = gridPositions.ConvertAll(p => Grid.GetGridObject(p.x, p.z));
       if (gridObjects.All(o => o?.CanBuild() ?? false)) {
-        Placeable placedObject = Placeable.Create(Grid.GetWorldPosition(cords), cords, placedObjectType, this);
+        Placeable placedObject = placeableFactory.Create(Grid.GetWorldPosition(cords), cords, placedObjectType, this);
         gridObjects.ForEach(o => o.SetPlacedObject(placedObject));
       }
     }
@@ -35,7 +37,7 @@ namespace bts {
         List<Vector3Int> gridPositions = placedObject.GetGridPositions();
         List<GridObject> gridObjects = gridPositions.ConvertAll(p => Grid.GetGridObject(p.x, p.z));
         gridObjects.ForEach(o => o.ClearPlacedObject());
-        placedObject.DestroySelf();
+        placedObject.Demolish();
       }
     }
 

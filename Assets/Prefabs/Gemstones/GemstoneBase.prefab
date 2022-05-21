@@ -4873,10 +4873,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8defe5235fad92548b06ebbcb119431e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AvaliableMeshes:
-  - {fileID: 4702925393065980420, guid: 46f6f9becf44e49478894d4ffc46ec9f, type: 3}
+  <Selected>k__BackingField: {fileID: 1220668128405100383}
+  avaliableMeshes:
   - {fileID: 4702925393065980420, guid: 7758838d4e6536e4e98f9028d209b717, type: 3}
-  gemstoneType: 0
+  - {fileID: 4702925393065980420, guid: 46f6f9becf44e49478894d4ffc46ec9f, type: 3}
+  <GemstoneType>k__BackingField: 0
+  <BaseGatherAmount>k__BackingField: 1
 --- !u!1001 &3619227224557213430
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5078,6 +5080,12 @@ PrefabInstance:
       objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 619c5afa1874f16439ce45dfa0095083, type: 3}
+--- !u!1 &1220668128405100383 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2650239681661974590, guid: 619c5afa1874f16439ce45dfa0095083,
+    type: 3}
+  m_PrefabInstance: {fileID: 3762517524233662305}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2742884505354357128 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1308167238753249001, guid: 619c5afa1874f16439ce45dfa0095083,

@@ -4,7 +4,7 @@ namespace bts {
   public class UnitGatherState : UnitBaseState {
     float lastGatherTime;
     bool IsTimeToGather => lastGatherTime + Context.TimeBetweenGathers <= Time.time;
-    bool InGatherRange => Vector3.Distance(Context.CurrentPosition, Context.TargerGemstone.Position) <= Context.GatherRange;
+    bool InGatherRange => Vector3.Distance(Context.CurrentPosition, Context.TargerGemstone.Center.position) <= Context.GatherRange;
     float prevStopDistance;
 
     public UnitGatherState(UnitStateManager context, UnitStateFactory factory)
@@ -15,7 +15,7 @@ namespace bts {
       prevStopDistance = Context.AiPath.endReachedDistance;
       Context.AiPath.endReachedDistance = Context.GatherRange - 2f;
       Context.IsOrderedToGather = false;
-      Context.AiPath.destination = Context.TargerGemstone.Position;
+      Context.AiPath.destination = Context.TargerGemstone.Center.position;
     }
 
     public override void UpdateState() {

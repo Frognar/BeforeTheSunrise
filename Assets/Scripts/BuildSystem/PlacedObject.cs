@@ -1,44 +1,38 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace bts {
-  public class PlacedObject : Placeable, Selectable, Damageable {
-    public string Name => placedObjectType.name;
-    public Transform Transform => center;
-    public Affiliation ObjectAffiliation => placedObjectType.objectAffiliation;
-    public Type ObjectType => placedObjectType.objectType;
-    public GameObject Selected { get; private set; }
-    public Vector3 Position => center.position;
-    public bool IsDead => health.CurrentHealth == 0;
-    public GemstoneDictionary BuildingCosts => (placedObjectType.customData as CustomBuildingData).buildingCosts;
-    public virtual IEnumerable<UICommand> UICommands { get; protected set; } = Enumerable.Empty<UICommand>();
+  public abstract class PlacedObject : MonoBehaviour, Placeable, Selectable {
+    public Collider Obstacle { get; private set; }
+    public Transform Transform => transform;
+    public GridBuildingSystem GridBuildingSystem { get; private set; }
+    public PlacedObjectTypeSO PlaceableObjectType { get; private set; }
+    public Vector3Int Origin { get; private set; }
+    public Transform Center { get; private set; }
+    public virtual string Name => PlaceableObjectType.name;
+    public Type ObjectType => PlaceableObjectType.objectType;
+    public Affiliation ObjectAffiliation => PlaceableObjectType.objectAffiliation;
+    [field: SerializeField] public GameObject Selected { get; private set; }
 
-    Health health;
-    WorldHealthBar bar;
-    Player selector;
-
-    protected virtual void Start() {
-      if (placedObjectType.customData is CustomBuildingData buildingData) {
-        health = new Health(buildingData.healthAmount);
-      }
-      else {
-        health = new Health(10);
-      }
-
-      Selected = transform.Find("Selected").gameObject;
-      float selectedScale = Mathf.Max(placedObjectType.width, placedObjectType.height) + 0.5f;
-      Selected.transform.localScale = new Vector3(selectedScale, selectedScale, 1f);
-      bar = GetComponentInChildren<WorldHealthBar>();
-      bar.SetUp(health);
-      selector = FindObjectOfType<Player>();
+    public void Init(GridBuildingSystem gridBuildingSystem, PlacedObjectTypeSO objectType, Vector3Int origin, Transform center) {
+      GridBuildingSystem = gridBuildingSystem;
+      PlaceableObjectType = objectType;
+      Origin = origin;
+      Center = center;
     }
 
-    public void TakeDamage(int amount) {
-      health.Damage(amount);
-      if (health.CurrentHealth == 0) {
-        gridBuildingSystem.Demolish(transform.position);
-      }
+    protected virtual void Start() {
+      Obstacle = GetComponent<Collider>();
+      AstarPath.active.UpdateGraphs(Obstacle.bounds);
+      float selectedScale = Mathf.Max(PlaceableObjectType.width, PlaceableObjectType.height) + 0.5f;
+      Selected.transform.localScale = new Vector3(selectedScale, selectedScale, 1f);
+      Selected.SetActive(false);
+    }
+
+    public virtual void Demolish() {
+      Bounds bounds = Obstacle.bounds;
+      transform.position = new Vector3(-10000, -10000, -10000);
+      AstarPath.active.UpdateGraphs(bounds);
+      Destroy(gameObject);
     }
 
     public virtual void Select() {
@@ -47,15 +41,6 @@ namespace bts {
 
     public virtual void Deselect() {
       Selected.SetActive(false);
-    }
-
-    public override void DestroySelf() {
-      if (Selected.activeSelf) {
-        selector.Deselect(this);
-        Deselect();
-      }
-
-      base.DestroySelf();
     }
   }
 }

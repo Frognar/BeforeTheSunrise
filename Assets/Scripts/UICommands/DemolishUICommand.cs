@@ -1,19 +1,19 @@
 ﻿namespace bts {
   public class DemolishUICommand : UICommand {
-    PlacedObject Building { get; }
+    Building Building { get; }
     GemstoneStorage GemstoneStorage { get; }
     float RefundRate { get; }
 
-    public DemolishUICommand(DemolishUICommandData data, PlacedObject building, GemstoneStorage gemstoneStorage)
+    public DemolishUICommand(DemolishUICommandData data, Building building)
       : base(data) {
       Building = building;
-      GemstoneStorage = gemstoneStorage;
+      GemstoneStorage = data.Storage;
       RefundRate = data.RefundRate;
     }
 
     public override void Execute() {
       GemstoneStorage.Refund(Building.BuildingCosts, RefundRate);
-      Building.DestroySelf();
+      Building.Demolish();
     }
   }
 }

@@ -15,3 +15,5 @@ MonoBehaviour:
   <ButtonIcon>k__BackingField: {fileID: 21300000, guid: af4fbc7b1b50ed74fa8937c5408fb65b,
     type: 3}
   <RefundRate>k__BackingField: 0.75
+  <Storage>k__BackingField: {fileID: 11400000, guid: 71f3ad2114ea85541984677a4e20ebac,
+    type: 2}
