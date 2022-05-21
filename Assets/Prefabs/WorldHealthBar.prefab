@@ -78,6 +78,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2da8a9adb7e01a40bd3f7738b8e3662, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onTick: {fileID: 11400000, guid: c6e751abad063954ab30d73107f50070, type: 2}
 --- !u!1 &6770395561669371116
 GameObject:
   m_ObjectHideFlags: 0

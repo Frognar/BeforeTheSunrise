@@ -1,6 +1,5 @@
 ﻿namespace bts {
   public abstract class DayNightBaseState {
-    public int ReamaningTime { get; private set; }
     protected DayNightStateManager Context { get; private set; }
     protected DayNightStateFactory StateFactory { get; private set; }
     readonly int dayTimeDuration;
@@ -9,14 +8,14 @@
       Context = context;
       StateFactory = factory;
       dayTimeDuration = duration;
-      ReamaningTime = dayTimeDuration;
+      Context.ReamaningTime.value = duration;
     }
 
     public abstract void EnterState();
 
     public void UpdateState() {
-      if (--ReamaningTime <= 0) {
-        ReamaningTime = dayTimeDuration;
+      if (--Context.ReamaningTime.value <= 0) {
+        Context.ReamaningTime.value = dayTimeDuration;
         ExitState();
       }
     }

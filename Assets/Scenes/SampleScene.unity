@@ -2778,6 +2778,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bed568af51b1f544f95beaac945fee4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onTick: {fileID: 11400000, guid: c6e751abad063954ab30d73107f50070, type: 2}
+  onSecond: {fileID: 11400000, guid: 4bfb9538683542844bd5c8ca8f4a49a1, type: 2}
+  ticksPerSecond: {fileID: 11400000, guid: ccce87ca0d2f89b41834d5a6e0860c1e, type: 2}
 --- !u!4 &779457510
 Transform:
   m_ObjectHideFlags: 0
@@ -2963,6 +2966,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb4a182542a55cc4ba926b4407d7223e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onSecond: {fileID: 11400000, guid: 4bfb9538683542844bd5c8ca8f4a49a1, type: 2}
+  reamaningTime: {fileID: 11400000, guid: ccdb2d00415999947b705cea804652d6, type: 2}
   timerText: {fileID: 1045488835}
 --- !u!114 &855909317
 MonoBehaviour:
@@ -4919,6 +4924,9 @@ MonoBehaviour:
     type: 2}
   <DayDuration>k__BackingField: 80
   <NightDuration>k__BackingField: 120
+  onSecond: {fileID: 11400000, guid: 4bfb9538683542844bd5c8ca8f4a49a1, type: 2}
+  <ReamaningTime>k__BackingField: {fileID: 11400000, guid: ccdb2d00415999947b705cea804652d6,
+    type: 2}
 --- !u!1 &1559340354
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,28 +4,24 @@ using UnityEngine;
 
 namespace bts {
   public class TimerUI : MonoBehaviour {
+    [SerializeField] VoidEventChannel onSecond;
+    [SerializeField] IntAsset reamaningTime;
     [SerializeField] TextMeshProUGUI timerText;
-    
-    DayNightStateManager dayNightCycle;
-
-    void Awake() {
-      dayNightCycle = FindObjectOfType<DayNightStateManager>();
-    }
 
     void Start() {
       UpdateTimer(null, EventArgs.Empty);
     }
 
     void OnEnable() {
-      TimeTicker.OnSecond += UpdateTimer;
+      onSecond.OnEventInvoked += UpdateTimer;
     }
 
     void OnDisable() {
-      TimeTicker.OnSecond -= UpdateTimer;
+      onSecond.OnEventInvoked -= UpdateTimer;
     }
 
     void UpdateTimer(object sender, EventArgs e) {
-      timerText.text = dayNightCycle.ReamaningTime + "s";
+      timerText.text = reamaningTime.value + "s";
     }
   }
 }

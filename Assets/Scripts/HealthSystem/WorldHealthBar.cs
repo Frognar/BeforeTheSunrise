@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace bts {
   public class WorldHealthBar : MonoBehaviour {
+    [SerializeField] VoidEventChannel onTick;
     HealthAnimated Health { get; set; }
     Transform bar;
 
@@ -10,6 +11,7 @@ namespace bts {
       bar = transform.Find("Hook");
       Health = new HealthAnimated(health);
       Health.OnValueChange += OnHealthChange;
+      onTick.OnEventInvoked += Health.UpdateOnTick;
       UpdateBar();
     }
 
@@ -20,6 +22,7 @@ namespace bts {
     void OnDestroy() {
       if (Health != null) {
         Health.OnValueChange -= OnHealthChange;
+        onTick.OnEventInvoked -= Health.UpdateOnTick;
       }
     }
 

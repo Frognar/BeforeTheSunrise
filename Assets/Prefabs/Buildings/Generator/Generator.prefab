@@ -55,6 +55,8 @@ MonoBehaviour:
   demolishUICommandData: {fileID: 11400000, guid: a57fb880238e1c348a901aab017e0b09,
     type: 2}
   bar: {fileID: 8134931827608231969}
+  ticksPerSecond: {fileID: 11400000, guid: ccce87ca0d2f89b41834d5a6e0860c1e, type: 2}
+  onTick: {fileID: 11400000, guid: c6e751abad063954ab30d73107f50070, type: 2}
   rangeVisuals: {fileID: 1309591984804889538}
 --- !u!65 &1194418127207659034
 BoxCollider:

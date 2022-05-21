@@ -4,6 +4,8 @@ using UnityEngine;
 
 namespace bts {
   public class Generator : Building {
+    [SerializeField] IntAsset ticksPerSecond;
+    [SerializeField] VoidEventChannel onTick;
     [SerializeField] GameObject rangeVisuals;
     public float Range => DataLoaded ? data.range : 0;
     float EnergyPerSecond => DataLoaded ? data.energyPerSecond : 0;
@@ -15,7 +17,7 @@ namespace bts {
     protected override void Start() {
       base.Start();
       data = buildingData as GeneratorData;
-      energyPerTick = EnergyPerSecond / TimeTicker.ticksPerSecond;
+      energyPerTick = EnergyPerSecond / ticksPerSecond;
       rangeVisuals.transform.localScale = new Vector3(Range * 2, Range * 2, 1f);
       rangeVisuals.SetActive(false);
     }
@@ -33,11 +35,16 @@ namespace bts {
     }
 
     void OnEnable() {
-      TimeTicker.OnTick += Generate;
+      onTick.OnEventInvoked += Generate;
     }
 
     void OnDisable() {
-      TimeTicker.OnTick -= Generate;
+      onTick.OnEventInvoked -= Generate;
+    }
+
+    protected override void OnDestroy() {
+      base.OnDestroy();
+      onTick.OnEventInvoked -= Generate;
     }
 
     void Generate(object s, EventArgs e) {

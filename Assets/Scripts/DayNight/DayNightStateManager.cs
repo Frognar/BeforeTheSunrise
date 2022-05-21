@@ -7,7 +7,8 @@ namespace bts {
     [field: SerializeField] public VoidEventChannel NightStarted { get; private set; }
     [field: SerializeField] public int DayDuration { get; private set; } = 80;
     [field: SerializeField] public int NightDuration { get; private set; } = 120;
-    public int ReamaningTime => CurrentState.ReamaningTime;
+    [field: SerializeField] public IntAsset ReamaningTime { get; private set; }
+    [SerializeField] VoidEventChannel onSecond;
 
     public DayNightBaseState CurrentState { get; private set; }
     DayNightStateFactory stateFactory;
@@ -30,11 +31,11 @@ namespace bts {
     }
 
     void OnEnable() {
-      TimeTicker.OnSecond += UpdateCycle;
+      onSecond.OnEventInvoked += UpdateCycle;
     }
 
     void OnDisable() {
-      TimeTicker.OnSecond -= UpdateCycle;
+      onSecond.OnEventInvoked -= UpdateCycle;
     }
   }
 }

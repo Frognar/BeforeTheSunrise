@@ -7,24 +7,23 @@ namespace bts {
     int ChangeAmount { get; }
     bool IsAnimating { get; set; }
 
-    public HealthAnimated(Health health, bool instantDecrease = true, int changeAmount = 1) : base(health.MaxHealth) {
+    public HealthAnimated(Health health, bool instantDecrease = true, int changeAmount = 1)
+      : base(health.MaxHealth) {
       Health = health;
       InstantDecrease = instantDecrease;
       ChangeAmount = changeAmount;
       Health.OnValueChange += OnHealthChange;
-      TimeTicker.OnTick += UpdateOnTick;
     }
 
     ~HealthAnimated() {
       Health.OnValueChange -= OnHealthChange;
-      TimeTicker.OnTick -= UpdateOnTick;
     }
 
     void OnHealthChange(object sender, EventArgs e) {
       IsAnimating = true;
     }
 
-    void UpdateOnTick(object sender, EventArgs e) {
+    public void UpdateOnTick(object sender, EventArgs e) {
       UpdateValue();
     }
 

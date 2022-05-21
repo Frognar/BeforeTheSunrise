@@ -1,25 +1,27 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace bts {
   public class TimeTicker : MonoBehaviour {
-    public static EventHandler OnTick;
-    public static EventHandler OnSecond;
+    [SerializeField] VoidEventChannel onTick;
+    [SerializeField] VoidEventChannel onSecond;
+    [SerializeField] IntAsset ticksPerSecond;
 
-    public const int ticksPerSecond = 5;
-    const float tickInterval = 1f / ticksPerSecond;
-
+    float tickInterval;
     int tick;
     float currentTime;
+
+    void Awake() {
+      tickInterval = 1f / ticksPerSecond;
+    }
 
     void Update() {
       currentTime += Time.deltaTime;
       if (currentTime >= tickInterval) {
         tick++;
         currentTime = 0;
-        OnTick?.Invoke(this, EventArgs.Empty);
+        onTick.Invoke();
         if (tick % ticksPerSecond == 0) {
-          OnSecond?.Invoke(this, EventArgs.Empty);
+          onSecond.Invoke();
         }
       }
     }
