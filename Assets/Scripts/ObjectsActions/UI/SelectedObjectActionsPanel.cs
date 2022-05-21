@@ -4,12 +4,22 @@ using UnityEngine;
 
 namespace bts {
   public class SelectedObjectActionsPanel : MonoBehaviour {
-    [SerializeField] List<ObjectActionButton> buttons;
-    List<ObjectAction> actions;
+    [SerializeField] List<UICommandButton> buttons;
+    UICommandButton PrevButton => buttons[^2];
+    UICommandButton NextButton => buttons[^1];
+    List<UICommand> actions;
     [SerializeField] Sprite nextArrow;
     [SerializeField] Sprite prevArrow;
+    NextPageAction nextPageAction;
+    PrevPageAction prevPageAction;
     public int CurrentPage { get; private set; }
     public int Pages { get; private set; }
+
+    void Awake() {
+      GemstoneDictionary empty = new GemstoneDictionary();
+      nextPageAction = new NextPageAction(nextArrow, new TooltipData(string.Empty, "Next", empty), this, PrevButton, NextButton);
+      prevPageAction = new PrevPageAction(prevArrow, new TooltipData(string.Empty, "Prev", empty), this, PrevButton, NextButton);
+    }
 
     public void UpdateUI(Selectable selected) {
       DisableAllButtons();
@@ -41,22 +51,13 @@ namespace bts {
     }
 
     void SetUpPrevPageButton() {
-      buttons[10].SetUp(CreatePageAction<PrevPageAction>(icon: prevArrow));
+      buttons[10].SetUp(prevPageAction);
       buttons[10].gameObject.SetActive(true);
       buttons[10].DisableButton();
     }
 
-    PageAction CreatePageAction<T>(Sprite icon) where T : PageAction {
-      PageAction action = ScriptableObject.CreateInstance<T>();
-      action.actionPanel = this;
-      action.prevPageButton = buttons[10];
-      action.nextPageButton = buttons[11];
-      action.icon = icon;
-      return action;
-    }
-
     void SetUpNextPageButton() {
-      buttons[11].SetUp(CreatePageAction<NextPageAction>(icon: nextArrow));
+      buttons[11].SetUp(nextPageAction);
       buttons[11].gameObject.SetActive(true);
     }
 
@@ -89,7 +90,7 @@ namespace bts {
     }
 
     void DisableAllButtons() {
-      foreach (ObjectActionButton button in buttons) {
+      foreach (UICommandButton button in buttons) {
         button.gameObject.SetActive(false);
       }
     }

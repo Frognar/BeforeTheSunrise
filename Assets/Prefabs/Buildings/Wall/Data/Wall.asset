@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Wall
   m_EditorClassIdentifier: 
   objectName: Wall
+  objectDescription: Blocks paths
   prefab: {fileID: 15494893612748968, guid: 6de03e226f7b0154e9134ffb82a2dda6, type: 3}
   width: 2
   height: 2

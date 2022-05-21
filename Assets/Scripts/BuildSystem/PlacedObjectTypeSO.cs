@@ -5,6 +5,7 @@ namespace bts {
   [CreateAssetMenu()]
   public class PlacedObjectTypeSO : ScriptableObject {
     public string objectName;
+    public string objectDescription;
     public Transform prefab;
     public int width;
     public int height;

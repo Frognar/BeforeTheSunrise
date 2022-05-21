@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Generator
   m_EditorClassIdentifier: 
   objectName: Generator
+  objectDescription: Generates energy
   prefab: {fileID: 2749573904061358543, guid: 4947a3073de274a46aca269823e9a504, type: 3}
   width: 2
   height: 2

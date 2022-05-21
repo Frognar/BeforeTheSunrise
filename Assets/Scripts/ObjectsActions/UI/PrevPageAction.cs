@@ -1,15 +1,16 @@
-﻿using System;
+﻿using UnityEngine;
 
 namespace bts {
   public class PrevPageAction : PageAction {
-    public override string TootlipContent => "Prev";
-    public override Action Action => ShowPrevPage;
+    public PrevPageAction(Sprite buttonIcon, TooltipData tooltipData, SelectedObjectActionsPanel actionPanel, UICommandButton prevPageButton, UICommandButton nextPageButton)
+      : base(buttonIcon, tooltipData, actionPanel, prevPageButton, nextPageButton) {
+    }
 
-    void ShowPrevPage() {
-      actionPanel.ShowPrevPage();
-      nextPageButton.EnableButton();
-      if (actionPanel.CurrentPage == 0) {
-        prevPageButton.DisableButton();
+    public override void Execute() {
+      ActionPanel.ShowPrevPage();
+      NextPageButton.EnableButton();
+      if (ActionPanel.CurrentPage == 0) {
+        PrevPageButton.DisableButton();
       }
     }
   }

@@ -136,34 +136,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 573b260344d28674cab123c822270751, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Header>k__BackingField: 
-  <Content>k__BackingField: 
-  <Gemstones>k__BackingField:
-    reorderableList:
-      canAdd: 1
-      canRemove: 1
-      draggable: 1
-      expandable: 1
-      multipleSelection: 1
+  tooltipData:
+    <Header>k__BackingField: 
+    <Content>k__BackingField: 
+    <Gemstones>k__BackingField:
+      reorderableList:
+        canAdd: 1
+        canRemove: 1
+        draggable: 1
+        expandable: 1
+        multipleSelection: 1
+        isExpanded: 0
+        label:
+          m_Text: Keys
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        headerHeight: 18
+        footerHeight: 13
+        slideEasing: 0.15
+        verticalSpacing: 2
+        showDefaultBackground: 1
+        elementDisplayType: 0
+        elementNameProperty: 
+        elementNameOverride: 
+        elementIcon: {fileID: 0}
+      reqReferences: {fileID: 0}
       isExpanded: 0
-      label:
-        m_Text: Keys
-        m_Image: {fileID: 0}
-        m_Tooltip: 
-      headerHeight: 18
-      footerHeight: 13
-      slideEasing: 0.15
-      verticalSpacing: 2
-      showDefaultBackground: 1
-      elementDisplayType: 0
-      elementNameProperty: 
-      elementNameOverride: 
-      elementIcon: {fileID: 0}
-    reqReferences: {fileID: 0}
-    isExpanded: 0
-    _keyValues: 
-    _keys: 
-    _values: 
+      _keyValues: 
+      _keys: 
+      _values: 
 --- !u!114 &6340441966995123194
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -173,7 +174,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5979119720794637627}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff44d75f7b569b14c8c067b5f1fc0c53, type: 3}
+  m_Script: {fileID: 11500000, guid: 6302ea471c6a46c4a9bcc3e63c1d056d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   button: {fileID: 5979119720794637622}

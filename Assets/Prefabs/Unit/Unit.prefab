@@ -54,6 +54,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canBuild: {fileID: 11400000, guid: 8c8afa02e181f0e4fa4c26228cfb63d4, type: 2}
   inBuildMode: {fileID: 11400000, guid: b35fe1f3d9bfc8e488a2b4f7a13a3de7, type: 2}
+  currentGhost: {fileID: 0}
 --- !u!114 &7880791257872491866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78,9 +79,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 085bb83de7bd49043abe78062e948e46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <BuildActions>k__BackingField:
-  - {fileID: 11400000, guid: b720a670f37789e41824d18a117a3466, type: 2}
-  cancelBuildAction: {fileID: 11400000, guid: f5fde2c7c851684428bde6ed647e55db, type: 2}
+  buildCommandsData:
+  - {fileID: 11400000, guid: e98738b8a87bb064a92ff91a431b1a22, type: 2}
+  - {fileID: 11400000, guid: 2c80e35079c4c6c48a7e4f2a9e1541d7, type: 2}
+  - {fileID: 11400000, guid: ec70ce81e70c4b749887e95daebc255f, type: 2}
+  cancelBuildCommandData: {fileID: 11400000, guid: ff800fd855e31464ab01c02c2f77241d,
+    type: 2}
   gemstoneStorage: {fileID: 11400000, guid: 71f3ad2114ea85541984677a4e20ebac, type: 2}
 --- !u!114 &4085809703577258815
 MonoBehaviour:
@@ -273,6 +277,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1308167238753249001, guid: 619c5afa1874f16439ce45dfa0095083,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1308167238753249001, guid: 619c5afa1874f16439ce45dfa0095083,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 1308167238753249001, guid: 619c5afa1874f16439ce45dfa0095083,
         type: 3}

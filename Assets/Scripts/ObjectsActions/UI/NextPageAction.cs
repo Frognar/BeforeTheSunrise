@@ -1,15 +1,16 @@
-﻿using System;
+﻿using UnityEngine;
 
 namespace bts {
   public class NextPageAction : PageAction {
-    public override string TootlipContent => "Next";
-    public override Action Action => ShowNextPage;
+    public NextPageAction(Sprite buttonIcon, TooltipData tooltipData, SelectedObjectActionsPanel actionPanel, UICommandButton prevPageButton, UICommandButton nextPageButton)
+      : base(buttonIcon, tooltipData, actionPanel, prevPageButton, nextPageButton) {
+    }
 
-    void ShowNextPage() {
-      actionPanel.ShowNextPage();
-      prevPageButton.EnableButton();
-      if (actionPanel.CurrentPage == actionPanel.Pages - 1) {
-        nextPageButton.DisableButton();
+    public override void Execute() {
+      ActionPanel.ShowNextPage();
+      PrevPageButton.EnableButton();
+      if (ActionPanel.CurrentPage == ActionPanel.Pages - 1) {
+        NextPageButton.DisableButton();
       }
     }
   }

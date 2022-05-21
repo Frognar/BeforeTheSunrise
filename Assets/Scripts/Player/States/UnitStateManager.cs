@@ -10,19 +10,9 @@ namespace bts {
     public Affiliation ObjectAffiliation => Affiliation.Player;
     public Type ObjectType => Type.Unit;
     public GameObject Selected { get; private set; }
-    public IEnumerable<ObjectAction> Actions => CombineActions();
-    [SerializeField] List<ObjectBuildAction> buildActions;
-    [SerializeField] ObjectCancelBuildAction cancelBuildAction;
-    IEnumerable<ObjectAction> CombineActions() {
-      foreach (ObjectBuildAction action in buildActions) {
-        action.Commander = commander;
-        yield return action;
-      }
-
-      cancelBuildAction.Commander = commander;
-      yield return cancelBuildAction;
-    }
-
+    [SerializeField] List<BuildUICommandData> buildCommandsData;
+    [SerializeField] CancelBuildUICommandData cancelBuildCommandData;
+    public IEnumerable<UICommand> Actions { get; private set; }
     public bool IsSelected { get; private set; }
     public GridBuildingSystem GridBuildingSystem { get; private set; }
     public AIPath AiPath { get; private set; }
@@ -55,10 +45,9 @@ namespace bts {
 
     UnitBaseState currentState;
     UnitStateFactory stateFactory;
-    UnitCommander commander;
 
     void Awake() {
-      commander = GetComponent<UnitCommander>();
+      Actions = CreateActions();
       GatherBonuses = new Dictionary<GemstoneType, int>();
       foreach (GemstoneType type in Enum.GetValues(typeof(GemstoneType))) {
         GatherBonuses[type] = 1;
@@ -70,6 +59,18 @@ namespace bts {
       Selected = transform.Find("Selected").gameObject;
       stateFactory = new UnitStateFactory(context: this);
       SwitchState(stateFactory.Idle);
+    }
+
+    List<UICommand> CreateActions() {
+      List<UICommand> commands = new List<UICommand>();
+      UnitCommander commander = GetComponent<UnitCommander>();
+      foreach (BuildUICommandData data in buildCommandsData) {
+        commands.Add(new BuildUICommand(data, commander));
+      }
+
+      commands.Add(new CancelBuildUICommand(cancelBuildCommandData, commander));
+
+      return commands;
     }
 
     public void SwitchState(UnitBaseState newState) {
