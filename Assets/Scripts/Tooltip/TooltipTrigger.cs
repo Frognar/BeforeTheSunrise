@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 
 namespace bts {
   public class TooltipTrigger : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
-    TooltipSystem tooltipSystem;
+    [SerializeField] TooltipSystem tooltipSystem;
     [SerializeField] TooltipData tooltipData;
     Coroutine showTooltipCoroutine;
     bool entered;
@@ -15,10 +15,6 @@ namespace bts {
 
     public void SetUp(TooltipData data) {
       tooltipData = data;
-    }
-
-    void Awake() {
-      tooltipSystem = FindObjectOfType<TooltipSystem>();
     }
 
     public void OnPointerEnter(PointerEventData eventData) {

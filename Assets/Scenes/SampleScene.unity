@@ -278,6 +278,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44882f8bc9aab0a4eaeaf31199d4e0d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tooltipSystem: {fileID: 11400000, guid: 105e6340e25fdb64ead13951031361a1, type: 2}
   headerField: {fileID: 2012840614}
   contentField: {fileID: 347975620}
   gemstonesRect: {fileID: 645130398}
@@ -423,6 +424,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5979119720794637621, guid: 52eae44a91592ce4b898c27440b0ba59,
+        type: 3}
+      propertyPath: tooltipSystem
+      value: 
+      objectReference: {fileID: 11400000, guid: 105e6340e25fdb64ead13951031361a1,
+        type: 2}
     - target: {fileID: 5979119720794637627, guid: 52eae44a91592ce4b898c27440b0ba59,
         type: 3}
       propertyPath: m_Name
@@ -1148,6 +1155,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5979119720794637621, guid: 52eae44a91592ce4b898c27440b0ba59,
+        type: 3}
+      propertyPath: tooltipSystem
+      value: 
+      objectReference: {fileID: 11400000, guid: 105e6340e25fdb64ead13951031361a1,
+        type: 2}
     - target: {fileID: 5979119720794637627, guid: 52eae44a91592ce4b898c27440b0ba59,
         type: 3}
       propertyPath: m_Name
@@ -1420,6 +1433,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5979119720794637621, guid: 52eae44a91592ce4b898c27440b0ba59,
+        type: 3}
+      propertyPath: tooltipSystem
+      value: 
+      objectReference: {fileID: 11400000, guid: 105e6340e25fdb64ead13951031361a1,
+        type: 2}
     - target: {fileID: 5979119720794637627, guid: 52eae44a91592ce4b898c27440b0ba59,
         type: 3}
       propertyPath: m_Name
@@ -2221,6 +2240,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5979119720794637621, guid: 52eae44a91592ce4b898c27440b0ba59,
+        type: 3}
+      propertyPath: tooltipSystem
+      value: 
+      objectReference: {fileID: 11400000, guid: 105e6340e25fdb64ead13951031361a1,
+        type: 2}
     - target: {fileID: 5979119720794637627, guid: 52eae44a91592ce4b898c27440b0ba59,
         type: 3}
       propertyPath: m_Name
@@ -2317,6 +2342,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 573b260344d28674cab123c822270751, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tooltipSystem: {fileID: 11400000, guid: 105e6340e25fdb64ead13951031361a1, type: 2}
   tooltipData:
     <Header>k__BackingField: 
     <Content>k__BackingField: Rubby
@@ -2981,6 +3007,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 573b260344d28674cab123c822270751, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tooltipSystem: {fileID: 11400000, guid: 105e6340e25fdb64ead13951031361a1, type: 2}
   tooltipData:
     <Header>k__BackingField: Day/Night Time
     <Content>k__BackingField: Time to end of current day time
@@ -3185,6 +3212,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5979119720794637621, guid: 52eae44a91592ce4b898c27440b0ba59,
+        type: 3}
+      propertyPath: tooltipSystem
+      value: 
+      objectReference: {fileID: 11400000, guid: 105e6340e25fdb64ead13951031361a1,
+        type: 2}
     - target: {fileID: 5979119720794637627, guid: 52eae44a91592ce4b898c27440b0ba59,
         type: 3}
       propertyPath: m_Name
@@ -3304,6 +3337,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5979119720794637621, guid: 52eae44a91592ce4b898c27440b0ba59,
+        type: 3}
+      propertyPath: tooltipSystem
+      value: 
+      objectReference: {fileID: 11400000, guid: 105e6340e25fdb64ead13951031361a1,
+        type: 2}
     - target: {fileID: 5979119720794637627, guid: 52eae44a91592ce4b898c27440b0ba59,
         type: 3}
       propertyPath: m_Name
@@ -3558,6 +3597,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5979119720794637621, guid: 52eae44a91592ce4b898c27440b0ba59,
+        type: 3}
+      propertyPath: tooltipSystem
+      value: 
+      objectReference: {fileID: 11400000, guid: 105e6340e25fdb64ead13951031361a1,
+        type: 2}
     - target: {fileID: 5979119720794637627, guid: 52eae44a91592ce4b898c27440b0ba59,
         type: 3}
       propertyPath: m_Name
@@ -4038,6 +4083,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5979119720794637621, guid: 52eae44a91592ce4b898c27440b0ba59,
+        type: 3}
+      propertyPath: tooltipSystem
+      value: 
+      objectReference: {fileID: 11400000, guid: 105e6340e25fdb64ead13951031361a1,
+        type: 2}
     - target: {fileID: 5979119720794637627, guid: 52eae44a91592ce4b898c27440b0ba59,
         type: 3}
       propertyPath: m_Name
@@ -4427,6 +4478,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5979119720794637621, guid: 52eae44a91592ce4b898c27440b0ba59,
+        type: 3}
+      propertyPath: tooltipSystem
+      value: 
+      objectReference: {fileID: 11400000, guid: 105e6340e25fdb64ead13951031361a1,
+        type: 2}
     - target: {fileID: 5979119720794637627, guid: 52eae44a91592ce4b898c27440b0ba59,
         type: 3}
       propertyPath: m_Name
@@ -5014,7 +5071,6 @@ GameObject:
   - component: {fileID: 1571798183}
   - component: {fileID: 1571798182}
   - component: {fileID: 1571798181}
-  - component: {fileID: 1571798184}
   m_Layer: 5
   m_Name: Tooltip Canvas
   m_TagString: Untagged
@@ -5087,19 +5143,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1571798184
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1571798179}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a2f1b27da779bd4e92b05dda8f5598b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tooltip: {fileID: 37754740}
 --- !u!1 &1581894249
 GameObject:
   m_ObjectHideFlags: 0
@@ -5392,6 +5435,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 573b260344d28674cab123c822270751, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tooltipSystem: {fileID: 11400000, guid: 105e6340e25fdb64ead13951031361a1, type: 2}
   tooltipData:
     <Header>k__BackingField: 
     <Content>k__BackingField: Emerald
@@ -5533,6 +5577,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5979119720794637621, guid: 52eae44a91592ce4b898c27440b0ba59,
+        type: 3}
+      propertyPath: tooltipSystem
+      value: 
+      objectReference: {fileID: 11400000, guid: 105e6340e25fdb64ead13951031361a1,
+        type: 2}
     - target: {fileID: 5979119720794637627, guid: 52eae44a91592ce4b898c27440b0ba59,
         type: 3}
       propertyPath: m_Name
@@ -5670,6 +5720,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5979119720794637621, guid: 52eae44a91592ce4b898c27440b0ba59,
+        type: 3}
+      propertyPath: tooltipSystem
+      value: 
+      objectReference: {fileID: 11400000, guid: 105e6340e25fdb64ead13951031361a1,
+        type: 2}
     - target: {fileID: 5979119720794637627, guid: 52eae44a91592ce4b898c27440b0ba59,
         type: 3}
       propertyPath: m_Name
@@ -5772,6 +5828,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 573b260344d28674cab123c822270751, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tooltipSystem: {fileID: 11400000, guid: 105e6340e25fdb64ead13951031361a1, type: 2}
   tooltipData:
     <Header>k__BackingField: 
     <Content>k__BackingField: Amethyst
@@ -6160,6 +6217,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 573b260344d28674cab123c822270751, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tooltipSystem: {fileID: 11400000, guid: 105e6340e25fdb64ead13951031361a1, type: 2}
   tooltipData:
     <Header>k__BackingField: 
     <Content>k__BackingField: Topaz
@@ -6430,6 +6488,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 573b260344d28674cab123c822270751, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tooltipSystem: {fileID: 11400000, guid: 105e6340e25fdb64ead13951031361a1, type: 2}
   tooltipData:
     <Header>k__BackingField: 
     <Content>k__BackingField: Sapphire
@@ -7168,6 +7227,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5979119720794637621, guid: 52eae44a91592ce4b898c27440b0ba59,
+        type: 3}
+      propertyPath: tooltipSystem
+      value: 
+      objectReference: {fileID: 11400000, guid: 105e6340e25fdb64ead13951031361a1,
+        type: 2}
     - target: {fileID: 5979119720794637627, guid: 52eae44a91592ce4b898c27440b0ba59,
         type: 3}
       propertyPath: m_Name

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 namespace bts {
   public class Tooltip : MonoBehaviour {
+    [SerializeField] TooltipSystem tooltipSystem;
     [SerializeField] TMP_Text headerField;
     [SerializeField] TMP_Text contentField;
     [SerializeField] RectTransform gemstonesRect;
@@ -26,6 +27,7 @@ namespace bts {
     void Awake() {
       rectTransform = GetComponent<RectTransform>();
       playerInputs = FindObjectOfType<PlayerInputs>();
+      tooltipSystem.Tooltip = this;
       gameObject.SetActive(false);
     }
 

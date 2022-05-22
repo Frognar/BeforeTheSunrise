@@ -1,16 +1,21 @@
 using UnityEngine;
 
 namespace bts {
-  public class TooltipSystem : MonoBehaviour {
-    [SerializeField] Tooltip tooltip;
+  [CreateAssetMenu(fileName = "TooltipSystem", menuName = "TooltipSystem")]
+  public class TooltipSystem : ScriptableObject {
+    public Tooltip Tooltip { get; set; }
 
     public void Show(TooltipData data) {
-      tooltip.SetTooltip(data);
-      tooltip.gameObject.SetActive(true);
+      if (Tooltip != null) {
+        Tooltip.SetTooltip(data);
+        Tooltip.gameObject.SetActive(true);
+      }        
     }
 
     public void Hide() {
-      tooltip.gameObject.SetActive(false);
+      if (Tooltip != null) {
+        Tooltip.gameObject.SetActive(false);
+      }
     }
   }
 }
