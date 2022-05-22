@@ -120,7 +120,7 @@ PrefabInstance:
     - target: {fileID: 8096196835972089138, guid: 988387a355fafe249927d0aaf33627e6,
         type: 3}
       propertyPath: <GemstoneType>k__BackingField
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8431993066421182533, guid: 988387a355fafe249927d0aaf33627e6,
         type: 3}
