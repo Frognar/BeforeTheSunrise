@@ -4,6 +4,8 @@ using UnityEngine;
 
 namespace bts {
   public class CameraController : MonoBehaviour {
+    const int pixelsFromScreenEdge = 1;
+
     [SerializeField] SelectablesEventChannel selectablesEventChannel;
     [SerializeField][Range(1f, 5f)] float movementSpeed;
     [SerializeField][Range(1f, 5f)] float movementTime;
@@ -53,17 +55,17 @@ namespace bts {
     void HandleMovement() {
       if (!playerInputs.IsCameraRotationEnable) {
         Vector2 screenPosition = playerInputs.ScreenPosition;
-        if (screenPosition.x >= Screen.width * .95f) {
+        if (screenPosition.x >= Screen.width - pixelsFromScreenEdge) {
           newPosition += transform.right * movementSpeed;
         }
-        else if (screenPosition.x <= Screen.width * .05f) {
+        else if (screenPosition.x <= pixelsFromScreenEdge) {
           newPosition += transform.right * -movementSpeed;
         }
 
-        if (screenPosition.y >= Screen.height * .95f) {
+        if (screenPosition.y >= Screen.height - pixelsFromScreenEdge) {
           newPosition += transform.forward * movementSpeed;
         }
-        else if (screenPosition.y <= Screen.height * .05f) {
+        else if (screenPosition.y <= pixelsFromScreenEdge) {
           newPosition += transform.forward * -movementSpeed;
         }
 
