@@ -8,7 +8,7 @@ namespace bts {
 
     void Awake() {
       commands = new Queue<Command>();
-      unit = FindObjectOfType<Unit>();
+      unit = GetComponent<Unit>();
     }
 
     public void AddCommand(Command command) {

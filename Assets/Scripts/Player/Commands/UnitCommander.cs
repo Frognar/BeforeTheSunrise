@@ -11,8 +11,8 @@ namespace bts {
     PlacedObjectTypeSO buildingToPlace;
 
     void Awake() {
-      unit = FindObjectOfType<Unit>();
-      invoker = FindObjectOfType<UnitCommandInvoker>();
+      unit = GetComponent<Unit>();
+      invoker = GetComponent<UnitCommandInvoker>();
       playerInputs = FindObjectOfType<PlayerInputs>();
       currentGhost.gameObject.SetActive(false);
     }
