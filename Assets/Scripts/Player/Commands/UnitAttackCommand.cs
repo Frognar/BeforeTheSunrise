@@ -2,10 +2,10 @@
 
 namespace bts {
   public class UnitAttackCommand : Command {
-    UnitStateManager Unit { get; }
+    Unit Unit { get; }
     Damageable Target { get; }
 
-    public UnitAttackCommand(UnitStateManager unit, Damageable target) {
+    public UnitAttackCommand(Unit unit, Damageable target) {
       Unit = unit;
       Target = target;
     }

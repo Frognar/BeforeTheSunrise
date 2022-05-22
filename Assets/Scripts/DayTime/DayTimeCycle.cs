@@ -2,32 +2,25 @@ using System;
 using UnityEngine;
 
 namespace bts {
-  public class DayNightStateManager : MonoBehaviour {
+  public class DayTimeCycle : MonoBehaviour {
     [field: SerializeField] public VoidEventChannel DayStarted { get; private set; }
     [field: SerializeField] public VoidEventChannel NightStarted { get; private set; }
     [field: SerializeField] public int DayDuration { get; private set; } = 80;
     [field: SerializeField] public int NightDuration { get; private set; } = 120;
     [field: SerializeField] public IntAsset ReamaningTime { get; private set; }
     [SerializeField] VoidEventChannel onSecond;
-
-    public DayNightBaseState CurrentState { get; private set; }
-    DayNightStateFactory stateFactory;
+    StateMachine<DayTimeCycle> stateMachine;
 
     void Awake() {
-      stateFactory = new DayNightStateFactory(context: this);
+      stateMachine = new DayTimeStateMachine(this);
     }
 
     void Start() {
-      SwitchState(stateFactory.Day);
-    }
-
-    public void SwitchState(DayNightBaseState state) {
-      CurrentState = state;
-      CurrentState.EnterState();
+      stateMachine.Start();
     }
 
     void UpdateCycle(object sender, EventArgs e) {
-      CurrentState.UpdateState();
+      stateMachine.Update();
     }
 
     void OnEnable() {

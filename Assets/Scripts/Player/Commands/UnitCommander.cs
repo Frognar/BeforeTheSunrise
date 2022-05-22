@@ -5,13 +5,13 @@ namespace bts {
     [SerializeField] BoolAsset canBuild;
     [SerializeField] BoolAsset inBuildMode;
     [SerializeField] GhostObject currentGhost;
-    UnitStateManager unit;
+    Unit unit;
     UnitCommandInvoker invoker;
     PlayerInputs playerInputs;
     PlacedObjectTypeSO buildingToPlace;
 
     void Awake() {
-      unit = FindObjectOfType<UnitStateManager>();
+      unit = FindObjectOfType<Unit>();
       invoker = FindObjectOfType<UnitCommandInvoker>();
       playerInputs = FindObjectOfType<PlayerInputs>();
       currentGhost.gameObject.SetActive(false);

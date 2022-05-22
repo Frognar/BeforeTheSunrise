@@ -1,11 +1,11 @@
 ﻿namespace bts {
   public class UnitIdleState : UnitBaseState {
-    public UnitIdleState(UnitStateManager context, UnitStateFactory factory)
-      : base(context, factory) {
+    public UnitIdleState(StateMachine<Unit> stateMachine, StateFactory<Unit> factory)
+      : base(stateMachine, factory) {
     }
 
     public override void EnterState() {
-      Context.IsIdle = true;
+      StateMachine.Context.IsIdle = true;
     }
 
     public override void UpdateState() {
@@ -15,7 +15,7 @@
     }
 
     public override void ExitState() {
-      Context.IsIdle = false;
+      StateMachine.Context.IsIdle = false;
     }
   }
 }

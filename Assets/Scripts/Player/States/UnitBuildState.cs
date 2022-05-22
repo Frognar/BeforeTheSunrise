@@ -2,18 +2,18 @@
 
 namespace bts {
   public class UnitBuildState : UnitBaseState {
-    bool InBuildRange => Vector3.Distance(Context.CurrentPosition, Context.Destination) <= Context.BuildRange;
+    bool InBuildRange => Vector3.Distance(StateMachine.Context.CurrentPosition, StateMachine.Context.Destination) <= StateMachine.Context.BuildRange;
     float prevStopDistance;
 
-    public UnitBuildState(UnitStateManager context, UnitStateFactory factory)
-      : base(context, factory) {
+    public UnitBuildState(StateMachine<Unit> stateMachine, StateFactory<Unit> factory)
+      : base(stateMachine, factory) {
     }
 
     public override void EnterState() {
-      prevStopDistance = Context.AiPath.endReachedDistance;
-      Context.AiPath.endReachedDistance = Context.AttackRange - 2f;
-      Context.IsOrderedToBuild = false;
-      Context.AiPath.destination = Context.Destination;
+      prevStopDistance = StateMachine.Context.AiPath.endReachedDistance;
+      StateMachine.Context.AiPath.endReachedDistance = StateMachine.Context.AttackRange - 2f;
+      StateMachine.Context.IsOrderedToBuild = false;
+      StateMachine.Context.AiPath.destination = StateMachine.Context.Destination;
     }
 
     public override void UpdateState() {
@@ -22,19 +22,19 @@ namespace bts {
       }
 
       if (InBuildRange) {
-        if (Context.GemstoneStorage.CanAfford((Context.BuildingToPlace.customData as CustomBuildingData).buildingCosts)) {
-          Context.GemstoneStorage.Discard((Context.BuildingToPlace.customData as CustomBuildingData).buildingCosts);
-          Context.GridBuildingSystem.Build(Context.Destination, Context.BuildingToPlace);
+        if (StateMachine.Context.GemstoneStorage.CanAfford((StateMachine.Context.BuildingToPlace.customData as CustomBuildingData).buildingCosts)) {
+          StateMachine.Context.GemstoneStorage.Discard((StateMachine.Context.BuildingToPlace.customData as CustomBuildingData).buildingCosts);
+          StateMachine.Context.GridBuildingSystem.Build(StateMachine.Context.Destination, StateMachine.Context.BuildingToPlace);
         }
-          
-        Context.BuildingToPlace = null;
-        SwitchState(StateFactory.Idle);
+
+        StateMachine.Context.BuildingToPlace = null;
+        StateMachine.SwitchState(Factory.GetState(nameof(UnitIdleState)));
       }
     }
 
     public override void ExitState() {
-      Context.AiPath.destination = Context.CurrentPosition;
-      Context.AiPath.endReachedDistance = prevStopDistance;
+      StateMachine.Context.AiPath.destination = StateMachine.Context.CurrentPosition;
+      StateMachine.Context.AiPath.endReachedDistance = prevStopDistance;
     }
   }
 }

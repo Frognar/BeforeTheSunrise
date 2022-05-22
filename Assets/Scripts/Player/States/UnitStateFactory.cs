@@ -1,19 +1,19 @@
-﻿namespace bts {
-  public class UnitStateFactory {
-    UnitStateManager Context { get; }
-    public UnitBaseState Idle { get; }
-    public UnitBaseState Move { get; }
-    public UnitBaseState Attack { get; }
-    public UnitBaseState Build { get; }
-    public UnitBaseState Gather { get; }
+﻿using System.Collections.Generic;
 
-    public UnitStateFactory(UnitStateManager context) {
-      Context = context;
-      Idle = new UnitIdleState(Context, factory: this);
-      Move = new UnitMoveState(Context, factory: this);
-      Attack = new UnitAttackState(Context, factory: this);
-      Build = new UnitBuildState(Context, factory: this);
-      Gather = new UnitGatherState(Context, factory: this);
+namespace bts {
+  public class UnitStateFactory : StateFactory<Unit> {
+    public UnitStateFactory(StateMachine<Unit> stateMachine)
+      : base(stateMachine) {
+    }
+
+    protected override Dictionary<string, State<Unit>> CreateStates() {
+      return new Dictionary<string, State<Unit>> {
+        { nameof(UnitIdleState), new UnitIdleState(StateMachine, factory: this) },
+        { nameof(UnitMoveState), new UnitMoveState(StateMachine, factory: this) },
+        { nameof(UnitAttackState), new UnitAttackState(StateMachine, factory: this) },
+        { nameof(UnitBuildState), new UnitBuildState(StateMachine, factory: this) },
+        { nameof(UnitGatherState), new UnitGatherState(StateMachine, factory: this) },
+      };
     }
   }
 }

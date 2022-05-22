@@ -4,13 +4,11 @@
     float CurrentEnergy { get; }
     float NormalizedEnergy => CurrentEnergy / MaxEnergy;
     bool IsFull => CurrentEnergy == MaxEnergy;
-    
-    bool CanAfford(float energy) {
-      return CurrentEnergy >= energy;
-    }
 
-    void Use(float energy);
+    bool CanAfford(float energy);
 
-    void Store(float energy);
+    void UseEnergy(float energy);
+
+    void StoreEnergy(float energy);
   }
 }

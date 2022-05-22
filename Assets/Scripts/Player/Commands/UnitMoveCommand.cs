@@ -2,10 +2,10 @@
 
 namespace bts {
   public class UnitMoveCommand : Command {
-    UnitStateManager Unit { get; }
+    Unit Unit { get; }
     Vector3 Destination { get; }
 
-    public UnitMoveCommand(UnitStateManager unit, Vector3 destination) {
+    public UnitMoveCommand(Unit unit, Vector3 destination) {
       Unit = unit;
       Destination = destination;
     }

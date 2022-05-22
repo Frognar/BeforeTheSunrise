@@ -4,7 +4,7 @@ using Pathfinding;
 using UnityEngine;
 
 namespace bts {
-  public class UnitStateManager : MonoBehaviour, Selectable {
+  public class Unit : MonoBehaviour, Selectable {
     public string Name => "Unit";
     public Transform Transform => transform;
     public Affiliation ObjectAffiliation => Affiliation.Player;
@@ -43,9 +43,7 @@ namespace bts {
     public float AttackRange => 4f;
     public bool IsOrderedToAttack { get; set; }
     public Damageable Target { get; set; }
-
-    UnitBaseState currentState;
-    UnitStateFactory stateFactory;
+    StateMachine<Unit> stateMachine;
 
     void Awake() {
       UICommands = CreateActions();
@@ -58,8 +56,7 @@ namespace bts {
       AiPath = GetComponent<AIPath>();
       AIDestinationSetter = GetComponent<AIDestinationSetter>();
       Selected = transform.Find("Selected").gameObject;
-      stateFactory = new UnitStateFactory(context: this);
-      SwitchState(stateFactory.Idle);
+      stateMachine = new UnitStateMachine(this);
     }
 
     List<UICommand> CreateActions() {
@@ -74,13 +71,12 @@ namespace bts {
       return commands;
     }
 
-    public void SwitchState(UnitBaseState newState) {
-      currentState = newState;
-      currentState.EnterState();
+    void Start() {
+      stateMachine.Start();
     }
 
     void Update() {
-      currentState.UpdateState();
+      stateMachine.Update();
     }
 
     public void Select() {

@@ -1,9 +1,9 @@
 ﻿namespace bts {
   public class UnitGatherCommand : Command { 
-    UnitStateManager Unit { get; }
+    Unit Unit { get; }
     Gemstone Gemstone { get; }
 
-    public UnitGatherCommand(UnitStateManager unit, Gemstone gemstone) {
+    public UnitGatherCommand(Unit unit, Gemstone gemstone) {
       Unit = unit;
       Gemstone = gemstone;
     }

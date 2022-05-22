@@ -4924,9 +4924,9 @@ MonoBehaviour:
     type: 2}
   <DayDuration>k__BackingField: 80
   <NightDuration>k__BackingField: 120
-  onSecond: {fileID: 11400000, guid: 4bfb9538683542844bd5c8ca8f4a49a1, type: 2}
   <ReamaningTime>k__BackingField: {fileID: 11400000, guid: ccdb2d00415999947b705cea804652d6,
     type: 2}
+  onSecond: {fileID: 11400000, guid: 4bfb9538683542844bd5c8ca8f4a49a1, type: 2}
 --- !u!1 &1559340354
 GameObject:
   m_ObjectHideFlags: 0

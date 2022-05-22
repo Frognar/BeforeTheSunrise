@@ -58,7 +58,7 @@ namespace bts {
             offset++;
           }
           else {
-            devices[i].Store(energyPerDevice);
+            devices[i].StoreEnergy(energyPerDevice);
           }
         }
       }

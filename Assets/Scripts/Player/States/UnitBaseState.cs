@@ -1,57 +1,45 @@
 ﻿namespace bts {
-  public abstract class UnitBaseState {
-    protected UnitStateManager Context { get; private set; }
-    protected UnitStateFactory StateFactory { get; private set; }
-    public UnitBaseState(UnitStateManager context, UnitStateFactory factory) {
-      Context = context;
-      StateFactory = factory;
+  public abstract class UnitBaseState : State<Unit> {
+    protected UnitBaseState(StateMachine<Unit> stateMachine, StateFactory<Unit> factory)
+      : base(stateMachine, factory) {
     }
 
-    public virtual void EnterState() { }
-
-    public virtual void UpdateState() { }
-
-    public virtual void ExitState() { }
-
-    protected void SwitchState(UnitBaseState newState) {
-      ExitState();
-      Context.SwitchState(newState);
-    }
+    public override void ExitState() { }
 
     protected bool CheckSwitchState() {
-      if (Context.IsOrderedToMove) {
+      if (StateMachine.Context.IsOrderedToMove) {
         ClearOrders();
-        Context.Target = null;
-        Context.AIDestinationSetter.target = null;
-        Context.BuildingToPlace = null;
-        Context.TargerGemstone = null;
-        SwitchState(StateFactory.Move);
+        StateMachine.Context.Target = null;
+        StateMachine.Context.AIDestinationSetter.target = null;
+        StateMachine.Context.BuildingToPlace = null;
+        StateMachine.Context.TargerGemstone = null;
+        StateMachine.SwitchState(Factory.GetState(nameof(UnitMoveState)));
         return true;
       }
       
-      if (Context.IsOrderedToBuild) {
+      if (StateMachine.Context.IsOrderedToBuild) {
         ClearOrders();
-        Context.Target = null;
-        Context.AIDestinationSetter.target = null;
-        Context.TargerGemstone = null;
-        SwitchState(StateFactory.Build);
+        StateMachine.Context.Target = null;
+        StateMachine.Context.AIDestinationSetter.target = null;
+        StateMachine.Context.TargerGemstone = null;
+        StateMachine.SwitchState(Factory.GetState(nameof(UnitBuildState)));
         return true;
       }
 
-      if (Context.IsOrderedToAttack) {
+      if (StateMachine.Context.IsOrderedToAttack) {
         ClearOrders();
-        Context.BuildingToPlace = null;
-        Context.TargerGemstone = null;
-        SwitchState(StateFactory.Attack);
+        StateMachine.Context.BuildingToPlace = null;
+        StateMachine.Context.TargerGemstone = null;
+        StateMachine.SwitchState(Factory.GetState(nameof(UnitAttackState)));
         return true;
       }
 
-      if (Context.IsOrderedToGather) {
+      if (StateMachine.Context.IsOrderedToGather) {
         ClearOrders();
-        Context.Target = null;
-        Context.AIDestinationSetter.target = null;
-        Context.BuildingToPlace = null;
-        SwitchState(StateFactory.Gather);
+        StateMachine.Context.Target = null;
+        StateMachine.Context.AIDestinationSetter.target = null;
+        StateMachine.Context.BuildingToPlace = null;
+        StateMachine.SwitchState(Factory.GetState(nameof(UnitGatherState)));
         return true;
       }
 
@@ -59,10 +47,10 @@
     }
 
     void ClearOrders() {
-      Context.IsOrderedToMove = false;
-      Context.IsOrderedToAttack = false;
-      Context.IsOrderedToBuild = false;
-      Context.IsOrderedToGather = false;
+      StateMachine.Context.IsOrderedToMove = false;
+      StateMachine.Context.IsOrderedToAttack = false;
+      StateMachine.Context.IsOrderedToBuild = false;
+      StateMachine.Context.IsOrderedToGather = false;
     }
   }
 }

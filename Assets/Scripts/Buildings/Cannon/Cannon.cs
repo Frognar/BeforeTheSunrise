@@ -13,22 +13,21 @@ namespace bts {
     public bool IsOrderedToAttack { get; set; }
 
     public Damageable Target { get; set; }
-
-    CannonStateFactory stateFactory;
-    public CannonBaseState CurrentState { get; private set; }
     public bool IsSelected { get; private set; }
     public bool IsIdle { get; set; }
     
     [SerializeField] GameObject rangeVisuals;
     bool DataLoaded => data != null;
 
+    StateMachine<Cannon> stateMachine;
+
     protected override void Start() {
       base.Start();
       data = buildingData as CannonData;
       rangeVisuals.transform.localScale = new Vector3(Range * 2, Range * 2, 1f);
       rangeVisuals.SetActive(false);
-      stateFactory = new CannonStateFactory(context: this);
-      SwitchState(stateFactory.Idle);
+      stateMachine = new CannonStateMachine(this);
+      stateMachine.Start();
     }
 
     public override void Select() {
@@ -43,23 +42,22 @@ namespace bts {
       IsSelected = false;
     }
 
-    public void SwitchState(CannonBaseState state) {
-      CurrentState = state;
-      CurrentState.EnterState();
-    }
-
     void Update() {
-      CurrentState.UpdateState();
+      stateMachine.Update();
     }
 
-    public void Use(float energy) {
+    public bool CanAfford(float energy) {
+      return CurrentEnergy >= energy;
+    }
+
+    public void UseEnergy(float energy) {
       CurrentEnergy -= energy;
       if (CurrentEnergy < 0) {
         CurrentEnergy = 0;
       }
     }
 
-    public void Store(float energy) {
+    public void StoreEnergy(float energy) {
       CurrentEnergy += energy;
       if (CurrentEnergy > MaxEnergy) {
         CurrentEnergy = MaxEnergy;

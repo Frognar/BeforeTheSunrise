@@ -2,11 +2,11 @@
 
 namespace bts {
   public class UnitBuildCommand : Command {
-    UnitStateManager Unit { get; }
+    Unit Unit { get; }
     PlacedObjectTypeSO BuildingType { get; }
     Vector3 PositionToBuild { get; }
 
-    public UnitBuildCommand(UnitStateManager unit, PlacedObjectTypeSO buildingType, Vector3 positionToBuild) {
+    public UnitBuildCommand(Unit unit, PlacedObjectTypeSO buildingType, Vector3 positionToBuild) {
       Unit = unit;
       BuildingType = buildingType;
       PositionToBuild = positionToBuild;

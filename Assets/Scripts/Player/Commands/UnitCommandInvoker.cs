@@ -4,11 +4,11 @@ using UnityEngine;
 namespace bts {
   public class UnitCommandInvoker : MonoBehaviour {
     Queue<Command> commands;
-    UnitStateManager unit;
+    Unit unit;
 
     void Awake() {
       commands = new Queue<Command>();
-      unit = FindObjectOfType<UnitStateManager>();
+      unit = FindObjectOfType<Unit>();
     }
 
     public void AddCommand(Command command) {

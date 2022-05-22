@@ -3,19 +3,19 @@
 namespace bts {
   public class UnitGatherState : UnitBaseState {
     float lastGatherTime;
-    bool IsTimeToGather => lastGatherTime + Context.TimeBetweenGathers <= Time.time;
-    bool InGatherRange => Vector3.Distance(Context.CurrentPosition, Context.TargerGemstone.Center.position) <= Context.GatherRange;
+    bool IsTimeToGather => lastGatherTime + StateMachine.Context.TimeBetweenGathers <= Time.time;
+    bool InGatherRange => Vector3.Distance(StateMachine.Context.CurrentPosition, StateMachine.Context.TargerGemstone.Center.position) <= StateMachine.Context.GatherRange;
     float prevStopDistance;
 
-    public UnitGatherState(UnitStateManager context, UnitStateFactory factory)
-      : base(context, factory) {
+    public UnitGatherState(StateMachine<Unit> stateMachine, StateFactory<Unit> factory)
+      : base(stateMachine, factory) {
     }
 
     public override void EnterState() {
-      prevStopDistance = Context.AiPath.endReachedDistance;
-      Context.AiPath.endReachedDistance = Context.GatherRange - 2f;
-      Context.IsOrderedToGather = false;
-      Context.AiPath.destination = Context.TargerGemstone.Center.position;
+      prevStopDistance = StateMachine.Context.AiPath.endReachedDistance;
+      StateMachine.Context.AiPath.endReachedDistance = StateMachine.Context.GatherRange - 2f;
+      StateMachine.Context.IsOrderedToGather = false;
+      StateMachine.Context.AiPath.destination = StateMachine.Context.TargerGemstone.Center.position;
     }
 
     public override void UpdateState() {
@@ -26,14 +26,14 @@ namespace bts {
       if (InGatherRange) {
         if (IsTimeToGather) {
           lastGatherTime = Time.time;
-          GemstoneType type = Context.TargerGemstone.GemstoneType;
-          Context.GemstoneStorage.Store(type, Context.TargerGemstone.BaseGatherAmount + Context.GatherBonuses[type]);
+          GemstoneType type = StateMachine.Context.TargerGemstone.GemstoneType;
+          StateMachine.Context.GemstoneStorage.Store(type, StateMachine.Context.TargerGemstone.BaseGatherAmount + StateMachine.Context.GatherBonuses[type]);
         }
       }
     }
 
     public override void ExitState() {
-      Context.AiPath.endReachedDistance = prevStopDistance;
+      StateMachine.Context.AiPath.endReachedDistance = prevStopDistance;
     }
   }
 }
