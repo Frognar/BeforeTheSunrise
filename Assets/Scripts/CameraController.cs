@@ -21,6 +21,7 @@ namespace bts {
     Vector3 newZoom;
     Transform cameraTransform;
     Selectable focus;
+    bool isFocused;
     Vector2 positionLimitX;
     Vector2 positionLimitZ;
 
@@ -45,7 +46,13 @@ namespace bts {
     }
 
     void SelectionChanged(object sender, List<Selectable> selected) {
-      focus = (selected.Count > 0) ? selected.First() : null;
+      if (selected.Count > 0) {
+        focus = selected.First();
+      }
+      else {
+        focus = null;
+        isFocused = false;
+      }
     }
 
     void Start() {
@@ -56,6 +63,12 @@ namespace bts {
 
     void Update() {
       HandleMovement(inputReader.ScreenPosition);
+      if (isFocused) {
+        Vector3 selectedPosition = focus.Transform.position;
+        newPosition.x = selectedPosition.x;
+        newPosition.z = selectedPosition.z;
+      }
+
       newPosition.x = Mathf.Clamp(newPosition.x, positionLimitX.x, positionLimitX.y);
       newPosition.z = Mathf.Clamp(newPosition.z, positionLimitZ.x, positionLimitZ.y);
       transform.SetPositionAndRotation(
@@ -69,16 +82,20 @@ namespace bts {
       if (!inputReader.IsCameraRotationEnable) {
         if (screenPosition.x >= Screen.width - pixelsFromScreenEdge) {
           newPosition += transform.right * movementSpeed;
+          isFocused = false;
         }
         else if (screenPosition.x <= pixelsFromScreenEdge) {
           newPosition += transform.right * -movementSpeed;
+          isFocused = false;
         }
 
         if (screenPosition.y >= Screen.height - pixelsFromScreenEdge) {
           newPosition += transform.forward * movementSpeed;
+          isFocused = false;
         }
         else if (screenPosition.y <= pixelsFromScreenEdge) {
           newPosition += transform.forward * -movementSpeed;
+          isFocused = false;
         }
       }
     }
@@ -107,9 +124,7 @@ namespace bts {
 
     void HandleFocus() {
       if (focus != null) {
-        Vector3 selectedPosition = focus.Transform.position;
-        newPosition.x = selectedPosition.x;
-        newPosition.z = selectedPosition.z;
+        isFocused = true;
       }
     }
   }
