@@ -2,6 +2,7 @@ using UnityEngine;
 
 namespace bts {
   public class GhostObject : MonoBehaviour {
+    [SerializeField] InputReader inputReader;
     [SerializeField] BoolAsset canBuild;
     [SerializeField] Material canPlaceMaterial;
     [SerializeField] Material cantPlaceMaterial;
@@ -10,11 +11,23 @@ namespace bts {
     [SerializeField] Transform rangeVisuals;
     [SerializeField] BoxCollider boxCollider;
     GridXZ<GridBuildingSystem.GridObject> grid;
-    PlayerInputs playerInputs;
     bool lastCanBuild;
 
-    void Awake() {
-      playerInputs = FindObjectOfType<PlayerInputs>();
+    void OnEnable() {
+      inputReader.WorldPositionEvent += UpdatePosition;
+    }
+
+    void OnDisable() {
+      inputReader.WorldPositionEvent -= UpdatePosition;
+    }
+
+    void UpdatePosition(Vector3 worldPosition) {
+      Vector3Int cords = grid.GetCords(worldPosition);
+      transform.position = grid.GetWorldPosition(cords);
+      if (lastCanBuild != canBuild) {
+        lastCanBuild = canBuild;
+        meshRenderer.material = canBuild ? canPlaceMaterial : cantPlaceMaterial;
+      }
     }
 
     public void SetUp(PlacedObjectTypeSO buildingType) {
@@ -38,15 +51,6 @@ namespace bts {
 
     void Start() {
       grid = FindObjectOfType<GridBuildingSystem>().Grid;
-    }
-
-    void Update() {
-      Vector3Int cords = grid.GetCords(playerInputs.WorldPosition);
-      transform.position = grid.GetWorldPosition(cords);
-      if (lastCanBuild != canBuild) {
-        lastCanBuild = canBuild;
-        meshRenderer.material = canBuild ? canPlaceMaterial : cantPlaceMaterial;
-      }
     }
 
     void OnTriggerStay(Collider other) {

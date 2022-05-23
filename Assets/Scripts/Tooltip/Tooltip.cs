@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 namespace bts {
   public class Tooltip : MonoBehaviour {
+    [SerializeField] InputReader inputReader;
     [SerializeField] TooltipSystem tooltipSystem;
     [SerializeField] TMP_Text headerField;
     [SerializeField] TMP_Text contentField;
@@ -21,12 +22,10 @@ namespace bts {
     [SerializeField] TMP_Text topazField;
     [SerializeField] LayoutElement layoutElement;
     [SerializeField] int characterWrapLimit;
-    PlayerInputs playerInputs;
     RectTransform rectTransform;
 
     void Awake() {
       rectTransform = GetComponent<RectTransform>();
-      playerInputs = FindObjectOfType<PlayerInputs>();
       tooltipSystem.Tooltip = this;
       gameObject.SetActive(false);
     }
@@ -80,11 +79,16 @@ namespace bts {
       layoutElement.enabled = (headerLength > characterWrapLimit || contentLength > characterWrapLimit);
     }
 
-    void Update() {
-      Vector2 position = playerInputs.ScreenPosition;
-      Vector2 pivot = Vector2.zero;
-      pivot.x = position.x / Screen.width;
-      pivot.y = position.y / Screen.height;
+    void OnEnable() {
+      inputReader.ScreenPositionEvent += UpdatePosition;
+    }
+    
+    void OnDisable() {
+      inputReader.ScreenPositionEvent -= UpdatePosition;
+    }
+
+    void UpdatePosition(Vector2 position) {
+      Vector2 pivot = new Vector2(position.x / Screen.width, position.y / Screen.height);
       transform.position = position;
       rectTransform.pivot = pivot;
     }

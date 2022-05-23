@@ -21,6 +21,7 @@ namespace bts {
     public Vector3 CurrentPosition => transform.position;
 
     public bool IsIdle { get; set; }
+    public bool IsGathering { get; set; }
 
     [SerializeField] GemstoneStorage gemstoneStorage;
     public GemstoneStorage GemstoneStorage => gemstoneStorage;
@@ -82,6 +83,10 @@ namespace bts {
     public void Select() {
       Selected.SetActive(true);
       IsSelected = true;
+    }
+
+    public bool IsSameAs(Selectable other) {
+      return other is Unit;
     }
 
     public void Deselect() {

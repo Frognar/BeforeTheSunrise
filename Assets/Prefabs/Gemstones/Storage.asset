@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb241ab935223544084f4e380917d563, type: 3}
   m_Name: Storage
   m_EditorClassIdentifier: 
-  gemstones:
+  <Gemstones>k__BackingField:
     reorderableList:
       canAdd: 1
       canRemove: 1

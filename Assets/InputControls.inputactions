@@ -6,15 +6,6 @@
             "id": "fd62e94d-83c1-4286-b165-1f3499de2bb0",
             "actions": [
                 {
-                    "name": "Select",
-                    "type": "Button",
-                    "id": "293f248b-6d19-47c1-9d8a-e2c0907a2d17",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "SendCommand",
                     "type": "Button",
                     "id": "23bf4e16-14a1-474b-b80a-9ba3da3c1fc0",
@@ -40,20 +31,36 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "SelectSame",
+                    "type": "Button",
+                    "id": "c90dbfba-d638-4fd8-8a9a-194c182b1791",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "MultiTap(tapDelay=0.35)",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "StartSelecting",
+                    "type": "Button",
+                    "id": "7fcdf546-9241-4f7e-9f37-a51d30753833",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "StopSelecting",
+                    "type": "Button",
+                    "id": "3a0172d6-95e7-4099-9e3f-1b8f1fd730f9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press(behavior=1)",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
-                {
-                    "name": "",
-                    "id": "e9750149-7f7d-4749-8a11-a866f58988e3",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Select",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
                 {
                     "name": "",
                     "id": "c3df95ed-b334-46dc-8aa7-5672ba6a9173",
@@ -84,6 +91,39 @@
                     "processors": "",
                     "groups": "",
                     "action": "Cancel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "466f65d8-c4d6-4645-88cf-6e089187a60d",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SelectSame",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1b4fd832-74b6-455b-95a1-9af65974f224",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "StartSelecting",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "75ea9e1c-cde5-4399-86a7-21fbfbb984a0",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "StopSelecting",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

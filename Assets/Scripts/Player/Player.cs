@@ -5,114 +5,76 @@ using UnityEngine.EventSystems;
 
 namespace bts {
   public class Player : MonoBehaviour {
+    [SerializeField] InputReader inputReader;
     [SerializeField] SelectablesEventChannel selectablesEventChannel;
-    PlayerInputs playerInputs;
-    Camera cam;
-    Vector3 startPosition;
-    List<Selectable> selected;
     LineRenderer lineRenderer;
+    List<Selectable> selected;
+    Vector3 startPosition;
+    Vector3 halfExtents = new Vector3(25f, 5f, 25f);
+    bool isMouseOverUI;
 
     void Awake() {
-      playerInputs = FindObjectOfType<PlayerInputs>();
       lineRenderer = GetComponent<LineRenderer>();
       selected = new List<Selectable>();
-      cam = Camera.main;
       lineRenderer.enabled = false;
     }
 
     void Update() {
-      if (playerInputs.StartSelecting) {
-        if (!EventSystem.current.IsPointerOverGameObject()) {
-          StartSelectingArea(playerInputs.RayToWorld);
-        }
-      }
-
-      if (lineRenderer.enabled) {
-        DrawSelectionArea(playerInputs.RayToWorld);
-        if (playerInputs.StopSelecting) {
-          StopSelectingArea(playerInputs.ScreenPosition);
-        }
-      }
-    }
-    
-    void StartSelectingArea(Ray ray) {
-      lineRenderer.enabled = true;
-      if (Physics.Raycast(ray, out RaycastHit hitInfo)) {
-        startPosition = hitInfo.point;
-      }
+      isMouseOverUI = EventSystem.current.IsPointerOverGameObject();
     }
 
-    void DrawSelectionArea(Ray ray) {
-      if (Physics.Raycast(ray, out RaycastHit hitInfo)) {
-        Vector3 endPosition = hitInfo.point;
-        Vector3 lowerLeft = new Vector3(
-          Mathf.Min(startPosition.x, endPosition.x),
-          1f,
-          Mathf.Min(startPosition.z, endPosition.z));
-        Vector3 upperRight = new Vector3(
-          Mathf.Max(startPosition.x, endPosition.x),
-          1f,
-          Mathf.Max(startPosition.z, endPosition.z));
-        lineRenderer.SetPositions(
-          new Vector3[] {
-              lowerLeft,
-              new Vector3(lowerLeft.x, 1f, upperRight.z),
-              upperRight,
-              new Vector3(upperRight.x, 1f, lowerLeft.z),
-          }
-          );
-      }
+    void OnEnable() {
+      selectablesEventChannel.OnDeselect += Deselect;
+      inputReader.SelectSameEvent += SelectMany;
+      inputReader.StartSelectiongEvent += StartSelectingArea;
+      inputReader.WorldPositionEvent += DrawSelectionArea;
+      inputReader.StopSelectiongEvent += StopSelectingArea;
     }
 
-    void StopSelectingArea(Vector2 screenPosition) {
+    void OnDisable() {
+      selectablesEventChannel.OnDeselect -= Deselect;
+      inputReader.SelectSameEvent -= SelectMany;
+      inputReader.StartSelectiongEvent -= StartSelectingArea;
+      inputReader.WorldPositionEvent -= DrawSelectionArea;
+      inputReader.StopSelectiongEvent -= StopSelectingArea;
+    }
+
+    void Deselect(object sender, Selectable selectedObject) {
+      _ = selected.Remove(selectedObject);
+      selectedObject.Deselect();
+      selectablesEventChannel.Invoke(selected);
+    }
+
+    private void SelectMany(Ray ray) {
       lineRenderer.enabled = false;
-      DeselectAll();
-      IEnumerable<Collider> selectedColliders = GetCollidersUnderSelectionArea(screenPosition);
-      selected = FilterSelectable(selectedColliders).ToList();
-      Select();
+      if (Physics.Raycast(ray, out RaycastHit hitInfo)) {
+        if (hitInfo.transform.TryGetComponent(out Selectable selectable)) {
+          Deselect();
+          if (selectable.ObjectAffiliation == Affiliation.Player) {
+            selected = GetSelectablesInBox(hitInfo.point, halfExtents).Where(s => s.IsSameAs(selectable)).ToList();
+          }
+          else {
+            selected = new List<Selectable> { selectable };
+          }
+
+          Select();
+        }
+      }
     }
-    
-    void DeselectAll() {
+
+    void Deselect() {
       foreach (Selectable selectable in selected) {
         selectable.Deselect();
       }
 
       selected.Clear();
     }
-    
-    IEnumerable<Collider> GetCollidersUnderSelectionArea(Vector2 screenPosition) {
-      (Vector3 center, Vector3 halfExtents) = GetSelectionArea(screenPosition);
-      return Physics.OverlapBox(center, halfExtents);
-    }
-    
-    (Vector3 center, Vector3 halfExtents) GetSelectionArea(Vector2 screenPosition) {
-      Ray ray = cam.ScreenPointToRay(screenPosition);
-      if (Physics.Raycast(ray, out RaycastHit hitInfo)) {
-        Vector3 endPoint = hitInfo.point;
-        Vector3 center = (startPosition + endPoint) / 2f;
-        Vector3 halfExtents = new Vector3(Mathf.Abs(startPosition.x - endPoint.x) / 2, 2, Mathf.Abs(startPosition.z - endPoint.z) / 2);
-        return (center, halfExtents);
-      }
 
-      return (Vector3.zero, Vector3.zero);
+    IEnumerable<Selectable> GetSelectablesInBox(Vector3 center, Vector3 halfExtents) {
+      Collider[] colliders = Physics.OverlapBox(center, halfExtents);
+      return GetSelectables(colliders);
     }
 
-    IEnumerable<Selectable> FilterSelectable(IEnumerable<Collider> colliders) {
-      IEnumerable<Selectable> selectables = GetSelectables(colliders);
-      if (selectables.Any()) {
-        IEnumerable<Selectable> playerSelectables = selectables.Where(s => s.ObjectAffiliation == Affiliation.Player);
-        if (playerSelectables.Any()) {
-          IEnumerable<Selectable> playerUnits = playerSelectables.Where(s => s.ObjectType == Type.Unit);
-          return playerUnits.Any() ? playerUnits : new List<Selectable> { selectables.First() };
-        }
-        else {
-          return new List<Selectable> { selectables.First() };
-        }
-      }
-
-      return Enumerable.Empty<Selectable>();
-    }
-    
     IEnumerable<Selectable> GetSelectables(IEnumerable<Collider> colliders) {
       foreach (Collider collider in colliders) {
         if (collider.TryGetComponent(out Selectable selectable)) {
@@ -129,18 +91,63 @@ namespace bts {
       selectablesEventChannel.Invoke(selected);
     }
 
-    void OnEnable() {
-      selectablesEventChannel.OnDeselect += Deselect;
+    void StartSelectingArea(Vector3 position) {
+      if (!isMouseOverUI) {
+        lineRenderer.SetPositions(new Vector3[] { position, position, position, position });
+        lineRenderer.enabled = true;
+        startPosition = position;
+      }
     }
 
-    void OnDisable() {
-      selectablesEventChannel.OnDeselect -= Deselect;
+    void DrawSelectionArea(Vector3 currentPosition) {
+      if (lineRenderer.enabled) {
+        Vector3[] selectionAreaCorners = GetSelectionCorners(currentPosition);
+        lineRenderer.SetPositions(selectionAreaCorners);
+      }
     }
 
-    void Deselect(object sender, Selectable selectedObject) {
-      _ = selected.Remove(selectedObject);
-      selectedObject.Deselect();
-      selectablesEventChannel.Invoke(selected);
+    Vector3[] GetSelectionCorners(Vector3 endPosition) {
+      Vector3 lowerLeft = new Vector3(Mathf.Min(startPosition.x, endPosition.x), 1f, Mathf.Min(startPosition.z, endPosition.z));
+      Vector3 upperRight = new Vector3(Mathf.Max(startPosition.x, endPosition.x), 1f, Mathf.Max(startPosition.z, endPosition.z));
+      return new Vector3[] { lowerLeft, new Vector3(lowerLeft.x, 1f, upperRight.z), upperRight, new Vector3(upperRight.x, 1f, lowerLeft.z) };
+    }
+
+    void StopSelectingArea(Vector3 endPoint) {
+      if (lineRenderer.enabled) {
+        lineRenderer.enabled = false;
+        Deselect();
+        (Vector3 center, Vector3 halfExtents) = GetSelectionArea(endPoint);
+        IEnumerable<Selectable> selectables = GetSelectablesInBox(center, halfExtents);
+        selected = FilterSelectable(selectables);
+        Select();
+      }
+    }
+
+    (Vector3 center, Vector3 halfExtents) GetSelectionArea(Vector3 endPoint) {
+      Vector3 center = (startPosition + endPoint) / 2f;
+      Vector3 halfExtents = new Vector3(Mathf.Abs(startPosition.x - endPoint.x) / 2, 2, Mathf.Abs(startPosition.z - endPoint.z) / 2);
+      return (center, halfExtents);
+    }
+
+    List<Selectable> FilterSelectable(IEnumerable<Selectable> selectables) {
+      if (selectables.Any()) {
+        IEnumerable<Selectable> playerSelectables = selectables.Where(s => s.ObjectAffiliation == Affiliation.Player);
+        if (playerSelectables.Any()) {
+          IEnumerable<Selectable> playerUnits = playerSelectables.Where(s => s.ObjectType == Type.Unit);
+          if (playerUnits.Any()) {
+            return playerUnits.ToList();
+          }
+          else {
+            Selectable first = playerSelectables.First();
+            return playerSelectables.Where(ps => ps.IsSameAs(first)).ToList();
+          }
+        }
+        else {
+          return new List<Selectable> { selectables.First() };
+        }
+      }
+
+      return new List<Selectable>();
     }
   }
 }

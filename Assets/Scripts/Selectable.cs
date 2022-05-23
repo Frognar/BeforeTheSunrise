@@ -13,5 +13,6 @@ namespace bts {
     SelectablesEventChannel SelectablesEventChannel { get; }
     void Select();
     void Deselect();
+    bool IsSameAs(Selectable other);
   }
 }

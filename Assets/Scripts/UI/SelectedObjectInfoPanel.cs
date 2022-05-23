@@ -8,7 +8,12 @@ namespace bts {
     [SerializeField] TMP_Text objectNameText;
 
     public void UpdateUI(List<Selectable> selected) {
-      objectNameText.text = selected.First().Name;
+      if (selected.Count == 1) {
+        objectNameText.text = selected.First().Name;
+      }
+      else {
+        objectNameText.text = $"{selected.First().Name}: {selected.Count}";
+      }
     }
   }
 }

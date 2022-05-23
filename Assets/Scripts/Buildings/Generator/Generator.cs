@@ -73,5 +73,9 @@ namespace bts {
       base.Deselect();
       rangeVisuals.SetActive(false);
     }
+
+    public override bool IsSameAs(Selectable other) {
+      return other is Generator;
+    }
   }
 }

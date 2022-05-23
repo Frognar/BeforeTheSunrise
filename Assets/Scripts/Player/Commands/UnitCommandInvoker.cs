@@ -21,7 +21,7 @@ namespace bts {
     }
 
     void Update() {
-      if (unit.IsIdle) {
+      if (unit.IsIdle || unit.IsGathering) {
         if (commands.Count > 0) {
           commands.Dequeue().Execute();
         }

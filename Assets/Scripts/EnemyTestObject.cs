@@ -38,6 +38,10 @@ namespace bts {
       Selected.SetActive(false);
     }
 
+    public bool IsSameAs(Selectable other) {
+      return false;
+    }
+
     void OnDestroy() {
       if (Selected.activeSelf) {
         SelectablesEventChannel.Invoke(this);

@@ -63,5 +63,9 @@ namespace bts {
         CurrentEnergy = MaxEnergy;
       }
     }
+
+    public override bool IsSameAs(Selectable other) {
+      return other is Cannon;
+    }
   }
 }

@@ -28,15 +28,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
             ""id"": ""fd62e94d-83c1-4286-b165-1f3499de2bb0"",
             ""actions"": [
                 {
-                    ""name"": ""Select"",
-                    ""type"": ""Button"",
-                    ""id"": ""293f248b-6d19-47c1-9d8a-e2c0907a2d17"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""SendCommand"",
                     ""type"": ""Button"",
                     ""id"": ""23bf4e16-14a1-474b-b80a-9ba3da3c1fc0"",
@@ -62,20 +53,36 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SelectSame"",
+                    ""type"": ""Button"",
+                    ""id"": ""c90dbfba-d638-4fd8-8a9a-194c182b1791"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""MultiTap(tapDelay=0.35)"",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""StartSelecting"",
+                    ""type"": ""Button"",
+                    ""id"": ""7fcdf546-9241-4f7e-9f37-a51d30753833"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press"",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""StopSelecting"",
+                    ""type"": ""Button"",
+                    ""id"": ""3a0172d6-95e7-4099-9e3f-1b8f1fd730f9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press(behavior=1)"",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""e9750149-7f7d-4749-8a11-a866f58988e3"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Select"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
                 {
                     ""name"": """",
                     ""id"": ""c3df95ed-b334-46dc-8aa7-5672ba6a9173"",
@@ -106,6 +113,39 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Cancel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""466f65d8-c4d6-4645-88cf-6e089187a60d"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SelectSame"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1b4fd832-74b6-455b-95a1-9af65974f224"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""StartSelecting"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""75ea9e1c-cde5-4399-86a7-21fbfbb984a0"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""StopSelecting"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -224,10 +264,12 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
 }");
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
-        m_Player_Select = m_Player.FindAction("Select", throwIfNotFound: true);
         m_Player_SendCommand = m_Player.FindAction("SendCommand", throwIfNotFound: true);
         m_Player_EnableCommendQueuing = m_Player.FindAction("EnableCommendQueuing", throwIfNotFound: true);
         m_Player_Cancel = m_Player.FindAction("Cancel", throwIfNotFound: true);
+        m_Player_SelectSame = m_Player.FindAction("SelectSame", throwIfNotFound: true);
+        m_Player_StartSelecting = m_Player.FindAction("StartSelecting", throwIfNotFound: true);
+        m_Player_StopSelecting = m_Player.FindAction("StopSelecting", throwIfNotFound: true);
         // Camera
         m_Camera = asset.FindActionMap("Camera", throwIfNotFound: true);
         m_Camera_Focus = m_Camera.FindAction("Focus", throwIfNotFound: true);
@@ -294,18 +336,22 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     // Player
     private readonly InputActionMap m_Player;
     private IPlayerActions m_PlayerActionsCallbackInterface;
-    private readonly InputAction m_Player_Select;
     private readonly InputAction m_Player_SendCommand;
     private readonly InputAction m_Player_EnableCommendQueuing;
     private readonly InputAction m_Player_Cancel;
+    private readonly InputAction m_Player_SelectSame;
+    private readonly InputAction m_Player_StartSelecting;
+    private readonly InputAction m_Player_StopSelecting;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
         public PlayerActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Select => m_Wrapper.m_Player_Select;
         public InputAction @SendCommand => m_Wrapper.m_Player_SendCommand;
         public InputAction @EnableCommendQueuing => m_Wrapper.m_Player_EnableCommendQueuing;
         public InputAction @Cancel => m_Wrapper.m_Player_Cancel;
+        public InputAction @SelectSame => m_Wrapper.m_Player_SelectSame;
+        public InputAction @StartSelecting => m_Wrapper.m_Player_StartSelecting;
+        public InputAction @StopSelecting => m_Wrapper.m_Player_StopSelecting;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -315,9 +361,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         {
             if (m_Wrapper.m_PlayerActionsCallbackInterface != null)
             {
-                @Select.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelect;
-                @Select.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelect;
-                @Select.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelect;
                 @SendCommand.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSendCommand;
                 @SendCommand.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSendCommand;
                 @SendCommand.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSendCommand;
@@ -327,13 +370,19 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Cancel.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCancel;
                 @Cancel.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCancel;
                 @Cancel.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCancel;
+                @SelectSame.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectSame;
+                @SelectSame.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectSame;
+                @SelectSame.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectSame;
+                @StartSelecting.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStartSelecting;
+                @StartSelecting.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStartSelecting;
+                @StartSelecting.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStartSelecting;
+                @StopSelecting.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStopSelecting;
+                @StopSelecting.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStopSelecting;
+                @StopSelecting.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStopSelecting;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @Select.started += instance.OnSelect;
-                @Select.performed += instance.OnSelect;
-                @Select.canceled += instance.OnSelect;
                 @SendCommand.started += instance.OnSendCommand;
                 @SendCommand.performed += instance.OnSendCommand;
                 @SendCommand.canceled += instance.OnSendCommand;
@@ -343,6 +392,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Cancel.started += instance.OnCancel;
                 @Cancel.performed += instance.OnCancel;
                 @Cancel.canceled += instance.OnCancel;
+                @SelectSame.started += instance.OnSelectSame;
+                @SelectSame.performed += instance.OnSelectSame;
+                @SelectSame.canceled += instance.OnSelectSame;
+                @StartSelecting.started += instance.OnStartSelecting;
+                @StartSelecting.performed += instance.OnStartSelecting;
+                @StartSelecting.canceled += instance.OnStartSelecting;
+                @StopSelecting.started += instance.OnStopSelecting;
+                @StopSelecting.performed += instance.OnStopSelecting;
+                @StopSelecting.canceled += instance.OnStopSelecting;
             }
         }
     }
@@ -414,10 +472,12 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     public CameraActions @Camera => new CameraActions(this);
     public interface IPlayerActions
     {
-        void OnSelect(InputAction.CallbackContext context);
         void OnSendCommand(InputAction.CallbackContext context);
         void OnEnableCommendQueuing(InputAction.CallbackContext context);
         void OnCancel(InputAction.CallbackContext context);
+        void OnSelectSame(InputAction.CallbackContext context);
+        void OnStartSelecting(InputAction.CallbackContext context);
+        void OnStopSelecting(InputAction.CallbackContext context);
     }
     public interface ICameraActions
     {
