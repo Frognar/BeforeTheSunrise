@@ -18,10 +18,10 @@ namespace bts {
 
       for (int x = 0; x < grid.Width; x++) {
         for (int z = 0; z < grid.Height; z++) {
-          if (z <= grid.Height / 2 + 5 
-           && z >= grid.Height / 2 - 6
-           && x <= grid.Width / 2 + 5
-           && x >= grid.Width / 2 - 6) {
+          if (z <= grid.Height / 2 + 15
+           && z >= grid.Height / 2 - 16
+           && x <= grid.Width / 2 + 15
+           && x >= grid.Width / 2 - 16) {
             continue;
           }
 

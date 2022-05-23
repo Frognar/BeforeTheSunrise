@@ -12,8 +12,8 @@ namespace bts {
     [SerializeField][Range(1f, 5f)] float movementTime;
     [SerializeField][Range(5f, 15f)] float rotationAmount;
     [SerializeField] Vector3 zoomAmount;
-    [SerializeField] Vector2 positionLimitX;
-    [SerializeField] Vector2 positionLimitZ;
+    [SerializeField] IntAsset mapWidth;
+    [SerializeField] IntAsset mapHeight;
     [SerializeField] Vector2 zoomLimits;
 
     Vector3 newPosition;
@@ -21,9 +21,13 @@ namespace bts {
     Vector3 newZoom;
     Transform cameraTransform;
     Selectable focus;
+    Vector2 positionLimitX;
+    Vector2 positionLimitZ;
 
     void Awake() {
       cameraTransform = Camera.main.transform;
+      positionLimitX = new Vector2(-mapWidth / 2f, mapWidth / 2f);
+      positionLimitZ = new Vector2(-mapHeight / 2f, mapHeight / 2f);
     }
 
     void OnEnable() {

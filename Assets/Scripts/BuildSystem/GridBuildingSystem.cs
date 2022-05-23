@@ -5,14 +5,15 @@ using UnityEngine;
 namespace bts {
   public class GridBuildingSystem : MonoBehaviour {
     public GridXZ<GridObject> Grid { get; private set; }
-    [SerializeField][Range(1, 1000)] int gridWidth;
-    [SerializeField][Range(1, 1000)] int gridHeight;
+    [SerializeField] IntAsset gridWidth;
+    [SerializeField] IntAsset gridHeight;
     [SerializeField][Range(1f, 50f)] float cellSize;
-    [SerializeField] Vector3 gridOrigin;
+    Vector3 gridOrigin;
     PlaceableFactory placeableFactory;
 
     void Awake() {
       placeableFactory = GetComponent<PlaceableFactory>();
+      gridOrigin = new Vector3(-gridWidth * cellSize / 2f, 0f, -gridHeight * cellSize / 2f);
       Grid = new GridXZ<GridObject>(gridWidth, gridHeight, cellSize, gridOrigin, (g, x, z) => new GridObject(g, x, z));
     }
 
