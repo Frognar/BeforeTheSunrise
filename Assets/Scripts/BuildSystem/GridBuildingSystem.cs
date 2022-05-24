@@ -31,6 +31,10 @@ namespace bts {
       }
     }
 
+    public void Block(List<Vector3Int> cords) {
+      cords.ForEach(p => Grid.GetGridObject(p.x, p.z).Block());
+    }
+
     public void Demolish(Vector3 mouseWorldPosition) {
       GridObject gridObject = Grid.GetGridObject(mouseWorldPosition);
       Placeable placedObject = gridObject.PlacedObject;
@@ -47,11 +51,16 @@ namespace bts {
       int Z { get; }
       GridXZ<GridObject> Grid { get; }
       public Placeable PlacedObject { get; private set; }
+      public bool IsBlocked { get; private set; }
 
       public GridObject(GridXZ<GridObject> grid, int x, int y) {
         Grid = grid;
         X = x;
         Z = y;
+      }
+      
+      public void Block() {
+        IsBlocked = true;
       }
 
       public void SetPlacedObject(Placeable placedObject) {
@@ -64,7 +73,7 @@ namespace bts {
       }
 
       public bool CanBuild() {
-        return PlacedObject == null;
+        return PlacedObject == null && !IsBlocked;
       }
     }
   }
