@@ -1,4 +1,5 @@
 using System;
+using Pathfinding;
 using UnityEngine;
 using UnityEngine.Pool;
 
@@ -14,35 +15,45 @@ namespace bts {
     [field: SerializeField] public GameObject Selected { get; private set; }
     [field: SerializeField] public SelectablesEventChannel SelectablesEventChannel { get; private set; }
     public Vector3 Position => Transform.position;
-    public bool IsDead => Health.CurrentHealth == 0;
+    public Seeker Seeker { get; private set; }
+    public AIPath AiPath { get; private set; }
+    public AIDestinationSetter AIDestinationSetter { get; private set; }
+    public bool IsDead { get; private set; }
     [SerializeField] WorldHealthBar bar;
     public Health Health { get; private set; }
-    EnemyStateMachine stateMachine;
+    public EnemyStateMachine StateMachine { get; private set; }
+    public Damageable Target { get; set; }
+    public Bounds Bounds => enemyCollider.bounds;
+    Collider enemyCollider;
 
     void Awake() {
-      stateMachine = new EnemyStateMachine(this);
+      enemyCollider = GetComponent<Collider>();
+      Seeker = GetComponent<Seeker>();
+      AiPath = GetComponent<AIPath>();
+      AIDestinationSetter = GetComponent<AIDestinationSetter>();
+      StateMachine = new EnemyStateMachine(this);
       Health = new Health(EnemyData.MaxHealth);
       bar.SetUp(Health);
-    }
-
-    void OnEnable() {
       DayStarted.OnEventInvoked += Release;
     }
 
-    void OnDisable() {
+    void OnEnable() {
+      IsDead = false;
+      Health.Reset();
+    }
+
+    void OnDestroy() {
       DayStarted.OnEventInvoked -= Release;
     }
 
     void Release(object s, EventArgs e) {
-      Pool.Release(this);
-    }
-
-    void Start() {
-      stateMachine.Start();
+      if (!IsDead) {
+        Pool.Release(this);
+      }
     }
 
     void Update() {
-      stateMachine.Update();
+      StateMachine.Update();
     }
 
     public void Select() {
@@ -59,9 +70,12 @@ namespace bts {
 
     public void TakeDamage(int amount) {
       Health.Damage(amount);
-      if (IsDead && Selected.activeSelf) {
-        SelectablesEventChannel.Invoke(this);
+      if (!IsDead && Health.CurrentHealth == 0) {
         Pool.Release(this);
+        IsDead = true;
+        if (Selected.activeSelf) {
+          SelectablesEventChannel.Invoke(this);
+        }
       }
     }
   }

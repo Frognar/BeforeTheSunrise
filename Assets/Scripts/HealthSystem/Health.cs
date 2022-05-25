@@ -2,7 +2,8 @@
 
 namespace bts {
   public class Health {
-    public event EventHandler OnValueChange;
+    public event Action OnReset = delegate { };
+    public event Action OnValueChange = delegate { };
     public int MaxHealth { get; private set; }
     public int CurrentHealth { get; protected set; }
     public float HealthNormalized => (float)CurrentHealth / MaxHealth;
@@ -18,7 +19,7 @@ namespace bts {
         CurrentHealth = 0;
       }
 
-      OnValueChange?.Invoke(this, EventArgs.Empty);
+      OnValueChange.Invoke();
     }
 
     public virtual void Heal(int amount) {
@@ -27,7 +28,12 @@ namespace bts {
         CurrentHealth = MaxHealth;
       }
 
-      OnValueChange?.Invoke(this, EventArgs.Empty);
+      OnValueChange.Invoke();
+    }
+
+    public virtual void Reset() {
+      CurrentHealth = MaxHealth;
+      OnReset.Invoke();
     }
   }
 }

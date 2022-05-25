@@ -26,7 +26,7 @@ namespace bts {
       }
     }
 
-    void OnHealthChange(object sender, EventArgs e) {
+    void OnHealthChange() {
       UpdateBar();
     }
 

@@ -13,14 +13,21 @@ namespace bts {
       InstantDecrease = instantDecrease;
       ChangeAmount = changeAmount;
       Health.OnValueChange += OnHealthChange;
+      Health.OnReset += OnHealthReset;
     }
 
     ~HealthAnimated() {
       Health.OnValueChange -= OnHealthChange;
+      Health.OnReset -= OnHealthReset;
     }
 
-    void OnHealthChange(object sender, EventArgs e) {
+    void OnHealthChange() {
       IsAnimating = true;
+    }
+
+    void OnHealthReset() {
+      IsAnimating = false;
+      Heal(MaxHealth);
     }
 
     public void UpdateOnTick(object sender, EventArgs e) {

@@ -9,13 +9,16 @@ namespace bts {
 
     public Vector3 Position => Center.position;
     public bool IsDead => health.CurrentHealth == 0;
+    public Bounds Bounds => buildingCollider.bounds;
 
     [SerializeField] WorldHealthBar bar;
     Health health;
     protected CustomBuildingData buildingData;
+    Collider buildingCollider;
 
     protected override void Start() {
       base.Start();
+      buildingCollider = GetComponent<Collider>();
       buildingData = PlaceableObjectType.customData as CustomBuildingData;
       health = new Health(buildingData.healthAmount);
       bar.SetUp(health);
@@ -25,7 +28,7 @@ namespace bts {
     public void TakeDamage(int amount) {
       health.Damage(amount);
       if (IsDead) {
-        GridBuildingSystem.Demolish(transform.position);
+        GridBuildingSystem.Demolish(Position);
       }
     }
 

@@ -38,6 +38,6 @@ MonoBehaviour:
     _keyValues: 01000000
     _keys: 01000000
     _values: 14000000
-  healthAmount: 500
+  healthAmount: 1500
   ghostMesh: {fileID: 8733429697405204941, guid: b33b763044579e7429259ee8efef672c,
     type: 3}

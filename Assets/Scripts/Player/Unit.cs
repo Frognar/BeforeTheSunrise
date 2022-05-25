@@ -4,7 +4,7 @@ using Pathfinding;
 using UnityEngine;
 
 namespace bts {
-  public class Unit : MonoBehaviour, Selectable {
+  public class Unit : MonoBehaviour, Selectable, Damageable {
     public string Name => "Unit";
     public Transform Transform => transform;
     public Affiliation ObjectAffiliation => Affiliation.Player;
@@ -44,9 +44,18 @@ namespace bts {
     public float AttackRange => 4f;
     public bool IsOrderedToAttack { get; set; }
     public Damageable Target { get; set; }
+    public Vector3 Position => transform.position;
+    Collider unitCollider;
+    public Bounds Bounds => unitCollider.bounds;
+    public bool IsDead => Health.CurrentHealth == 0;
+    [SerializeField] WorldHealthBar bar;
+    public Health Health { get; private set; }
+
     StateMachine<Unit> stateMachine;
 
     void Awake() {
+      Health = new Health(50);
+      bar.SetUp(Health);
       UICommands = CreateActions();
       GatherBonuses = new Dictionary<GemstoneType, int>();
       foreach (GemstoneType type in Enum.GetValues(typeof(GemstoneType))) {
@@ -58,6 +67,7 @@ namespace bts {
       AIDestinationSetter = GetComponent<AIDestinationSetter>();
       Selected = transform.Find("Selected").gameObject;
       stateMachine = new UnitStateMachine(this);
+      unitCollider = GetComponent<Collider>();
     }
 
     List<UICommand> CreateActions() {
@@ -97,6 +107,13 @@ namespace bts {
     void OnDestroy() {
       if (IsSelected) {
         SelectablesEventChannel.Invoke(this);
+      }
+    }
+
+    public void TakeDamage(int amount) {
+      Health.Damage(amount);
+      if (IsDead) {
+        Destroy(gameObject);
       }
     }
   }

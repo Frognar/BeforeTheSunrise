@@ -4,7 +4,7 @@ namespace bts {
   public class EnemySpawnerSpawnState : EnemySpawnerBaseState {
     float lastSpawnTime;
     bool IsTimeToSpawn => lastSpawnTime + StateMachine.Context.SpawnInterval <= Time.time;
-
+      
     public EnemySpawnerSpawnState(StateMachine<EnemySpawner> stateMachine, StateFactory<EnemySpawner> factory)
       : base(stateMachine, factory) {
     }

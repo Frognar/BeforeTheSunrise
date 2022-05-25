@@ -6,7 +6,6 @@ namespace bts {
   public class EnemySpawner : MonoBehaviour, Selectable, Damageable {
     [field: SerializeField] public VoidEventChannel DayStarted { get; private set; }
     [field: SerializeField] public VoidEventChannel NightStarted { get; private set; }
-    [field: SerializeField] public int EnemiesPerNight { get; private set; }
     [field: SerializeField] public float SpawnInterval { get; private set; }
     [field: SerializeField] List<Transform> spawnPositions;
     int lastSpawnPosition;
@@ -26,6 +25,8 @@ namespace bts {
     [SerializeField] WorldHealthBar bar;
     [SerializeField] GridBuildingSystem gridBuildingSystem;
     public Health Health { get; private set; }
+    public Bounds Bounds => spawnerCollider.bounds;
+    Collider spawnerCollider;
 
     EnemySpawnerStateMachine stateMachine;
 
@@ -34,6 +35,7 @@ namespace bts {
       Health = new Health(int.MaxValue);
       bar.SetUp(Health);
       EnemyPool = new ObjectPool<Enemy>(Create, Get, Release);
+      spawnerCollider = GetComponent<Collider>();
     }
 
     Enemy Create() {
@@ -45,10 +47,14 @@ namespace bts {
     void Get(Enemy e) {
       e.gameObject.SetActive(true);
       e.transform.position = spawnPositions[lastSpawnPosition].position;
+      e.AiPath.destination = e.transform.position;
+      e.StateMachine.Start();
       lastSpawnPosition = (lastSpawnPosition + 1) % spawnPositions.Count;
     }
 
     void Release(Enemy e) {
+      e.AIDestinationSetter.target = null;
+      e.Target = null;
       e.gameObject.SetActive(false);
     }
     

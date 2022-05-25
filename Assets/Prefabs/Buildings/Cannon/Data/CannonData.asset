@@ -41,8 +41,8 @@ MonoBehaviour:
   healthAmount: 25
   ghostMesh: {fileID: 369689273696691656, guid: bf020bebc6462474cb809abbe2f863e7,
     type: 3}
-  range: 10
+  range: 12
   damage: 5
   energyPerAttack: 15
-  maxEnergy: 50
-  timeBetweenAttacks: 1
+  maxEnergy: 200
+  timeBetweenAttacks: 0.2

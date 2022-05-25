@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43e606af879f449498fd3bcc124dd8e8, type: 3}
   m_Name: Base Enemy Data
   m_EditorClassIdentifier: 
-  <MaxHealth>k__BackingField: 15
-  <Damage>k__BackingField: 2
+  <MaxHealth>k__BackingField: 8
+  <Damage>k__BackingField: 3
   <TimeBetweenAttacks>k__BackingField: 2
   <AttackRange>k__BackingField: 3

@@ -9,6 +9,7 @@ namespace bts {
     protected override Dictionary<string, State<Enemy>> CreateStates() {
       return new Dictionary<string, State<Enemy>>() {
         { nameof(EnemyLookingForTargetState), new EnemyLookingForTargetState(StateMachine, this) },
+        { nameof(EnemyAttackState), new EnemyAttackState(StateMachine, this) },
       };
     }
   }

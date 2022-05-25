@@ -28,9 +28,11 @@ namespace bts {
 
     void HideTooltip() {
       entered = false;
-      StopCoroutine(showTooltipCoroutine);
-      showTooltipCoroutine = null;
       tooltipSystem.Hide();
+      if (showTooltipCoroutine != null) {
+        StopCoroutine(showTooltipCoroutine);
+        showTooltipCoroutine = null;
+      }
     }
 
     IEnumerator ShowTooltip() {
