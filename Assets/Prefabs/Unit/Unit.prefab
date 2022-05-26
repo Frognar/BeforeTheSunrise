@@ -15,7 +15,8 @@ GameObject:
   - component: {fileID: 4085809703577258815}
   - component: {fileID: 2127252381}
   - component: {fileID: 4085809703577258808}
-  - component: {fileID: 4085809703577258814}
+  - component: {fileID: 7420595103529716526}
+  - component: {fileID: 3983578362227823094}
   m_Layer: 6
   m_Name: Unit
   m_TagString: Untagged
@@ -146,7 +147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 5
-  radius: 0.5
+  radius: 0.4
   height: 2
   canMove: 1
   maxSpeed: 5
@@ -166,7 +167,7 @@ MonoBehaviour:
     maximumInterval: 2
     visualizeSensitivity: 0
   targetCompatibility: {fileID: 0}
-  maxAcceleration: -2.5
+  maxAcceleration: 100
   rotationSpeed: 360
   slowdownDistance: 0
   pickNextWaypointDist: 2
@@ -175,7 +176,19 @@ MonoBehaviour:
   slowWhenNotFacingTarget: 0
   whenCloseToDestination: 0
   constrainInsideGraph: 1
---- !u!65 &4085809703577258814
+--- !u!114 &7420595103529716526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4085809703577258788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25ed952fcbf53b5419a00a57502c4402, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &3983578362227823094
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

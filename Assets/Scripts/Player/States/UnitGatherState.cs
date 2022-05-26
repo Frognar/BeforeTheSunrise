@@ -4,18 +4,16 @@ namespace bts {
   public class UnitGatherState : UnitBaseState {
     float lastGatherTime;
     bool IsTimeToGather => lastGatherTime + StateMachine.Context.TimeBetweenGathers <= Time.time;
-    bool InGatherRange => Vector3.Distance(StateMachine.Context.CurrentPosition, StateMachine.Context.TargerGemstone.Center.position) <= StateMachine.Context.GatherRange;
-    float prevStopDistance;
+    bool InGatherRange => Vector3.Distance(StateMachine.Context.Position, TargetGemstone) <= StateMachine.Context.GatherRange;
+    Vector3 TargetGemstone => StateMachine.Context.TargerGemstone.Center.position;
 
     public UnitGatherState(StateMachine<Unit> stateMachine, StateFactory<Unit> factory)
       : base(stateMachine, factory) {
     }
 
     public override void EnterState() {
-      prevStopDistance = StateMachine.Context.AiPath.endReachedDistance;
-      StateMachine.Context.AiPath.endReachedDistance = StateMachine.Context.GatherRange - 2f;
-      StateMachine.Context.IsOrderedToGather = false;
-      StateMachine.Context.AiPath.destination = StateMachine.Context.TargerGemstone.Center.position;
+      StateMachine.Context.Pathfinder.SetDestination(TargetGemstone);
+      StateMachine.Context.Pathfinder.SetStopDistance(StateMachine.Context.GatherRange - 2f);
     }
 
     public override void UpdateState() {
@@ -37,7 +35,7 @@ namespace bts {
     }
 
     public override void ExitState() {
-      StateMachine.Context.AiPath.endReachedDistance = prevStopDistance;
+      StateMachine.Context.Pathfinder.Reset();
       StateMachine.Context.IsGathering = false;
     }
   }

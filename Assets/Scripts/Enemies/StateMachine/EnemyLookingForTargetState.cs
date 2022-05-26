@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Pathfinding;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace bts {
   public class EnemyLookingForTargetState : EnemyBaseState {
@@ -10,17 +7,12 @@ namespace bts {
     }
 
     public override void EnterState() {
+      StateMachine.Context.Pathfinder.Reset();
       Damageable player = Object.FindObjectOfType<Unit>();
-      if (IsPathPossible(player)) {
-        StateMachine.Context.Target = player;
-        StateMachine.SwitchState(Factory.GetState(nameof(EnemyAttackState)));
-      }
-      else {
+      if (!SetAsTargetIfPathExitst(player)) {
         Building[] damageables = Object.FindObjectsOfType<Building>();
         foreach (Damageable damageable in damageables) {
-          if (IsPathPossible(damageable)) {
-            StateMachine.Context.Target = damageable;
-            StateMachine.SwitchState(Factory.GetState(nameof(EnemyAttackState)));
+          if (SetAsTargetIfPathExitst(damageable)) {
             break;
           }
         }
@@ -31,15 +23,18 @@ namespace bts {
       }
     }
 
-    bool IsPathPossible(Damageable target) {
-      if (target as Object is null) {
+    bool SetAsTargetIfPathExitst(Damageable possibleTarget) {
+      if (possibleTarget as Object is null) {
         return false;
       }
       
-      GraphNode myNode = (AstarPath.active.graphs[0] as GridGraph).GetNearest(StateMachine.Context.Position).node;
-      Bounds bounds = new Bounds(target.Bounds.center, target.Bounds.size + Vector3.one * 2);
-      List<GraphNode> nodes = (AstarPath.active.graphs[0] as GridGraph).GetNodesInRegion(bounds);
-      return nodes.Any(targetNode => PathUtilities.IsPathPossible(myNode, targetNode));
+      if (StateMachine.Context.Pathfinder.IsPathPossible(possibleTarget.Bounds)) {
+        StateMachine.Context.Target = possibleTarget;
+        StateMachine.SwitchState(Factory.GetState(nameof(EnemyAttackState)));
+        return true;
+      }
+
+      return false;
     }
   }
 }

@@ -42,5 +42,5 @@ MonoBehaviour:
   ghostMesh: {fileID: -2698757342573874753, guid: 9859d4adc26374940a7970a73fbde2db,
     type: 3}
   range: 8
-  energyPerSecond: 100
+  energyPerSecond: 45
   maxDevices: 5

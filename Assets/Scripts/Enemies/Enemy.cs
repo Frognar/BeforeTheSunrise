@@ -5,32 +5,40 @@ using UnityEngine.Pool;
 
 namespace bts {
   public class Enemy : MonoBehaviour, Selectable, Damageable {
-    [field: SerializeField] public VoidEventChannel DayStarted { get; private set; }
-    public IObjectPool<Enemy> Pool { get; set; }
-    [field: SerializeField] public EnemyData EnemyData { get; private set; }
-    public string Name => "Enemy";
-    public Affiliation ObjectAffiliation => Affiliation.Enemy;
-    public Type ObjectType => Type.Unit;
-    public Transform Transform => transform;
-    [field: SerializeField] public GameObject Selected { get; private set; }
     [field: SerializeField] public SelectablesEventChannel SelectablesEventChannel { get; private set; }
-    public Vector3 Position => Transform.position;
-    public Seeker Seeker { get; private set; }
-    public AIPath AiPath { get; private set; }
-    public AIDestinationSetter AIDestinationSetter { get; private set; }
+    [field: SerializeField] public VoidEventChannel DayStarted { get; private set; }
+
+    public IObjectPool<Enemy> Pool { get; set; }
+    bool wasPooled;
+    
+    [field: SerializeField] public EnemyData EnemyData { get; private set; }
+    [field: SerializeField] public GameObject Selected { get; private set; }
+    
     public bool IsDead { get; private set; }
     [SerializeField] WorldHealthBar bar;
     public Health Health { get; private set; }
+    
+    public string Name => "Enemy";
+    public Affiliation ObjectAffiliation => Affiliation.Enemy;
+    public Type ObjectType => Type.Unit;
+    public Transform Center => transform;
+    public Vector3 Position => Center.position;
+    
     public EnemyStateMachine StateMachine { get; private set; }
     public Damageable Target { get; set; }
+    
     public Bounds Bounds => enemyCollider.bounds;
     Collider enemyCollider;
+    
+    public AIDestinationSetter AIDestinationSetter { get; private set; }
+    public Pathfinder Pathfinder { get; private set; }
 
     void Awake() {
       enemyCollider = GetComponent<Collider>();
-      Seeker = GetComponent<Seeker>();
-      AiPath = GetComponent<AIPath>();
+
+      Pathfinder = GetComponent<Pathfinder>();
       AIDestinationSetter = GetComponent<AIDestinationSetter>();
+      
       StateMachine = new EnemyStateMachine(this);
       Health = new Health(EnemyData.MaxHealth);
       bar.SetUp(Health);
@@ -39,6 +47,7 @@ namespace bts {
 
     void OnEnable() {
       IsDead = false;
+      wasPooled = false;
       Health.Reset();
     }
 
@@ -47,8 +56,13 @@ namespace bts {
     }
 
     void Release(object s, EventArgs e) {
-      if (!IsDead) {
+      Release();
+    }
+
+    void Release() {
+      if (!wasPooled) {
         Pool.Release(this);
+        wasPooled = true;
       }
     }
 
@@ -71,7 +85,7 @@ namespace bts {
     public void TakeDamage(int amount) {
       Health.Damage(amount);
       if (!IsDead && Health.CurrentHealth == 0) {
-        Pool.Release(this);
+        Release();
         IsDead = true;
         if (Selected.activeSelf) {
           SelectablesEventChannel.Invoke(this);

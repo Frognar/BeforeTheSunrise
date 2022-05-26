@@ -9,7 +9,7 @@ namespace bts {
     void Awake() {
       AstarData data = AstarPath.active.data;
       GridGraph gg = data.graphs[0] as GridGraph;
-      gg.SetDimensions(mapWidth, mapHeight, 1f);
+      gg.SetDimensions(mapWidth, mapHeight, .5f);
       AstarPath.active.Scan();
     }
   }

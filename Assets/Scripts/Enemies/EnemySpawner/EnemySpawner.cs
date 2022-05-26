@@ -15,12 +15,11 @@ namespace bts {
     public string Name => "Big Bad Boi";
     public Affiliation ObjectAffiliation => Affiliation.Enemy;
     public Type ObjectType => Type.Building;
-    public Transform Transform => center;
+    [field: SerializeField] public Transform Center { get; private set; }
     [field: SerializeField] public GameObject Selected { get; private set; }
     [field: SerializeField] public SelectablesEventChannel SelectablesEventChannel { get; private set; }
-    public Vector3 Position => Transform.position;
+    public Vector3 Position => Center.position;
     public bool IsDead => Health.CurrentHealth == 0;
-    [SerializeField] Transform center;
 
     [SerializeField] WorldHealthBar bar;
     [SerializeField] GridBuildingSystem gridBuildingSystem;
@@ -46,14 +45,17 @@ namespace bts {
 
     void Get(Enemy e) {
       e.gameObject.SetActive(true);
-      e.transform.position = spawnPositions[lastSpawnPosition].position;
-      e.AiPath.destination = e.transform.position;
       e.StateMachine.Start();
+      e.transform.position = GetSpawnPosition();
+    }
+    
+    Vector3 GetSpawnPosition() {
+      Vector3 spawn = spawnPositions[lastSpawnPosition].position;
       lastSpawnPosition = (lastSpawnPosition + 1) % spawnPositions.Count;
+      return spawn;
     }
 
     void Release(Enemy e) {
-      e.AIDestinationSetter.target = null;
       e.Target = null;
       e.gameObject.SetActive(false);
     }

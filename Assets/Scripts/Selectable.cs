@@ -7,7 +7,7 @@ namespace bts {
     string Name { get; }
     Affiliation ObjectAffiliation { get; }
     Type ObjectType { get; }
-    Transform Transform { get; }
+    Transform Center { get; }
     GameObject Selected { get; }
     IEnumerable<UICommand> UICommands => Enumerable.Empty<UICommand>();
     SelectablesEventChannel SelectablesEventChannel { get; }

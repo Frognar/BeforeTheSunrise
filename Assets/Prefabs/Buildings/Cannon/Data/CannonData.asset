@@ -45,4 +45,4 @@ MonoBehaviour:
   damage: 5
   energyPerAttack: 15
   maxEnergy: 200
-  timeBetweenAttacks: 0.2
+  timeBetweenAttacks: 0.5

@@ -6,11 +6,10 @@
 
     public override void ExitState() { }
 
-    protected bool CheckSwitchState() {
+    protected virtual bool CheckSwitchState() {
       if (StateMachine.Context.IsOrderedToMove) {
         ClearOrders();
         StateMachine.Context.Target = null;
-        StateMachine.Context.AIDestinationSetter.target = null;
         StateMachine.Context.BuildingToPlace = null;
         StateMachine.Context.TargerGemstone = null;
         StateMachine.SwitchState(Factory.GetState(nameof(UnitMoveState)));
@@ -20,7 +19,6 @@
       if (StateMachine.Context.IsOrderedToBuild) {
         ClearOrders();
         StateMachine.Context.Target = null;
-        StateMachine.Context.AIDestinationSetter.target = null;
         StateMachine.Context.TargerGemstone = null;
         StateMachine.SwitchState(Factory.GetState(nameof(UnitBuildState)));
         return true;
@@ -37,7 +35,6 @@
       if (StateMachine.Context.IsOrderedToGather) {
         ClearOrders();
         StateMachine.Context.Target = null;
-        StateMachine.Context.AIDestinationSetter.target = null;
         StateMachine.Context.BuildingToPlace = null;
         StateMachine.SwitchState(Factory.GetState(nameof(UnitGatherState)));
         return true;

@@ -64,7 +64,7 @@ namespace bts {
     void Update() {
       HandleMovement(inputReader.ScreenPosition);
       if (isFocused) {
-        Vector3 selectedPosition = focus.Transform.position;
+        Vector3 selectedPosition = focus.Center.position;
         newPosition.x = selectedPosition.x;
         newPosition.z = selectedPosition.z;
       }

@@ -23,7 +23,7 @@ namespace bts {
     }
 
     List<ElectricDevice> GetDevicesInRange() {
-      Collider[] collidersInRange = Physics.OverlapSphere(Center.position, Range);
+      Collider[] collidersInRange = Physics.OverlapSphere(Position, Range);
       List<ElectricDevice> devicesInRange = new List<ElectricDevice>();
       foreach (Collider collider in collidersInRange) {
         if (collider.TryGetComponent(out ElectricDevice device)) {

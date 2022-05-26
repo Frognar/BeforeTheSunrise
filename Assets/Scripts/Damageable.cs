@@ -2,7 +2,7 @@
 
 namespace bts {
   public interface Damageable {
-    Transform Transform { get; }
+    Transform Center { get; }
     Affiliation ObjectAffiliation { get; }
     Vector3 Position { get; }
     Bounds Bounds { get; }

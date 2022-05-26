@@ -9,11 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2661493301678520063}
-  - component: {fileID: 2661493301678520060}
   - component: {fileID: 2661493301678520061}
   - component: {fileID: -6793974817278811935}
   - component: {fileID: -1821333316308447035}
   - component: {fileID: 2427241524743276545}
+  - component: {fileID: 8432653381226941161}
+  - component: {fileID: 4752014829890575171}
   m_Layer: 9
   m_Name: Enemy
   m_TagString: Untagged
@@ -39,19 +40,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &2661493301678520060
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2661493301678520050}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!114 &2661493301678520061
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64,13 +52,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa30bd7bf44d2a64fb6076234a8d3ef4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <SelectablesEventChannel>k__BackingField: {fileID: 11400000, guid: 3c1fda043d4369741a6aac78f1308909,
+    type: 2}
   <DayStarted>k__BackingField: {fileID: 11400000, guid: ba696d58e6b750a4396f8d5fba9a80ea,
     type: 2}
   <EnemyData>k__BackingField: {fileID: 11400000, guid: 24d352949abe8034f993173213565ea1,
     type: 2}
   <Selected>k__BackingField: {fileID: 11273277675254621}
-  <SelectablesEventChannel>k__BackingField: {fileID: 11400000, guid: 3c1fda043d4369741a6aac78f1308909,
-    type: 2}
   bar: {fileID: 2108667951460448492}
 --- !u!114 &-6793974817278811935
 MonoBehaviour:
@@ -113,8 +101,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 5
-  radius: 0.5
-  height: 2
+  radius: 0.4
+  height: 1
   canMove: 1
   maxSpeed: 5
   gravity: {x: NaN, y: NaN, z: NaN}
@@ -133,7 +121,7 @@ MonoBehaviour:
     maximumInterval: 2
     visualizeSensitivity: 0
   targetCompatibility: {fileID: 0}
-  maxAcceleration: -2.5
+  maxAcceleration: 100
   rotationSpeed: 360
   slowdownDistance: 0
   pickNextWaypointDist: 2
@@ -156,6 +144,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   target: {fileID: 0}
+--- !u!114 &8432653381226941161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2661493301678520050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25ed952fcbf53b5419a00a57502c4402, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!135 &4752014829890575171
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2661493301678520050}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!1 &2661493302193893942
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,12 +1,11 @@
 using System;
 using System.Collections.Generic;
-using Pathfinding;
 using UnityEngine;
 
 namespace bts {
   public class Unit : MonoBehaviour, Selectable, Damageable {
     public string Name => "Unit";
-    public Transform Transform => transform;
+    public Transform Center => transform;
     public Affiliation ObjectAffiliation => Affiliation.Player;
     public Type ObjectType => Type.Unit;
     public GameObject Selected { get; private set; }
@@ -16,9 +15,7 @@ namespace bts {
     public IEnumerable<UICommand> UICommands { get; private set; }
     public bool IsSelected { get; private set; }
     public GridBuildingSystem GridBuildingSystem { get; private set; }
-    public AIPath AiPath { get; private set; }
-    public AIDestinationSetter AIDestinationSetter { get; private set; }
-    public Vector3 CurrentPosition => transform.position;
+    public Pathfinder Pathfinder { get; private set; }
 
     public bool IsIdle { get; set; }
     public bool IsGathering { get; set; }
@@ -63,8 +60,7 @@ namespace bts {
       }
 
       GridBuildingSystem = FindObjectOfType<GridBuildingSystem>();
-      AiPath = GetComponent<AIPath>();
-      AIDestinationSetter = GetComponent<AIDestinationSetter>();
+      Pathfinder = GetComponent<Pathfinder>();
       Selected = transform.Find("Selected").gameObject;
       stateMachine = new UnitStateMachine(this);
       unitCollider = GetComponent<Collider>();

@@ -6,7 +6,6 @@ namespace bts {
     [SerializeField] DemolishUICommandData demolishUICommandData;
     public virtual IEnumerable<UICommand> UICommands { get; protected set; }
     public GemstoneDictionary BuildingCosts => buildingData.buildingCosts;
-
     public Vector3 Position => Center.position;
     public bool IsDead => health.CurrentHealth == 0;
     public Bounds Bounds => buildingCollider.bounds;

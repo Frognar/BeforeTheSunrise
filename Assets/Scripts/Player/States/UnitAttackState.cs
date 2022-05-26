@@ -5,8 +5,7 @@ namespace bts {
     float lastAttackTime;
     public bool HasTarget => StateMachine.Context.Target != null && (StateMachine.Context.Target as Object) != null;
     bool IsTimeToAttack => lastAttackTime + StateMachine.Context.TimeBetweenAttacks <= Time.time;
-    bool InAttackRange => Vector3.Distance(StateMachine.Context.CurrentPosition, StateMachine.Context.Target.Position) <= StateMachine.Context.AttackRange;
-    float prevStopDistance;
+    bool InAttackRange => Vector3.Distance(StateMachine.Context.Position, StateMachine.Context.Target.Position) <= StateMachine.Context.AttackRange;
 
     public UnitAttackState(StateMachine<Unit> stateMachine, StateFactory<Unit> factory)
       : base(stateMachine, factory) {
@@ -14,10 +13,8 @@ namespace bts {
 
     public override void EnterState() {
       if (HasTarget) {
-        prevStopDistance = StateMachine.Context.AiPath.endReachedDistance;
-        StateMachine.Context.AiPath.endReachedDistance = StateMachine.Context.AttackRange - 2f;
-        StateMachine.Context.IsOrderedToAttack = false;
-        StateMachine.Context.AIDestinationSetter.target = StateMachine.Context.Target.Transform;
+        StateMachine.Context.Pathfinder.SetTarget(StateMachine.Context.Target.Center);
+        StateMachine.Context.Pathfinder.SetStopDistance(StateMachine.Context.AttackRange - 2f);
       }
       else if (!CheckSwitchState()) {
         StateMachine.SwitchState(Factory.GetState(nameof(UnitIdleState)));
@@ -29,16 +26,24 @@ namespace bts {
         return;
       }
 
-      if (HasTarget) {
-        if (InAttackRange) {
-          if (IsTimeToAttack) {
-            Attack();
-          }
+      if (InAttackRange) {
+        if (IsTimeToAttack) {
+          Attack();
         }
       }
-      else {
-        StateMachine.SwitchState(Factory.GetState(nameof(UnitIdleState)));
+    }
+
+    protected override bool CheckSwitchState() {
+      if (base.CheckSwitchState()) {
+        return true;
       }
+
+      if (!HasTarget) {
+        StateMachine.SwitchState(Factory.GetState(nameof(UnitIdleState)));
+        return true;
+      }
+
+      return false;
     }
 
     void Attack() {
@@ -46,14 +51,12 @@ namespace bts {
       StateMachine.Context.Target.TakeDamage(StateMachine.Context.DamageAmount);
       if (StateMachine.Context.Target.IsDead) {
         StateMachine.Context.Target = null;
-        StateMachine.Context.AIDestinationSetter.target = null;
         StateMachine.SwitchState(Factory.GetState(nameof(UnitIdleState)));
       }
     }
 
     public override void ExitState() {
-      StateMachine.Context.AiPath.destination = StateMachine.Context.CurrentPosition;
-      StateMachine.Context.AiPath.endReachedDistance = prevStopDistance;
+      StateMachine.Context.Pathfinder.Reset();
     }
   }
 }

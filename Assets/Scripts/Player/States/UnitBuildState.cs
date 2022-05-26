@@ -2,18 +2,15 @@
 
 namespace bts {
   public class UnitBuildState : UnitBaseState {
-    bool InBuildRange => Vector3.Distance(StateMachine.Context.CurrentPosition, StateMachine.Context.Destination) <= StateMachine.Context.BuildRange;
-    float prevStopDistance;
+    bool InBuildRange => Vector3.Distance(StateMachine.Context.Position, StateMachine.Context.Destination) <= StateMachine.Context.BuildRange;
 
     public UnitBuildState(StateMachine<Unit> stateMachine, StateFactory<Unit> factory)
       : base(stateMachine, factory) {
     }
 
     public override void EnterState() {
-      prevStopDistance = StateMachine.Context.AiPath.endReachedDistance;
-      StateMachine.Context.AiPath.endReachedDistance = StateMachine.Context.AttackRange - 2f;
-      StateMachine.Context.IsOrderedToBuild = false;
-      StateMachine.Context.AiPath.destination = StateMachine.Context.Destination;
+      StateMachine.Context.Pathfinder.SetDestination(StateMachine.Context.Destination);
+      StateMachine.Context.Pathfinder.SetStopDistance(StateMachine.Context.BuildRange - 2f);
     }
 
     public override void UpdateState() {
@@ -33,8 +30,7 @@ namespace bts {
     }
 
     public override void ExitState() {
-      StateMachine.Context.AiPath.destination = StateMachine.Context.CurrentPosition;
-      StateMachine.Context.AiPath.endReachedDistance = prevStopDistance;
+      StateMachine.Context.Pathfinder.Reset();
     }
   }
 }
