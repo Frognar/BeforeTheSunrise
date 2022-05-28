@@ -26,14 +26,19 @@ namespace bts {
       transform.position = grid.GetWorldPosition(cords);
       if (lastCanBuild != canBuild) {
         lastCanBuild = canBuild;
-        meshRenderer.material = canBuild ? canPlaceMaterial : cantPlaceMaterial;
+        UpdateMaterial();
       }
+    }
+    
+    void UpdateMaterial() {
+      meshRenderer.material = canBuild ? canPlaceMaterial : cantPlaceMaterial;
     }
 
     public void SetUp(PlacedObjectTypeSO buildingType) {
       boxCollider.size = new Vector3(buildingType.width - .1f, .5f, buildingType.height - .1f);
       CustomBuildingData buildingData = buildingType.customData as CustomBuildingData;
       meshFilter.mesh = buildingData.ghostMesh;
+      UpdateMaterial();
       if (buildingData is GeneratorData generatorData) {
         rangeVisuals.gameObject.SetActive(true);
         float range = generatorData.range * 2f;
