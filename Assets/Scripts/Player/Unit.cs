@@ -59,7 +59,7 @@ namespace bts {
       UICommands = CreateActions();
       GatherBonuses = new Dictionary<GemstoneType, int>();
       foreach (GemstoneType type in Enum.GetValues(typeof(GemstoneType))) {
-        GatherBonuses[type] = 1;
+        GatherBonuses[type] = 0;
       }
 
       GridBuildingSystem = FindObjectOfType<GridBuildingSystem>();

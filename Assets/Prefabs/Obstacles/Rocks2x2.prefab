@@ -51,6 +51,7 @@ MonoBehaviour:
   <Selected>k__BackingField: {fileID: 6907181952320486235}
   <SelectablesEventChannel>k__BackingField: {fileID: 11400000, guid: 3c1fda043d4369741a6aac78f1308909,
     type: 2}
+  storage: {fileID: 11400000, guid: 71f3ad2114ea85541984677a4e20ebac, type: 2}
   bar: {fileID: 1659582322162850700}
 --- !u!65 &2610586063416816719
 BoxCollider:
