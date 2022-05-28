@@ -8,5 +8,6 @@ namespace bts {
     public float energyPerAttack;
     public float maxEnergy;
     public float timeBetweenAttacks;
+    public ElectricArcVFXConfiguration electricArcConfig;
   }
 }

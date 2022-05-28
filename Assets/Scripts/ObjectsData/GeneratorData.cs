@@ -6,5 +6,6 @@ namespace bts {
     public float range;
     public float energyPerSecond;
     public int maxDevices;
+    public ElectricArcVFXConfiguration electricArcConfig;
   }
 }

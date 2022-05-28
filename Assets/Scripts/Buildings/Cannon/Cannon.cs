@@ -4,7 +4,6 @@ namespace bts {
   public class Cannon : Building, ElectricDevice {
     [field: SerializeField] public VFXEventChannel VFXEventChannel { get; private set; }
     [field: SerializeField] public Transform ArcBegin { get; private set; }
-    [field: SerializeField] public Vector3Asset ArcColor { get; private set; }
     [field: SerializeField] public SFXEventChannel SFXEventChannel { get; private set; }
     [field: SerializeField] public AudioConfiguration AudioConfig { get; private set; }
     [field: SerializeField] public AudioClipsGroup AttackSFX { get; private set; }
@@ -14,6 +13,7 @@ namespace bts {
     public float Range => DataLoaded ? data.range : 0;
     public float MaxEnergy => DataLoaded ? data.maxEnergy : 0;
     public float TimeBetweenAttacks => DataLoaded ? data.timeBetweenAttacks : 0;
+    public ElectricArcVFXConfiguration ElectricArcConfig => DataLoaded ? data.electricArcConfig : null;
     public float CurrentEnergy { get; private set; }
     public bool IsOrderedToStop { get; set; }
     public bool IsOrderedToAttack { get; set; }

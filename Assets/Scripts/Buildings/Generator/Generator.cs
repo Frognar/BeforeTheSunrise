@@ -6,7 +6,6 @@ namespace bts {
   public class Generator : Building {
     [SerializeField] VFXEventChannel vfxEventChannel;
     [SerializeField] Transform arcBegin;
-    [SerializeField] Vector3Asset arcColor;
     [SerializeField] IntAsset ticksPerSecond;
     [SerializeField] VoidEventChannel onTick;
     [SerializeField] GameObject rangeVisuals;
@@ -62,7 +61,7 @@ namespace bts {
           }
           else {
             devices[i].StoreEnergy(energyPerDevice);
-            vfxEventChannel.RaiseVFXEvent(arcBegin, devices[i].Center, arcColor, duration: 0.5f);
+            vfxEventChannel.RaiseVFXEvent(arcBegin, devices[i].Center.position, data.electricArcConfig);
           }
         }
       }

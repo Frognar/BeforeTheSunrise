@@ -9,11 +9,11 @@ namespace bts {
     [SerializeField] VisualEffect visualEffect;
     public IObjectPool<ElectricArcVFX> pool;
 
-    public void SetUp(Transform sourceTransform, Transform targetTransform, Vector3 color, float duration = 0.5f) {
+    public void SetUp(Transform sourceTransform, Vector3 targetPosition, ElectricArcVFXConfiguration config) {
       sourceTransformBinder.Target = sourceTransform;
-      targetTransformBinder.Target = targetTransform;
-      visualEffect.SetVector3("ArcColor", color);
-      Invoke(nameof(Release), duration);
+      visualEffect.SetVector3("TargetPosition", targetPosition);
+      config.ApplyTo(visualEffect);
+      Invoke(nameof(Release), config.Duration);
     }
     
     void Release() {

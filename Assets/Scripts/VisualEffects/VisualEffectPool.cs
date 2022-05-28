@@ -26,9 +26,10 @@ namespace bts {
       vfxEventChannel.OnVFXEventRequest -= GetVFX;
     }
 
-    void GetVFX(Transform source, Transform target, Vector3 color, float duration) {
+    void GetVFX(Transform source, Vector3 targetPosition, ElectricArcVFXConfiguration config) {
       ElectricArcVFX electricArc = electricArcsPool.Get();
-      electricArc.SetUp(source, target, color, duration);
+      electricArc.transform.position = source.position;
+      electricArc.SetUp(source, targetPosition, config);
     }
   }
 }

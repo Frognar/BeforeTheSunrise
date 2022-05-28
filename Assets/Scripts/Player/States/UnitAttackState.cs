@@ -48,7 +48,7 @@ namespace bts {
 
     void Attack() {
       lastAttackTime = Time.time;
-      StateMachine.Context.VFXEventChannel.RaiseVFXEvent(StateMachine.Context.ArcBegin, StateMachine.Context.Target.Center, StateMachine.Context.ArcColor, duration: 0.2f);
+      StateMachine.Context.VFXEventChannel.RaiseVFXEvent(StateMachine.Context.ArcBegin, StateMachine.Context.Target.Center.position, StateMachine.Context.ElectricArcConfig);
       StateMachine.Context.Target.TakeDamage(StateMachine.Context.DamageAmount);
       if (StateMachine.Context.Target.IsDead) {
         StateMachine.Context.Target = null;

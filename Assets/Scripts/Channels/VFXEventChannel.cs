@@ -4,10 +4,10 @@ using UnityEngine;
 namespace bts {
   [CreateAssetMenu(fileName = "VFX Channel", menuName = "Channels/VFX Channel")]
   public class VFXEventChannel : ScriptableObject {
-    public Action<Transform, Transform, Vector3, float> OnVFXEventRequest;
+    public Action<Transform, Vector3, ElectricArcVFXConfiguration> OnVFXEventRequest;
 
-    public void RaiseVFXEvent(Transform source, Transform target, Vector3 color, float duration) {
-      OnVFXEventRequest?.Invoke(source, target, color, duration);
+    public void RaiseVFXEvent(Transform source, Vector3 target, ElectricArcVFXConfiguration config) {
+      OnVFXEventRequest?.Invoke(source, target, config);
     }
   }
 }

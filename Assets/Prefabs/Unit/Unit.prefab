@@ -114,9 +114,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df75ecfdea458b14ea442f032bf6e3c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <VfxEventChannel>k__BackingField: {fileID: 11400000, guid: b7c1557d3dd1dd14baaa32d86d0284c6,
-    type: 2}
+  <VFXEventChannel>k__BackingField: {fileID: 0}
   <ArcBegin>k__BackingField: {fileID: 1796620831}
+  <ElectricArcConfig>k__BackingField: {fileID: 11400000, guid: e2c5fe3afb0609240a99d7c281e4cbd8,
+    type: 2}
+  <ArcColor>k__BackingField: {fileID: 0}
   <SelectablesEventChannel>k__BackingField: {fileID: 11400000, guid: 3c1fda043d4369741a6aac78f1308909,
     type: 2}
   buildCommandsData:
