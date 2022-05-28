@@ -8,8 +8,6 @@ namespace bts {
     [SerializeField] MusicEventChannel musicEventChannel;
 
     [SerializeField] AudioMixer audioMixer;
-    [SerializeField] AudioMixerGroup musicMixerGroup;
-    [SerializeField] AudioMixerGroup sfxMixerGroup;
     [SerializeField] float masterVolume = 1f;
     [SerializeField] float musicVolume = 1f;
     [SerializeField] float sfxVolume = 1f;
@@ -54,16 +52,25 @@ namespace bts {
       musicEventChannel.OnMusicStopRequest -= StopMusic;
     }
 
-    public void PlayAudioClip(AudioClip audioClip, Vector3 position) {
+    public void PlayAudioClip(AudioClip audioClip, AudioConfiguration config, Vector3 position) {
       SoundEmitter soundEmitter = emittersPool.Get();
-      soundEmitter.SetAudioMixer(sfxMixerGroup);
-      soundEmitter.PlayAudioClip(audioClip, false, position);
+      config.ApplyTo(soundEmitter.AudioSource);
+      soundEmitter.PlayAudioClip(audioClip, loop: false, position);
     }
 
-    public void PlayMusic(AudioClip audioClip) {
+    public void PlayMusic(AudioClip audioClip, AudioConfiguration config) {
+      const float fadeTime = 3f;
+      if (musicEmitter != null) {
+        if (musicEmitter.CurrentClip == audioClip && musicEmitter.IsPlaying) {
+          return;
+        }
+        
+        musicEmitter.FadeOut(fadeOutTime: fadeTime);
+      }
+      
       musicEmitter = emittersPool.Get();
-      musicEmitter.SetAudioMixer(musicMixerGroup);
-      musicEmitter.PlayAudioClip(audioClip, true);
+      config.ApplyTo(musicEmitter.AudioSource);
+      musicEmitter.FadeIn(audioClip, loop: true, fadeInTime: fadeTime);
     }
 
     public void StopMusic() {

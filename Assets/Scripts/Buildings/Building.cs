@@ -8,16 +8,14 @@ namespace bts {
     public GemstoneDictionary BuildingCosts => buildingData.buildingCosts;
     public Vector3 Position => Center.position;
     public bool IsDead => health.CurrentHealth == 0;
-    public Bounds Bounds => buildingCollider.bounds;
+    public Bounds Bounds => Obstacle.bounds;
 
     [SerializeField] WorldHealthBar bar;
     Health health;
     protected CustomBuildingData buildingData;
-    Collider buildingCollider;
 
     protected override void Start() {
       base.Start();
-      buildingCollider = GetComponent<Collider>();
       buildingData = PlaceableObjectType.customData as CustomBuildingData;
       health = new Health(buildingData.healthAmount);
       bar.SetUp(health);

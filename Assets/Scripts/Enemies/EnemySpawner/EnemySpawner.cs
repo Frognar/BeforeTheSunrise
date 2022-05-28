@@ -38,7 +38,7 @@ namespace bts {
     }
 
     Enemy Create() {
-      Enemy enemy = Instantiate(enemyPrefab);
+      Enemy enemy = Instantiate(enemyPrefab, transform);
       enemy.Pool = EnemyPool;
       return enemy;
     }

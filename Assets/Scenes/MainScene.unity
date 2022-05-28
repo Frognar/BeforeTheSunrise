@@ -171,10 +171,6 @@ MonoBehaviour:
   sfxEventChannel: {fileID: 11400000, guid: dd6b72c1d5cdf0b4592d245ebc4c91da, type: 2}
   musicEventChannel: {fileID: 11400000, guid: 821d06559c9005c4ba49bd3dad7e76b4, type: 2}
   audioMixer: {fileID: 24100000, guid: 0b6210729aa56cc45bdb6fb855b1ff20, type: 2}
-  musicMixerGroup: {fileID: -2818976498877269912, guid: 0b6210729aa56cc45bdb6fb855b1ff20,
-    type: 2}
-  sfxMixerGroup: {fileID: -8359992314923351380, guid: 0b6210729aa56cc45bdb6fb855b1ff20,
-    type: 2}
   masterVolume: 1
   musicVolume: 1
   sfxVolume: 1
@@ -187,9 +183,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1169707006}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30374fb5b15210b41b3c003e49c06e2d, type: 3}
+  m_Script: {fileID: 11500000, guid: ecb7b8b0084ba734a889a278f94b03e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onSecond: {fileID: 11400000, guid: 4bfb9538683542844bd5c8ca8f4a49a1, type: 2}
-  clip: {fileID: 8300000, guid: 9444f31a882362049b47340ba9176606, type: 3}
-  sfxEventChannel: {fileID: 11400000, guid: dd6b72c1d5cdf0b4592d245ebc4c91da, type: 2}
+  dayStarted: {fileID: 11400000, guid: ba696d58e6b750a4396f8d5fba9a80ea, type: 2}
+  nightStarted: {fileID: 11400000, guid: 3fd151616b2c6d746bca7aecc6b50f94, type: 2}
+  musicEventChannel: {fileID: 11400000, guid: 821d06559c9005c4ba49bd3dad7e76b4, type: 2}
+  config: {fileID: 11400000, guid: 4ff261433e3a4c64b8bceeb720952a5c, type: 2}
+  nigthClip: {fileID: 8300000, guid: 60254b59230f8ec48a5196798d66f042, type: 3}
+  dayClip: {fileID: 8300000, guid: 7c704585095476a45914e3989646ee30, type: 3}

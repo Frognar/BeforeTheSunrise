@@ -2,6 +2,9 @@
 
 namespace bts {
   public class Cannon : Building, ElectricDevice {
+    [field: SerializeField] public SFXEventChannel SFXEventChannel { get; private set; }
+    [field: SerializeField] public AudioConfiguration AudioConfig { get; private set; }
+    [field: SerializeField] public AudioClip AttackSFX { get; private set; }
     CannonData data;
     public int Damage => DataLoaded ? data.damage : 0;
     public float EnergyPerAttack => DataLoaded ? data.energyPerAttack : 0;

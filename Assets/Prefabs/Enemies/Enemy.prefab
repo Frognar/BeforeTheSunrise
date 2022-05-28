@@ -102,7 +102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 5
   radius: 0.4
-  height: 1
+  height: 0.1
   canMove: 1
   maxSpeed: 5
   gravity: {x: NaN, y: NaN, z: NaN}
@@ -124,7 +124,7 @@ MonoBehaviour:
   maxAcceleration: 100
   rotationSpeed: 360
   slowdownDistance: 0
-  pickNextWaypointDist: 2
+  pickNextWaypointDist: 1
   endReachedDistance: 1
   alwaysDrawGizmos: 1
   slowWhenNotFacingTarget: 0

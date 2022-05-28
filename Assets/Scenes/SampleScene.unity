@@ -2176,7 +2176,7 @@ MonoBehaviour:
   sun: {fileID: 410087040}
   dayLightIntensity: 2
   dayLightTemperature: 5000
-  nightLightIntensity: 0.1
+  nightLightIntensity: 0.8
   nightLightTemperature: 20000
   fadeDuration: 2
 --- !u!1 &420529913
@@ -2957,6 +2957,7 @@ GameObject:
   m_Component:
   - component: {fileID: 685963131}
   - component: {fileID: 685963130}
+  - component: {fileID: 685963132}
   m_Layer: 0
   m_Name: Camera Rig
   m_TagString: Untagged
@@ -3002,6 +3003,14 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!81 &685963132
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 685963129}
+  m_Enabled: 1
 --- !u!1 &724388999
 GameObject:
   m_ObjectHideFlags: 0
@@ -4072,7 +4081,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   data:
-    dataString: UEsDBBQAAAgIAAAIIeydRzzAVgIAABQFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQGFVMtu2zAQ/BWD5zaQlcR1emsVx+nBiRG3yEUXmlxZhClS4MOPBP73LinJUhwUPUmYmd2dfUjvRChbA3PazI3gC82BfB+R8E6+jHryEQ50o9VKvEGneRXclUFEo+aFOqERH4cwqytwRrAfaiODOEHQK1FoU834BjJtnUW4oNICUka7EK0Qeh+RQxtwbJ9v4Tk64RsD5cD8T+UVk7SqgQe3vTi9um3l+BaFCjtpNUkkmZZS2NYIccc6NprR2npsAwVcUGwsWkiupgiUIDalCzmH4c9FYcG1xgw93guDE2rykp+6GVtF7bZxt6PSh0rjdBp9NUkXn/jJdaQLo6vHru44CTVcKdj2hR4ZtW4w1yF831sfxyHtqdzStYTXEtSTnhvtFUfSGR9CvYX0fpDq3FtWAtv2usZrB3ZqX39e0rhf0im2f8ikqNZxlDcNsJI6jvwuxIDB9fxCx/E0bJsJ0eDij4XfdDO8oZZ4EMY6pNqCKthba2+ClMzi0EI33mXaKDDDDDUoKt1xiXnc5RIvuH9HPdDwubTVW677Ci5CItzrk+SCWur9eV221PsF2PLZOykU9PMPxBMOKtNKNTdmP5IhauVNQdkgauMF/3hbJL3hdML5t7s7tk7SNPk6pdPbdD1eM7idTACuSTw+obBNKpeNz3Y6uDXVJ1d4aN1PZDQ3tI7nzg3dz8VbpQf+hCr0ihkA9dxk6CZkwWAR/DT5jAuczwqcEyrum7znRGq2BZ6fE+Wx09nBGZr3WXJSi512AclJFn8dOQnw+ZaXBnYC9qF4l+xETn8BUEsDBBQAAAgIAAAIIexSSXbJbQAAAHgAAAAJACQAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0Bq1YqSy0qzszPU7JSMNEz0jM011FQSi9KLMgoBooYgjilmSkgdrSSkUlKollKirmlZXKSgZGRga5FooWpUZJhUnKqqZlZaqqxUixQfUllQapfYm4qRE9AYklGWmZeSmZeup57UWaKO8hopdhaAFBLAQItABQAAAgIAAAIIeydRzzAVgIAABQFAAALACQAAAAAAAAAAAAAAAAAAABncmFwaDAuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLAQItABQAAAgIAAAIIexSSXbJbQAAAHgAAAAJACQAAAAAAAAAAAAAAKMCAABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwUGAAAAAAIAAgC4AAAAWwMAAAAA
+    dataString: UEsDBBQAAAgIAAAIIewfOTj0VAIAABMFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQGFVE2P2jAQ/SvI53YVsguF3lpg2R5Y0KbVXnIx9iSxcOzIdvgU/72245Asq6qnRO+9mXnzkVwQE7oCYqRaKkZXkgL6PkDuHX0ZdOQLHHEuRcLO0GreGTWFE2GvecOGSYsPXZiWJRjFyA+RcyeOLFgLlklVLmgOM6mNtnCGuQZLKWlctLDQZYCOIeAUnmf3HFztGwFhQP1PVQvCcVkBdW47cfwwCnL75oXCdhI0kSeJ5JzpYASZU+UbTaoCFLhOKcO2L+8gephaoACWFyZ0fYteZ5kGE3wpfJozZQfUpEU/ZTO1EutdY26Pee0KDeOJt9UkXX3ix4+ezpQsX251I1fDFIzs3vCJYG16Y+3D88760M/ogPkObzm8FyBe5VLJWlBLGlW70FpDPO+luvU2K4DsOl3jtQVbdV193tGw29HVt3+ccVZu/SifGiDh0k986mJA2e38so79ZeiQyaLOxR8Nv3HeP6FAPDOljaVCQeHsbWWtnBQt/NBcN7WZSSVA9TNUIDA3p43NY+6XeMf9O+oZu68lVA9c+xHchXi400fRHbWRh9u6dCEPK9DFujacCejm74hXO6iZFKK5Mf2RdFFJrTJMelF5zejH20LxE8VjSr9Np2QbxXH0dYIno3g73BIYjccAj8gfHxO2Tcw3jc8wHbs10SUX9tDaf8hgqXDlz50qfFiycyl7/pjIZEIUgFg3GdoJaVC2iP0y6YIyO58EjGHC7xtdUsQl2QFNb4lS3+niaBROuywpqtheGoekaOb/HCly8O2WNwr2DA6ueJvsiq5/AVBLAwQUAAAICAAACCHsUkl2yW0AAAB4AAAACQAkAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAatWKkstKs7Mz1OyUjDRM9IzNNdRUEovSizIKAaKGII4pZkpIHa0kpFJSqJZSoq5pWVykoGRkYGuRaKFqVGSYVJyqqmZWWqqsVIsUH1JZUGqX2JuKkRPQGJJRlpmXkpmXrqee1FmijvIaKXYWgBQSwECLQAUAAAICAAACCHsHzk49FQCAAATBQAACwAkAAAAAAAAAAAAAAAAAAAAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwECLQAUAAAICAAACCHsUkl2yW0AAAB4AAAACQAkAAAAAAAAAAAAAAChAgAAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsFBgAAAAACAAIAuAAAAFkDAAAAAA==
     upgradeData: 
     file_cachedStartup: {fileID: 0}
     data_cachedStartup: 
@@ -4184,7 +4193,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1264780437}
   - component: {fileID: 1264780436}
-  - component: {fileID: 1264780435}
   - component: {fileID: 1264780434}
   - component: {fileID: 1264780438}
   m_Layer: 0
@@ -4227,14 +4235,6 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
---- !u!81 &1264780435
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1264780432}
-  m_Enabled: 1
 --- !u!20 &1264780436
 Camera:
   m_ObjectHideFlags: 0
@@ -6175,7 +6175,7 @@ MonoBehaviour:
   - {fileID: 35323757}
   enemyPrefab: {fileID: 2661493301678520061, guid: 8b1066774921d174295f4774b39b3dd8,
     type: 3}
-  <Center>k__BackingField: {fileID: 0}
+  <Center>k__BackingField: {fileID: 39017402}
   <Selected>k__BackingField: {fileID: 863048969}
   <SelectablesEventChannel>k__BackingField: {fileID: 11400000, guid: 3c1fda043d4369741a6aac78f1308909,
     type: 2}

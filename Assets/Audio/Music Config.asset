@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68aaa9894cddfdc42b1cb2f2e6988597, type: 3}
+  m_Name: Music Config
+  m_EditorClassIdentifier: 
+  <OutputAudioMixerGroup>k__BackingField: {fileID: -2818976498877269912, guid: 0b6210729aa56cc45bdb6fb855b1ff20,
+    type: 2}
+  <PriorityLvl>k__BackingField: 128
+  <Mute>k__BackingField: 0
+  <Volume>k__BackingField: 1
+  <Pitch>k__BackingField: 1
+  <PanStereo>k__BackingField: 0
+  <ReverbZoneMix>k__BackingField: 1
+  <SpatialBlend>k__BackingField: 0
+  <RolloffMode>k__BackingField: 0
+  <MinDistance>k__BackingField: 1
+  <MaxDistance>k__BackingField: 100
+  <Spread>k__BackingField: 0
+  <DopplerLevel>k__BackingField: 0
+  <BypassEffects>k__BackingField: 1
+  <BypassListenerEffects>k__BackingField: 1
+  <BypassReverbZones>k__BackingField: 1
+  <IgnoreListenerVolume>k__BackingField: 0
+  <IgnoreListenerPause>k__BackingField: 0

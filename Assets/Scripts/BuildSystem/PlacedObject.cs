@@ -21,9 +21,12 @@ namespace bts {
       Center = center;
     }
 
-    protected virtual void Start() {
+    protected virtual void Awake() {
       Obstacle = GetComponent<Collider>();
       AstarPath.active.UpdateGraphs(Obstacle.bounds);
+    }
+
+    protected virtual void Start() {
       float selectedScale = Mathf.Max(PlaceableObjectType.width, PlaceableObjectType.height) + 0.5f;
       Selected.transform.localScale = new Vector3(selectedScale, selectedScale, 1f);
       Selected.SetActive(false);

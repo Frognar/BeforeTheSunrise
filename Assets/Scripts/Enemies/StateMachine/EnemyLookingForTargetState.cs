@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 namespace bts {
   public class EnemyLookingForTargetState : EnemyBaseState {
@@ -19,6 +20,7 @@ namespace bts {
       }
 
       if (StateMachine.Context.Target == null) {
+        _ = StateMachine.Context.StartCoroutine(RestartAfterWhile());
         Debug.Log("No Target");
       }
     }
@@ -35,6 +37,11 @@ namespace bts {
       }
 
       return false;
+    }
+  
+    IEnumerator RestartAfterWhile() { 
+      yield return new WaitForSeconds(2f);
+      StateMachine.SwitchState(Factory.GetState(nameof(EnemyLookingForTargetState)));
     }
   }
 }
