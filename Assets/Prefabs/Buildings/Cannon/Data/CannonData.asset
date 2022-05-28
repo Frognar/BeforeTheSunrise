@@ -46,3 +46,4 @@ MonoBehaviour:
   energyPerAttack: 15
   maxEnergy: 200
   timeBetweenAttacks: 0.5
+  electricArcConfig: {fileID: 11400000, guid: 04f9e40ac1a6e0949b68eeb48fd701b9, type: 2}

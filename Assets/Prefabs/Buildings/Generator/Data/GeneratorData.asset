@@ -44,3 +44,4 @@ MonoBehaviour:
   range: 8
   energyPerSecond: 45
   maxDevices: 5
+  electricArcConfig: {fileID: 11400000, guid: 877df11b6a8864d428f0bc6295af943b, type: 2}
