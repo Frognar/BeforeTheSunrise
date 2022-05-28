@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace bts {
   public class Unit : MonoBehaviour, Selectable, Damageable {
+    [field: SerializeField] public VFXEventChannel VFXEventChannel { get; private set; }
+    [field: SerializeField] public Transform ArcBegin { get; private set; }
+    [field: SerializeField] public Vector3Asset ArcColor { get; private set; }
     public string Name => "Unit";
     public Transform Center => transform;
     public Affiliation ObjectAffiliation => Affiliation.Player;

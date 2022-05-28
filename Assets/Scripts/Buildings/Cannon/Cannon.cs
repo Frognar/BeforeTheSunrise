@@ -2,6 +2,9 @@
 
 namespace bts {
   public class Cannon : Building, ElectricDevice {
+    [field: SerializeField] public VFXEventChannel VFXEventChannel { get; private set; }
+    [field: SerializeField] public Transform ArcBegin { get; private set; }
+    [field: SerializeField] public Vector3Asset ArcColor { get; private set; }
     [field: SerializeField] public SFXEventChannel SFXEventChannel { get; private set; }
     [field: SerializeField] public AudioConfiguration AudioConfig { get; private set; }
     [field: SerializeField] public AudioClipsGroup AttackSFX { get; private set; }

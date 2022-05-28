@@ -22,6 +22,7 @@ namespace bts {
           if (IsTimeToAttack) {
             if (StateMachine.Context.CanAfford(StateMachine.Context.EnergyPerAttack)) {
               lastAttackTime = Time.time;
+              StateMachine.Context.VFXEventChannel.RaiseVFXEvent(StateMachine.Context.ArcBegin, StateMachine.Context.Target.Center, StateMachine.Context.ArcColor, duration: 0.2f);
               StateMachine.Context.SFXEventChannel.RaisePlayEvent(StateMachine.Context.AttackSFX, StateMachine.Context.AudioConfig, StateMachine.Context.Position);
               StateMachine.Context.UseEnergy(StateMachine.Context.EnergyPerAttack);
               StateMachine.Context.Target.TakeDamage(StateMachine.Context.Damage);
