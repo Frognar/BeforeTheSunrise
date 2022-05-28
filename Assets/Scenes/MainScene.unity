@@ -190,5 +190,17 @@ MonoBehaviour:
   nightStarted: {fileID: 11400000, guid: 3fd151616b2c6d746bca7aecc6b50f94, type: 2}
   musicEventChannel: {fileID: 11400000, guid: 821d06559c9005c4ba49bd3dad7e76b4, type: 2}
   config: {fileID: 11400000, guid: 4ff261433e3a4c64b8bceeb720952a5c, type: 2}
-  nigthClip: {fileID: 8300000, guid: 60254b59230f8ec48a5196798d66f042, type: 3}
-  dayClip: {fileID: 8300000, guid: 7c704585095476a45914e3989646ee30, type: 3}
+  nigthClips:
+    <PickRandom>k__BackingField: 1
+    <AllowImmediateRepeat>k__BackingField: 0
+    <Clips>k__BackingField:
+    - {fileID: 8300000, guid: 00589363390c06d48a5d99254a0a4f0f, type: 3}
+    - {fileID: 8300000, guid: 60254b59230f8ec48a5196798d66f042, type: 3}
+    - {fileID: 8300000, guid: ee9321442306f8b4b8f2b3f32da8be80, type: 3}
+  dayClips:
+    <PickRandom>k__BackingField: 1
+    <AllowImmediateRepeat>k__BackingField: 0
+    <Clips>k__BackingField:
+    - {fileID: 8300000, guid: 7c704585095476a45914e3989646ee30, type: 3}
+    - {fileID: 8300000, guid: d183e4d3fb8bdbc42973b4ad7b6d85c1, type: 3}
+    - {fileID: 8300000, guid: 134e22ca1a22ae24d9849a472bfb5e4e, type: 3}

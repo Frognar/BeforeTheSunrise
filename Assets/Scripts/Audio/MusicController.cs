@@ -6,8 +6,8 @@ namespace bts {
     [SerializeField] VoidEventChannel nightStarted;
     [SerializeField] MusicEventChannel musicEventChannel;
     [SerializeField] AudioConfiguration config;
-    [SerializeField] AudioClip nigthClip;
-    [SerializeField] AudioClip dayClip;
+    [SerializeField] AudioClipsGroup nigthClips;
+    [SerializeField] AudioClipsGroup dayClips;
 
     void OnEnable() {
       dayStarted.OnEventInvoked += OnDayStarted;
@@ -20,11 +20,11 @@ namespace bts {
     }
 
     void OnDayStarted(object sender, System.EventArgs e) {
-      musicEventChannel.RaisePlayEvent(dayClip, config);
+      musicEventChannel.RaisePlayEvent(dayClips, config);
     }
 
     void OnNightStarted(object sender, System.EventArgs e) {
-      musicEventChannel.RaisePlayEvent(nigthClip, config);
+      musicEventChannel.RaisePlayEvent(nigthClips, config);
     }
   }
 }

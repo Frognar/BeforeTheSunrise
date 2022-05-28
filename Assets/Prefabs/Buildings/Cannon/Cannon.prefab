@@ -61,8 +61,13 @@ MonoBehaviour:
     type: 2}
   <AudioConfig>k__BackingField: {fileID: 11400000, guid: a28c7d6ec18dac6439d381de6a7f208c,
     type: 2}
-  <AttackSFX>k__BackingField: {fileID: 8300000, guid: bc4d93ce7c3204d4c9db3cf4c376d521,
-    type: 3}
+  <AttackSFX>k__BackingField:
+    <PickRandom>k__BackingField: 1
+    <AllowImmediateRepeat>k__BackingField: 0
+    <Clips>k__BackingField:
+    - {fileID: 8300000, guid: aaef3b0128994764cac7f0df29639825, type: 3}
+    - {fileID: 8300000, guid: 268de188fb041ae4aaada6afe1ce1c50, type: 3}
+    - {fileID: 8300000, guid: a7db127024161784f8195cca00aebd75, type: 3}
   rangeVisuals: {fileID: 8707087033549956412}
 --- !u!114 &7194066481571063517
 MonoBehaviour:

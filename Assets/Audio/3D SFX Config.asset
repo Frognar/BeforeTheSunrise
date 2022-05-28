@@ -22,8 +22,8 @@ MonoBehaviour:
   <ReverbZoneMix>k__BackingField: 1
   <SpatialBlend>k__BackingField: 1
   <RolloffMode>k__BackingField: 1
-  <MinDistance>k__BackingField: 15
-  <MaxDistance>k__BackingField: 35
+  <MinDistance>k__BackingField: 5
+  <MaxDistance>k__BackingField: 25
   <Spread>k__BackingField: 0
   <DopplerLevel>k__BackingField: 1
   <BypassEffects>k__BackingField: 0
