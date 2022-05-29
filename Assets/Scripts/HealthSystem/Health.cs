@@ -7,6 +7,8 @@ namespace bts {
     public int MaxHealth { get; private set; }
     public int CurrentHealth { get; protected set; }
     public float HealthNormalized => (float)CurrentHealth / MaxHealth;
+    public bool HasFullHealth => CurrentHealth == MaxHealth;
+    public bool HasNoHealth => CurrentHealth == 0;
 
     public Health(int maxHealth) {
       MaxHealth = maxHealth;

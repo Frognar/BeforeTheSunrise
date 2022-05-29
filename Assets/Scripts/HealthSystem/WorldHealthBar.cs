@@ -4,11 +4,11 @@ using UnityEngine;
 namespace bts {
   public class WorldHealthBar : MonoBehaviour {
     [SerializeField] VoidEventChannel onTick;
+    [SerializeField] Transform background;
+    [SerializeField] Transform bar;
     HealthAnimated Health { get; set; }
-    Transform bar;
 
     public void SetUp(Health health) {
-      bar = transform.Find("Hook");
       Health = new HealthAnimated(health);
       Health.OnValueChange += OnHealthChange;
       onTick.OnEventInvoked += Health.UpdateOnTick;
@@ -31,9 +31,9 @@ namespace bts {
     }
 
     void UpdateBar() {
-      if (bar != null) {
-        bar.localScale = new Vector3(Health.HealthNormalized, 1f);
-      }
+      bar.localScale = new Vector3(Health.HealthNormalized, 1f);
+      background.gameObject.SetActive(!Health.HasFullHealth);
+      bar.gameObject.SetActive(!Health.HasFullHealth);
     }
   }
 }

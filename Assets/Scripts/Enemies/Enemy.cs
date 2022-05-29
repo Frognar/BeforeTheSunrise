@@ -84,7 +84,7 @@ namespace bts {
 
     public void TakeDamage(int amount) {
       Health.Damage(amount);
-      if (!IsDead && Health.CurrentHealth == 0) {
+      if (!IsDead && Health.HasNoHealth) {
         Release();
         IsDead = true;
         if (Selected.activeSelf) {

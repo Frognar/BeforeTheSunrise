@@ -19,7 +19,7 @@ namespace bts {
     [field: SerializeField] public GameObject Selected { get; private set; }
     [field: SerializeField] public SelectablesEventChannel SelectablesEventChannel { get; private set; }
     public Vector3 Position => Center.position;
-    public bool IsDead => Health.CurrentHealth == 0;
+    public bool IsDead => Health.HasNoHealth;
 
     [SerializeField] WorldHealthBar bar;
     [SerializeField] GridBuildingSystem gridBuildingSystem;

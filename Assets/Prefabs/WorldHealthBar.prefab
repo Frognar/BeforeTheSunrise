@@ -79,6 +79,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onTick: {fileID: 11400000, guid: c6e751abad063954ab30d73107f50070, type: 2}
+  background: {fileID: 6770395562003239298}
+  bar: {fileID: 6770395560150522190}
 --- !u!1 &6770395561669371116
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,7 +7,7 @@ namespace bts {
     public virtual IEnumerable<UICommand> UICommands { get; protected set; }
     public GemstoneDictionary BuildingCosts => buildingData.buildingCosts;
     public Vector3 Position => Center.position;
-    public bool IsDead => health.CurrentHealth == 0;
+    public bool IsDead => health.HasNoHealth;
     public Bounds Bounds => Obstacle.bounds;
 
     [SerializeField] WorldHealthBar bar;

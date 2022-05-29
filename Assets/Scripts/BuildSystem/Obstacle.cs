@@ -5,7 +5,7 @@ namespace bts {
   public class Obstacle : PlacedObject, Damageable {
     [SerializeField] GemstoneStorage storage;
     public Vector3 Position => Center.position;
-    public bool IsDead => health.CurrentHealth == 0;
+    public bool IsDead => health.HasNoHealth;
     public Bounds Bounds => Obstacle.bounds;
     [SerializeField] WorldHealthBar bar;
     Health health;

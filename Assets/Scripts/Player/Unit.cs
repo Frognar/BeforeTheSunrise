@@ -47,7 +47,7 @@ namespace bts {
     public Vector3 Position => transform.position;
     Collider unitCollider;
     public Bounds Bounds => unitCollider.bounds;
-    public bool IsDead => Health.CurrentHealth == 0;
+    public bool IsDead => Health.HasNoHealth;
     [SerializeField] WorldHealthBar bar;
     public Health Health { get; private set; }
 
