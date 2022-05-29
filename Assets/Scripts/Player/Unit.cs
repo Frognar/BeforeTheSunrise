@@ -102,6 +102,12 @@ namespace bts {
       Selected.SetActive(false);
       IsSelected = false;
     }
+    
+    public Dictionary<string, object> GetData() {
+      return new Dictionary<string, object>() {
+        { "Health", bar.Health }
+      };
+    }
 
     void OnDestroy() {
       if (IsSelected) {

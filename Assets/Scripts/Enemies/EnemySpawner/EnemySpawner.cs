@@ -88,6 +88,12 @@ namespace bts {
       return false;
     }
 
+    public Dictionary<string, object> GetData() {
+      return new Dictionary<string, object>() {
+        { "Health", bar.Health }
+      };
+    }
+
     public void TakeDamage(int amount) {
       Health.Damage(amount);
       if (IsDead && Selected.activeSelf) {

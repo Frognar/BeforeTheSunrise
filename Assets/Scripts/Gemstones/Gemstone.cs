@@ -17,5 +17,9 @@ namespace bts {
         GetComponentInChildren<ParticleSystem>().Play();
       }
     }
+
+    public override Dictionary<string, object> GetData() {
+      return new Dictionary<string, object>();
+    }
   }
 }

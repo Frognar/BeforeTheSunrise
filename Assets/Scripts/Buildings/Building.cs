@@ -32,5 +32,11 @@ namespace bts {
     public void DestroySelf() {
       GridBuildingSystem.Demolish(Position);
     }
+    
+    public override Dictionary<string, object> GetData() {
+      return new Dictionary<string, object>() {
+        { "Health", bar.Health }
+      };
+    }
   }
 }

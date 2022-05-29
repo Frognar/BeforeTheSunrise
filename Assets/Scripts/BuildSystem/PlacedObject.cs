@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace bts {
   public abstract class PlacedObject : MonoBehaviour, Placeable, Selectable {
@@ -49,6 +50,8 @@ namespace bts {
     public virtual bool IsSameAs(Selectable other) {
       return false;
     }
+
+    public abstract Dictionary<string, object> GetData();
 
     protected virtual void OnDestroy() {
       if (Selected.activeSelf) {

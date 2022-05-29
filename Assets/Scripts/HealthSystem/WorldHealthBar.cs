@@ -1,12 +1,11 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace bts {
   public class WorldHealthBar : MonoBehaviour {
     [SerializeField] VoidEventChannel onTick;
     [SerializeField] Transform background;
     [SerializeField] Transform bar;
-    HealthAnimated Health { get; set; }
+    public HealthAnimated Health { get; private set; }
 
     public void SetUp(Health health) {
       Health = new HealthAnimated(health);

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Pathfinding;
 using UnityEngine;
 using UnityEngine.Pool;
@@ -80,6 +81,12 @@ namespace bts {
 
     public bool IsSameAs(Selectable other) {
       return false;
+    }
+
+    public Dictionary<string, object> GetData() {
+      return new Dictionary<string, object>() {
+        { "Health", bar.Health }
+      };
     }
 
     public void TakeDamage(int amount) {

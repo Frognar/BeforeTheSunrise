@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace bts {
@@ -27,6 +28,12 @@ namespace bts {
           storage.Store(type, gemstoneAmount);
         }
       }
+    }
+
+    public override Dictionary<string, object> GetData() {
+      return new Dictionary<string, object>() {
+        { "Health", bar.Health }
+      };
     }
   }
 }
