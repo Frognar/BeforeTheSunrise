@@ -33,7 +33,7 @@ namespace bts {
 
     public float BuildRange => 3.5f;
     public bool IsOrderedToBuild { get; set; }
-    public PlacedObjectTypeSO BuildingToPlace { get; set; }
+    public PlacedObjectType BuildingToPlace { get; set; }
 
     public float StopDistance => 1f;
     public bool IsOrderedToMove { get; set; }

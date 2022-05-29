@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace bts {
   [CreateAssetMenu()]
-  public class PlacedObjectTypeSO : ScriptableObject {
+  public class PlacedObjectType : ScriptableObject {
     public string objectName;
     public string objectDescription;
     public Transform prefab;

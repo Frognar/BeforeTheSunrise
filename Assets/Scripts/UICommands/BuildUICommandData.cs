@@ -3,7 +3,7 @@
 namespace bts {
   [CreateAssetMenu(fileName = "BuildCommandData", menuName = "UICommands/Build Command Data")]
   public class BuildUICommandData : UICommandData {
-    [field: SerializeField] public PlacedObjectTypeSO BuildingType { get; private set; }
+    [field: SerializeField] public PlacedObjectType BuildingType { get; private set; }
     TooltipData tooltipData;
     public override TooltipData TooltipData => tooltipData;
 

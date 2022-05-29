@@ -34,7 +34,7 @@ namespace bts {
       meshRenderer.material = canBuild ? canPlaceMaterial : cantPlaceMaterial;
     }
 
-    public void SetUp(PlacedObjectTypeSO buildingType) {
+    public void SetUp(PlacedObjectType buildingType) {
       boxCollider.size = new Vector3(buildingType.width - .1f, .5f, buildingType.height - .1f);
       CustomBuildingData buildingData = buildingType.customData as CustomBuildingData;
       meshFilter.mesh = buildingData.ghostMesh;

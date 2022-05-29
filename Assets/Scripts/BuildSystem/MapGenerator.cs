@@ -3,11 +3,11 @@ using UnityEngine;
 
 namespace bts {
   public class MapGenerator : MonoBehaviour {
-    [SerializeField] PlacedObjectTypeSO obstaclePrefab;
-    [SerializeField] List<PlacedObjectTypeSO> resourcesPrefabs;
+    [SerializeField] PlacedObjectType obstaclePrefab;
+    [SerializeField] List<PlacedObjectType> resourcesPrefabs;
     GridBuildingSystem gridBuildingSystem;
 
-    PlacedObjectTypeSO RandomResource => resourcesPrefabs[Random.Range(0, resourcesPrefabs.Count)];
+    PlacedObjectType RandomResource => resourcesPrefabs[Random.Range(0, resourcesPrefabs.Count)];
 
     void Awake() {
       gridBuildingSystem = FindObjectOfType<GridBuildingSystem>();  

@@ -17,12 +17,12 @@ namespace bts {
       Grid = new GridXZ<GridObject>(gridWidth, gridHeight, cellSize, gridOrigin, (g, x, z) => new GridObject(g, x, z));
     }
 
-    public void Build(Vector3 mouseWorldPosition, PlacedObjectTypeSO placedObjectType) {
+    public void Build(Vector3 mouseWorldPosition, PlacedObjectType placedObjectType) {
       Vector3Int cords = Grid.GetCords(mouseWorldPosition);
       Build(cords, placedObjectType);
     }
 
-    public void Build(Vector3Int cords, PlacedObjectTypeSO placedObjectType) {
+    public void Build(Vector3Int cords, PlacedObjectType placedObjectType) {
       List<Vector3Int> gridPositions = placedObjectType.GetGridPositions(cords);
       List<GridObject> gridObjects = gridPositions.ConvertAll(p => Grid.GetGridObject(p.x, p.z));
       if (gridObjects.All(o => o?.CanBuild() ?? false)) {

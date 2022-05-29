@@ -8,7 +8,7 @@ namespace bts {
     [SerializeField] GhostObject currentGhost;
     Unit unit;
     UnitCommandInvoker invoker;
-    PlacedObjectTypeSO buildingToPlace;
+    PlacedObjectType buildingToPlace;
 
     void Awake() {
       unit = GetComponent<Unit>();
@@ -80,7 +80,7 @@ namespace bts {
       currentGhost.gameObject.SetActive(false);
     }
 
-    public void SetBuildingToBuild(PlacedObjectTypeSO buildingType) {
+    public void SetBuildingToBuild(PlacedObjectType buildingType) {
       if (unit.IsSelected) {
         buildingToPlace = buildingType;
         currentGhost.SetUp(buildingType);
