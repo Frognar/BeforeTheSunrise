@@ -48,6 +48,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 021b3beefa7f4c34292a026660f0d3ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <PlaceableObjectType>k__BackingField: {fileID: 11400000, guid: 083d8403ac7e1654a89244f65925d29c,
+    type: 2}
   <Selected>k__BackingField: {fileID: 5083420486420501392}
   <SelectablesEventChannel>k__BackingField: {fileID: 11400000, guid: 3c1fda043d4369741a6aac78f1308909,
     type: 2}

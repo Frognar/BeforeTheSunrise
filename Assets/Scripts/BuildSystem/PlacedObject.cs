@@ -5,7 +5,7 @@ namespace bts {
     public Collider Obstacle { get; private set; }
     public Transform Transform => transform;
     public GridBuildingSystem GridBuildingSystem { get; private set; }
-    public PlacedObjectType PlaceableObjectType { get; private set; }
+    [field: SerializeField] public PlacedObjectType PlaceableObjectType { get; private set; }
     public Vector3Int Origin { get; private set; }
     public Transform Center { get; private set; }
     public virtual string Name => PlaceableObjectType.name;
@@ -14,9 +14,8 @@ namespace bts {
     [field: SerializeField] public GameObject Selected { get; private set; }
     [field: SerializeField] public SelectablesEventChannel SelectablesEventChannel { get; private set; }
 
-    public void Init(GridBuildingSystem gridBuildingSystem, PlacedObjectType objectType, Vector3Int origin, Transform center) {
+    public void Init(GridBuildingSystem gridBuildingSystem, Vector3Int origin, Transform center) {
       GridBuildingSystem = gridBuildingSystem;
-      PlaceableObjectType = objectType;
       Origin = origin;
       Center = center;
     }

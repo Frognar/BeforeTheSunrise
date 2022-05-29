@@ -9,7 +9,7 @@ namespace bts {
       Transform placedObjectTransform = Instantiate(objectType.prefab, worldPosition, Quaternion.identity, Parent);
       Placeable placedObject = placedObjectTransform.GetComponent<Placeable>();
       Transform center = CreateObjectCenter(placedObject.Transform, new Vector3(objectType.width / 2, 0, objectType.height / 2));
-      placedObject.Init(gridBuildingSystem, objectType, origin, center);
+      placedObject.Init(gridBuildingSystem, origin, center);
       return placedObject;
     }
 

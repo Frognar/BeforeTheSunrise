@@ -14,8 +14,8 @@ namespace bts {
     Health health;
     protected CustomBuildingData buildingData;
 
-    protected override void Start() {
-      base.Start();
+    protected override void Awake() {
+      base.Awake();
       buildingData = PlaceableObjectType.customData as CustomBuildingData;
       health = new Health(buildingData.healthAmount);
       bar.SetUp(health);

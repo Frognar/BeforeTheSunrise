@@ -9,15 +9,14 @@ namespace bts {
     [SerializeField] IntAsset ticksPerSecond;
     [SerializeField] VoidEventChannel onTick;
     [SerializeField] GameObject rangeVisuals;
-    public float Range => DataLoaded ? data.range : 0;
-    float EnergyPerSecond => DataLoaded ? data.energyPerSecond : 0;
-    int MaxDevices => DataLoaded ? data.maxDevices : 0;
+    public float Range => data.range;
+    float EnergyPerSecond => data.energyPerSecond;
+    int MaxDevices => data.maxDevices;
     GeneratorData data;
     float energyPerTick;
-    bool DataLoaded => data != null;
 
-    protected override void Start() {
-      base.Start();
+    protected override void Awake() {
+      base.Awake();
       data = buildingData as GeneratorData;
       energyPerTick = EnergyPerSecond / ticksPerSecond;
       rangeVisuals.transform.localScale = new Vector3(Range * 2, Range * 2, 1f);

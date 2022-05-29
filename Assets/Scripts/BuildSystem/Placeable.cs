@@ -9,7 +9,7 @@ namespace bts {
     Collider Obstacle { get; }
     Transform Center { get; }
     Transform Transform { get; }
-    void Init(GridBuildingSystem gridBuildingSystem, PlacedObjectType objectType, Vector3Int origin, Transform center);
+    void Init(GridBuildingSystem gridBuildingSystem, Vector3Int origin, Transform center);
 
     List<Vector3Int> GetGridPositions() {
       return PlaceableObjectType.GetGridPositions(Origin);

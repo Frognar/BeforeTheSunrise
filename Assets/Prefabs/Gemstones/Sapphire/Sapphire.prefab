@@ -122,6 +122,12 @@ PrefabInstance:
       propertyPath: <GemstoneType>k__BackingField
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8096196835972089138, guid: 988387a355fafe249927d0aaf33627e6,
+        type: 3}
+      propertyPath: <PlaceableObjectType>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: 3c883a4ce9df1f54582c644a6ed027a3,
+        type: 2}
     - target: {fileID: 8431993066421182533, guid: 988387a355fafe249927d0aaf33627e6,
         type: 3}
       propertyPath: m_Materials.Array.data[0]

@@ -8,12 +8,12 @@ namespace bts {
     [field: SerializeField] public AudioConfiguration AudioConfig { get; private set; }
     [field: SerializeField] public AudioClipsGroup AttackSFX { get; private set; }
     CannonData data;
-    public int Damage => DataLoaded ? data.damage : 0;
-    public float EnergyPerAttack => DataLoaded ? data.energyPerAttack : 0;
-    public float Range => DataLoaded ? data.range : 0;
-    public float MaxEnergy => DataLoaded ? data.maxEnergy : 0;
-    public float TimeBetweenAttacks => DataLoaded ? data.timeBetweenAttacks : 0;
-    public ElectricArcVFXConfiguration ElectricArcConfig => DataLoaded ? data.electricArcConfig : null;
+    public int Damage => data.damage;
+    public float EnergyPerAttack => data.energyPerAttack;
+    public float Range => data.range;
+    public float MaxEnergy => data.maxEnergy;
+    public float TimeBetweenAttacks => data.timeBetweenAttacks;
+    public ElectricArcVFXConfiguration ElectricArcConfig => data.electricArcConfig;
     public float CurrentEnergy { get; private set; }
     public bool IsOrderedToStop { get; set; }
     public bool IsOrderedToAttack { get; set; }
@@ -23,16 +23,18 @@ namespace bts {
     public bool IsIdle { get; set; }
     
     [SerializeField] GameObject rangeVisuals;
-    bool DataLoaded => data != null;
-
     StateMachine<Cannon> stateMachine;
 
-    protected override void Start() {
-      base.Start();
+    protected override void Awake() {
+      base.Awake();
       data = buildingData as CannonData;
       rangeVisuals.transform.localScale = new Vector3(Range * 2, Range * 2, 1f);
       rangeVisuals.SetActive(false);
       stateMachine = new CannonStateMachine(this);
+    }
+
+    protected override void Start() {
+      base.Start();
       stateMachine.Start();
     }
 

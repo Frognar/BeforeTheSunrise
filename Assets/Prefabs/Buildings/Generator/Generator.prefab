@@ -81,6 +81,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ac9a763c2fa18149814ce2afbb2669e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <PlaceableObjectType>k__BackingField: {fileID: 11400000, guid: c405986943579854e9af46a6f89a0a01,
+    type: 2}
   <Selected>k__BackingField: {fileID: 1783472040716123526}
   <SelectablesEventChannel>k__BackingField: {fileID: 11400000, guid: 3c1fda043d4369741a6aac78f1308909,
     type: 2}
@@ -89,7 +91,6 @@ MonoBehaviour:
   bar: {fileID: 8134931827608231969}
   vfxEventChannel: {fileID: 11400000, guid: b7c1557d3dd1dd14baaa32d86d0284c6, type: 2}
   arcBegin: {fileID: 941975804667700405}
-  arcColor: {fileID: 11400000, guid: 606cf57c22b007e48b207fc50c74db5f, type: 2}
   ticksPerSecond: {fileID: 11400000, guid: ccce87ca0d2f89b41834d5a6e0860c1e, type: 2}
   onTick: {fileID: 11400000, guid: c6e751abad063954ab30d73107f50070, type: 2}
   rangeVisuals: {fileID: 1309591984804889538}

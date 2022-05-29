@@ -52,6 +52,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e149b755f37b3624cb07083c947fd883, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <PlaceableObjectType>k__BackingField: {fileID: 11400000, guid: ba20cf2e21044c04784f1616b600d962,
+    type: 2}
   <Selected>k__BackingField: {fileID: 1783472040716123526}
   <SelectablesEventChannel>k__BackingField: {fileID: 11400000, guid: 3c1fda043d4369741a6aac78f1308909,
     type: 2}
@@ -61,8 +63,6 @@ MonoBehaviour:
   <VFXEventChannel>k__BackingField: {fileID: 11400000, guid: b7c1557d3dd1dd14baaa32d86d0284c6,
     type: 2}
   <ArcBegin>k__BackingField: {fileID: 194426484653434774}
-  <ArcColor>k__BackingField: {fileID: 11400000, guid: 8fb8f52dec6334a4d9f25e3dfbe0e60a,
-    type: 2}
   <SFXEventChannel>k__BackingField: {fileID: 11400000, guid: dd6b72c1d5cdf0b4592d245ebc4c91da,
     type: 2}
   <AudioConfig>k__BackingField: {fileID: 11400000, guid: a28c7d6ec18dac6439d381de6a7f208c,
