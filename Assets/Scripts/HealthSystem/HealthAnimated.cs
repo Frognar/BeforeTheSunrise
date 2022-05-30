@@ -30,7 +30,7 @@ namespace bts {
       Heal(MaxHealth);
     }
 
-    public void UpdateOnTick(object sender, EventArgs e) {
+    public void Update() {
       UpdateValue();
     }
 

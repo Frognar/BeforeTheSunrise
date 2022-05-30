@@ -2,7 +2,6 @@
 
 namespace bts {
   public class WorldHealthBar : MonoBehaviour {
-    [SerializeField] VoidEventChannel onTick;
     [SerializeField] Transform background;
     [SerializeField] Transform bar;
     public HealthAnimated Health { get; private set; }
@@ -10,8 +9,11 @@ namespace bts {
     public void SetUp(Health health) {
       Health = new HealthAnimated(health);
       Health.OnValueChange += OnHealthChange;
-      onTick.OnEventInvoked += Health.UpdateOnTick;
       UpdateBar();
+    }
+
+    void Update() {
+      Health.Update();
     }
 
     void LateUpdate() {
@@ -21,7 +23,6 @@ namespace bts {
     void OnDestroy() {
       if (Health != null) {
         Health.OnValueChange -= OnHealthChange;
-        onTick.OnEventInvoked -= Health.UpdateOnTick;
       }
     }
 

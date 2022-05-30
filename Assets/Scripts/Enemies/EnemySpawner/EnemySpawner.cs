@@ -20,6 +20,7 @@ namespace bts {
     [field: SerializeField] public SelectablesEventChannel SelectablesEventChannel { get; private set; }
     public Vector3 Position => Center.position;
     public bool IsDead => Health.HasNoHealth;
+    public bool IsIntact => Health.HasFullHealth;
 
     [SerializeField] WorldHealthBar bar;
     [SerializeField] GridBuildingSystem gridBuildingSystem;
@@ -99,6 +100,10 @@ namespace bts {
       if (IsDead && Selected.activeSelf) {
         SelectablesEventChannel.Invoke(this);
       }
+    }
+
+    public void Heal(int amount) {
+      Health.Heal(amount);
     }
   }
 }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
+  m_IndirectSpecularColor: {r: 0.17276844, g: 0.21589246, b: 0.2978263, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -216,7 +216,7 @@ MonoBehaviour:
   musicEventChannel: {fileID: 11400000, guid: 821d06559c9005c4ba49bd3dad7e76b4, type: 2}
   audioMixer: {fileID: 24100000, guid: 0b6210729aa56cc45bdb6fb855b1ff20, type: 2}
   masterVolume: 1
-  musicVolume: 1
+  musicVolume: 0.5
   sfxVolume: 1
 --- !u!114 &1169707009
 MonoBehaviour:

@@ -9,5 +9,7 @@ namespace bts {
     public float maxEnergy;
     public float timeBetweenAttacks;
     public ElectricArcVFXConfiguration electricArcConfig;
+    public AudioClipsGroup attackSFX;
+    public AudioConfiguration audioConfig;
   }
 }

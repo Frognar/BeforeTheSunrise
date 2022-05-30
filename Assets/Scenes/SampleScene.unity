@@ -4305,6 +4305,7 @@ Transform:
   - {fileID: 1235821365}
   - {fileID: 1350800139}
   - {fileID: 338334210}
+  - {fileID: 1748118273}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6806,6 +6807,53 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52eae44a91592ce4b898c27440b0ba59, type: 3}
+--- !u!1 &1748118272
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1748118273}
+  - component: {fileID: 1748118274}
+  m_Layer: 0
+  m_Name: LaserPool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1748118273
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1748118272}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1141388426}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1748118274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1748118272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d329e5d8e475eb47aae779a8c8257ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  laserEventChannel: {fileID: 11400000, guid: d937debb0317b9d4996a3928dc3995e2, type: 2}
+  laserPrefab: {fileID: 4431185458145817739, guid: 18ecaa8a0a03f3441bd282228d265a84,
+    type: 3}
 --- !u!1 &1768741794
 GameObject:
   m_ObjectHideFlags: 0
@@ -7987,6 +8035,17 @@ PrefabInstance:
       propertyPath: <ArcColor>k__BackingField
       value: 
       objectReference: {fileID: 11400000, guid: c19fafb87f9d77141a2ebd4bd1896c93,
+        type: 2}
+    - target: {fileID: 4085809703577258809, guid: f7db9d6726e6a0d499a3ba8cbdce4e16,
+        type: 3}
+      propertyPath: buildCommandsData.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4085809703577258809, guid: f7db9d6726e6a0d499a3ba8cbdce4e16,
+        type: 3}
+      propertyPath: buildCommandsData.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: b9f019d77a597024a920f5164ed31577,
         type: 2}
     - target: {fileID: 4085809703577258809, guid: f7db9d6726e6a0d499a3ba8cbdce4e16,
         type: 3}

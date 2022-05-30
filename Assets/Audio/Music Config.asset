@@ -16,7 +16,7 @@ MonoBehaviour:
     type: 2}
   <PriorityLvl>k__BackingField: 128
   <Mute>k__BackingField: 0
-  <Volume>k__BackingField: 1
+  <Volume>k__BackingField: 0.42
   <Pitch>k__BackingField: 1
   <PanStereo>k__BackingField: 0
   <ReverbZoneMix>k__BackingField: 1

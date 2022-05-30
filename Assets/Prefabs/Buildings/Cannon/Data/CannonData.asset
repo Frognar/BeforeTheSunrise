@@ -47,3 +47,11 @@ MonoBehaviour:
   maxEnergy: 200
   timeBetweenAttacks: 0.5
   electricArcConfig: {fileID: 11400000, guid: 04f9e40ac1a6e0949b68eeb48fd701b9, type: 2}
+  attackSFX:
+    <PickRandom>k__BackingField: 1
+    <AllowImmediateRepeat>k__BackingField: 0
+    <Clips>k__BackingField:
+    - {fileID: 8300000, guid: aaef3b0128994764cac7f0df29639825, type: 3}
+    - {fileID: 8300000, guid: 268de188fb041ae4aaada6afe1ce1c50, type: 3}
+    - {fileID: 8300000, guid: a7db127024161784f8195cca00aebd75, type: 3}
+  audioConfig: {fileID: 11400000, guid: a28c7d6ec18dac6439d381de6a7f208c, type: 2}

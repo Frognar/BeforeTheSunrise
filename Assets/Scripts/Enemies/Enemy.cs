@@ -16,6 +16,7 @@ namespace bts {
     [field: SerializeField] public GameObject Selected { get; private set; }
     
     public bool IsDead { get; private set; }
+    public bool IsIntact => Health.HasFullHealth;
     [SerializeField] WorldHealthBar bar;
     public Health Health { get; private set; }
     
@@ -98,6 +99,10 @@ namespace bts {
           SelectablesEventChannel.Invoke(this);
         }
       }
+    }
+
+    public void Heal(int amount) {
+      Health.Heal(amount);
     }
   }
 }

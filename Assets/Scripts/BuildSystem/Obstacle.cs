@@ -7,6 +7,7 @@ namespace bts {
     [SerializeField] GemstoneStorage storage;
     public Vector3 Position => Center.position;
     public bool IsDead => health.HasNoHealth;
+    public bool IsIntact => health.HasFullHealth;
     public Bounds Bounds => Obstacle.bounds;
     [SerializeField] WorldHealthBar bar;
     Health health;
@@ -28,6 +29,10 @@ namespace bts {
           storage.Store(type, gemstoneAmount);
         }
       }
+    }
+
+    public void Heal(int amount) {
+      health.Heal(amount);
     }
 
     public override Dictionary<string, object> GetData() {

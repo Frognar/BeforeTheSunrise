@@ -8,6 +8,7 @@ namespace bts {
     public GemstoneDictionary BuildingCosts => buildingData.buildingCosts;
     public Vector3 Position => Center.position;
     public bool IsDead => health.HasNoHealth;
+    public bool IsIntact => health.HasFullHealth;
     public Bounds Bounds => Obstacle.bounds;
 
     [SerializeField] WorldHealthBar bar;
@@ -27,6 +28,10 @@ namespace bts {
       if (IsDead) {
         GridBuildingSystem.Demolish(Position);
       }
+    }
+
+    public void Heal(int amount) {
+      health.Heal(amount);
     }
 
     public void DestroySelf() {

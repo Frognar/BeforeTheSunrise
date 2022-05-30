@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4b8ee7d58cbe794c8942db9ba706ed4, type: 3}
+  m_Name: HealerData
+  m_EditorClassIdentifier: 
+  buildingCosts:
+    reorderableList:
+      canAdd: 1
+      canRemove: 1
+      draggable: 1
+      expandable: 1
+      multipleSelection: 1
+      isExpanded: 1
+      label:
+        m_Text: Keys
+        m_Image: {fileID: 0}
+        m_Tooltip: 
+      headerHeight: 18
+      footerHeight: 13
+      slideEasing: 0.15
+      verticalSpacing: 2
+      showDefaultBackground: 1
+      elementDisplayType: 0
+      elementNameProperty: 
+      elementNameOverride: 
+      elementIcon: {fileID: 0}
+    reqReferences: {fileID: 0}
+    isExpanded: 1
+    _keyValues: 04000000
+    _keys: 04000000
+    _values: 14000000
+  healthAmount: 10
+  ghostMesh: {fileID: 50404739200888968, guid: 912f7ef0eb71609498f47c9a5cb6da7c, type: 3}
+  range: 5
+  healAmount: 3
+  energyPerHeal: 5
+  maxEnergy: 25
+  healSFX:
+    <PickRandom>k__BackingField: 1
+    <AllowImmediateRepeat>k__BackingField: 0
+    <Clips>k__BackingField:
+    - {fileID: 8300000, guid: 4b310c21cd753e844ad21a2fa812f101, type: 3}
+  audioConfig: {fileID: 11400000, guid: a28c7d6ec18dac6439d381de6a7f208c, type: 2}
+  laserConfig: {fileID: 11400000, guid: 89ab3cfbbcd5ab144945bd82842cf09a, type: 2}

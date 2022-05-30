@@ -5,15 +5,15 @@ namespace bts {
     [field: SerializeField] public VFXEventChannel VFXEventChannel { get; private set; }
     [field: SerializeField] public Transform ArcBegin { get; private set; }
     [field: SerializeField] public SFXEventChannel SFXEventChannel { get; private set; }
-    [field: SerializeField] public AudioConfiguration AudioConfig { get; private set; }
-    [field: SerializeField] public AudioClipsGroup AttackSFX { get; private set; }
-    CannonData data;
+    public ElectricArcVFXConfiguration ElectricArcConfig => data.electricArcConfig;
+    public AudioConfiguration AudioConfig => data.audioConfig;
+    public AudioClipsGroup AttackSFX => data.attackSFX;
     public int Damage => data.damage;
     public float EnergyPerAttack => data.energyPerAttack;
     public float Range => data.range;
     public float MaxEnergy => data.maxEnergy;
     public float TimeBetweenAttacks => data.timeBetweenAttacks;
-    public ElectricArcVFXConfiguration ElectricArcConfig => data.electricArcConfig;
+    CannonData data;
     public float CurrentEnergy { get; private set; }
     public bool IsOrderedToStop { get; set; }
     public bool IsOrderedToAttack { get; set; }

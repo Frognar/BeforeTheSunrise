@@ -48,6 +48,7 @@ namespace bts {
     Collider unitCollider;
     public Bounds Bounds => unitCollider.bounds;
     public bool IsDead => Health.HasNoHealth;
+    public bool IsIntact => Health.HasFullHealth;
     [SerializeField] WorldHealthBar bar;
     public Health Health { get; private set; }
 
@@ -120,6 +121,10 @@ namespace bts {
       if (IsDead) {
         Destroy(gameObject);
       }
+    }
+
+    public void Heal(int amount) {
+      Health.Heal(amount);
     }
   }
 }

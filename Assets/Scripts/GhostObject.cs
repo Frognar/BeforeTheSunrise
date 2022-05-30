@@ -49,6 +49,11 @@ namespace bts {
         float range = cannonData.range * 2f;
         rangeVisuals.localScale = new Vector3(range, range, 1f);
       }
+      else if (buildingData is HealerData healerData) {
+        rangeVisuals.gameObject.SetActive(true);
+        float range = healerData.range * 2f;
+        rangeVisuals.localScale = new Vector3(range, range, 1f);
+      }
       else {
         rangeVisuals.gameObject.SetActive(false);
       }

@@ -16,7 +16,7 @@ namespace bts {
     Transform CreateObjectCenter(Transform parent, Vector3 position) {
       Transform center = new GameObject("Center").transform;
       center.parent = parent;
-      center.transform.localPosition = position;
+      center.transform.localPosition = position + Vector3.up;
       return center;
     }
   }

@@ -42,12 +42,14 @@ namespace bts {
 
     void OnEnable() {
       sfxEventChannel.OnSFXPlayRequest += PlayAudioClip;
+      sfxEventChannel.OnSFXPlayRequestWithEmitter += PlayAudioClipAndReturnEmitter;
       musicEventChannel.OnMusicPlayRequest += PlayMusic;
       musicEventChannel.OnMusicStopRequest += StopMusic;
     }
 
     void OnDisable() {
       sfxEventChannel.OnSFXPlayRequest -= PlayAudioClip;
+      sfxEventChannel.OnSFXPlayRequestWithEmitter -= PlayAudioClipAndReturnEmitter;
       musicEventChannel.OnMusicPlayRequest -= PlayMusic;
       musicEventChannel.OnMusicStopRequest -= StopMusic;
     }
@@ -56,6 +58,13 @@ namespace bts {
       SoundEmitter soundEmitter = emittersPool.Get();
       config.ApplyTo(soundEmitter.AudioSource);
       soundEmitter.PlayAudioClip(audioClip, loop: false, position);
+    }
+
+    public SoundEmitter PlayAudioClipAndReturnEmitter(AudioClip audioClip, AudioConfiguration config, Vector3 position) {
+      SoundEmitter soundEmitter = emittersPool.Get();
+      config.ApplyTo(soundEmitter.AudioSource);
+      soundEmitter.PlayAudioClip(audioClip, loop: true, position);
+      return soundEmitter;
     }
 
     public void PlayMusic(AudioClip audioClip, AudioConfiguration config) {

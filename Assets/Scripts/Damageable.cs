@@ -7,6 +7,8 @@ namespace bts {
     Vector3 Position { get; }
     Bounds Bounds { get; }
     bool IsDead { get; }
+    bool IsIntact { get; }
     void TakeDamage(int amount);
+    void Heal(int amount);
   }
 }
