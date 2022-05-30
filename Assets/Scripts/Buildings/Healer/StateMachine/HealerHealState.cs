@@ -3,6 +3,7 @@ using UnityEngine;
 namespace bts {
   public class HealerHealState : HealerBaseState {
     bool HasTarget => StateMachine.Context.Target != null && (StateMachine.Context.Target as Object) != null;
+    bool IsTargetInRange => Vector3.Distance(StateMachine.Context.Target.Position, StateMachine.Context.Position) <= StateMachine.Context.Range;
     bool TargetIsIntact => StateMachine.Context.Target.IsIntact;
 
     public HealerHealState(StateMachine<Healer> stateMachine, StateFactory<Healer> factory)
@@ -14,7 +15,7 @@ namespace bts {
         return;
       }
 
-      if (HasTarget) {
+      if (HasTarget && IsTargetInRange) {
         if (TargetIsIntact) {
           StateMachine.Context.Target = null;
           StateMachine.SwitchState(Factory.GetState(nameof(HealerIdleState)));
