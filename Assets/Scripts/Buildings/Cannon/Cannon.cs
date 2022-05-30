@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 namespace bts {
-  public class Cannon : Building, ElectricDevice {
+  public class Cannon : Building, ElectricDevice, CommandReceiver {
     [field: SerializeField] public VFXEventChannel VFXEventChannel { get; private set; }
     [field: SerializeField] public Transform ArcBegin { get; private set; }
     [field: SerializeField] public SFXEventChannel SFXEventChannel { get; private set; }
@@ -74,6 +74,10 @@ namespace bts {
 
     public override bool IsSameAs(Selectable other) {
       return other is Cannon;
+    }
+
+    public bool IsFree() {
+      return IsIdle;
     }
   }
 }

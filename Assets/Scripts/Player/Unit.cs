@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace bts {
-  public class Unit : MonoBehaviour, Selectable, Damageable {
+  public class Unit : MonoBehaviour, Selectable, Damageable, CommandReceiver {
     [field: SerializeField] public VFXEventChannel VFXEventChannel { get; private set; }
     [field: SerializeField] public Transform ArcBegin { get; private set; }
     [field: SerializeField] public ElectricArcVFXConfiguration ElectricArcConfig { get; private set; }
@@ -125,6 +125,10 @@ namespace bts {
 
     public void Heal(int amount) {
       Health.Heal(amount);
+    }
+
+    public bool IsFree() {
+      return IsIdle || IsGathering;
     }
   }
 }

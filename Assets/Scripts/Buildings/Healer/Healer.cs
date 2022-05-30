@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 namespace bts {
-  public class Healer : Building, ElectricDevice {
+  public class Healer : Building, ElectricDevice, CommandReceiver {
     [field: SerializeField] public LaserEventChannel LaserEventChannel { get; private set; }
     [field: SerializeField] public SFXEventChannel SFXEventChannel { get; private set; }
     [SerializeField] VoidEventChannel onTick;
@@ -84,6 +84,10 @@ namespace bts {
 
     public override bool IsSameAs(Selectable other) {
       return other is Healer;
+    }
+
+    public bool IsFree() {
+      return IsIdle;
     }
   }
 }
