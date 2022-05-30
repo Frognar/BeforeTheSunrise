@@ -8,7 +8,7 @@ namespace bts {
     Bounds Bounds { get; }
     bool IsDead { get; }
     bool IsIntact { get; }
-    void TakeDamage(int amount);
-    void Heal(int amount);
+    void TakeDamage(float amount);
+    void Heal(float amount);
   }
 }

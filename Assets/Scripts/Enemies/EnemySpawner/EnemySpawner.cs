@@ -95,14 +95,14 @@ namespace bts {
       };
     }
 
-    public void TakeDamage(int amount) {
+    public void TakeDamage(float amount) {
       Health.Damage(amount);
       if (IsDead && Selected.activeSelf) {
         SelectablesEventChannel.Invoke(this);
       }
     }
 
-    public void Heal(int amount) {
+    public void Heal(float amount) {
       Health.Heal(amount);
     }
   }

@@ -8,7 +8,7 @@ namespace bts {
     public ElectricArcVFXConfiguration ElectricArcConfig => data.electricArcConfig;
     public AudioConfiguration AudioConfig => data.audioConfig;
     public AudioClipsGroup AttackSFX => data.attackSFX;
-    public int Damage => data.damage;
+    public float Damage => data.damage;
     public float EnergyPerAttack => data.energyPerAttack;
     public float Range => data.range;
     public float MaxEnergy => data.maxEnergy;

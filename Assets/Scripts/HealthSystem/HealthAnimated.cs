@@ -1,13 +1,11 @@
-﻿using System;
-
-namespace bts {
+﻿namespace bts {
   public class HealthAnimated : Health {
     Health Health { get; }
     bool InstantDecrease { get; }
-    int ChangeAmount { get; }
+    float ChangeAmount { get; }
     bool IsAnimating { get; set; }
 
-    public HealthAnimated(Health health, bool instantDecrease = true, int changeAmount = 1)
+    public HealthAnimated(Health health, bool instantDecrease = true, float changeAmount = 1)
       : base(health.MaxHealth) {
       Health = health;
       InstantDecrease = instantDecrease;

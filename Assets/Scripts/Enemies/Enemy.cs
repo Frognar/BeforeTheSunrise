@@ -90,7 +90,7 @@ namespace bts {
       };
     }
 
-    public void TakeDamage(int amount) {
+    public void TakeDamage(float amount) {
       Health.Damage(amount);
       if (!IsDead && Health.HasNoHealth) {
         Release();
@@ -101,7 +101,7 @@ namespace bts {
       }
     }
 
-    public void Heal(int amount) {
+    public void Heal(float amount) {
       Health.Heal(amount);
     }
   }

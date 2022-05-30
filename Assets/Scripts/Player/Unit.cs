@@ -39,7 +39,7 @@ namespace bts {
     public bool IsOrderedToMove { get; set; }
     public Vector3 Destination { get; set; }
 
-    public int DamageAmount => 5;
+    public float DamageAmount => 5;
     public float TimeBetweenAttacks => 1f;
     public float AttackRange => 4f;
     public bool IsOrderedToAttack { get; set; }
@@ -116,14 +116,14 @@ namespace bts {
       }
     }
 
-    public void TakeDamage(int amount) {
+    public void TakeDamage(float amount) {
       Health.Damage(amount);
       if (IsDead) {
         Destroy(gameObject);
       }
     }
 
-    public void Heal(int amount) {
+    public void Heal(float amount) {
       Health.Heal(amount);
     }
 

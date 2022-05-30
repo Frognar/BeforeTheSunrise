@@ -23,14 +23,14 @@ namespace bts {
       UICommands = new List<UICommand>() { new DemolishUICommand(demolishUICommandData, this) };
     }
 
-    public void TakeDamage(int amount) {
+    public void TakeDamage(float amount) {
       health.Damage(amount);
       if (IsDead) {
         GridBuildingSystem.Demolish(Position);
       }
     }
 
-    public void Heal(int amount) {
+    public void Heal(float amount) {
       health.Heal(amount);
     }
 

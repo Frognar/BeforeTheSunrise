@@ -12,7 +12,7 @@ namespace bts {
     public float Range => data.range;
     public float EnergyPerHeal => data.energyPerHeal;
     public float MaxEnergy => data.maxEnergy;
-    public int HealAmount => data.healAmount;
+    public float HealAmount => data.healAmount;
     public AudioConfiguration AudioConfig => data.audioConfig;
     public AudioClipsGroup HealSFX => data.healSFX;
     public LaserConfiguration LaserConfig => data.laserConfig;

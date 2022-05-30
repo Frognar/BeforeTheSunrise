@@ -4,7 +4,7 @@ namespace bts {
   [CreateAssetMenu(menuName = "Buildings/Data/Healer", fileName = "HealerData")]
   public class HealerData : CustomBuildingData {
     public float range;
-    public int healAmount;
+    public float healAmount;
     public float energyPerHeal;
     public float maxEnergy;
     public AudioClipsGroup healSFX;
