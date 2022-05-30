@@ -1,44 +1,18 @@
 using UnityEngine;
 
 namespace bts {
-  public class HealerCommander : MonoBehaviour {
-    [SerializeField] InputReader inputReader;
-    HealerCommandInvoker invoker;
-    Healer healer;
-
-    void Awake() {
-      invoker = GetComponent<HealerCommandInvoker>();
-      healer = GetComponent<Healer>();
-    }
-
-    void OnEnable() {
-      inputReader.SendCommandEvent += HandleSendingCommands;
-    }
-
-    void OnDisable() {
-      inputReader.SendCommandEvent -= HandleSendingCommands;
-    }
-
-    void HandleSendingCommands(Ray rayToWorld) {
-      if (healer.IsSelected) {
+  public class HealerCommander : Commander<Healer> {
+    protected override void HandleSendingCommands(Ray rayToWorld) {
+      if (receiver.IsSelected) {
         if (Physics.Raycast(rayToWorld, out RaycastHit hitInfo)) {
           if (hitInfo.transform.TryGetComponent(out Damageable damageable)
            && (damageable.ObjectAffiliation == Affiliation.Neutral || damageable.ObjectAffiliation == Affiliation.Player)) {
-            SendCommand(new HealerHealCommand(healer, damageable));
+            SendCommand(new HealerHealCommand(receiver, damageable));
           }
           else {
-            SendCommand(new HealerStopCommand(healer));
+            SendCommand(new HealerStopCommand(receiver));
           }
         }
-      }
-    }
-
-    void SendCommand(Command command) {
-      if (inputReader.IsCommandQueuingEnabled) {
-        invoker.AddCommand(command);
-      }
-      else {
-        invoker.ForceCommandExecution(command);
       }
     }
   }

@@ -1,73 +1,60 @@
 ﻿using UnityEngine;
 
 namespace bts {
-  public class UnitCommander : MonoBehaviour {
-    [SerializeField] InputReader inputReader;
+  public class UnitCommander : Commander<Unit> {
     [SerializeField] BoolAsset canBuild;
     [SerializeField] BoolAsset inBuildMode;
     [SerializeField] GhostObject currentGhost;
-    Unit unit;
-    UnitCommandInvoker invoker;
     PlacedObjectType buildingToPlace;
 
-    void Awake() {
-      unit = GetComponent<Unit>();
-      invoker = GetComponent<UnitCommandInvoker>();
+    protected override void Awake() {
+      base.Awake();
       currentGhost.gameObject.SetActive(false);
     }
 
-    void OnEnable() {
+    protected override void OnEnable() {
+      base.OnEnable();
       inputReader.CancelEvent += ClearBuildingToBuild;
       inputReader.SendBuildCommandEvent += HandleBuildCommand;
-      inputReader.SendCommandEvent += HandleSendingCommands;
     }
 
-    void OnDisable() {
+    protected override void OnDisable() {
+      base.OnDisable();
       inputReader.CancelEvent -= ClearBuildingToBuild;
       inputReader.SendBuildCommandEvent -= HandleBuildCommand;
-      inputReader.SendCommandEvent -= HandleSendingCommands;
     }
 
     void Update() {
       inBuildMode.value = buildingToPlace != null;
-      if (!unit.IsSelected) {
+      if (!receiver.IsSelected) {
         ClearBuildingToBuild();
       }
     }
 
-    void HandleSendingCommands(Ray rayToWorld) {
-      if (unit.IsSelected) {
+    protected override void HandleSendingCommands(Ray rayToWorld) {
+      if (receiver.IsSelected) {
         if (Physics.Raycast(rayToWorld, out RaycastHit hitInfo)) {
           if (hitInfo.transform.TryGetComponent(out Damageable damageable) && damageable.ObjectAffiliation != Affiliation.Player) {
-            SendCommand(new UnitAttackCommand(unit, damageable));
+            SendCommand(new UnitAttackCommand(receiver, damageable));
           }
           else if (hitInfo.transform.TryGetComponent(out Gemstone gemstone)) {
-            SendCommand(new UnitGatherCommand(unit, gemstone));
+            SendCommand(new UnitGatherCommand(receiver, gemstone));
           }
           else {
-            SendCommand(new UnitMoveCommand(unit, hitInfo.point));
+            SendCommand(new UnitMoveCommand(receiver, hitInfo.point));
           }
         }
       }
     }
 
     void HandleBuildCommand(Vector3 position) {
-      if (unit.IsSelected) {
-        if (canBuild && unit.GemstoneStorage.CanAfford((buildingToPlace.customData as CustomBuildingData).buildingCosts)) {
-          SendCommand(new UnitBuildCommand(unit, buildingToPlace, position));
+      if (receiver.IsSelected) {
+        if (canBuild && receiver.GemstoneStorage.CanAfford((buildingToPlace.customData as CustomBuildingData).buildingCosts)) {
+          SendCommand(new UnitBuildCommand(receiver, buildingToPlace, position));
           if (!inputReader.IsCommandQueuingEnabled) {
             ClearBuildingToBuild();
           }
         }
-      }
-    }
-
-    void SendCommand(Command command) {
-      if (inputReader.IsCommandQueuingEnabled) {
-        invoker.AddCommand(command);
-      }
-      else {
-        invoker.ForceCommandExecution(command);
       }
     }
 
@@ -81,7 +68,7 @@ namespace bts {
     }
 
     public void SetBuildingToBuild(PlacedObjectType buildingType) {
-      if (unit.IsSelected) {
+      if (receiver.IsSelected) {
         buildingToPlace = buildingType;
         currentGhost.SetUp(buildingType);
         currentGhost.gameObject.SetActive(true);
