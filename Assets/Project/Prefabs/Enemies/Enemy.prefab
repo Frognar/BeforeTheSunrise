@@ -52,6 +52,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa30bd7bf44d2a64fb6076234a8d3ef4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <BloodEventChannel>k__BackingField: {fileID: 11400000, guid: 138db77aafba22e48b0378c3ce8c44be,
+    type: 2}
+  <BloodConfig>k__BackingField: {fileID: 11400000, guid: 2fc478c12223d174983e9743fca9177d,
+    type: 2}
   <SelectablesEventChannel>k__BackingField: {fileID: 11400000, guid: 3c1fda043d4369741a6aac78f1308909,
     type: 2}
   <DayStarted>k__BackingField: {fileID: 11400000, guid: ba696d58e6b750a4396f8d5fba9a80ea,
@@ -318,6 +322,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Selected
+      objectReference: {fileID: 0}
+    - target: {fileID: 2650239681661974590, guid: 619c5afa1874f16439ce45dfa0095083,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 619c5afa1874f16439ce45dfa0095083, type: 3}

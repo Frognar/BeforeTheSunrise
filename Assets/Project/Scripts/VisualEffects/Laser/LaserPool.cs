@@ -14,8 +14,8 @@ namespace bts {
         laser.pool = laserPool;
         return laser;
       },
-      (electricArc) => electricArc.gameObject.SetActive(true),
-      (electricArc) => electricArc.gameObject.SetActive(false));
+      (laser) => laser.gameObject.SetActive(true),
+      (laser) => laser.gameObject.SetActive(false));
     }
 
     void OnEnable() {
