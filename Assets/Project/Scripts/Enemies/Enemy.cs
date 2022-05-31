@@ -6,6 +6,8 @@ using UnityEngine.Pool;
 
 namespace bts {
   public class Enemy : MonoBehaviour, Selectable, Damageable {
+    [field: SerializeField] public BloodEventChannel BloodEventChannel { get; private set; }
+    [field: SerializeField] public BloodConfiguration BloodConfig { get; private set; }
     [field: SerializeField] public SelectablesEventChannel SelectablesEventChannel { get; private set; }
     [field: SerializeField] public VoidEventChannel DayStarted { get; private set; }
 
@@ -63,6 +65,7 @@ namespace bts {
 
     void Release() {
       if (!wasPooled) {
+        BloodEventChannel.RaiseBloodEvent(transform.position, BloodConfig);
         Pool.Release(this);
         wasPooled = true;
       }
@@ -93,11 +96,12 @@ namespace bts {
     public void TakeDamage(float amount) {
       Health.Damage(amount);
       if (!IsDead && Health.HasNoHealth) {
-        Release();
         IsDead = true;
         if (Selected.activeSelf) {
           SelectablesEventChannel.Invoke(this);
         }
+        
+        Release();
       }
     }
 

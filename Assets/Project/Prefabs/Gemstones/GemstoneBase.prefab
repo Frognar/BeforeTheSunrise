@@ -4873,6 +4873,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8defe5235fad92548b06ebbcb119431e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <PlaceableObjectType>k__BackingField: {fileID: 0}
   <Selected>k__BackingField: {fileID: 1220668128405100383}
   <SelectablesEventChannel>k__BackingField: {fileID: 11400000, guid: 3c1fda043d4369741a6aac78f1308909,
     type: 2}
@@ -4943,6 +4944,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 46f6f9becf44e49478894d4ffc46ec9f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0c2471b9a910daa49bb6e3cf301dcd33, type: 2}
     - target: {fileID: 919132149155446097, guid: 46f6f9becf44e49478894d4ffc46ec9f,
         type: 3}
       propertyPath: m_Name
