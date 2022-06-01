@@ -13,6 +13,7 @@ namespace bts {
     Health selectedObjectHealth;
 
     public void UpdateUI(List<Selectable> selected) {
+      DisconnectFromHealth();
       if (selected.Count == 1) {
         objectNameText.text = selected.First().Name;
         Dictionary<string, object> data = selected.First().GetData();
@@ -38,6 +39,10 @@ namespace bts {
     }
 
     void OnDisable() {
+      DisconnectFromHealth();
+    }
+
+    void DisconnectFromHealth() {
       if (selectedObjectHealth != null) {
         selectedObjectHealth.OnValueChange -= UpdateHealthUI;
         selectedObjectHealth = null;
