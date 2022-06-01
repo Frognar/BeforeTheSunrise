@@ -21,7 +21,6 @@ namespace bts {
 
       if (StateMachine.Context.Target == null) {
         _ = StateMachine.Context.StartCoroutine(RestartAfterWhile());
-        Debug.Log("No Target");
       }
     }
 
