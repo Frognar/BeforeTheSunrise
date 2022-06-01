@@ -16,3 +16,25 @@ MonoBehaviour:
   <Damage>k__BackingField: 3
   <TimeBetweenAttacks>k__BackingField: 2
   <AttackRange>k__BackingField: 3
+  <AudioConfig>k__BackingField: {fileID: 11400000, guid: a28c7d6ec18dac6439d381de6a7f208c,
+    type: 2}
+  <EnemyDeathSFX>k__BackingField:
+    <PickRandom>k__BackingField: 1
+    <AllowImmediateRepeat>k__BackingField: 0
+    <Clips>k__BackingField:
+    - {fileID: 8300000, guid: 2cb80de4c8940744c92721d228e5417f, type: 3}
+    - {fileID: 8300000, guid: 4b92b9757469678469b33cd3c6ac8d7b, type: 3}
+    - {fileID: 8300000, guid: a0877a126f79e444f9693a6d9a27f8fa, type: 3}
+    - {fileID: 8300000, guid: daa8aca08d2b7b0439d5d9853279a453, type: 3}
+  <EnemyAttackSFX>k__BackingField:
+    <PickRandom>k__BackingField: 1
+    <AllowImmediateRepeat>k__BackingField: 0
+    <Clips>k__BackingField:
+    - {fileID: 8300000, guid: a72f02af5b608914f96c1597616901d9, type: 3}
+    - {fileID: 8300000, guid: a6177aff0457ac349bd9cfe57e57eb37, type: 3}
+  <EnemySelectSFX>k__BackingField:
+    <PickRandom>k__BackingField: 1
+    <AllowImmediateRepeat>k__BackingField: 0
+    <Clips>k__BackingField:
+    - {fileID: 8300000, guid: b5248daa0c6690842b73cbe5a1fbb5d6, type: 3}
+    - {fileID: 8300000, guid: 21df3936b50caf547a473802bfcfa4a4, type: 3}

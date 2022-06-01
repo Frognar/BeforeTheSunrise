@@ -55,12 +55,20 @@ namespace bts {
     }
 
     public void PlayAudioClip(AudioClip audioClip, AudioConfiguration config, Vector3 position) {
+      if (audioClip == null) {
+        return;
+      }
+      
       SoundEmitter soundEmitter = emittersPool.Get();
       config.ApplyTo(soundEmitter.AudioSource);
       soundEmitter.PlayAudioClip(audioClip, loop: false, position);
     }
 
     public SoundEmitter PlayAudioClipAndReturnEmitter(AudioClip audioClip, AudioConfiguration config, Vector3 position) {
+      if (audioClip == null) {
+        return null;
+      }
+      
       SoundEmitter soundEmitter = emittersPool.Get();
       config.ApplyTo(soundEmitter.AudioSource);
       soundEmitter.PlayAudioClip(audioClip, loop: true, position);
@@ -68,6 +76,10 @@ namespace bts {
     }
 
     public void PlayMusic(AudioClip audioClip, AudioConfiguration config) {
+      if (audioClip == null) {
+        return;
+      }
+      
       const float fadeTime = 3f;
       if (musicEmitter != null) {
         if (musicEmitter.CurrentClip == audioClip && musicEmitter.IsPlaying) {

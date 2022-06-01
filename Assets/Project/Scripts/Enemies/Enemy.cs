@@ -6,6 +6,7 @@ using UnityEngine.Pool;
 
 namespace bts {
   public class Enemy : MonoBehaviour, Selectable, Damageable {
+    [field: SerializeField] public SFXEventChannel SFXEventChannel { get; private set; }
     [field: SerializeField] public BloodEventChannel BloodEventChannel { get; private set; }
     [field: SerializeField] public BloodConfiguration BloodConfig { get; private set; }
     [field: SerializeField] public SelectablesEventChannel SelectablesEventChannel { get; private set; }
@@ -65,7 +66,8 @@ namespace bts {
 
     void Release() {
       if (!wasPooled) {
-        BloodEventChannel.RaiseBloodEvent(transform.position, BloodConfig);
+        _ = BloodEventChannel.RaiseBloodEvent(transform.position, BloodConfig);
+        SFXEventChannel.OnSFXPlayRequest(EnemyData.EnemyDeathSFX, EnemyData.AudioConfig, Position);
         Pool.Release(this);
         wasPooled = true;
       }
@@ -77,6 +79,7 @@ namespace bts {
 
     public void Select() {
       Selected.SetActive(true);
+      SFXEventChannel.OnSFXPlayRequest(EnemyData.EnemySelectSFX, EnemyData.AudioConfig, Position);
     }
 
     public void Deselect() {

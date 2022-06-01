@@ -42,6 +42,7 @@ namespace bts {
 
     void Attack() {
       lastAttackTime = Time.time;
+      StateMachine.Context.SFXEventChannel.OnSFXPlayRequest(StateMachine.Context.EnemyData.EnemyAttackSFX, StateMachine.Context.EnemyData.AudioConfig, StateMachine.Context.Position);
       StateMachine.Context.Target.TakeDamage(StateMachine.Context.EnemyData.Damage);
       if (StateMachine.Context.Target.IsDead) {
         StateMachine.Context.Target = null;
