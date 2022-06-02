@@ -2,7 +2,7 @@
 
 namespace bts {
   public class Cannon : Building, ElectricDevice, CommandReceiver {
-    [field: SerializeField] public VFXEventChannel VFXEventChannel { get; private set; }
+    [field: SerializeField] public ElectricArcEventChannel VFXEventChannel { get; private set; }
     [field: SerializeField] public Transform ArcBegin { get; private set; }
     [field: SerializeField] public SFXEventChannel SFXEventChannel { get; private set; }
     public ElectricArcVFXConfiguration ElectricArcConfig => data.electricArcConfig;

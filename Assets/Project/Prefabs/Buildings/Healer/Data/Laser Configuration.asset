@@ -12,5 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00968c759df768249bcff2642f9d0036, type: 3}
   m_Name: Laser Configuration
   m_EditorClassIdentifier: 
-  <Material>k__BackingField: {fileID: 2100000, guid: 6f966421447a7fc49ac60aaa8e949bf7,
-    type: 2}
+  material: {fileID: 2100000, guid: 6f966421447a7fc49ac60aaa8e949bf7, type: 2}

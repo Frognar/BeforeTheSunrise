@@ -4,7 +4,14 @@ using UnityEngine;
 
 namespace bts {
   public class Unit : MonoBehaviour, Selectable, Damageable, CommandReceiver {
-    [field: SerializeField] public VFXEventChannel VFXEventChannel { get; private set; }
+    [field: Header("SFX")]
+    [field: SerializeField] public SFXEventChannel SFXEventChannel { get; private set; }
+    [field: SerializeField] public AudioConfiguration AudioConfig { get; private set; }
+    [field: SerializeField] public AudioClipsGroup AttackSFX { get; private set; }
+    [field: SerializeField] public AudioClipsGroup TakeDamageSFX { get; private set; }
+    [field: SerializeField] public AudioClipsGroup DieSFX { get; private set; }
+    [field: Header("VFX")]
+    [field: SerializeField] public ElectricArcEventChannel VFXEventChannel { get; private set; }
     [field: SerializeField] public Transform ArcBegin { get; private set; }
     [field: SerializeField] public ElectricArcVFXConfiguration ElectricArcConfig { get; private set; }
     public string Name => "Unit";
@@ -119,7 +126,11 @@ namespace bts {
     public void TakeDamage(float amount) {
       Health.Damage(amount);
       if (IsDead) {
+        SFXEventChannel.RaisePlayEvent(TakeDamageSFX, AudioConfig, Position);
         Destroy(gameObject);
+      }
+      else {
+        SFXEventChannel.RaisePlayEvent(DieSFX, AudioConfig, Position);
       }
     }
 

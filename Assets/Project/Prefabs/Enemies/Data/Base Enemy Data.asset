@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43e606af879f449498fd3bcc124dd8e8, type: 3}
   m_Name: Base Enemy Data
   m_EditorClassIdentifier: 
-  <MaxHealth>k__BackingField: 8
-  <Damage>k__BackingField: 3
-  <TimeBetweenAttacks>k__BackingField: 2
+  <MaxHealth>k__BackingField: 15
+  <Damage>k__BackingField: 1.5
+  <TimeBetweenAttacks>k__BackingField: 3
   <AttackRange>k__BackingField: 3
   <AudioConfig>k__BackingField: {fileID: 11400000, guid: a28c7d6ec18dac6439d381de6a7f208c,
     type: 2}

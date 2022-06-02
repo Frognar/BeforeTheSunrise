@@ -6,6 +6,7 @@ namespace bts {
     public bool HasTarget => StateMachine.Context.Target != null && (StateMachine.Context.Target as Object) != null;
     bool IsTimeToAttack => lastAttackTime + StateMachine.Context.TimeBetweenAttacks <= Time.time;
     bool InAttackRange => Vector3.Distance(StateMachine.Context.Position, StateMachine.Context.Target.Position) <= StateMachine.Context.AttackRange;
+    readonly ElectricArcParameters parameters = new ElectricArcParameters();
 
     public UnitAttackState(StateMachine<Unit> stateMachine, StateFactory<Unit> factory)
       : base(stateMachine, factory) {
@@ -48,12 +49,19 @@ namespace bts {
 
     void Attack() {
       lastAttackTime = Time.time;
-      StateMachine.Context.VFXEventChannel.RaiseVFXEvent(StateMachine.Context.ArcBegin, StateMachine.Context.Target.Center.position, StateMachine.Context.ElectricArcConfig);
+      CreateVFX();
+      StateMachine.Context.SFXEventChannel.RaisePlayEvent(StateMachine.Context.AttackSFX, StateMachine.Context.AudioConfig, StateMachine.Context.Position);
       StateMachine.Context.Target.TakeDamage(StateMachine.Context.DamageAmount);
       if (StateMachine.Context.Target.IsDead) {
         StateMachine.Context.Target = null;
         StateMachine.SwitchState(Factory.GetState(nameof(UnitIdleState)));
       }
+    }
+
+    void CreateVFX() {
+      parameters.Source = StateMachine.Context.ArcBegin;
+      parameters.TargetPosition = StateMachine.Context.Target.Center.position;
+      StateMachine.Context.VFXEventChannel.RaiseVFXEvent(StateMachine.Context.ElectricArcConfig, parameters);
     }
 
     public override void ExitState() {

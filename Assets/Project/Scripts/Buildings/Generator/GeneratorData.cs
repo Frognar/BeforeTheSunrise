@@ -7,5 +7,7 @@ namespace bts {
     public float energyPerSecond;
     public int maxDevices;
     public ElectricArcVFXConfiguration electricArcConfig;
+    public AudioConfiguration audioConfig;
+    public AudioClipsGroup generateSFX;
   }
 }

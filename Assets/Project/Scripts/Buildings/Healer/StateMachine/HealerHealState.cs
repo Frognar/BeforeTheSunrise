@@ -6,6 +6,8 @@ namespace bts {
     bool IsTargetInRange => Vector3.Distance(StateMachine.Context.Target.Position, StateMachine.Context.Position) <= StateMachine.Context.Range;
     bool TargetIsIntact => StateMachine.Context.Target.IsIntact;
 
+    readonly LaserParameters vfxParameters = new LaserParameters();
+
     public HealerHealState(StateMachine<Healer> stateMachine, StateFactory<Healer> factory)
       : base(stateMachine, factory) {
     }
@@ -44,11 +46,9 @@ namespace bts {
 
     void SetVFX() {
       if (StateMachine.Context.Laser == null) {
-        StateMachine.Context.Laser = StateMachine.Context.LaserEventChannel.RaiseLaserEvent(
-        StateMachine.Context.LaserBegining.position,
-        StateMachine.Context.Target.Center,
-        StateMachine.Context.LaserConfig
-      );
+        vfxParameters.SourcePosition = StateMachine.Context.LaserBegining.position;
+        vfxParameters.Target = StateMachine.Context.Target.Center;
+        StateMachine.Context.Laser = StateMachine.Context.LaserEventChannel.RaiseVFXEventWithReference(StateMachine.Context.LaserConfig, vfxParameters);
       }
     }
 

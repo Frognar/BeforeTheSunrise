@@ -45,3 +45,9 @@ MonoBehaviour:
   energyPerSecond: 45
   maxDevices: 5
   electricArcConfig: {fileID: 11400000, guid: 877df11b6a8864d428f0bc6295af943b, type: 2}
+  audioConfig: {fileID: 11400000, guid: a28c7d6ec18dac6439d381de6a7f208c, type: 2}
+  generateSFX:
+    <PickRandom>k__BackingField: 1
+    <AllowImmediateRepeat>k__BackingField: 0
+    <Clips>k__BackingField:
+    - {fileID: 8300000, guid: 48095f1422d75114296ca6c679e64e1b, type: 3}

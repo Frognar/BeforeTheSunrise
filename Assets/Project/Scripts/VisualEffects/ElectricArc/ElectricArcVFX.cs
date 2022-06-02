@@ -3,21 +3,21 @@ using UnityEngine.Pool;
 using UnityEngine.VFX;
 
 namespace bts {
-  public class ElectricArcVFX : MonoBehaviour {
-    [SerializeField] CustomVFXTransformBinder sourceTransformBinder;
-    [SerializeField] CustomVFXTransformBinder targetTransformBinder;
-    [SerializeField] VisualEffect visualEffect;
-    public IObjectPool<ElectricArcVFX> pool;
+  public class ElectricArcVFX : MonoBehaviour, Poolable {
+    [field: SerializeField] public CustomVFXTransformBinder SourceTransformBinder { get; private set; }
+    [field: SerializeField] public VisualEffect VisualEffect { get; private set; }
+    IObjectPool<ElectricArcVFX> electricArcPool;
 
-    public void SetUp(Transform sourceTransform, Vector3 targetPosition, ElectricArcVFXConfiguration config) {
-      sourceTransformBinder.Target = sourceTransform;
-      visualEffect.SetVector3("TargetPosition", targetPosition);
-      config.ApplyTo(visualEffect);
-      Invoke(nameof(Release), config.Duration);
+    public void ReleaseAfter(float duration) {
+      Invoke(nameof(Release), duration);
     }
-    
+
     void Release() {
-      pool.Release(this);
+      electricArcPool.Release(this);
+    }
+
+    public void SetPool<T>(IObjectPool<T> pool) where T : MonoBehaviour, Poolable {
+      electricArcPool = (IObjectPool<ElectricArcVFX>)pool;
     }
   }
 }

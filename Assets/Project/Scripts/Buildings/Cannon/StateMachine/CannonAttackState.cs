@@ -6,6 +6,7 @@ namespace bts {
     bool IsTargetInRange => Vector3.Distance(StateMachine.Context.Target.Position, StateMachine.Context.Position) <= StateMachine.Context.Range;
     bool IsTimeToAttack => lastAttackTime + StateMachine.Context.TimeBetweenAttacks <= Time.time;
     float lastAttackTime;
+    readonly ElectricArcParameters parameters = new ElectricArcParameters();
 
     public CannonAttackState(StateMachine<Cannon> stateMachine, StateFactory<Cannon> factory)
       : base(stateMachine, factory) {
@@ -21,7 +22,7 @@ namespace bts {
           if (IsTimeToAttack) {
             if (StateMachine.Context.CanAfford(StateMachine.Context.EnergyPerAttack)) {
               lastAttackTime = Time.time;
-              StateMachine.Context.VFXEventChannel.RaiseVFXEvent(StateMachine.Context.ArcBegin, StateMachine.Context.Target.Center.position, StateMachine.Context.ElectricArcConfig);
+              CreateVFX();
               StateMachine.Context.SFXEventChannel.RaisePlayEvent(StateMachine.Context.AttackSFX, StateMachine.Context.AudioConfig, StateMachine.Context.Position);
               StateMachine.Context.UseEnergy(StateMachine.Context.EnergyPerAttack);
               StateMachine.Context.Target.TakeDamage(StateMachine.Context.Damage);
@@ -37,6 +38,12 @@ namespace bts {
           StateMachine.SwitchState(Factory.GetState(nameof(CannonIdleState)));
         }
       }
+    }
+    
+    void CreateVFX() {
+      parameters.Source = StateMachine.Context.ArcBegin;
+      parameters.TargetPosition = StateMachine.Context.Target.Center.position;
+      StateMachine.Context.VFXEventChannel.RaiseVFXEvent(StateMachine.Context.ElectricArcConfig, parameters);
     }
   }
 }

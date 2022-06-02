@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb1ef36edb278f346a511be6861fc5c4, type: 3}
   m_Name: Cannon Electric Arc Configuration
   m_EditorClassIdentifier: 
-  <SourceTangetLength>k__BackingField: 2
-  <TargetTangetLength>k__BackingField: 3
-  <Color>k__BackingField: {fileID: 11400000, guid: 8fb8f52dec6334a4d9f25e3dfbe0e60a,
-    type: 2}
-  <Duration>k__BackingField: 0.2
+  sourceTangetLength: 2
+  targetTangetLength: 3
+  color: {r: 16, g: 0, b: 11.984314, a: 1}
+  duration: 0.2

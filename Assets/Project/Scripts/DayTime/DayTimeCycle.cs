@@ -17,6 +17,7 @@ namespace bts {
 
     void Start() {
       stateMachine.Start();
+      ReamaningTime.value = 120;
     }
 
     void UpdateCycle(object sender, EventArgs e) {

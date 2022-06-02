@@ -9,7 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8550b6584e573d44b83b204637ca34cf, type: 3}
-  m_Name: GeneratorArcColor
+  m_Script: {fileID: 11500000, guid: 88cd407be41e8e64bb9ff319ee4d252d, type: 3}
+  m_Name: DestroyEventChannel
   m_EditorClassIdentifier: 
-  value: {x: 100, y: 1, z: 1}

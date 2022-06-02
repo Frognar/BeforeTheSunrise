@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b2520f16bdf15d4f9311244f1b41a07, type: 3}
   m_Name: Blood Configuration
   m_EditorClassIdentifier: 
-  <Color>k__BackingField: {r: 0.1764706, g: 0.62352943, b: 0, a: 1}
+  color: {r: 0, g: 3.890196, b: 0.015686275, a: 1}
+  duration: 10

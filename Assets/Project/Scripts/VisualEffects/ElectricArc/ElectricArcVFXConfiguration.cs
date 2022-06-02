@@ -1,18 +1,18 @@
 ﻿using UnityEngine;
-using UnityEngine.VFX;
 
 namespace bts {
   [CreateAssetMenu(menuName = "VFX/Electric Arc Configuration", fileName = "Electric Arc Configuration")]
-  public class ElectricArcVFXConfiguration : ScriptableObject {
-    [field: SerializeField] public float SourceTangetLength { get; private set; }
-    [field: SerializeField] public float TargetTangetLength { get; private set; }
-    [field: SerializeField] public Vector3Asset Color { get; private set; }
-    [field: SerializeField] public float Duration { get; private set; }
+  public class ElectricArcVFXConfiguration : VFXConfiguration<ElectricArcVFX> {
+    [SerializeField] float sourceTangetLength;
+    [SerializeField] float targetTangetLength;
+    [SerializeField][ColorUsage(showAlpha: true, hdr: true)] Color color;
+    [SerializeField] float duration;
 
-    public void ApplyTo(VisualEffect electricArc) {
-      electricArc.SetFloat("SourceTangentLength", SourceTangetLength);
-      electricArc.SetFloat("TargetTangentLength", TargetTangetLength);
-      electricArc.SetVector3("ArcColor", Color);
+    public override void ApplyTo(ElectricArcVFX vfx) {
+      vfx.VisualEffect.SetFloat("SourceTangentLength", sourceTangetLength);
+      vfx.VisualEffect.SetFloat("TargetTangentLength", targetTangetLength);
+      vfx.VisualEffect.SetVector4("ArcColor", color);
+      vfx.ReleaseAfter(duration);
     }
   }
 }

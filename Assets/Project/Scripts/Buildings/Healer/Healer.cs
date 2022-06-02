@@ -17,7 +17,7 @@ namespace bts {
     public AudioClipsGroup HealSFX => data.healSFX;
     public LaserConfiguration LaserConfig => data.laserConfig;
     public SoundEmitter SoundEmitter { get; set; }
-    public Laser Laser { get; set; }
+    public LaserVFX Laser { get; set; }
     public Damageable Target { get; set; }
     public bool IsOrderedToStop { get; set; }
     public bool IsOrderedToHeal { get; set; }

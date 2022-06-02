@@ -56,5 +56,11 @@ namespace bts {
 
       StorageChanged?.Invoke(this, EventArgs.Empty);
     }
+
+    public void StoreRandom(int amount) {
+      Array values = Enum.GetValues(typeof(GemstoneType));
+      GemstoneType type = (GemstoneType)values.GetValue(UnityEngine.Random.Range(0, values.Length));
+      Store(type, amount);
+    }
   }
 }

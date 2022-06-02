@@ -869,7 +869,7 @@ GameObject:
   - component: {fileID: 170338021}
   - component: {fileID: 170338022}
   m_Layer: 0
-  m_Name: BloodPool
+  m_Name: Blood Pool
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -882,7 +882,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 170338020}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -902,9 +902,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0a30a915bf06434eb53bc5c1f87e2b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bloodEventChannel: {fileID: 11400000, guid: 138db77aafba22e48b0378c3ce8c44be, type: 2}
-  bloodPrefab: {fileID: 7199465356684096143, guid: fd4aa934a196c094d9a4b13b2f48c8a1,
-    type: 3}
+  vfxEventChannel: {fileID: 11400000, guid: 138db77aafba22e48b0378c3ce8c44be, type: 2}
+  prefab: {fileID: 7199465356684096143, guid: fd4aa934a196c094d9a4b13b2f48c8a1, type: 3}
 --- !u!1 &185741597
 GameObject:
   m_ObjectHideFlags: 0
@@ -1696,7 +1695,7 @@ GameObject:
   - component: {fileID: 338334210}
   - component: {fileID: 338334211}
   m_Layer: 0
-  m_Name: ElectricArcPool
+  m_Name: Electric Arc Pool
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1709,7 +1708,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 338334209}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1729,9 +1728,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22896435ccda6944cad6a389468fae80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vfxEventChannel: {fileID: 11400000, guid: b7c1557d3dd1dd14baaa32d86d0284c6, type: 2}
-  electricArcPrefab: {fileID: 8498035549942007929, guid: 19dfa7ffcdf45e343af2adee74363619,
-    type: 3}
+  vfxEventChannel: {fileID: 11400000, guid: 18b7758f03a98ad4ea3a46b3419cc1e5, type: 2}
+  prefab: {fileID: 8498035549942007929, guid: 19dfa7ffcdf45e343af2adee74363619, type: 3}
 --- !u!1 &347975618
 GameObject:
   m_ObjectHideFlags: 0
@@ -4359,6 +4357,7 @@ Transform:
   - {fileID: 338334210}
   - {fileID: 1748118273}
   - {fileID: 170338021}
+  - {fileID: 1646519625}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5040,7 +5039,7 @@ GameObject:
   - component: {fileID: 1350800140}
   - component: {fileID: 1350800141}
   m_Layer: 0
-  m_Name: GridBuildingSystem
+  m_Name: Grid Building System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5904,7 +5903,7 @@ GameObject:
   - component: {fileID: 1552859098}
   - component: {fileID: 1552859099}
   m_Layer: 0
-  m_Name: DayNightCycle
+  m_Name: Day Night Cycle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5942,7 +5941,7 @@ MonoBehaviour:
   <NightStarted>k__BackingField: {fileID: 11400000, guid: 3fd151616b2c6d746bca7aecc6b50f94,
     type: 2}
   <DayDuration>k__BackingField: 90
-  <NightDuration>k__BackingField: 120
+  <NightDuration>k__BackingField: 100
   <ReamaningTime>k__BackingField: {fileID: 11400000, guid: ccdb2d00415999947b705cea804652d6,
     type: 2}
   onSecond: {fileID: 11400000, guid: 4bfb9538683542844bd5c8ca8f4a49a1, type: 2}
@@ -6526,6 +6525,52 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 619c5afa1874f16439ce45dfa0095083, type: 3}
+--- !u!1 &1646519624
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1646519625}
+  - component: {fileID: 1646519626}
+  m_Layer: 0
+  m_Name: Destroy Pool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1646519625
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1646519624}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1141388426}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1646519626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1646519624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f438c94a9616a549a5aefaebba2291e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vfxEventChannel: {fileID: 11400000, guid: 2d975443a730cab4c9bdb96c7505d742, type: 2}
+  prefab: {fileID: 6398814171252893975, guid: c6293600bc2d43643a44710e870eda6b, type: 3}
 --- !u!1001 &1673918411
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6886,7 +6931,7 @@ GameObject:
   - component: {fileID: 1748118273}
   - component: {fileID: 1748118274}
   m_Layer: 0
-  m_Name: LaserPool
+  m_Name: Laser Pool
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6899,7 +6944,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1748118272}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6919,9 +6964,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d329e5d8e475eb47aae779a8c8257ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  laserEventChannel: {fileID: 11400000, guid: d937debb0317b9d4996a3928dc3995e2, type: 2}
-  laserPrefab: {fileID: 4431185458145817739, guid: 18ecaa8a0a03f3441bd282228d265a84,
-    type: 3}
+  vfxEventChannel: {fileID: 11400000, guid: d937debb0317b9d4996a3928dc3995e2, type: 2}
+  prefab: {fileID: 4431185458145817739, guid: 18ecaa8a0a03f3441bd282228d265a84, type: 3}
 --- !u!1 &1768741794
 GameObject:
   m_ObjectHideFlags: 0
@@ -8124,7 +8168,7 @@ PrefabInstance:
         type: 3}
       propertyPath: <VFXEventChannel>k__BackingField
       value: 
-      objectReference: {fileID: 11400000, guid: b7c1557d3dd1dd14baaa32d86d0284c6,
+      objectReference: {fileID: 11400000, guid: 18b7758f03a98ad4ea3a46b3419cc1e5,
         type: 2}
     - target: {fileID: 4085809703577258810, guid: f7db9d6726e6a0d499a3ba8cbdce4e16,
         type: 3}

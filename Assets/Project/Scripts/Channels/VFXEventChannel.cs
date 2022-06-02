@@ -1,13 +1,18 @@
-using System;
+﻿using System;
 using UnityEngine;
 
 namespace bts {
-  [CreateAssetMenu(fileName = "VFX Channel", menuName = "Channels/VFX Channel")]
-  public class VFXEventChannel : ScriptableObject {
-    public Action<Transform, Vector3, ElectricArcVFXConfiguration> OnVFXEventRequest;
+  public abstract class VFXEventChannel<T> : ScriptableObject
+    where T : MonoBehaviour, Poolable {
+    public Action<VFXConfiguration<T>, VFXParameters<T>> OnVFXEventRequest;
+    public Func<VFXConfiguration<T>, VFXParameters<T>, T> OnVFXEventRequestWithReference;
 
-    public void RaiseVFXEvent(Transform source, Vector3 target, ElectricArcVFXConfiguration config) {
-      OnVFXEventRequest?.Invoke(source, target, config);
+    public void RaiseVFXEvent(VFXConfiguration<T> config, VFXParameters<T> parameters) {
+      OnVFXEventRequest?.Invoke(config, parameters);
+    }
+
+    public T RaiseVFXEventWithReference(VFXConfiguration<T> config, VFXParameters<T> parameters) {
+      return OnVFXEventRequestWithReference?.Invoke(config, parameters);
     }
   }
 }

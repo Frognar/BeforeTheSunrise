@@ -6,12 +6,15 @@ using UnityEngine.Pool;
 
 namespace bts {
   public class Enemy : MonoBehaviour, Selectable, Damageable {
+    [SerializeField][Range(0, 1)] float addResourceChance = 0.3f;
+    [SerializeField] GemstoneStorage storage;
     [field: SerializeField] public SFXEventChannel SFXEventChannel { get; private set; }
     [field: SerializeField] public BloodEventChannel BloodEventChannel { get; private set; }
     [field: SerializeField] public BloodConfiguration BloodConfig { get; private set; }
     [field: SerializeField] public SelectablesEventChannel SelectablesEventChannel { get; private set; }
     [field: SerializeField] public VoidEventChannel DayStarted { get; private set; }
 
+    readonly BloodParameters bloodParameters = new BloodParameters();
     public IObjectPool<Enemy> Pool { get; set; }
     bool wasPooled;
     
@@ -66,7 +69,8 @@ namespace bts {
 
     void Release() {
       if (!wasPooled) {
-        _ = BloodEventChannel.RaiseBloodEvent(transform.position, BloodConfig);
+        bloodParameters.Position = Position;
+        BloodEventChannel.RaiseVFXEvent(BloodConfig, bloodParameters);
         SFXEventChannel.OnSFXPlayRequest(EnemyData.EnemyDeathSFX, EnemyData.AudioConfig, Position);
         Pool.Release(this);
         wasPooled = true;
@@ -102,6 +106,10 @@ namespace bts {
         IsDead = true;
         if (Selected.activeSelf) {
           SelectablesEventChannel.Invoke(this);
+        }
+
+        if (UnityEngine.Random.value < addResourceChance) {
+          storage.StoreRandom(UnityEngine.Random.Range(1, 3));
         }
         
         Release();

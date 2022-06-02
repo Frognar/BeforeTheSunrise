@@ -59,6 +59,17 @@ MonoBehaviour:
   <SelectablesEventChannel>k__BackingField: {fileID: 11400000, guid: 3c1fda043d4369741a6aac78f1308909,
     type: 2}
   storage: {fileID: 11400000, guid: 71f3ad2114ea85541984677a4e20ebac, type: 2}
+  sfxEventChannel: {fileID: 11400000, guid: dd6b72c1d5cdf0b4592d245ebc4c91da, type: 2}
+  destroySFX:
+    <PickRandom>k__BackingField: 1
+    <AllowImmediateRepeat>k__BackingField: 0
+    <Clips>k__BackingField:
+    - {fileID: 8300000, guid: b770fbfc89895804a82bcfe418f0048a, type: 3}
+  audioConfiguration: {fileID: 11400000, guid: a28c7d6ec18dac6439d381de6a7f208c, type: 2}
+  destroyEventChannel: {fileID: 11400000, guid: 2d975443a730cab4c9bdb96c7505d742,
+    type: 2}
+  destroyConfiguration: {fileID: 11400000, guid: 81038ca21a6ae2947b2da6f266b6ddab,
+    type: 2}
   bar: {fileID: 1659582322162850700}
 --- !u!65 &2610586063416816719
 BoxCollider:

@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 2226054278205452954}
   - component: {fileID: 2226054278205452958}
   - component: {fileID: -216122660507481513}
-  - component: {fileID: -2929378194983710018}
   - component: {fileID: 8498035549942007929}
   m_Layer: 0
   m_Name: ElectricArc
@@ -144,7 +143,6 @@ MonoBehaviour:
   m_ExecuteInEditor: 1
   m_Bindings:
   - {fileID: -216122660507481513}
-  - {fileID: -2929378194983710018}
   m_VisualEffect: {fileID: 2226054278205452953}
 --- !u!114 &-216122660507481513
 MonoBehaviour:
@@ -161,21 +159,6 @@ MonoBehaviour:
   property:
     m_Name: SourceTransform
   Target: {fileID: 0}
---- !u!114 &-2929378194983710018
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2226054278205452955}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72e97fb64dfb95a4ea318fed082dace4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  property:
-    m_Name: TargetTransform
-  Target: {fileID: 0}
 --- !u!114 &8498035549942007929
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,6 +171,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 094e13f9bde29af42990ac645e2cbbf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sourceTransformBinder: {fileID: -216122660507481513}
-  targetTransformBinder: {fileID: -2929378194983710018}
-  visualEffect: {fileID: 2226054278205452953}
+  <SourceTransformBinder>k__BackingField: {fileID: -216122660507481513}
+  <VisualEffect>k__BackingField: {fileID: 2226054278205452953}

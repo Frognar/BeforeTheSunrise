@@ -4,7 +4,8 @@ using UnityEngine;
 
 namespace bts {
   public class Generator : Building {
-    [SerializeField] VFXEventChannel vfxEventChannel;
+    [SerializeField] SFXEventChannel sfxEventChannel;
+    [SerializeField] ElectricArcEventChannel vfxEventChannel;
     [SerializeField] Transform arcBegin;
     [SerializeField] IntAsset ticksPerSecond;
     [SerializeField] VoidEventChannel onTick;
@@ -14,6 +15,8 @@ namespace bts {
     int MaxDevices => data.maxDevices;
     GeneratorData data;
     float energyPerTick;
+    SoundEmitter soundEmitter;
+    readonly ElectricArcParameters parameters = new ElectricArcParameters();
 
     protected override void Awake() {
       base.Awake();
@@ -60,9 +63,33 @@ namespace bts {
           }
           else {
             devices[i].StoreEnergy(energyPerDevice);
-            vfxEventChannel.RaiseVFXEvent(arcBegin, devices[i].Center.position, data.electricArcConfig);
+            parameters.Source = arcBegin;
+            parameters.TargetPosition = devices[i].Center.position;
+            vfxEventChannel.RaiseVFXEvent(data.electricArcConfig, parameters);
+            StartSFX();
           }
         }
+
+        bool allDevicesAreFull = offset == devices.Count;
+        if (allDevicesAreFull) {
+          StopSFX();
+        }
+      }
+      else {
+        StopSFX();
+      }
+    }
+
+    void StartSFX() {
+      if (soundEmitter == null) {
+        soundEmitter = sfxEventChannel.RaisePlayEventWithEmitter(data.generateSFX, data.audioConfig, Position);
+      }
+    }
+
+    void StopSFX() {
+      if (soundEmitter != null) {
+        soundEmitter.Stop();
+        soundEmitter = null;
       }
     }
 
