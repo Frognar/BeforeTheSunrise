@@ -1,9 +1,11 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 
 namespace bts {
   public class EnemySpawner : MonoBehaviour, Selectable, Damageable {
+    public event Action<Dictionary<DataType, object>> OnDataChange = delegate { };
     [field: SerializeField] public VoidEventChannel DayStarted { get; private set; }
     [field: SerializeField] public VoidEventChannel NightStarted { get; private set; }
     [field: SerializeField] public float SpawnInterval { get; private set; }
@@ -89,14 +91,21 @@ namespace bts {
       return false;
     }
 
-    public Dictionary<string, object> GetData() {
-      return new Dictionary<string, object>() {
-        { "Health", bar.Health }
+    public Dictionary<DataType, object> GetData() {
+      return new Dictionary<DataType, object>() {
+        { DataType.Name, Name },
+        { DataType.MaxHealth, Health.MaxHealth },
+        { DataType.CurrentHealth, bar.Health.CurrentHealth },
       };
     }
 
     public void TakeDamage(float amount) {
       Health.Damage(amount);
+      OnDataChange.Invoke(new Dictionary<DataType, object>() {
+        { DataType.MaxHealth, Health.MaxHealth },
+        { DataType.CurrentHealth, bar.Health.CurrentHealth }
+      });
+      
       if (IsDead && Selected.activeSelf) {
         SelectablesEventChannel.Invoke(this);
       }
@@ -104,6 +113,10 @@ namespace bts {
 
     public void Heal(float amount) {
       Health.Heal(amount);
+      OnDataChange.Invoke(new Dictionary<DataType, object>() {
+        { DataType.MaxHealth, Health.MaxHealth },
+        { DataType.CurrentEnergy, bar.Health.CurrentHealth }
+      });
     }
   }
 }

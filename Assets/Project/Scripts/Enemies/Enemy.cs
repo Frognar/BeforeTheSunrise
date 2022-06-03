@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
-using Pathfinding;
 using UnityEngine;
 using UnityEngine.Pool;
 
 namespace bts {
   public class Enemy : MonoBehaviour, Selectable, Damageable {
+    public event Action<Dictionary<DataType, object>> OnDataChange = delegate { };
     [SerializeField][Range(0, 1)] float addResourceChance = 0.3f;
     [SerializeField] GemstoneStorage storage;
     [field: SerializeField] public SFXEventChannel SFXEventChannel { get; private set; }
@@ -38,19 +38,19 @@ namespace bts {
     public Bounds Bounds => enemyCollider.bounds;
     Collider enemyCollider;
     
-    public AIDestinationSetter AIDestinationSetter { get; private set; }
     public Pathfinder Pathfinder { get; private set; }
 
     void Awake() {
       enemyCollider = GetComponent<Collider>();
-
       Pathfinder = GetComponent<Pathfinder>();
-      AIDestinationSetter = GetComponent<AIDestinationSetter>();
-      
       StateMachine = new EnemyStateMachine(this);
       Health = new Health(EnemyData.MaxHealth);
       bar.SetUp(Health);
       DayStarted.OnEventInvoked += Release;
+    }
+
+    void Start() {
+      Pathfinder.SetSpeed(EnemyData.MovementSpeed);
     }
 
     void OnEnable() {
@@ -71,7 +71,7 @@ namespace bts {
       if (!wasPooled) {
         bloodParameters.Position = Position;
         BloodEventChannel.RaiseVFXEvent(BloodConfig, bloodParameters);
-        SFXEventChannel.OnSFXPlayRequest(EnemyData.EnemyDeathSFX, EnemyData.AudioConfig, Position);
+        SFXEventChannel.RaisePlayEvent(EnemyData.EnemyDeathSFX, EnemyData.AudioConfig, Position);
         Pool.Release(this);
         wasPooled = true;
       }
@@ -83,7 +83,7 @@ namespace bts {
 
     public void Select() {
       Selected.SetActive(true);
-      SFXEventChannel.OnSFXPlayRequest(EnemyData.EnemySelectSFX, EnemyData.AudioConfig, Position);
+      SFXEventChannel.RaisePlayEvent(EnemyData.EnemySelectSFX, EnemyData.AudioConfig, Position);
     }
 
     public void Deselect() {
@@ -94,14 +94,23 @@ namespace bts {
       return false;
     }
 
-    public Dictionary<string, object> GetData() {
-      return new Dictionary<string, object>() {
-        { "Health", bar.Health }
+    public Dictionary<DataType, object> GetData() {
+      return new Dictionary<DataType, object>() {
+        { DataType.Name, Name },
+        { DataType.MaxHealth, Health.MaxHealth },
+        { DataType.CurrentHealth, bar.Health },
+        { DataType.DamagePerSecond, EnemyData.DamagePerSecond },
+        { DataType.MovementSpeed, EnemyData.MovementSpeed },
       };
     }
 
     public void TakeDamage(float amount) {
       Health.Damage(amount);
+      OnDataChange.Invoke(new Dictionary<DataType, object>() {
+        { DataType.MaxHealth, Health.MaxHealth },
+        { DataType.CurrentHealth, bar.Health.CurrentHealth }
+      });
+      
       if (!IsDead && Health.HasNoHealth) {
         IsDead = true;
         if (Selected.activeSelf) {
@@ -118,6 +127,10 @@ namespace bts {
 
     public void Heal(float amount) {
       Health.Heal(amount);
+      OnDataChange.Invoke(new Dictionary<DataType, object>() {
+        { DataType.MaxHealth, Health.MaxHealth },
+        { DataType.CurrentEnergy, bar.Health.CurrentHealth }
+      });
     }
   }
 }

@@ -106,5 +106,11 @@ namespace bts {
     public override bool IsSameAs(Selectable other) {
       return other is Generator;
     }
+
+    public override Dictionary<DataType, object> GetData() {
+      Dictionary<DataType, object> data = base.GetData();
+      data.Add(DataType.EnergyPerSecond, EnergyPerSecond);
+      return data;
+    }
   }
 }

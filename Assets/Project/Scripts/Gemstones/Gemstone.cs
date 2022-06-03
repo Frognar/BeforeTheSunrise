@@ -5,7 +5,7 @@ namespace bts {
   public class Gemstone : PlacedObject {
     [SerializeField] List<Mesh> avaliableMeshes;
     [field: SerializeField] public GemstoneType GemstoneType { get; private set; }
-    public override string Name => GemstoneType.ToString();
+    public override string Name => PlaceableObjectType.name;
     [field: SerializeField] public int BaseGatherAmount { get; private set; } = 1;
 
     protected override void Start() {
@@ -18,8 +18,12 @@ namespace bts {
       }
     }
 
-    public override Dictionary<string, object> GetData() {
-      return new Dictionary<string, object>();
+    public override Dictionary<DataType, object> GetData() {
+      return new Dictionary<DataType, object>() {
+        { DataType.Name, Name },
+        { DataType.GemstoneType, GemstoneType },
+        { DataType.GatherAmount, BaseGatherAmount }
+      };
     }
   }
 }

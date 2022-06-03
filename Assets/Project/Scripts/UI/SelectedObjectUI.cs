@@ -28,8 +28,7 @@ namespace bts {
       infoPanel.gameObject.SetActive(isSomethingSelected);
       commandsPanel.gameObject.SetActive(false);
       if (isSomethingSelected) {
-        infoPanel.UpdateUI(selected);
-        Selectable first = selected.First();
+        infoPanel.SetUI(selected.First());
         if (selected.Any(s => s.UICommands.Any())) {
           commandsPanel.gameObject.SetActive(true);
           commandsPanel.UpdateUI(selected);

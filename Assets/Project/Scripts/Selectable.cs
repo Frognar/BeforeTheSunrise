@@ -1,10 +1,12 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 namespace bts {
   public interface Selectable {
-    Dictionary<string, object> GetData();
+    public event Action<Dictionary<DataType, object>> OnDataChange;
+    Dictionary<DataType, object> GetData();
     string Name { get; }
     Affiliation ObjectAffiliation { get; }
     Type ObjectType { get; }

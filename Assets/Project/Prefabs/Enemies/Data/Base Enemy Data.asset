@@ -16,6 +16,7 @@ MonoBehaviour:
   <Damage>k__BackingField: 1.5
   <TimeBetweenAttacks>k__BackingField: 3
   <AttackRange>k__BackingField: 3
+  <MovementSpeed>k__BackingField: 5
   <AudioConfig>k__BackingField: {fileID: 11400000, guid: a28c7d6ec18dac6439d381de6a7f208c,
     type: 2}
   <EnemyDeathSFX>k__BackingField:

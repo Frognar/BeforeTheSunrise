@@ -97,6 +97,7 @@ MonoBehaviour:
   <SFXEventChannel>k__BackingField: {fileID: 11400000, guid: dd6b72c1d5cdf0b4592d245ebc4c91da,
     type: 2}
   onTick: {fileID: 11400000, guid: c6e751abad063954ab30d73107f50070, type: 2}
+  ticksPerSecond: {fileID: 11400000, guid: ccce87ca0d2f89b41834d5a6e0860c1e, type: 2}
   rangeVisuals: {fileID: 8495089677250583517}
   <LaserBegining>k__BackingField: {fileID: 4100952621906313171}
 --- !u!114 &8832835493938221832

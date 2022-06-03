@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace bts {
   public class Unit : MonoBehaviour, Selectable, Damageable, CommandReceiver {
+    public event Action<Dictionary<DataType, object>> OnDataChange = delegate { };
     [field: Header("SFX")]
     [field: SerializeField] public SFXEventChannel SFXEventChannel { get; private set; }
     [field: SerializeField] public AudioConfiguration AudioConfig { get; private set; }
@@ -62,7 +63,7 @@ namespace bts {
     StateMachine<Unit> stateMachine;
 
     void Awake() {
-      Health = new Health(50);
+      Health = new Health(50f);
       bar.SetUp(Health);
       UICommands = CreateActions();
       GatherBonuses = new Dictionary<GemstoneType, int>();
@@ -110,10 +111,12 @@ namespace bts {
       Selected.SetActive(false);
       IsSelected = false;
     }
-    
-    public Dictionary<string, object> GetData() {
-      return new Dictionary<string, object>() {
-        { "Health", bar.Health }
+
+    public Dictionary<DataType, object> GetData() {
+      return new Dictionary<DataType, object>() {
+        { DataType.Name, Name },
+        { DataType.MaxHealth, Health.MaxHealth },
+        { DataType.CurrentHealth, bar.Health.CurrentHealth }
       };
     }
 
@@ -125,6 +128,11 @@ namespace bts {
 
     public void TakeDamage(float amount) {
       Health.Damage(amount);
+      OnDataChange.Invoke(new Dictionary<DataType, object>() {
+        { DataType.MaxHealth, Health.MaxHealth },
+        { DataType.CurrentHealth, bar.Health.CurrentHealth }
+      });
+      
       if (IsDead) {
         SFXEventChannel.RaisePlayEvent(TakeDamageSFX, AudioConfig, Position);
         Destroy(gameObject);
@@ -136,6 +144,10 @@ namespace bts {
 
     public void Heal(float amount) {
       Health.Heal(amount);
+      OnDataChange.Invoke(new Dictionary<DataType, object>() {
+        { DataType.MaxHealth, Health.MaxHealth },
+        { DataType.CurrentHealth, bar.Health.CurrentHealth }
+      });
     }
 
     public bool IsFree() {

@@ -1,8 +1,14 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace bts {
   public abstract class Building : PlacedObject, Damageable, Selectable {
+    public override event Action<Dictionary<DataType, object>> OnDataChange = delegate { };
+    public void InvokeDataChange(Dictionary<DataType, object> data) {
+      OnDataChange.Invoke(data);
+    }
+    
     [SerializeField] DemolishUICommandData demolishUICommandData;
     public virtual IEnumerable<UICommand> UICommands { get; protected set; }
     public GemstoneDictionary BuildingCosts => buildingData.buildingCosts;
@@ -25,6 +31,11 @@ namespace bts {
 
     public void TakeDamage(float amount) {
       health.Damage(amount);
+      InvokeDataChange(new Dictionary<DataType, object>() {
+        { DataType.MaxHealth, health.MaxHealth },
+        { DataType.CurrentHealth, bar.Health.CurrentHealth }
+      });
+
       if (IsDead) {
         GridBuildingSystem.Demolish(Position);
       }
@@ -32,15 +43,21 @@ namespace bts {
 
     public void Heal(float amount) {
       health.Heal(amount);
+      InvokeDataChange(new Dictionary<DataType, object>() {
+        { DataType.MaxHealth, health.MaxHealth },
+        { DataType.CurrentHealth, bar.Health.CurrentHealth }
+      });
     }
 
     public void DestroySelf() {
       GridBuildingSystem.Demolish(Position);
     }
-    
-    public override Dictionary<string, object> GetData() {
-      return new Dictionary<string, object>() {
-        { "Health", bar.Health }
+
+    public override Dictionary<DataType, object> GetData() {
+      return new Dictionary<DataType, object>() {
+        { DataType.Name, Name },
+        { DataType.MaxHealth, health.MaxHealth },
+        { DataType.CurrentHealth, bar.Health.CurrentHealth }
       };
     }
   }

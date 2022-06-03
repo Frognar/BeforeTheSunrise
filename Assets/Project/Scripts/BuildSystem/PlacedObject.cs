@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace bts {
@@ -14,6 +15,7 @@ namespace bts {
     public Affiliation ObjectAffiliation => PlaceableObjectType.objectAffiliation;
     [field: SerializeField] public GameObject Selected { get; private set; }
     [field: SerializeField] public SelectablesEventChannel SelectablesEventChannel { get; private set; }
+    public virtual event Action<Dictionary<DataType, object>> OnDataChange = delegate { };
 
     public void Init(GridBuildingSystem gridBuildingSystem, Vector3Int origin, Transform center) {
       GridBuildingSystem = gridBuildingSystem;
@@ -51,7 +53,7 @@ namespace bts {
       return false;
     }
 
-    public abstract Dictionary<string, object> GetData();
+    public abstract Dictionary<DataType, object> GetData();
 
     protected virtual void OnDestroy() {
       if (Selected.activeSelf) {

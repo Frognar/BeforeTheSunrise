@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace bts {
@@ -6,6 +7,7 @@ namespace bts {
     [field: SerializeField] public LaserEventChannel LaserEventChannel { get; private set; }
     [field: SerializeField] public SFXEventChannel SFXEventChannel { get; private set; }
     [SerializeField] VoidEventChannel onTick;
+    [SerializeField] IntAsset ticksPerSecond;
     [SerializeField] GameObject rangeVisuals;
     [field: SerializeField] public Transform LaserBegining { get; private set; }
     HealerData data;
@@ -73,6 +75,11 @@ namespace bts {
       if (CurrentEnergy < 0) {
         CurrentEnergy = 0;
       }
+
+      InvokeDataChange(new Dictionary<DataType, object>() {
+        { DataType.CurrentEnergy, CurrentEnergy },
+        { DataType.MaxEnergy, MaxEnergy }
+      });
     }
 
     public void StoreEnergy(float energy) {
@@ -80,6 +87,11 @@ namespace bts {
       if (CurrentEnergy > MaxEnergy) {
         CurrentEnergy = MaxEnergy;
       }
+
+      InvokeDataChange(new Dictionary<DataType, object>() {
+        { DataType.CurrentEnergy, CurrentEnergy },
+        { DataType.MaxEnergy, MaxEnergy }
+      });
     }
 
     public override bool IsSameAs(Selectable other) {
@@ -88,6 +100,15 @@ namespace bts {
 
     public bool IsFree() {
       return IsIdle;
+    }
+    
+    public override Dictionary<DataType, object> GetData() {
+      Dictionary<DataType, object> data = base.GetData();
+      data.Add(DataType.MaxEnergy, MaxEnergy);
+      data.Add(DataType.CurrentEnergy, CurrentEnergy);
+      data.Add(DataType.HealPerSecond, HealAmount * ticksPerSecond);
+      data.Add(DataType.EnergyUsagePerSecond, EnergyPerHeal * ticksPerSecond);
+      return data;
     }
   }
 }

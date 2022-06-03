@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace bts {
   public class Cannon : Building, ElectricDevice, CommandReceiver {
@@ -63,6 +64,11 @@ namespace bts {
       if (CurrentEnergy < 0) {
         CurrentEnergy = 0;
       }
+      
+      InvokeDataChange(new Dictionary<DataType, object>() {
+        { DataType.CurrentEnergy, CurrentEnergy },
+        { DataType.MaxEnergy, MaxEnergy }
+      });
     }
 
     public void StoreEnergy(float energy) {
@@ -70,6 +76,11 @@ namespace bts {
       if (CurrentEnergy > MaxEnergy) {
         CurrentEnergy = MaxEnergy;
       }
+      
+      InvokeDataChange(new Dictionary<DataType, object>() {
+        { DataType.CurrentEnergy, CurrentEnergy },
+        { DataType.MaxEnergy, MaxEnergy }
+      });
     }
 
     public override bool IsSameAs(Selectable other) {
@@ -78,6 +89,15 @@ namespace bts {
 
     public bool IsFree() {
       return IsIdle;
+    }
+
+    public override Dictionary<DataType, object> GetData() {
+      Dictionary<DataType, object> data = base.GetData();
+      data.Add(DataType.MaxEnergy, MaxEnergy);
+      data.Add(DataType.CurrentEnergy, CurrentEnergy);
+      data.Add(DataType.DamagePerSecond, Damage / TimeBetweenAttacks);
+      data.Add(DataType.EnergyUsagePerSecond, EnergyPerAttack / TimeBetweenAttacks);
+      return data;
     }
   }
 }

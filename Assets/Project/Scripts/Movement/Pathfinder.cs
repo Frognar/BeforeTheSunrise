@@ -14,6 +14,10 @@ namespace bts {
       aiDestinationSetter = GetComponent<AIDestinationSetter>();
       defaultEndReachedDistance = aiPath.endReachedDistance;
     }
+    
+    public void SetSpeed(float speed) {
+      aiPath.maxSpeed = speed;
+    }
 
     public void SetDestination(Vector3 destination) {
       aiDestinationSetter.target = null;
