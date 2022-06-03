@@ -13,6 +13,7 @@ namespace bts {
     int lastSpawnPosition;
     [SerializeField] Enemy enemyPrefab;
     public ObjectPool<Enemy> EnemyPool { get; private set; }
+    [field: SerializeField] public Sprite Icon { get; private set; }
 
     public string Name => "Big Bad Boi";
     public Affiliation ObjectAffiliation => Affiliation.Enemy;

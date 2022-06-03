@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4526707e5cdcab040847b687bc6ae13b, type: 3}
   m_Name: CannonData
   m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: 982933034b762a3409b93af7c7f56919, type: 3}
   buildingCosts:
     reorderableList:
       canAdd: 1

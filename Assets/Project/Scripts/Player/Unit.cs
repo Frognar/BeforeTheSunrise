@@ -19,6 +19,7 @@ namespace bts {
     public Transform Center => transform;
     public Affiliation ObjectAffiliation => Affiliation.Player;
     public Type ObjectType => Type.Unit;
+    [field: SerializeField] public Sprite Icon { get; private set; }
     public GameObject Selected { get; private set; }
     [field: SerializeField] public SelectablesEventChannel SelectablesEventChannel { get; private set; }
     [SerializeField] List<BuildUICommandData> buildCommandsData;

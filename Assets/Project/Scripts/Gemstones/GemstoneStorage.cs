@@ -11,7 +11,7 @@ namespace bts {
     void OnEnable() {
       foreach (GemstoneType type in Enum.GetValues(typeof(GemstoneType))) {
 #if UNITY_EDITOR
-        Gemstones[type] = 50;
+        Gemstones[type] = 100;
 #else
         Gemstones[type] = 0;
 #endif

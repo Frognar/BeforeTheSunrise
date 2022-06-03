@@ -3,10 +3,11 @@ using System.Linq;
 using UnityEngine;
 
 namespace bts {
-  public class UICommandsPanel : MonoBehaviour {
+  public class SelectedObjectCommandsPanel : MonoBehaviour {
     [SerializeField] List<UICommandButton> buttons;
     [SerializeField] SimpleUICommandData nextButtonData;
     [SerializeField] SimpleUICommandData prevButtonData;
+    Selectable currentSelected;
     Dictionary<Selectable, List<UICommand>> commands;
     int commandsCount;
     NextPageUICommand nextPageCommand;
@@ -20,11 +21,21 @@ namespace bts {
       prevPageCommand = new PrevPageUICommand(prevButtonData, this, buttons[^2], buttons[^1]);
     }
 
+    public void SetUI(Selectable selected) {
+      currentSelected = selected;
+      SetUpCommandUI();
+    }
+
     public void UpdateUI(List<Selectable> selected) {
       DisableAllButtons();
       CurrentPage = 0;
       commands = selected.ToDictionary(s => s, s => s.UICommands.ToList());
-      commandsCount = selected.First().UICommands.Count();
+      currentSelected = selected.First();
+      SetUpCommandUI();
+    }
+
+    void SetUpCommandUI() {
+      commandsCount = currentSelected.UICommands.Count();
       if (commandsCount <= buttons.Count) {
         ShowAllOnFirstPage();
       }
@@ -38,14 +49,16 @@ namespace bts {
 
     void ShowAllOnFirstPage() {
       for (int i = 0; i < commandsCount; i++) {
-        buttons[i].SetUp(commands.Select(c => c.Value[i]).ToList());
+        //buttons[i].SetUp(commands.Where(s => s.Key.IsSameAs(currentSelected)).Select(c => c.Value[i]).ToList());
+        buttons[i].SetUp(commands[currentSelected][i]);
         buttons[i].gameObject.SetActive(true);
       }
     }
 
     void ShowFirstPage() {
       for (int i = 0; i < buttons.Count - 2; i++) {
-        buttons[i].SetUp(commands.Select(c => c.Value[i]).ToList());
+        //buttons[i].SetUp(commands.Where(s => s.Key.IsSameAs(currentSelected)).Select(c => c.Value[i]).ToList());
+        buttons[i].SetUp(commands[currentSelected][i]);
         buttons[i].gameObject.SetActive(true);
       }
     }
@@ -67,7 +80,8 @@ namespace bts {
         DisableCommandButtons();
         int commandsLeft = (commandsCount - (buttons.Count - 2) * CurrentPage) % (buttons.Count - 1);
         for (int i = 0; i < commandsLeft; i++) {
-          buttons[i].SetUp(commands.Select(c => c.Value[i + (buttons.Count - 2) * CurrentPage]).ToList());
+          //buttons[i].SetUp(commands.Where(s => s.Key.IsSameAs(currentSelected)).Select(c => c.Value[i + (buttons.Count - 2) * CurrentPage]).ToList());
+          buttons[i].SetUp(commands[currentSelected][i + (buttons.Count - 2) * CurrentPage]);
           buttons[i].gameObject.SetActive(true);
         }
       }
@@ -77,7 +91,8 @@ namespace bts {
       if (CurrentPage > 0) {
         CurrentPage--;
         for (int i = 0; i < buttons.Count - 2; i++) {
-          buttons[i].SetUp(commands.Select(c => c.Value[i + (buttons.Count - 2) * CurrentPage]).ToList());
+          //buttons[i].SetUp(commands.Where(s => s.Key.IsSameAs(currentSelected)).Select(c => c.Value[i + (buttons.Count - 2) * CurrentPage]).ToList());
+          buttons[i].SetUp(commands[currentSelected][i + (buttons.Count - 2) * CurrentPage]);
           buttons[i].gameObject.SetActive(true);
         }
       }

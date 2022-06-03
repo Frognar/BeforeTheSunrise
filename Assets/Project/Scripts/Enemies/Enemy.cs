@@ -17,7 +17,7 @@ namespace bts {
     readonly BloodParameters bloodParameters = new BloodParameters();
     public IObjectPool<Enemy> Pool { get; set; }
     bool wasPooled;
-    
+    public Sprite Icon => EnemyData.Icon;
     [field: SerializeField] public EnemyData EnemyData { get; private set; }
     [field: SerializeField] public GameObject Selected { get; private set; }
     

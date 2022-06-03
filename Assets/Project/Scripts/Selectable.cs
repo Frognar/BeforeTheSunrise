@@ -12,6 +12,7 @@ namespace bts {
     Type ObjectType { get; }
     Transform Center { get; }
     GameObject Selected { get; }
+    Sprite Icon { get; }
     IEnumerable<UICommand> UICommands => Enumerable.Empty<UICommand>();
     SelectablesEventChannel SelectablesEventChannel { get; }
     void Select();

@@ -11,6 +11,7 @@ namespace bts {
     public Vector3Int Origin { get; private set; }
     public Transform Center { get; private set; }
     public virtual string Name => PlaceableObjectType.name;
+    public Sprite Icon => PlaceableObjectType.customData.icon;
     public Type ObjectType => PlaceableObjectType.objectType;
     public Affiliation ObjectAffiliation => PlaceableObjectType.objectAffiliation;
     [field: SerializeField] public GameObject Selected { get; private set; }

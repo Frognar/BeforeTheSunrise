@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4b8ee7d58cbe794c8942db9ba706ed4, type: 3}
   m_Name: HealerData
   m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: 9616ca35715c59141898b72bed40710a, type: 3}
   buildingCosts:
     reorderableList:
       canAdd: 1

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 358f1dcb70e5390449ffc13218e9e571, type: 3}
   m_Name: GeneratorData
   m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: c72b485284608e74faad3aa392a321d4, type: 3}
   buildingCosts:
     reorderableList:
       canAdd: 1

@@ -134,13 +134,7 @@ namespace bts {
         IEnumerable<Selectable> playerSelectables = selectables.Where(s => s.ObjectAffiliation == Affiliation.Player);
         if (playerSelectables.Any()) {
           IEnumerable<Selectable> playerUnits = playerSelectables.Where(s => s.ObjectType == Type.Unit);
-          if (playerUnits.Any()) {
-            return playerUnits.ToList();
-          }
-          else {
-            Selectable first = playerSelectables.First();
-            return playerSelectables.Where(ps => ps.IsSameAs(first)).ToList();
-          }
+          return playerUnits.Any() ? playerUnits.ToList() : playerSelectables.ToList();
         }
         else {
           return new List<Selectable> { selectables.First() };

@@ -1,6 +1,6 @@
 ﻿namespace bts {
   public class NextPageUICommand : PageUICommand {
-    public NextPageUICommand(SimpleUICommandData data, UICommandsPanel actionPanel, UICommandButton prevPageButton, UICommandButton nextPageButton)
+    public NextPageUICommand(SimpleUICommandData data, SelectedObjectCommandsPanel actionPanel, UICommandButton prevPageButton, UICommandButton nextPageButton)
       : base(data, actionPanel, prevPageButton, nextPageButton) {
     }
 

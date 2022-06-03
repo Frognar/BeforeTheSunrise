@@ -19,4 +19,4 @@ MonoBehaviour:
   height: 2
   objectAffiliation: 1
   objectType: 8
-  customData: {fileID: 0}
+  customData: {fileID: 11400000, guid: 0ff2e39aa1f0bf84aa90733c59fb18ac, type: 2}

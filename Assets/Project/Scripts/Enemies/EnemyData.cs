@@ -13,5 +13,6 @@ namespace bts {
     [field: SerializeField] public AudioClipsGroup EnemyDeathSFX { get; private set; }
     [field: SerializeField] public AudioClipsGroup EnemyAttackSFX { get; private set; }
     [field: SerializeField] public AudioClipsGroup EnemySelectSFX { get; private set; }
+    [field: SerializeField] public Sprite Icon { get; private set; }
   }
 }

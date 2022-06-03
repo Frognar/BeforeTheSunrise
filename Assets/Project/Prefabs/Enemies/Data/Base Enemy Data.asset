@@ -39,3 +39,4 @@ MonoBehaviour:
     <Clips>k__BackingField:
     - {fileID: 8300000, guid: b5248daa0c6690842b73cbe5a1fbb5d6, type: 3}
     - {fileID: 8300000, guid: 21df3936b50caf547a473802bfcfa4a4, type: 3}
+  <Icon>k__BackingField: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}

@@ -144,6 +144,7 @@ MonoBehaviour:
   <ArcBegin>k__BackingField: {fileID: 1796620831}
   <ElectricArcConfig>k__BackingField: {fileID: 11400000, guid: e2c5fe3afb0609240a99d7c281e4cbd8,
     type: 2}
+  <Icon>k__BackingField: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
   <SelectablesEventChannel>k__BackingField: {fileID: 11400000, guid: 3c1fda043d4369741a6aac78f1308909,
     type: 2}
   buildCommandsData:
