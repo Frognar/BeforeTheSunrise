@@ -98,7 +98,7 @@ namespace bts {
       return new Dictionary<DataType, object>() {
         { DataType.Name, Name },
         { DataType.MaxHealth, Health.MaxHealth },
-        { DataType.CurrentHealth, bar.Health },
+        { DataType.CurrentHealth, bar.Health.CurrentHealth },
         { DataType.DamagePerSecond, EnemyData.DamagePerSecond },
         { DataType.MovementSpeed, EnemyData.MovementSpeed },
       };
