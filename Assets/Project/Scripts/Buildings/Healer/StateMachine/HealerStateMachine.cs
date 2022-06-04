@@ -10,5 +10,9 @@ namespace bts {
     public override void Start() {
       SwitchState(factory.GetState(nameof(HealerIdleState)));
     }
+
+    public void Stop() {
+      currentState.ExitState();
+    }
   }
 }

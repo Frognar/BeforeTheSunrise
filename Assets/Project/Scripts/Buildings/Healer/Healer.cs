@@ -4,22 +4,27 @@ using UnityEngine;
 
 namespace bts {
   public class Healer : Building, ElectricDevice, CommandReceiver {
+    [field: Header("VFX")]
     [field: SerializeField] public LaserEventChannel LaserEventChannel { get; private set; }
+    [field: SerializeField] public Transform LaserBegining { get; private set; }
+    public LaserConfiguration LaserConfig => data.laserConfig;
+    public LaserVFX Laser { get; set; }
+    
+    [field: Header("SFX")]
     [field: SerializeField] public SFXEventChannel SFXEventChannel { get; private set; }
+    public AudioConfiguration AudioConfig => data.audioConfig;
+    public AudioClipsGroup HealSFX => data.healSFX;
+    public SoundEmitter SoundEmitter { get; set; }
+
+    [Header("")]
     [SerializeField] VoidEventChannel onTick;
     [SerializeField] IntAsset ticksPerSecond;
     [SerializeField] GameObject rangeVisuals;
-    [field: SerializeField] public Transform LaserBegining { get; private set; }
     HealerData data;
     public float Range => data.range;
     public float EnergyPerHeal => data.energyPerHeal;
     public float MaxEnergy => data.maxEnergy;
     public float HealAmount => data.healAmount;
-    public AudioConfiguration AudioConfig => data.audioConfig;
-    public AudioClipsGroup HealSFX => data.healSFX;
-    public LaserConfiguration LaserConfig => data.laserConfig;
-    public SoundEmitter SoundEmitter { get; set; }
-    public LaserVFX Laser { get; set; }
     public Damageable Target { get; set; }
     public bool IsOrderedToStop { get; set; }
     public bool IsOrderedToHeal { get; set; }
@@ -109,6 +114,11 @@ namespace bts {
       data.Add(DataType.HealPerSecond, HealAmount * ticksPerSecond);
       data.Add(DataType.EnergyUsagePerSecond, EnergyPerHeal * ticksPerSecond);
       return data;
+    }
+
+    public override void Demolish() {
+      stateMachine.Stop();
+      base.Demolish();
     }
   }
 }

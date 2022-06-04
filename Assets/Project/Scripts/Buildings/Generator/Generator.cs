@@ -93,6 +93,11 @@ namespace bts {
       }
     }
 
+    public override void Demolish() {
+      StopSFX();
+      base.Demolish();
+    }
+
     public override void Select() {
       base.Select();
       rangeVisuals.SetActive(true);
