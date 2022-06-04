@@ -26,7 +26,11 @@ namespace bts {
       buildingData = PlaceableObjectType.customData as CustomBuildingData;
       health = new Health(buildingData.healthAmount);
       bar.SetUp(health);
-      UICommands = new List<UICommand>() { new DemolishUICommand(demolishUICommandData, this) };
+      UICommands = CreateUICommands();
+    }
+
+    protected virtual IEnumerable<UICommand> CreateUICommands() {
+      yield return new DemolishUICommand(demolishUICommandData, this);
     }
 
     public void TakeDamage(float amount) {

@@ -4,7 +4,8 @@ using UnityEngine;
 namespace bts {
   public class UnitStats : ScriptableObject {
     public event Action OnHealthUpgrade = delegate { };
-    [SerializeField] float maxHealth;
+    [SerializeField] float baseMaxHealth;
+    [HideInInspector] float maxHealth;
     public float MaxHealth {
       get => maxHealth;
       set {
@@ -14,7 +15,8 @@ namespace bts {
     }
     
     public event Action OnSpeedUpgrade = delegate { };
-    [SerializeField] float movementSpeed;
+    [SerializeField] float baseMovementSpeed;
+    [HideInInspector] float movementSpeed;
     public float MovementSpeed { 
       get => movementSpeed;
       set {
@@ -22,13 +24,21 @@ namespace bts {
         OnSpeedUpgrade.Invoke();
       }
     }
-
-    public float damageAmount;
-    public float timeBetweenAttacks;
-    public float timeBetweenGathers;
+    
+    [SerializeField] float baseDamageAmount;
+    [HideInInspector] public float damageAmount;
+    [SerializeField] float baseTimeBetweenAttacks;
+    [HideInInspector] public float timeBetweenAttacks;
+    [SerializeField] float baseTimeBetweenGathers;
+    [HideInInspector] public float timeBetweenGathers;
     public GemstoneDictionary gatherBonuses;
     
     void OnEnable() {
+      maxHealth = baseMaxHealth;
+      movementSpeed = baseMovementSpeed;
+      damageAmount = baseDamageAmount;
+      timeBetweenAttacks = baseTimeBetweenAttacks;
+      timeBetweenGathers = baseTimeBetweenGathers;
       gatherBonuses = new GemstoneDictionary();
       foreach (GemstoneType type in Enum.GetValues(typeof(GemstoneType))) {
         gatherBonuses[type] = 0;

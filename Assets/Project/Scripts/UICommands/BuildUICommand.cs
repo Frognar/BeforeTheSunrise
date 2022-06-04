@@ -5,7 +5,7 @@
     PlacedObjectType BuildingType { get; }
 
     public BuildUICommand(BuildUICommandData data, UnitCommander commander)
-      : base(data.ButtonIcon, data.TooltipData) {
+      : base(data) {
       Commander = commander;
       BuildingType = data.BuildingType;
     }

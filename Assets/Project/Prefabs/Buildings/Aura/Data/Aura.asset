@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5561f1ef99763774ba1d600990c7f8c0, type: 3}
+  m_Name: Aura
+  m_EditorClassIdentifier: 
+  objectName: Aura
+  objectDescription: Bust nearby cannon attack speed
+  prefab: {fileID: 2797842060042037984, guid: d3c44cefdb45101418ad954bc5f416e9, type: 3}
+  width: 2
+  height: 2
+  objectAffiliation: 4
+  objectType: 2
+  customData: {fileID: 11400000, guid: d97b2c8c8582ef64d8bdfa4fa39ae0f3, type: 2}

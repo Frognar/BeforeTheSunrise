@@ -8,13 +8,13 @@ namespace bts {
     [SerializeField] TooltipData tooltipData;
     Coroutine showTooltipCoroutine;
     bool entered;
-
-    public void SetUp(string header, string content, GemstoneDictionary gemstones) {
-      SetUp(new TooltipData(header, content, gemstones));
-    }
+    bool isEnabled;
 
     public void SetUp(TooltipData data) {
       tooltipData = data;
+      if (isEnabled) {
+        tooltipSystem.Show(tooltipData);
+      }
     }
 
     public void OnPointerEnter(PointerEventData eventData) {
@@ -29,6 +29,7 @@ namespace bts {
     void HideTooltip() {
       entered = false;
       tooltipSystem.Hide();
+      isEnabled = false;
       if (showTooltipCoroutine != null) {
         StopCoroutine(showTooltipCoroutine);
         showTooltipCoroutine = null;
@@ -38,6 +39,7 @@ namespace bts {
     IEnumerator ShowTooltip() {
       yield return new WaitForSeconds(0.5f);
       tooltipSystem.Show(tooltipData);
+      isEnabled = true;
     }
 
     void OnDisable() {

@@ -5,7 +5,7 @@
     public UICommandButton NextPageButton { get; private set; }
 
     public PageUICommand(SimpleUICommandData data, SelectedObjectCommandsPanel commandsPanel, UICommandButton prevPageButton, UICommandButton nextPageButton)
-      : base(data.ButtonIcon, data.TooltipData) {
+      : base(data) {
       CommandsPanel = commandsPanel;
       PrevPageButton = prevPageButton;
       NextPageButton = nextPageButton;

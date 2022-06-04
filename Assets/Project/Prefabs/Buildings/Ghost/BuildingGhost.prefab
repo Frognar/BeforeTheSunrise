@@ -137,6 +137,7 @@ MonoBehaviour:
   cantPlaceMaterial: {fileID: 2100000, guid: de614348d9acf1447b23f0db228d8448, type: 2}
   meshFilter: {fileID: 2116023046218745692}
   meshRenderer: {fileID: 2043843969351875301}
+  meshObject: {fileID: 5892943204597337517}
   rangeVisuals: {fileID: 7126657706578550427}
   boxCollider: {fileID: 9199683872321090193}
 --- !u!65 &9199683872321090193

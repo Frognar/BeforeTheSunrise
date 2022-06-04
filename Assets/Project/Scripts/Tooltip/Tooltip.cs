@@ -35,6 +35,7 @@ namespace bts {
       SetText(tooltipData.Content, contentField);
       SetGamestones(tooltipData.Gemstones);
       HandleLayoutElement();
+      UpdatePosition(inputReader.ScreenPosition);
     }
 
     void SetText(string text, TMP_Text field) {

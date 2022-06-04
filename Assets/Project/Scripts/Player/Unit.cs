@@ -161,6 +161,7 @@ namespace bts {
     }
 
     void UpgradeHealth() {
+      Health.Upgrade(stats.MaxHealth);
     }
 
     void UpgradeSpeed() {

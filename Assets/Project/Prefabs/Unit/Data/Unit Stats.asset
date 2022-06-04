@@ -12,10 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14c845a8bca0be24599507ce0ee36c48, type: 3}
   m_Name: Unit Stats
   m_EditorClassIdentifier: 
-  maxHealth: 50
-  movementSpeed: 5
+  baseMaxHealth: 25
+  baseMovementSpeed: 5
+  baseDamageAmount: 5
   damageAmount: 5
+  baseTimeBetweenAttacks: 1
   timeBetweenAttacks: 1
+  baseTimeBetweenGathers: 1
   timeBetweenGathers: 1
   gatherBonuses:
     reorderableList:

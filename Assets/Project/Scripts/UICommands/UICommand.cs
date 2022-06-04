@@ -2,17 +2,12 @@
 
 namespace bts {
   public abstract class UICommand : Command {
-    public Sprite ButtonIcon { get; private set; }
-    public TooltipData TooltipData { get; private set; }
-
-    protected UICommand(Sprite buttonIcon, TooltipData tooltipData) {
-      ButtonIcon = buttonIcon;
-      TooltipData = tooltipData;
-    }
+    public Sprite ButtonIcon => CommandData.ButtonIcon;
+    public TooltipData TooltipData => CommandData.TooltipData;
+    public UICommandData CommandData { get; }
 
     protected UICommand(UICommandData commandData) {
-      ButtonIcon = commandData.ButtonIcon;
-      TooltipData = commandData.TooltipData;
+      CommandData = commandData;
     }
 
     public abstract void Execute();
