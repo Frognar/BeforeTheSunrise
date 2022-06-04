@@ -19090,48 +19090,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Unit
       objectReference: {fileID: 0}
-    - target: {fileID: 4085809703577258788, guid: f7db9d6726e6a0d499a3ba8cbdce4e16,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4085809703577258809, guid: f7db9d6726e6a0d499a3ba8cbdce4e16,
         type: 3}
-      propertyPath: <ArcColor>k__BackingField
+      propertyPath: stats
       value: 
-      objectReference: {fileID: 11400000, guid: c19fafb87f9d77141a2ebd4bd1896c93,
-        type: 2}
-    - target: {fileID: 4085809703577258809, guid: f7db9d6726e6a0d499a3ba8cbdce4e16,
-        type: 3}
-      propertyPath: buildCommandsData.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4085809703577258809, guid: f7db9d6726e6a0d499a3ba8cbdce4e16,
-        type: 3}
-      propertyPath: buildCommandsData.Array.data[3]
-      value: 
-      objectReference: {fileID: 11400000, guid: b9f019d77a597024a920f5164ed31577,
-        type: 2}
-    - target: {fileID: 4085809703577258809, guid: f7db9d6726e6a0d499a3ba8cbdce4e16,
-        type: 3}
-      propertyPath: <VFXEventChannel>k__BackingField
-      value: 
-      objectReference: {fileID: 11400000, guid: 18b7758f03a98ad4ea3a46b3419cc1e5,
+      objectReference: {fileID: 11400000, guid: 473aeb6e63a233443996c3c50046d0e2,
         type: 2}
     - target: {fileID: 4085809703577258810, guid: f7db9d6726e6a0d499a3ba8cbdce4e16,
         type: 3}
       propertyPath: m_RootOrder
       value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4085809703577258810, guid: f7db9d6726e6a0d499a3ba8cbdce4e16,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4085809703577258810, guid: f7db9d6726e6a0d499a3ba8cbdce4e16,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4085809703577258810, guid: f7db9d6726e6a0d499a3ba8cbdce4e16,
         type: 3}

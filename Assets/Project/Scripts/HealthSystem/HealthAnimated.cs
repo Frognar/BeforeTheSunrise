@@ -12,11 +12,17 @@
       ChangeAmount = changeAmount;
       Health.OnValueChange += OnHealthChange;
       Health.OnReset += OnHealthReset;
+      Health.OnUpgrade += OnHealthUpgrade;
+    }
+
+    private void OnHealthUpgrade() {
+      MaxHealth = Health.MaxHealth;
     }
 
     ~HealthAnimated() {
       Health.OnValueChange -= OnHealthChange;
       Health.OnReset -= OnHealthReset;
+      Health.OnUpgrade -= OnHealthUpgrade;
     }
 
     void OnHealthChange() {

@@ -145,15 +145,19 @@ MonoBehaviour:
   <ElectricArcConfig>k__BackingField: {fileID: 11400000, guid: e2c5fe3afb0609240a99d7c281e4cbd8,
     type: 2}
   <Icon>k__BackingField: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  <Selected>k__BackingField: {fileID: 2050330481315874312}
   <SelectablesEventChannel>k__BackingField: {fileID: 11400000, guid: 3c1fda043d4369741a6aac78f1308909,
     type: 2}
   buildCommandsData:
   - {fileID: 11400000, guid: e98738b8a87bb064a92ff91a431b1a22, type: 2}
   - {fileID: 11400000, guid: 2c80e35079c4c6c48a7e4f2a9e1541d7, type: 2}
   - {fileID: 11400000, guid: ec70ce81e70c4b749887e95daebc255f, type: 2}
+  - {fileID: 11400000, guid: b9f019d77a597024a920f5164ed31577, type: 2}
   cancelBuildCommandData: {fileID: 11400000, guid: ff800fd855e31464ab01c02c2f77241d,
     type: 2}
-  gemstoneStorage: {fileID: 11400000, guid: 71f3ad2114ea85541984677a4e20ebac, type: 2}
+  <GemstoneStorage>k__BackingField: {fileID: 11400000, guid: 71f3ad2114ea85541984677a4e20ebac,
+    type: 2}
+  stats: {fileID: 0}
   bar: {fileID: 7243935189629854007}
 --- !u!114 &4085809703577258815
 MonoBehaviour:
@@ -436,6 +440,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 619c5afa1874f16439ce45dfa0095083, type: 3}
+--- !u!1 &2050330481315874312 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2650239681661974590, guid: 619c5afa1874f16439ce45dfa0095083,
+    type: 3}
+  m_PrefabInstance: {fileID: 4085809704119713334}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3068144777885571295 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1308167238753249001, guid: 619c5afa1874f16439ce45dfa0095083,

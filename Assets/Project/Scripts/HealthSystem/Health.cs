@@ -4,7 +4,8 @@ namespace bts {
   public class Health {
     public event Action OnReset = delegate { };
     public event Action OnValueChange = delegate { };
-    public float MaxHealth { get; private set; }
+    public event Action OnUpgrade = delegate { };
+    public float MaxHealth { get; protected set; }
     public float CurrentHealth { get; protected set; }
     public float HealthNormalized => CurrentHealth / MaxHealth;
     public bool HasFullHealth => CurrentHealth == MaxHealth;
@@ -36,6 +37,14 @@ namespace bts {
     public virtual void Reset() {
       CurrentHealth = MaxHealth;
       OnReset.Invoke();
+    }
+
+    public void Upgrade(float maxHealth) {
+      float currentDamage = MaxHealth - CurrentHealth;
+      MaxHealth = maxHealth;
+      CurrentHealth = maxHealth;
+      Damage(currentDamage);
+      OnUpgrade.Invoke();
     }
   }
 }

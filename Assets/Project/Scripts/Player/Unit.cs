@@ -15,12 +15,14 @@ namespace bts {
     [field: SerializeField] public ElectricArcEventChannel VFXEventChannel { get; private set; }
     [field: SerializeField] public Transform ArcBegin { get; private set; }
     [field: SerializeField] public ElectricArcVFXConfiguration ElectricArcConfig { get; private set; }
+    
     public string Name => "Unit";
     public Transform Center => transform;
     public Affiliation ObjectAffiliation => Affiliation.Player;
     public Type ObjectType => Type.Unit;
+    [field: Header("")]
     [field: SerializeField] public Sprite Icon { get; private set; }
-    public GameObject Selected { get; private set; }
+    [field: SerializeField] public GameObject Selected { get; private set; }
     [field: SerializeField] public SelectablesEventChannel SelectablesEventChannel { get; private set; }
     [SerializeField] List<BuildUICommandData> buildCommandsData;
     [SerializeField] CancelBuildUICommandData cancelBuildCommandData;
@@ -32,11 +34,12 @@ namespace bts {
     public bool IsIdle { get; set; }
     public bool IsGathering { get; set; }
 
-    [SerializeField] GemstoneStorage gemstoneStorage;
-    public GemstoneStorage GemstoneStorage => gemstoneStorage;
+    
+    [field: SerializeField] public GemstoneStorage GemstoneStorage { get; private set; }
+    [SerializeField] UnitStats stats;
     public float GatherRange => 3f;
-    public float TimeBetweenGathers => 1f;
-    public Dictionary<GemstoneType, int> GatherBonuses { get; private set; }
+    public float TimeBetweenGathers => stats.timeBetweenGathers;
+    public GemstoneDictionary GatherBonuses => stats.gatherBonuses;
     public bool IsOrderedToGather { get; set; }
     public Gemstone TargerGemstone { get; set; }
 
@@ -48,8 +51,8 @@ namespace bts {
     public bool IsOrderedToMove { get; set; }
     public Vector3 Destination { get; set; }
 
-    public float DamageAmount => 5;
-    public float TimeBetweenAttacks => 1f;
+    public float DamageAmount => stats.damageAmount;
+    public float TimeBetweenAttacks => stats.timeBetweenAttacks;
     public float AttackRange => 4f;
     public bool IsOrderedToAttack { get; set; }
     public Damageable Target { get; set; }
@@ -64,19 +67,14 @@ namespace bts {
     StateMachine<Unit> stateMachine;
 
     void Awake() {
-      Health = new Health(50f);
+      Health = new Health(stats.MaxHealth);
       bar.SetUp(Health);
       UICommands = CreateActions();
-      GatherBonuses = new Dictionary<GemstoneType, int>();
-      foreach (GemstoneType type in Enum.GetValues(typeof(GemstoneType))) {
-        GatherBonuses[type] = 0;
-      }
-
       GridBuildingSystem = FindObjectOfType<GridBuildingSystem>();
       Pathfinder = GetComponent<Pathfinder>();
-      Selected = transform.Find("Selected").gameObject;
-      stateMachine = new UnitStateMachine(this);
+      Pathfinder.SetSpeed(stats.MovementSpeed);
       unitCollider = GetComponent<Collider>();
+      stateMachine = new UnitStateMachine(this);
     }
 
     List<UICommand> CreateActions() {
@@ -117,7 +115,9 @@ namespace bts {
       return new Dictionary<DataType, object>() {
         { DataType.Name, Name },
         { DataType.MaxHealth, Health.MaxHealth },
-        { DataType.CurrentHealth, bar.Health.CurrentHealth }
+        { DataType.CurrentHealth, bar.Health.CurrentHealth },
+        { DataType.MovementSpeed, stats.MovementSpeed },
+        { DataType.DamagePerSecond, stats.damageAmount / stats.timeBetweenAttacks },
       };
     }
 
@@ -135,11 +135,11 @@ namespace bts {
       });
       
       if (IsDead) {
-        SFXEventChannel.RaisePlayEvent(TakeDamageSFX, AudioConfig, Position);
+        SFXEventChannel.RaisePlayEvent(DieSFX, AudioConfig, Position);
         Destroy(gameObject);
       }
       else {
-        SFXEventChannel.RaisePlayEvent(DieSFX, AudioConfig, Position);
+        SFXEventChannel.RaisePlayEvent(TakeDamageSFX, AudioConfig, Position);
       }
     }
 
@@ -153,6 +153,24 @@ namespace bts {
 
     public bool IsFree() {
       return IsIdle || IsGathering;
+    }
+
+    void OnEnable() {
+      stats.OnSpeedUpgrade += UpgradeSpeed;
+      stats.OnHealthUpgrade += UpgradeHealth;
+    }
+
+    void UpgradeHealth() {
+      throw new NotImplementedException();
+    }
+
+    void UpgradeSpeed() {
+      Pathfinder.SetSpeed(stats.MovementSpeed);
+    }
+
+    void OnDisable() {
+      stats.OnSpeedUpgrade -= UpgradeSpeed;
+      stats.OnHealthUpgrade -= UpgradeHealth;
     }
   }
 }
