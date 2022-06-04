@@ -39,7 +39,7 @@ namespace bts {
       Bounds bounds = Obstacle.bounds;
       transform.position = new Vector3(-10000, -10000, -10000);
       AstarPath.active.UpdateGraphs(bounds);
-      Destroy(gameObject, 1f);
+      Destroy(gameObject);
     }
 
     public virtual void Select() {

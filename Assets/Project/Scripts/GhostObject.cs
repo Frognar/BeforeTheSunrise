@@ -11,7 +11,8 @@ namespace bts {
     [SerializeField] Transform rangeVisuals;
     [SerializeField] BoxCollider boxCollider;
     GridXZ<GridBuildingSystem.GridObject> grid;
-    bool lastCanBuild;
+    GridBuildingSystem buildingSystem;
+    PlacedObjectType objectType;
 
     void OnEnable() {
       inputReader.WorldPositionEvent += UpdatePosition;
@@ -24,10 +25,8 @@ namespace bts {
     void UpdatePosition(Vector3 worldPosition) {
       Vector3Int cords = grid.GetCords(worldPosition);
       transform.position = grid.GetWorldPosition(cords);
-      if (lastCanBuild != canBuild) {
-        lastCanBuild = canBuild;
-        UpdateMaterial();
-      }
+      canBuild.value = buildingSystem.CanBuild(cords, objectType);
+      UpdateMaterial();
     }
     
     void UpdateMaterial() {
@@ -35,6 +34,7 @@ namespace bts {
     }
 
     public void SetUp(PlacedObjectType buildingType) {
+      objectType = buildingType;
       boxCollider.size = new Vector3(buildingType.width - .1f, .5f, buildingType.height - .1f);
       CustomBuildingData buildingData = buildingType.customData as CustomBuildingData;
       meshFilter.mesh = buildingData.ghostMesh;
@@ -58,17 +58,13 @@ namespace bts {
         rangeVisuals.gameObject.SetActive(false);
       }
     }
+    
+    void Awake() {
+      buildingSystem = FindObjectOfType<GridBuildingSystem>();
+    }
 
     void Start() {
-      grid = FindObjectOfType<GridBuildingSystem>().Grid;
-    }
-
-    void OnTriggerStay(Collider other) {
-      canBuild.value = false;
-    }
-
-    void OnTriggerExit(Collider other) {
-      canBuild.value = true;
+      grid = buildingSystem.Grid;
     }
   }
 }
