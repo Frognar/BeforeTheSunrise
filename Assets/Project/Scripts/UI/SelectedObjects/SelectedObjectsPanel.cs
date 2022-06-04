@@ -12,13 +12,18 @@ namespace bts {
     int currentSelectedIndex;
 
     public void SetUI(List<Selectable> selected) {
-      next.interactable = selected.Count > selectedObjectsButtons.Count;
-      prev.interactable = false;
       currentSelected = selected;
-      currentSelectedIndex = 0;
-      offset = 0;
+      ResetUI();
       UpdateButtons(offset);
       SetSelectedIndex(currentSelectedIndex);
+    }
+
+    void ResetUI() {
+      next.interactable = currentSelected.Count > selectedObjectsButtons.Count;
+      prev.interactable = false;
+      selectedObjectsButtons[currentSelectedIndex].DiselectButton();
+      currentSelectedIndex = 0;
+      offset = 0;
     }
 
     void UpdateButtons(int offset) {
