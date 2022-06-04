@@ -157,7 +157,7 @@ MonoBehaviour:
     type: 2}
   <GemstoneStorage>k__BackingField: {fileID: 11400000, guid: 71f3ad2114ea85541984677a4e20ebac,
     type: 2}
-  stats: {fileID: 0}
+  stats: {fileID: 11400000, guid: 473aeb6e63a233443996c3c50046d0e2, type: 2}
   bar: {fileID: 7243935189629854007}
 --- !u!114 &4085809703577258815
 MonoBehaviour:

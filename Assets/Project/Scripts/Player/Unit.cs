@@ -72,7 +72,6 @@ namespace bts {
       UICommands = CreateActions();
       GridBuildingSystem = FindObjectOfType<GridBuildingSystem>();
       Pathfinder = GetComponent<Pathfinder>();
-      Pathfinder.SetSpeed(stats.MovementSpeed);
       unitCollider = GetComponent<Collider>();
       stateMachine = new UnitStateMachine(this);
     }
@@ -90,6 +89,7 @@ namespace bts {
     }
 
     void Start() {
+      Pathfinder.SetSpeed(stats.MovementSpeed);
       stateMachine.Start();
     }
 
@@ -161,7 +161,6 @@ namespace bts {
     }
 
     void UpgradeHealth() {
-      throw new NotImplementedException();
     }
 
     void UpgradeSpeed() {
