@@ -20,8 +20,10 @@ namespace bts {
 
       if (InBuildRange) {
         if (StateMachine.Context.GemstoneStorage.CanAfford((StateMachine.Context.BuildingToPlace.customData as CustomBuildingData).buildingCosts)) {
-          StateMachine.Context.GemstoneStorage.Discard((StateMachine.Context.BuildingToPlace.customData as CustomBuildingData).buildingCosts);
-          StateMachine.Context.GridBuildingSystem.Build(StateMachine.Context.Destination, StateMachine.Context.BuildingToPlace);
+          if (StateMachine.Context.GridBuildingSystem.CanBuild(StateMachine.Context.Destination, StateMachine.Context.BuildingToPlace)) {
+            StateMachine.Context.GemstoneStorage.Discard((StateMachine.Context.BuildingToPlace.customData as CustomBuildingData).buildingCosts);
+            StateMachine.Context.GridBuildingSystem.Build(StateMachine.Context.Destination, StateMachine.Context.BuildingToPlace);
+          }
         }
 
         StateMachine.Context.BuildingToPlace = null;

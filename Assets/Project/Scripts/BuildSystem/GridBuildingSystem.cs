@@ -17,16 +17,34 @@ namespace bts {
       Grid = new GridXZ<GridObject>(gridWidth, gridHeight, cellSize, gridOrigin, (g, x, z) => new GridObject(g, x, z));
     }
 
-    public void Build(Vector3 mouseWorldPosition, PlacedObjectType placedObjectType) {
-      Vector3Int cords = Grid.GetCords(mouseWorldPosition);
-      Build(cords, placedObjectType);
+    public bool CanBuild(Vector3 worldPosition, PlacedObjectType objectType) {
+      Vector3Int cords = Grid.GetCords(worldPosition);
+      return CanBuild(cords, objectType);
     }
 
-    public void Build(Vector3Int cords, PlacedObjectType placedObjectType) {
-      List<Vector3Int> gridPositions = placedObjectType.GetGridPositions(cords);
-      List<GridObject> gridObjects = gridPositions.ConvertAll(p => Grid.GetGridObject(p.x, p.z));
-      if (gridObjects.All(o => o?.CanBuild() ?? false)) {
-        Placeable placedObject = placeableFactory.Create(Grid.GetWorldPosition(cords), cords, placedObjectType, this);
+    public bool CanBuild(Vector3Int gridPosition, PlacedObjectType objectType) {
+      List<GridObject> gridObjects = GetGriddObjectForBuilding(gridPosition, objectType);
+      return CanBuild(gridObjects);
+    }
+    
+    bool CanBuild(List<GridObject> gridObjects) {
+      return gridObjects.All(o => o?.CanBuild() ?? false);
+    }
+
+    public void Build(Vector3 worldPosition, PlacedObjectType objectType) {
+      Vector3Int cords = Grid.GetCords(worldPosition);
+      Build(cords, objectType);
+    }
+
+    List<GridObject> GetGriddObjectForBuilding(Vector3Int gridPosition, PlacedObjectType objectType) {
+      List<Vector3Int> gridPositions = objectType.GetGridPositions(gridPosition);
+      return gridPositions.ConvertAll(p => Grid.GetGridObject(p.x, p.z));
+    }
+
+    public void Build(Vector3Int gridPosition, PlacedObjectType objectType) {
+      List<GridObject> gridObjects = GetGriddObjectForBuilding(gridPosition, objectType);
+      if (CanBuild(gridObjects)) {
+        Placeable placedObject = placeableFactory.Create(Grid.GetWorldPosition(gridPosition), gridPosition, objectType, this);
         gridObjects.ForEach(o => o.SetPlacedObject(placedObject));
       }
     }
