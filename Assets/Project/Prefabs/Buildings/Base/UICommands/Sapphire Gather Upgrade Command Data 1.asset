@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6693755029bca44abeb7792e198e616, type: 3}
   m_Name: Sapphire Gather Upgrade Command Data 1
   m_EditorClassIdentifier: 
-  <ButtonIcon>k__BackingField: {fileID: 21300000, guid: a2d994dab358fb545bd02b3d77a57985,
+  <ButtonIcon>k__BackingField: {fileID: 21300000, guid: 22787a7333403934cab896dc59234093,
     type: 3}
   storage: {fileID: 11400000, guid: 71f3ad2114ea85541984677a4e20ebac, type: 2}
   unitStats: {fileID: 11400000, guid: 473aeb6e63a233443996c3c50046d0e2, type: 2}

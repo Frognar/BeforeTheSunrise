@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6693755029bca44abeb7792e198e616, type: 3}
   m_Name: Emerald Gather Upgrade Command Data 2
   m_EditorClassIdentifier: 
-  <ButtonIcon>k__BackingField: {fileID: 21300000, guid: 9616ca35715c59141898b72bed40710a,
+  <ButtonIcon>k__BackingField: {fileID: 21300000, guid: a3d41957ab3fac246a13464cee253e59,
     type: 3}
   storage: {fileID: 11400000, guid: 71f3ad2114ea85541984677a4e20ebac, type: 2}
   unitStats: {fileID: 11400000, guid: 473aeb6e63a233443996c3c50046d0e2, type: 2}
