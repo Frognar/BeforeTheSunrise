@@ -14,6 +14,7 @@ namespace bts {
     [SerializeField] UIStat energyUsagePerSecond;
     [SerializeField] UIStat gemstoneTypePerSecond;
     [SerializeField] UIStat gatherAmountPerSecond;
+    [SerializeField] UIStat aura;
     Selectable currentSelected;
 
     public void SetUI(Selectable selected) {
@@ -27,77 +28,19 @@ namespace bts {
       ConfigureUIElements(selectedData);
       UpdateUI(selectedData);
     }
-    
+
     void ConfigureUIElements(Dictionary<DataType, object> data) {
-      if (data.ContainsKey(DataType.Name)) {
-        objectName.gameObject.SetActive(true);
-      }
-      else {
-        objectName.gameObject.SetActive(false);
-      }
-
-      if (data.ContainsKey(DataType.MaxHealth) && data.ContainsKey(DataType.CurrentHealth)) {
-        health.gameObject.SetActive(true);
-      }
-      else {
-        health.gameObject.SetActive(false);
-      }
-
-      if (data.ContainsKey(DataType.MaxEnergy) && data.ContainsKey(DataType.CurrentEnergy)) {
-        energy.gameObject.SetActive(true);
-      }
-      else {
-        energy.gameObject.SetActive(false);
-      }
-
-      if (data.ContainsKey(DataType.MovementSpeed)) {
-        movementSpeed.gameObject.SetActive(true);
-      }
-      else {
-        movementSpeed.gameObject.SetActive(false);
-      }
-
-      if (data.ContainsKey(DataType.DamagePerSecond)) {
-        damagePerSecond.gameObject.SetActive(true);
-      }
-      else {
-        damagePerSecond.gameObject.SetActive(false);
-      }
-
-      if (data.ContainsKey(DataType.HealPerSecond)) {
-        healPerSecond.gameObject.SetActive(true);
-      }
-      else {
-        healPerSecond.gameObject.SetActive(false);
-      }
-
-      if (data.ContainsKey(DataType.EnergyPerSecond)) {
-        energyPerSecond.gameObject.SetActive(true);
-      }
-      else {
-        energyPerSecond.gameObject.SetActive(false);
-      }
-
-      if (data.ContainsKey(DataType.EnergyUsagePerSecond)) {
-        energyUsagePerSecond.gameObject.SetActive(true);
-      }
-      else {
-        energyUsagePerSecond.gameObject.SetActive(false);
-      }
-
-      if (data.ContainsKey(DataType.GemstoneType)) {
-        gemstoneTypePerSecond.gameObject.SetActive(true);
-      }
-      else {
-        gemstoneTypePerSecond.gameObject.SetActive(false);
-      }
-
-      if (data.ContainsKey(DataType.GatherAmount)) {
-        gatherAmountPerSecond.gameObject.SetActive(true);
-      }
-      else {
-        gatherAmountPerSecond.gameObject.SetActive(false);
-      }
+      objectName.gameObject.SetActive(data.ContainsKey(DataType.Name));
+      health.gameObject.SetActive(data.ContainsKey(DataType.MaxHealth) && data.ContainsKey(DataType.CurrentHealth));
+      energy.gameObject.SetActive(data.ContainsKey(DataType.MaxEnergy) && data.ContainsKey(DataType.CurrentEnergy));
+      movementSpeed.gameObject.SetActive(data.ContainsKey(DataType.MovementSpeed));
+      damagePerSecond.gameObject.SetActive(data.ContainsKey(DataType.DamagePerSecond));
+      healPerSecond.gameObject.SetActive(data.ContainsKey(DataType.HealPerSecond));
+      energyPerSecond.gameObject.SetActive(data.ContainsKey(DataType.EnergyPerSecond));
+      energyUsagePerSecond.gameObject.SetActive(data.ContainsKey(DataType.EnergyUsagePerSecond));
+      gemstoneTypePerSecond.gameObject.SetActive(data.ContainsKey(DataType.GemstoneType));
+      gatherAmountPerSecond.gameObject.SetActive(data.ContainsKey(DataType.GatherAmount));
+      aura.gameObject.SetActive(data.ContainsKey(DataType.Aura));
     }
 
     public void UpdateUI(Dictionary<DataType, object> data) {
@@ -114,23 +57,23 @@ namespace bts {
       }
 
       if (data.ContainsKey(DataType.MovementSpeed)) {
-        movementSpeed.UpdateStat("Speed: ", (float)data[DataType.MovementSpeed]);
+        movementSpeed.UpdateStat("Speed: ", $"{(float)data[DataType.MovementSpeed]:0.00}");
       }
 
       if (data.ContainsKey(DataType.DamagePerSecond)) {
-        damagePerSecond.UpdateStat("Damage/s: ", (float)data[DataType.DamagePerSecond]);
+        damagePerSecond.UpdateStat("Damage/s: ", $"{(float)data[DataType.DamagePerSecond]:0.00}");
       }
-      
+
       if (data.ContainsKey(DataType.HealPerSecond)) {
-        healPerSecond.UpdateStat("Heal/s: ", (float)data[DataType.HealPerSecond]);
+        healPerSecond.UpdateStat("Heal/s: ", $"{(float)data[DataType.HealPerSecond]:0.00}");
       }
 
       if (data.ContainsKey(DataType.EnergyPerSecond)) {
-        energyPerSecond.UpdateStat("Energy/s: ", (float)data[DataType.EnergyPerSecond]);
+        energyPerSecond.UpdateStat("Energy/s: ", $"{(float)data[DataType.EnergyPerSecond]:0.00}");
       }
 
       if (data.ContainsKey(DataType.EnergyUsagePerSecond)) {
-        energyUsagePerSecond.UpdateStat("Energy usage/s: ", (float)data[DataType.EnergyUsagePerSecond]);
+        energyUsagePerSecond.UpdateStat("Energy usage/s: ", $"{(float)data[DataType.EnergyUsagePerSecond]:0.00}");
       }
 
       if (data.ContainsKey(DataType.GemstoneType)) {
@@ -139,6 +82,20 @@ namespace bts {
 
       if (data.ContainsKey(DataType.GatherAmount)) {
         gatherAmountPerSecond.UpdateStat("Gather amount: ", (int)data[DataType.GatherAmount]);
+      }
+
+      if (data.ContainsKey(DataType.Aura)) {
+        switch ((BoostType)data[DataType.Aura]) {
+          case BoostType.Range:
+            aura.UpdateStat("Aura: ", "Range");
+            break;
+          case BoostType.Damage:
+            aura.UpdateStat("Aura: ", "Damage");
+            break;
+          case BoostType.AttackSpeed:
+            aura.UpdateStat("Aura: ", "Attack speed");
+            break;
+        }
       }
     }
 

@@ -3,7 +3,7 @@
 namespace bts {
   public abstract class UICommand : Command {
     public Sprite ButtonIcon => CommandData.ButtonIcon;
-    public TooltipData TooltipData => CommandData.TooltipData;
+    public virtual TooltipData TooltipData => CommandData.TooltipData;
     public UICommandData CommandData { get; }
 
     protected UICommand(UICommandData commandData) {

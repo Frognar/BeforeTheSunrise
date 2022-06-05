@@ -2,18 +2,18 @@
 using UnityEngine;
 
 namespace bts {
-  public class Cannon : Building, ElectricDevice, CommandReceiver {
+  public class Cannon : Building, ElectricDevice, Boostable, CommandReceiver {
     [field: SerializeField] public ElectricArcEventChannel VFXEventChannel { get; private set; }
     [field: SerializeField] public Transform ArcBegin { get; private set; }
     [field: SerializeField] public SFXEventChannel SFXEventChannel { get; private set; }
     public ElectricArcVFXConfiguration ElectricArcConfig => data.electricArcConfig;
     public AudioConfiguration AudioConfig => data.audioConfig;
     public AudioClipsGroup AttackSFX => data.attackSFX;
-    public float Damage => data.damage;
+    public float Damage => boosts.ContainsKey(BoostType.Damage) ? data.damage * boosts[BoostType.Damage] : data.damage;
     public float EnergyPerAttack => data.energyPerAttack;
-    public float Range => data.range;
+    public float Range => boosts.ContainsKey(BoostType.Range) ? data.range * boosts[BoostType.Range] : data.range;
     public float MaxEnergy => data.maxEnergy;
-    public float TimeBetweenAttacks => data.timeBetweenAttacks;
+    public float TimeBetweenAttacks => boosts.ContainsKey(BoostType.AttackSpeed) ? data.timeBetweenAttacks / boosts[BoostType.AttackSpeed] : data.timeBetweenAttacks;
     CannonData data;
     public float CurrentEnergy { get; private set; }
     public bool IsOrderedToStop { get; set; }
@@ -22,9 +22,11 @@ namespace bts {
     public Damageable Target { get; set; }
     public bool IsSelected { get; private set; }
     public bool IsIdle { get; set; }
-    
+
     [SerializeField] GameObject rangeVisuals;
     StateMachine<Cannon> stateMachine;
+
+    readonly Dictionary<BoostType, float> boosts = new Dictionary<BoostType, float>();
 
     protected override void Awake() {
       base.Awake();
@@ -64,7 +66,7 @@ namespace bts {
       if (CurrentEnergy < 0) {
         CurrentEnergy = 0;
       }
-      
+
       InvokeDataChange(new Dictionary<DataType, object>() {
         { DataType.CurrentEnergy, CurrentEnergy },
         { DataType.MaxEnergy, MaxEnergy }
@@ -76,7 +78,7 @@ namespace bts {
       if (CurrentEnergy > MaxEnergy) {
         CurrentEnergy = MaxEnergy;
       }
-      
+
       InvokeDataChange(new Dictionary<DataType, object>() {
         { DataType.CurrentEnergy, CurrentEnergy },
         { DataType.MaxEnergy, MaxEnergy }
@@ -98,6 +100,25 @@ namespace bts {
       data.Add(DataType.DamagePerSecond, Damage / TimeBetweenAttacks);
       data.Add(DataType.EnergyUsagePerSecond, EnergyPerAttack / TimeBetweenAttacks);
       return data;
+    }
+
+    public bool IsBoosted(BoostType boostType) {
+      return boosts.ContainsKey(boostType);
+    }
+
+    public void StartBoosting(BoostType boostType, float multiplier) {
+      boosts[boostType] = multiplier;
+      rangeVisuals.transform.localScale = new Vector3(Range * 2, Range * 2, 1f);
+
+      InvokeDataChange(new Dictionary<DataType, object>() {
+        { DataType.DamagePerSecond, Damage / TimeBetweenAttacks },
+        { DataType.EnergyUsagePerSecond, EnergyPerAttack / TimeBetweenAttacks }
+      });
+    }
+
+    public void StopBoosting(BoostType boostType) {
+      _ = boosts.Remove(boostType);
+      rangeVisuals.transform.localScale = new Vector3(Range * 2, Range * 2, 1f);
     }
   }
 }

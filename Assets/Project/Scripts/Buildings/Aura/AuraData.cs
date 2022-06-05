@@ -5,6 +5,6 @@ namespace bts {
   public class AuraData : CustomBuildingData {
     public float range;
     public float maxEnergy;
-    public float energyPerDevice;
+    public float energyPerDevicePerSecond;
   }
 }

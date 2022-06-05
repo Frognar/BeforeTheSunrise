@@ -12,5 +12,6 @@
     EnergyUsagePerSecond,
     GemstoneType,
     GatherAmount,
+    Aura
   }
 }

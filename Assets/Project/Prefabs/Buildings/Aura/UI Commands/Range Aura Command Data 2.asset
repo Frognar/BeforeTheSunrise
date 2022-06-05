@@ -9,18 +9,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8960ef8bea72694da02c6d807ba9be9, type: 3}
-  m_Name: Aura Data
+  m_Script: {fileID: 11500000, guid: 95780731e766fa74c815dac731d5804b, type: 3}
+  m_Name: Range Aura Command Data 2
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: 658b9dbd4f47c8b499989b0f5ba48a69, type: 3}
-  buildingCosts:
+  <ButtonIcon>k__BackingField: {fileID: 21300000, guid: 52c3e67cdaec1cc43bc285aa7957c253,
+    type: 3}
+  <TooltipDescription>k__BackingField: Increase range
+  <Storage>k__BackingField: {fileID: 11400000, guid: 71f3ad2114ea85541984677a4e20ebac,
+    type: 2}
+  <BaseCost>k__BackingField:
     reorderableList:
       canAdd: 1
       canRemove: 1
       draggable: 1
       expandable: 1
       multipleSelection: 1
-      isExpanded: 1
+      isExpanded: 0
       label:
         m_Text: Keys
         m_Image: {fileID: 0}
@@ -35,13 +39,8 @@ MonoBehaviour:
       elementNameOverride: 
       elementIcon: {fileID: 0}
     reqReferences: {fileID: 0}
-    isExpanded: 1
-    _keyValues: 08000000
-    _keys: 08000000
-    _values: 10000000
-  healthAmount: 16
-  ghostMesh: {fileID: 6883124084952408774, guid: 08e00622f7c7b854b93a6653ef276718,
-    type: 3}
-  range: 4
-  maxEnergy: 50
-  energyPerDevicePerSecond: 5
+    isExpanded: 0
+    _keyValues: 
+    _keys: 
+    _values: 
+  <BoostType>k__BackingField: 2

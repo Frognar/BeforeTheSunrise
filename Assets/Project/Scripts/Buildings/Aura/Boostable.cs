@@ -1,6 +1,13 @@
 namespace bts {
   public interface Boostable {
-    public void StartBoosting();
-    public void StopBoosting();
+    bool IsBoosted(BoostType boostType);
+    public void StartBoosting(BoostType boostType, float multiplier);
+    public void StopBoosting(BoostType boostType);
+  }
+
+  public enum BoostType {
+    AttackSpeed,
+    Damage,
+    Range
   }
 }

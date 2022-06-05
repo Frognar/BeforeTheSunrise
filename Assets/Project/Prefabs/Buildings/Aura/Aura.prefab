@@ -70,6 +70,12 @@ MonoBehaviour:
   demolishUICommandData: {fileID: 11400000, guid: a57fb880238e1c348a901aab017e0b09,
     type: 2}
   bar: {fileID: 5282855830417351031}
+  ticksPerSecond: {fileID: 11400000, guid: ccce87ca0d2f89b41834d5a6e0860c1e, type: 2}
+  changeAuraUICommandData:
+  - {fileID: 11400000, guid: dafe06e3958fbcc4ea7ce98e2fa4b651, type: 2}
+  - {fileID: 11400000, guid: 1872f2fea29c6ca4c9d5d5c131a4f086, type: 2}
+  - {fileID: 11400000, guid: bb60d120e0c83bb438631bb85a176c7b, type: 2}
+  onTick: {fileID: 11400000, guid: c6e751abad063954ab30d73107f50070, type: 2}
   rangeVisuals: {fileID: 2081932961677692943}
 --- !u!1001 &3152628596039591226
 PrefabInstance:
