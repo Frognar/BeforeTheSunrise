@@ -11,6 +11,10 @@ namespace bts {
       if (BuildingType != null) {
         string header = BuildingType.objectName;
         string content = BuildingType.objectDescription;
+        if (BuildingType.limit > 0) {
+          content += $"\nCan placed only {BuildingType.limit} of those";
+        }
+        
         GemstoneDictionary gemstones = (BuildingType.customData as CustomBuildingData).buildingCosts;
         tooltipData = new TooltipData(header, content, gemstones);
       }

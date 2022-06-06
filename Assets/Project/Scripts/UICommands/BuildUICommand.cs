@@ -11,7 +11,9 @@
     }
 
     public override void Execute() {
-      Commander.SetBuildingToBuild(BuildingType);
+      if (BuildingType.CanPlace()) {
+        Commander.SetBuildingToBuild(BuildingType);
+      }
     }
   }
 }

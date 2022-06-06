@@ -81,6 +81,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 85c83a3ce1fd36d4ca3e4c6dd946338a, type: 2}
   - {fileID: 11400000, guid: 32cf5e7b969862046817f11846f59190, type: 2}
   meshRenderer: {fileID: 5380636988107440339}
+  mineCount: {fileID: 11400000, guid: 095d080211e7e3a4b9f77e7b79b33493, type: 2}
 --- !u!1001 &5246200844874997728
 PrefabInstance:
   m_ObjectHideFlags: 0

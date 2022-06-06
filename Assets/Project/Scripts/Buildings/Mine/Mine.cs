@@ -12,6 +12,7 @@ namespace bts {
     [SerializeField] MeshRenderer meshRenderer;
     GemstoneType gemstoneType;
     bool isSet;
+    [SerializeField] IntAsset mineCount;
 
     protected override IEnumerable<UICommand> CreateUICommands() {
       foreach (SelectMineGemTypeUICommandData data in selectMineGemTypeUICommandsData) {
@@ -36,10 +37,12 @@ namespace bts {
 
     void OnEnable() {
       onDayStarted.OnEventInvoked += MineGem;
+      mineCount.value += 1;
     }
 
     void OnDisable() {
       onDayStarted.OnEventInvoked -= MineGem;
+      mineCount.value -= 1;
     }
 
     void MineGem(object sender, EventArgs e) {

@@ -20,3 +20,5 @@ MonoBehaviour:
   objectAffiliation: 4
   objectType: 2
   customData: {fileID: 11400000, guid: bf92ebc8581af4144890b1dfd092e186, type: 2}
+  limit: 20
+  placedCount: {fileID: 11400000, guid: 095d080211e7e3a4b9f77e7b79b33493, type: 2}

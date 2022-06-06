@@ -16,3 +16,6 @@ MonoBehaviour:
     type: 3}
   <BuildingType>k__BackingField: {fileID: 11400000, guid: cad1dfe0999a7404580e7a626ee2b34e,
     type: 2}
+  <Limit>k__BackingField: 2
+  <Count>k__BackingField: {fileID: 11400000, guid: 095d080211e7e3a4b9f77e7b79b33493,
+    type: 2}

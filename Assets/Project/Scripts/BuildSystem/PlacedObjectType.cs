@@ -12,7 +12,13 @@ namespace bts {
     public Affiliation objectAffiliation;
     public Type objectType;
     public CustomPlacedObjectData customData;
+    [Tooltip("0 = unlimited")] public int limit;
+    public IntAsset placedCount;
     
+    public bool CanPlace() {
+      return limit == 0 || placedCount.value < limit;
+    }
+
     public List<Vector3Int> GetGridPositions(Vector3Int offset) {
       List<Vector3Int> gridPositions = new List<Vector3Int>();
       for (int x = 0; x < width; x++) {

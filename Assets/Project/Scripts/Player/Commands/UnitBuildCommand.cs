@@ -13,9 +13,11 @@ namespace bts {
     }
 
     public void Execute() {
-      Unit.IsOrderedToBuild = true;
-      Unit.BuildingToPlace = BuildingType;
-      Unit.Destination = PositionToBuild;
+      if (BuildingType.CanPlace()) {
+        Unit.IsOrderedToBuild = true;
+        Unit.BuildingToPlace = BuildingType;
+        Unit.Destination = PositionToBuild;
+      }
     }
   }
 }
