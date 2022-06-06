@@ -1729,6 +1729,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0900125594e758545a68f75d9db7e648, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectablesEventChannel: {fileID: 11400000, guid: 3c1fda043d4369741a6aac78f1308909,
+    type: 2}
   buttons:
   - {fileID: 1591852605}
   - {fileID: 264267571}

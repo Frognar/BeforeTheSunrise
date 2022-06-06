@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d253117b685559439a8be63d088f1a7, type: 3}
+  m_Name: Rubby Gem Type Command Data
+  m_EditorClassIdentifier: 
+  <ButtonIcon>k__BackingField: {fileID: 21300000, guid: c72b485284608e74faad3aa392a321d4,
+    type: 3}
+  tooltipData:
+    <Header>k__BackingField: 
+    <Content>k__BackingField: Make mine to produce rubby on start of every day
+    <Gemstones>k__BackingField:
+      reorderableList:
+        canAdd: 1
+        canRemove: 1
+        draggable: 1
+        expandable: 1
+        multipleSelection: 1
+        isExpanded: 1
+        label:
+          m_Text: Keys
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        headerHeight: 18
+        footerHeight: 13
+        slideEasing: 0.15
+        verticalSpacing: 2
+        showDefaultBackground: 1
+        elementDisplayType: 0
+        elementNameProperty: 
+        elementNameOverride: 
+        elementIcon: {fileID: 0}
+      reqReferences: {fileID: 0}
+      isExpanded: 1
+      _keyValues: 02000000
+      _keys: 02000000
+      _values: 10000000
+  <GemstoneType>k__BackingField: 2
+  <Material>k__BackingField: {fileID: 2100000, guid: 2561a2198c340d5488966564058480ae,
+    type: 2}

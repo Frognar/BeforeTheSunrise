@@ -7,6 +7,7 @@ namespace bts {
   public class SelectablesEventChannel : ScriptableObject {
     public event EventHandler<List<Selectable>> OnSelectionInvoked;
     public event EventHandler<Selectable> OnDeselect;
+    public event Action<Selectable> OnRefresh = delegate { };
     
     public void Invoke(List<Selectable> selected) {
       OnSelectionInvoked?.Invoke(this, selected);
@@ -14,6 +15,10 @@ namespace bts {
 
     public void Invoke(Selectable selected) {
       OnDeselect?.Invoke(this, selected);
+    }
+
+    public void InvokeOnRefresh(Selectable selected) {
+      OnRefresh.Invoke(selected);
     }
   }
 }

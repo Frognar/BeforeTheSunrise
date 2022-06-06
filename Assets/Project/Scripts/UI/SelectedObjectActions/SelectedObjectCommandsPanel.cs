@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace bts {
   public class SelectedObjectCommandsPanel : MonoBehaviour {
+    [SerializeField] SelectablesEventChannel selectablesEventChannel; 
     [SerializeField] List<UICommandButton> buttons;
     [SerializeField] SimpleUICommandData nextButtonData;
     [SerializeField] SimpleUICommandData prevButtonData;
@@ -22,7 +23,11 @@ namespace bts {
     }
 
     public void SetUI(Selectable selected) {
+      DisableAllButtons();
+      CurrentPage = 0;
       currentSelected = selected;
+      commands.Clear();
+      commands.Add(selected, selected.UICommands.ToList());
       SetUpCommandUI();
     }
 
@@ -107,6 +112,20 @@ namespace bts {
     void DisableAllButtons() {
       foreach (UICommandButton button in buttons) {
         button.gameObject.SetActive(false);
+      }
+    }
+
+    void OnEnable() {
+      selectablesEventChannel.OnRefresh += RefreshIfSelected;
+    }
+
+    void OnDisable() {
+      selectablesEventChannel.OnRefresh -= RefreshIfSelected;
+    }
+
+    void RefreshIfSelected(Selectable selectable) {
+      if (currentSelected.Equals(selectable)) {
+        SetUI(selectable);
       }
     }
   }

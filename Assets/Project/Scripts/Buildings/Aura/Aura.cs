@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace bts {
@@ -38,7 +39,7 @@ namespace bts {
     }
 
     public void ChangeAura(BoostType boostType) {
-      foreach (Boostable boostable in boosted) {
+      foreach (Boostable boostable in boosted.Where(b => b as UnityEngine.Object != null)) {
         boostable.StopBoosting(BoostType);
         boostable.StartBoosting(boostType, boostMultiplier);
       }
@@ -92,13 +93,13 @@ namespace bts {
     }
 
     void Boost(object sender, EventArgs e) {
-      foreach (Boostable boostable in boosted) {
+      foreach (Boostable boostable in boosted.Where(b => b as UnityEngine.Object != null)) {
         boostable.StopBoosting(BoostType);
       }
 
       boosted.Clear();
       List<Boostable> boostablesInRange = GetBoostableDevicesInRange();
-      foreach (Boostable boostable in boostablesInRange) {
+      foreach (Boostable boostable in boostablesInRange.Where(b => b as UnityEngine.Object != null)) {
         if (CanAfford(EnergyPerDevice) == false) {
           return;
         }
@@ -127,7 +128,7 @@ namespace bts {
       foreach (Boostable boostable in boosted) {
         boostable.StopBoosting(BoostType);
       }
-      
+
       base.Demolish();
     }
 
