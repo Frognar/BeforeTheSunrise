@@ -10,6 +10,7 @@ namespace bts {
     public void SetUp(UICommand command) {
       tooltip.SetUp(command.TooltipData);
       icon.sprite = command.ButtonIcon;
+      button.interactable = command.CanExecute();
       button.onClick.AddListener(delegate { command.Execute(); });
       button.onClick.AddListener(delegate { tooltip.SetUp(command.TooltipData); });
     }

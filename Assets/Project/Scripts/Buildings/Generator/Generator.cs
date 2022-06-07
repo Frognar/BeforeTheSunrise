@@ -11,17 +11,16 @@ namespace bts {
     [SerializeField] VoidEventChannel onTick;
     [SerializeField] GameObject rangeVisuals;
     public float Range => data.range;
-    float EnergyPerSecond => data.energyPerSecond;
+    float EnergyPerSecond => data.energyPerSecond * Mathf.Pow(2, BuildingLevel);
     int MaxDevices => data.maxDevices;
     GeneratorData data;
-    float energyPerTick;
+    float EnergyPerTick => EnergyPerSecond / ticksPerSecond;
     SoundEmitter soundEmitter;
     readonly ElectricArcParameters parameters = new ElectricArcParameters();
 
     protected override void Awake() {
       base.Awake();
       data = buildingData as GeneratorData;
-      energyPerTick = EnergyPerSecond / ticksPerSecond;
       rangeVisuals.transform.localScale = new Vector3(Range * 2, Range * 2, 1f);
       rangeVisuals.SetActive(false);
     }
@@ -55,7 +54,7 @@ namespace bts {
       List<ElectricDevice> devices = GetDevicesInRange();
       if (devices.Count > 0) {
         int devicesCount = devices.Count > MaxDevices ? MaxDevices : devices.Count;
-        float energyPerDevice = energyPerTick / devicesCount;
+        float energyPerDevice = EnergyPerTick / devicesCount;
         int offset = 0;
         for (int i = 0; i < devicesCount + offset && i < devices.Count; i++) {
           if (devices[i].IsFull) {
@@ -114,6 +113,12 @@ namespace bts {
 
     public override Dictionary<DataType, object> GetData() {
       Dictionary<DataType, object> data = base.GetData();
+      data.Add(DataType.EnergyPerSecond, EnergyPerSecond);
+      return data;
+    }
+
+    protected override Dictionary<DataType, object> GetDataTypesOnUpgrage() {
+      Dictionary<DataType, object> data = base.GetDataTypesOnUpgrage();
       data.Add(DataType.EnergyPerSecond, EnergyPerSecond);
       return data;
     }

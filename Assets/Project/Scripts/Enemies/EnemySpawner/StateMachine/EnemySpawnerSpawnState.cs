@@ -9,6 +9,11 @@ namespace bts {
       : base(stateMachine, factory) {
     }
 
+    public override void EnterState() {
+      StateMachine.Context.EnemyData.Damage *= Mathf.Pow(1.15f, StateMachine.Context.DayCounter - 1);
+      StateMachine.Context.EnemyData.MaxHealth *= Mathf.Pow(1.15f, StateMachine.Context.DayCounter - 1);
+    }
+
     public override void UpdateState() {
       if (IsTimeToSpawn) {
         lastSpawnTime = Time.time;

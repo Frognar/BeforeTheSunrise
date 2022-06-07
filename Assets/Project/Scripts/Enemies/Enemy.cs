@@ -56,6 +56,7 @@ namespace bts {
     void OnEnable() {
       IsDead = false;
       wasPooled = false;
+      Health.Upgrade(EnemyData.MaxHealth);
       Health.Reset();
     }
 

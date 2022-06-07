@@ -4,10 +4,9 @@ using UnityEngine;
 
 namespace bts {
   public class Mine : Building {
-    [SerializeField] SelectablesEventChannel selectablesEventChannel;
     [SerializeField] VoidEventChannel onDayStarted;
-    [SerializeField] GemstoneStorage storage;
     [SerializeField] int mineAmount;
+    int MineAmount => mineAmount * (int)Mathf.Pow(2, BuildingLevel);
     [SerializeField] List<SelectMineGemTypeUICommandData> selectMineGemTypeUICommandsData;
     [SerializeField] MeshRenderer meshRenderer;
     GemstoneType gemstoneType;
@@ -15,8 +14,10 @@ namespace bts {
     [SerializeField] IntAsset mineCount;
 
     protected override IEnumerable<UICommand> CreateUICommands() {
-      foreach (SelectMineGemTypeUICommandData data in selectMineGemTypeUICommandsData) {
-        yield return new SelectMineGemTypeUICommand(mine: this, data);
+      if (isSet == false) {
+        foreach (SelectMineGemTypeUICommandData data in selectMineGemTypeUICommandsData) {
+          yield return new SelectMineGemTypeUICommand(mine: this, data);
+        }
       }
 
       foreach (UICommand command in base.CreateUICommands()) {
@@ -30,7 +31,7 @@ namespace bts {
         storage.Discard(cost);
         isSet = true;
         UICommands = base.CreateUICommands();
-        selectablesEventChannel.InvokeOnRefresh(this);
+        SelectablesEventChannel.InvokeOnRefresh(this);
         meshRenderer.material = material;
       }
     }
@@ -47,8 +48,28 @@ namespace bts {
 
     void MineGem(object sender, EventArgs e) {
       if (isSet) {
-        storage.Store(gemstoneType, mineAmount);
+        storage.Store(gemstoneType, MineAmount);
       }
+    }
+
+    public override Dictionary<DataType, object> GetData() {
+      Dictionary<DataType, object> data = base.GetData();
+      if (isSet) {
+        data.Add(DataType.GemstoneType, gemstoneType);
+        data.Add(DataType.GatherAmount, MineAmount);
+      }
+
+      return data;
+    }
+
+    protected override Dictionary<DataType, object> GetDataTypesOnUpgrage() {
+      Dictionary<DataType, object> data = base.GetDataTypesOnUpgrage();
+      if (isSet) {
+        data.Add(DataType.GemstoneType, gemstoneType);
+        data.Add(DataType.GatherAmount, MineAmount);
+      }
+
+      return data;
     }
   }
 }

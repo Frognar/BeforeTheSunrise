@@ -5,6 +5,7 @@ using UnityEngine;
 namespace bts {
   public class SelectedObjectInfoPanel : MonoBehaviour {
     [SerializeField] TMP_Text objectName;
+    [SerializeField] UIStat level;
     [SerializeField] UIBar health;
     [SerializeField] UIBar energy;
     [SerializeField] UIStat movementSpeed;
@@ -31,6 +32,7 @@ namespace bts {
 
     void ConfigureUIElements(Dictionary<DataType, object> data) {
       objectName.gameObject.SetActive(data.ContainsKey(DataType.Name));
+      level.gameObject.SetActive(data.ContainsKey(DataType.Level));
       health.gameObject.SetActive(data.ContainsKey(DataType.MaxHealth) && data.ContainsKey(DataType.CurrentHealth));
       energy.gameObject.SetActive(data.ContainsKey(DataType.MaxEnergy) && data.ContainsKey(DataType.CurrentEnergy));
       movementSpeed.gameObject.SetActive(data.ContainsKey(DataType.MovementSpeed));
@@ -45,7 +47,11 @@ namespace bts {
 
     public void UpdateUI(Dictionary<DataType, object> data) {
       if (data.ContainsKey(DataType.Name)) {
-        objectName.text = (string)data[DataType.Name];
+        objectName.text = data[DataType.Name].ToString();
+      }
+
+      if (data.ContainsKey(DataType.Level)) {
+        level.UpdateStat("Level: ", data[DataType.Level].ToString());
       }
 
       if (data.ContainsKey(DataType.MaxHealth) && data.ContainsKey(DataType.CurrentHealth)) {

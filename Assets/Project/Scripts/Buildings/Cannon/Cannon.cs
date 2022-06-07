@@ -9,10 +9,11 @@ namespace bts {
     public ElectricArcVFXConfiguration ElectricArcConfig => data.electricArcConfig;
     public AudioConfiguration AudioConfig => data.audioConfig;
     public AudioClipsGroup AttackSFX => data.attackSFX;
-    public float Damage => boosts.ContainsKey(BoostType.Damage) ? data.damage * boosts[BoostType.Damage] : data.damage;
-    public float EnergyPerAttack => data.energyPerAttack;
+    float BaseDamage => data.damage * Mathf.Pow(2, BuildingLevel);
+    public float Damage => boosts.ContainsKey(BoostType.Damage) ? BaseDamage * boosts[BoostType.Damage] : BaseDamage;
+    public float EnergyPerAttack => data.energyPerAttack * Mathf.Pow(1.5f, BuildingLevel);
     public float Range => boosts.ContainsKey(BoostType.Range) ? data.range * boosts[BoostType.Range] : data.range;
-    public float MaxEnergy => data.maxEnergy;
+    public float MaxEnergy => data.maxEnergy * (int)Mathf.Pow(2, BuildingLevel);
     public float TimeBetweenAttacks => boosts.ContainsKey(BoostType.AttackSpeed) ? data.timeBetweenAttacks / boosts[BoostType.AttackSpeed] : data.timeBetweenAttacks;
     CannonData data;
     public float CurrentEnergy { get; private set; }
@@ -95,6 +96,15 @@ namespace bts {
 
     public override Dictionary<DataType, object> GetData() {
       Dictionary<DataType, object> data = base.GetData();
+      data.Add(DataType.MaxEnergy, MaxEnergy);
+      data.Add(DataType.CurrentEnergy, CurrentEnergy);
+      data.Add(DataType.DamagePerSecond, Damage / TimeBetweenAttacks);
+      data.Add(DataType.EnergyUsagePerSecond, EnergyPerAttack / TimeBetweenAttacks);
+      return data;
+    }
+
+    protected override Dictionary<DataType, object> GetDataTypesOnUpgrage() {
+      Dictionary<DataType, object> data = base.GetDataTypesOnUpgrage();
       data.Add(DataType.MaxEnergy, MaxEnergy);
       data.Add(DataType.CurrentEnergy, CurrentEnergy);
       data.Add(DataType.DamagePerSecond, Damage / TimeBetweenAttacks);

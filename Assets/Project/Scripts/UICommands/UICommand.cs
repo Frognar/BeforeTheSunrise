@@ -11,5 +11,9 @@ namespace bts {
     }
 
     public abstract void Execute();
+
+    public virtual bool CanExecute() {
+      return true;
+    }
   }
 }

@@ -67,6 +67,12 @@ MonoBehaviour:
   <Selected>k__BackingField: {fileID: 8619556694907480926}
   <SelectablesEventChannel>k__BackingField: {fileID: 11400000, guid: 3c1fda043d4369741a6aac78f1308909,
     type: 2}
+  selectablesEventChannel: {fileID: 11400000, guid: 3c1fda043d4369741a6aac78f1308909,
+    type: 2}
+  storage: {fileID: 11400000, guid: 71f3ad2114ea85541984677a4e20ebac, type: 2}
+  register: {fileID: 11400000, guid: a46e429572f1750448c03c2185fcb337, type: 2}
+  upgradeBuildingUICommandData: {fileID: 11400000, guid: 52d69491f38836748955741800f7b39c,
+    type: 2}
   demolishUICommandData: {fileID: 11400000, guid: a57fb880238e1c348a901aab017e0b09,
     type: 2}
   bar: {fileID: 5282855830417351031}

@@ -10,7 +10,7 @@ namespace bts {
     public void UpdateBar(float current, float max) {
       barSlider.maxValue = max;
       barSlider.value = current;
-      barText.text = current + "/" + max;
+      barText.text = $"{current:0.00}/{max:0.00}";
     }
   }
 }

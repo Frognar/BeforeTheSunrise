@@ -9,7 +9,7 @@ namespace bts {
     [field: SerializeField] public Transform LaserBegining { get; private set; }
     public LaserConfiguration LaserConfig => data.laserConfig;
     public LaserVFX Laser { get; set; }
-    
+
     [field: Header("SFX")]
     [field: SerializeField] public SFXEventChannel SFXEventChannel { get; private set; }
     public AudioConfiguration AudioConfig => data.audioConfig;
@@ -22,9 +22,9 @@ namespace bts {
     [SerializeField] GameObject rangeVisuals;
     HealerData data;
     public float Range => data.range;
-    public float EnergyPerHeal => data.energyPerHeal;
-    public float MaxEnergy => data.maxEnergy;
-    public float HealAmount => data.healAmount;
+    public float EnergyPerHeal => data.energyPerHeal * Mathf.Pow(1.5f, BuildingLevel);
+    public float MaxEnergy => data.maxEnergy * Mathf.Pow(2, BuildingLevel);
+    public float HealAmount => data.healAmount * Mathf.Pow(2, BuildingLevel);
     public Damageable Target { get; set; }
     public bool IsOrderedToStop { get; set; }
     public bool IsOrderedToHeal { get; set; }
@@ -106,9 +106,18 @@ namespace bts {
     public bool IsFree() {
       return IsIdle;
     }
-    
+
     public override Dictionary<DataType, object> GetData() {
       Dictionary<DataType, object> data = base.GetData();
+      data.Add(DataType.MaxEnergy, MaxEnergy);
+      data.Add(DataType.CurrentEnergy, CurrentEnergy);
+      data.Add(DataType.HealPerSecond, HealAmount * ticksPerSecond);
+      data.Add(DataType.EnergyUsagePerSecond, EnergyPerHeal * ticksPerSecond);
+      return data;
+    }
+
+    protected override Dictionary<DataType, object> GetDataTypesOnUpgrage() {
+      Dictionary<DataType, object> data = base.GetDataTypesOnUpgrage();
       data.Add(DataType.MaxEnergy, MaxEnergy);
       data.Add(DataType.CurrentEnergy, CurrentEnergy);
       data.Add(DataType.HealPerSecond, HealAmount * ticksPerSecond);

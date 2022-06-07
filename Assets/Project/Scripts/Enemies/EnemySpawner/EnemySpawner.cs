@@ -5,6 +5,8 @@ using UnityEngine.Pool;
 
 namespace bts {
   public class EnemySpawner : MonoBehaviour, Selectable, Damageable {
+    [field: SerializeField] public EnemyData EnemyData { get; private set; }
+    [field: SerializeField] public IntAsset DayCounter { get; private set; }
     public event Action<Dictionary<DataType, object>> OnDataChange = delegate { };
     [field: SerializeField] public VoidEventChannel DayStarted { get; private set; }
     [field: SerializeField] public VoidEventChannel NightStarted { get; private set; }

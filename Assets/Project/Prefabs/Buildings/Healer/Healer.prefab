@@ -89,17 +89,21 @@ MonoBehaviour:
   <Selected>k__BackingField: {fileID: 1118161438234806512}
   <SelectablesEventChannel>k__BackingField: {fileID: 11400000, guid: 3c1fda043d4369741a6aac78f1308909,
     type: 2}
+  storage: {fileID: 11400000, guid: 71f3ad2114ea85541984677a4e20ebac, type: 2}
+  register: {fileID: 11400000, guid: a46e429572f1750448c03c2185fcb337, type: 2}
+  upgradeBuildingUICommandData: {fileID: 11400000, guid: 5870d69a3a1efc045981dcdbeeb1ca44,
+    type: 2}
   demolishUICommandData: {fileID: 11400000, guid: a57fb880238e1c348a901aab017e0b09,
     type: 2}
   bar: {fileID: 4681088581687246463}
   <LaserEventChannel>k__BackingField: {fileID: 11400000, guid: d937debb0317b9d4996a3928dc3995e2,
     type: 2}
+  <LaserBegining>k__BackingField: {fileID: 4100952621906313171}
   <SFXEventChannel>k__BackingField: {fileID: 11400000, guid: dd6b72c1d5cdf0b4592d245ebc4c91da,
     type: 2}
   onTick: {fileID: 11400000, guid: c6e751abad063954ab30d73107f50070, type: 2}
   ticksPerSecond: {fileID: 11400000, guid: ccce87ca0d2f89b41834d5a6e0860c1e, type: 2}
   rangeVisuals: {fileID: 8495089677250583517}
-  <LaserBegining>k__BackingField: {fileID: 4100952621906313171}
 --- !u!114 &8832835493938221832
 MonoBehaviour:
   m_ObjectHideFlags: 0

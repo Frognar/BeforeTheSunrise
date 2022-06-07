@@ -17,6 +17,7 @@
 
     private void OnHealthUpgrade() {
       MaxHealth = Health.MaxHealth;
+      CurrentHealth = Health.CurrentHealth;
     }
 
     ~HealthAnimated() {

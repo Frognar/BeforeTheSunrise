@@ -15,7 +15,7 @@ namespace bts {
     public float CurrentEnergy { get; private set; }
     BoostType BoostType { get; set; } = BoostType.Damage;
 
-    readonly float boostMultiplier = 1.1f;
+    float BoostMultiplier => 1.1f * Mathf.Pow(1.15f, BuildingLevel);
     readonly List<Boostable> boosted = new List<Boostable>();
     AuraData auraData;
 
@@ -41,7 +41,7 @@ namespace bts {
     public void ChangeAura(BoostType boostType) {
       foreach (Boostable boostable in boosted.Where(b => b as UnityEngine.Object != null)) {
         boostable.StopBoosting(BoostType);
-        boostable.StartBoosting(boostType, boostMultiplier);
+        boostable.StartBoosting(boostType, BoostMultiplier);
       }
 
       BoostType = boostType;
@@ -106,7 +106,7 @@ namespace bts {
 
         if (boostable.IsBoosted(BoostType) == false) {
           UseEnergy(EnergyPerDevice);
-          boostable.StartBoosting(BoostType, boostMultiplier);
+          boostable.StartBoosting(BoostType, BoostMultiplier);
           boosted.Add(boostable);
         }
       }
@@ -137,6 +137,14 @@ namespace bts {
       data.Add(DataType.MaxEnergy, MaxEnergy);
       data.Add(DataType.CurrentEnergy, CurrentEnergy);
       data.Add(DataType.Aura, BoostType);
+      data.Add(DataType.EnergyUsagePerSecond, auraData.energyPerDevicePerSecond * boosted.Count);
+      return data;
+    }
+
+    protected override Dictionary<DataType, object> GetDataTypesOnUpgrage() {
+      Dictionary<DataType, object> data = base.GetDataTypesOnUpgrage();
+      data.Add(DataType.MaxEnergy, MaxEnergy);
+      data.Add(DataType.CurrentEnergy, CurrentEnergy);
       data.Add(DataType.EnergyUsagePerSecond, auraData.energyPerDevicePerSecond * boosted.Count);
       return data;
     }
