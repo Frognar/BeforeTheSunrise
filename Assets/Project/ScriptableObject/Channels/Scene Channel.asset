@@ -9,7 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75c9a1fe66b6c344cae49cb79549a6fc, type: 3}
-  m_Name: ReamaningTime
+  m_Script: {fileID: 11500000, guid: 951d41b56636e804b8540608f39a4aaa, type: 3}
+  m_Name: Scene Channel
   m_EditorClassIdentifier: 
-  value: 118

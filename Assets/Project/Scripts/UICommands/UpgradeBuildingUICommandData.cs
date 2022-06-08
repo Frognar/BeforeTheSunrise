@@ -5,7 +5,7 @@ namespace bts {
   public class UpgradeBuildingUICommandData : UICommandData {
     TooltipData tooltipData;
     public override TooltipData TooltipData => tooltipData;
-    [SerializeField] public GemstoneDictionary baseCost;
+    public GemstoneDictionary baseCost;
 
     void OnEnable() {
       tooltipData = new TooltipData(

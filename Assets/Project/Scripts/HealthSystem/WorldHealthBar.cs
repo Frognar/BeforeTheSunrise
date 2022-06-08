@@ -13,7 +13,9 @@ namespace bts {
     }
 
     void Update() {
-      Health.Update();
+      if (Health != null) {
+        Health.Update();
+      }
     }
 
     void LateUpdate() {

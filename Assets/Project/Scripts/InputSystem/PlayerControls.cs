@@ -80,6 +80,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": ""Press(behavior=1)"",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""c1b1734c-1140-4eec-b0fb-742f4bd70166"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -146,6 +155,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""StopSelecting"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f571fdeb-ae5a-4907-b2f3-c73f1168ea92"",
+                    ""path"": ""<Keyboard>/pause"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -258,6 +278,34 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Menu"",
+            ""id"": ""c02f7617-7776-47ae-8fe6-ce99309f68bc"",
+            ""actions"": [
+                {
+                    ""name"": ""Close"",
+                    ""type"": ""Button"",
+                    ""id"": ""64e6f3c2-31c4-4a02-848f-d9e3010c9e6b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""4207d6af-8a2f-424c-9ad6-9c400943abdb"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Close"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -270,6 +318,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Player_SelectSame = m_Player.FindAction("SelectSame", throwIfNotFound: true);
         m_Player_StartSelecting = m_Player.FindAction("StartSelecting", throwIfNotFound: true);
         m_Player_StopSelecting = m_Player.FindAction("StopSelecting", throwIfNotFound: true);
+        m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
         // Camera
         m_Camera = asset.FindActionMap("Camera", throwIfNotFound: true);
         m_Camera_Focus = m_Camera.FindAction("Focus", throwIfNotFound: true);
@@ -277,6 +326,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Camera_ScreenPosition = m_Camera.FindAction("ScreenPosition", throwIfNotFound: true);
         m_Camera_CameraRotationDirection = m_Camera.FindAction("CameraRotationDirection", throwIfNotFound: true);
         m_Camera_EnableCameraRotation = m_Camera.FindAction("EnableCameraRotation", throwIfNotFound: true);
+        // Menu
+        m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
+        m_Menu_Close = m_Menu.FindAction("Close", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -342,6 +394,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_SelectSame;
     private readonly InputAction m_Player_StartSelecting;
     private readonly InputAction m_Player_StopSelecting;
+    private readonly InputAction m_Player_Pause;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
@@ -352,6 +405,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @SelectSame => m_Wrapper.m_Player_SelectSame;
         public InputAction @StartSelecting => m_Wrapper.m_Player_StartSelecting;
         public InputAction @StopSelecting => m_Wrapper.m_Player_StopSelecting;
+        public InputAction @Pause => m_Wrapper.m_Player_Pause;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -379,6 +433,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @StopSelecting.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStopSelecting;
                 @StopSelecting.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStopSelecting;
                 @StopSelecting.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStopSelecting;
+                @Pause.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -401,6 +458,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @StopSelecting.started += instance.OnStopSelecting;
                 @StopSelecting.performed += instance.OnStopSelecting;
                 @StopSelecting.canceled += instance.OnStopSelecting;
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
             }
         }
     }
@@ -470,6 +530,39 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         }
     }
     public CameraActions @Camera => new CameraActions(this);
+
+    // Menu
+    private readonly InputActionMap m_Menu;
+    private IMenuActions m_MenuActionsCallbackInterface;
+    private readonly InputAction m_Menu_Close;
+    public struct MenuActions
+    {
+        private @PlayerControls m_Wrapper;
+        public MenuActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Close => m_Wrapper.m_Menu_Close;
+        public InputActionMap Get() { return m_Wrapper.m_Menu; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(MenuActions set) { return set.Get(); }
+        public void SetCallbacks(IMenuActions instance)
+        {
+            if (m_Wrapper.m_MenuActionsCallbackInterface != null)
+            {
+                @Close.started -= m_Wrapper.m_MenuActionsCallbackInterface.OnClose;
+                @Close.performed -= m_Wrapper.m_MenuActionsCallbackInterface.OnClose;
+                @Close.canceled -= m_Wrapper.m_MenuActionsCallbackInterface.OnClose;
+            }
+            m_Wrapper.m_MenuActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Close.started += instance.OnClose;
+                @Close.performed += instance.OnClose;
+                @Close.canceled += instance.OnClose;
+            }
+        }
+    }
+    public MenuActions @Menu => new MenuActions(this);
     public interface IPlayerActions
     {
         void OnSendCommand(InputAction.CallbackContext context);
@@ -478,6 +571,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnSelectSame(InputAction.CallbackContext context);
         void OnStartSelecting(InputAction.CallbackContext context);
         void OnStopSelecting(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
     public interface ICameraActions
     {
@@ -486,5 +580,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnScreenPosition(InputAction.CallbackContext context);
         void OnCameraRotationDirection(InputAction.CallbackContext context);
         void OnEnableCameraRotation(InputAction.CallbackContext context);
+    }
+    public interface IMenuActions
+    {
+        void OnClose(InputAction.CallbackContext context);
     }
 }

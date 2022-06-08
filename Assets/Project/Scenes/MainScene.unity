@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
+  m_IndirectSpecularColor: {r: 0.17276844, g: 0.21589246, b: 0.2978263, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -152,6 +152,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bd6da722b0cc8242b6a62908219e055, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainMenuScene: {fileID: 102900000, guid: c48a7568142aec84aa59c4d38d183d9c, type: 3}
+  loadSceneEventChannel: {fileID: 11400000, guid: 987e2c46a9978b3498f7d442d22d5b01,
+    type: 2}
 --- !u!4 &148761332
 Transform:
   m_ObjectHideFlags: 0
@@ -177,7 +180,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1169707007}
   - component: {fileID: 1169707008}
-  - component: {fileID: 1169707009}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -212,39 +214,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e19ef18f97388cd4bb6e86616d44d34c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  masterVolumeChannel: {fileID: 11400000, guid: aafd69156f6ce474e9fafaf3715e3fba,
+    type: 2}
+  sfxVolumeChannel: {fileID: 11400000, guid: 8109a612358eca84cb39b508df04d9b8, type: 2}
   sfxEventChannel: {fileID: 11400000, guid: dd6b72c1d5cdf0b4592d245ebc4c91da, type: 2}
+  musicVolumeChannel: {fileID: 11400000, guid: 4f3054af3a96a064bae9649936beaaac, type: 2}
   musicEventChannel: {fileID: 11400000, guid: 821d06559c9005c4ba49bd3dad7e76b4, type: 2}
   audioMixer: {fileID: 24100000, guid: 0b6210729aa56cc45bdb6fb855b1ff20, type: 2}
-  masterVolume: 1
-  musicVolume: 0.5
-  sfxVolume: 1
---- !u!114 &1169707009
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1169707006}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecb7b8b0084ba734a889a278f94b03e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dayStarted: {fileID: 11400000, guid: ba696d58e6b750a4396f8d5fba9a80ea, type: 2}
-  nightStarted: {fileID: 11400000, guid: 3fd151616b2c6d746bca7aecc6b50f94, type: 2}
-  musicEventChannel: {fileID: 11400000, guid: 821d06559c9005c4ba49bd3dad7e76b4, type: 2}
-  config: {fileID: 11400000, guid: 4ff261433e3a4c64b8bceeb720952a5c, type: 2}
-  nigthClips:
-    <PickRandom>k__BackingField: 1
-    <AllowImmediateRepeat>k__BackingField: 0
-    <Clips>k__BackingField:
-    - {fileID: 8300000, guid: 00589363390c06d48a5d99254a0a4f0f, type: 3}
-    - {fileID: 8300000, guid: 60254b59230f8ec48a5196798d66f042, type: 3}
-    - {fileID: 8300000, guid: ee9321442306f8b4b8f2b3f32da8be80, type: 3}
-  dayClips:
-    <PickRandom>k__BackingField: 1
-    <AllowImmediateRepeat>k__BackingField: 0
-    <Clips>k__BackingField:
-    - {fileID: 8300000, guid: 7c704585095476a45914e3989646ee30, type: 3}
-    - {fileID: 8300000, guid: d183e4d3fb8bdbc42973b4ad7b6d85c1, type: 3}
-    - {fileID: 8300000, guid: 134e22ca1a22ae24d9849a472bfb5e4e, type: 3}

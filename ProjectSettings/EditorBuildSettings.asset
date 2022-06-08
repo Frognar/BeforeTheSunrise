@@ -9,8 +9,17 @@ EditorBuildSettings:
     path: Assets/Project/Scenes/MainScene.unity
     guid: a1b2048791d33104598fa77b5fd43acc
   - enabled: 1
-    path: Assets/Project/Scenes/SampleScene.unity
+    path: Assets/Project/Scenes/MainMenuScene.unity
+    guid: c48a7568142aec84aa59c4d38d183d9c
+  - enabled: 1
+    path: Assets/Project/Scenes/InGameOptionsScene.unity
+    guid: dedaaad5e7ccbaf41810d3877051451d
+  - enabled: 1
+    path: Assets/Project/Scenes/GameScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Project/Scenes/DeathScene.unity
+    guid: fee74e74ca3bb8049bd2b782a6bc0399
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: a1f292a0bae997b4b9d4a284468a9154,
       type: 2}

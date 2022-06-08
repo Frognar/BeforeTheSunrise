@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 
 namespace bts {
   [CreateAssetMenu(fileName = "Input Reader", menuName = "Game/Input Reader")]
-  public class InputReader : ScriptableObject, PlayerControls.IPlayerActions, PlayerControls.ICameraActions {
+  public class InputReader : ScriptableObject, PlayerControls.IPlayerActions, PlayerControls.ICameraActions, PlayerControls.IMenuActions {
     [SerializeField] BoolAsset inBuildMode;
     public event Action CancelEvent = delegate { };
     public bool IsCommandQueuingEnabled;
@@ -23,6 +23,8 @@ namespace bts {
     public Vector3 WorldPosition => Physics.Raycast(RayToWorld, out RaycastHit hitInfo) ? hitInfo.point : offWorld;
     public event Action<float> ZoomEvent = delegate { };
     public event Action<Ray> SelectSameEvent = delegate { };
+    public event Action OnPauseEvent = delegate { };
+    public event Action OnCloseEvent = delegate { };
 
     PlayerControls inputControls;
 
@@ -31,15 +33,14 @@ namespace bts {
         inputControls = new PlayerControls();
         inputControls.Player.SetCallbacks(this);
         inputControls.Camera.SetCallbacks(this);
+        inputControls.Menu.SetCallbacks(this);
       }
-
-      inputControls.Player.Enable();
-      inputControls.Camera.Enable();
     }
 
     void OnDisable() {
       inputControls.Player.Disable();
       inputControls.Camera.Disable();
+      inputControls.Menu.Disable();
     }
 
     public void OnCancel(InputAction.CallbackContext context) {
@@ -121,6 +122,39 @@ namespace bts {
 
     public void OnZoom(InputAction.CallbackContext context) {
       ZoomEvent.Invoke(context.ReadValue<float>());
+    }
+
+    public void OnPause(InputAction.CallbackContext context) {
+      if (context.performed) {
+        OnPauseEvent.Invoke();
+      }
+    }
+
+    public void OnClose(InputAction.CallbackContext context) {
+      if (context.performed) {
+        OnCloseEvent.Invoke();
+      }
+    }
+
+    public void EnableGameplayInput() {
+      inputControls.Player.Enable();
+      inputControls.Camera.Enable();
+      DisableMenuInput();
+    }
+
+    void DisableMenuInput() {
+      inputControls.Menu.Disable();
+    }
+
+    public void EnableMenuInput() {
+      DisableGameplayInput();
+      inputControls.Menu.Enable();
+    }
+
+    public void DisableGameplayInput() {
+      inputControls.Player.Disable();
+      inputControls.Camera.Disable();
+      ScreenPosition = new Vector2(Screen.width / 2, Screen.height / 2);
     }
   }
 }

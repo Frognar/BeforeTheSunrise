@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace bts {
   public class Unit : MonoBehaviour, Selectable, Damageable, CommandReceiver {
+    [SerializeField] VoidEventChannel deathEventChannel;
     public event Action<Dictionary<DataType, object>> OnDataChange = delegate { };
     [field: Header("SFX")]
     [field: SerializeField] public SFXEventChannel SFXEventChannel { get; private set; }
@@ -125,6 +126,8 @@ namespace bts {
       if (IsSelected) {
         SelectablesEventChannel.Invoke(this);
       }
+
+      deathEventChannel.Invoke();
     }
 
     public void TakeDamage(float amount) {

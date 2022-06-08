@@ -9,7 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75c9a1fe66b6c344cae49cb79549a6fc, type: 3}
-  m_Name: ReamaningTime
+  m_Script: {fileID: 11500000, guid: abcdb53b7fb41554f9479c6f0dbd9831, type: 3}
+  m_Name: Music Volume Channel
   m_EditorClassIdentifier: 
-  value: 118

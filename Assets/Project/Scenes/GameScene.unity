@@ -11461,6 +11461,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1141388426}
+  - component: {fileID: 1141388427}
+  - component: {fileID: 1141388428}
+  - component: {fileID: 1141388429}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -11493,6 +11496,68 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1141388427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1141388425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecb7b8b0084ba734a889a278f94b03e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dayStarted: {fileID: 11400000, guid: ba696d58e6b750a4396f8d5fba9a80ea, type: 2}
+  nightStarted: {fileID: 11400000, guid: 3fd151616b2c6d746bca7aecc6b50f94, type: 2}
+  musicEventChannel: {fileID: 11400000, guid: 821d06559c9005c4ba49bd3dad7e76b4, type: 2}
+  config: {fileID: 11400000, guid: 4ff261433e3a4c64b8bceeb720952a5c, type: 2}
+  nigthClips:
+    <PickRandom>k__BackingField: 1
+    <AllowImmediateRepeat>k__BackingField: 0
+    <Clips>k__BackingField:
+    - {fileID: 8300000, guid: 00589363390c06d48a5d99254a0a4f0f, type: 3}
+    - {fileID: 8300000, guid: 60254b59230f8ec48a5196798d66f042, type: 3}
+    - {fileID: 8300000, guid: ee9321442306f8b4b8f2b3f32da8be80, type: 3}
+  dayClips:
+    <PickRandom>k__BackingField: 1
+    <AllowImmediateRepeat>k__BackingField: 0
+    <Clips>k__BackingField:
+    - {fileID: 8300000, guid: 7c704585095476a45914e3989646ee30, type: 3}
+    - {fileID: 8300000, guid: d183e4d3fb8bdbc42973b4ad7b6d85c1, type: 3}
+    - {fileID: 8300000, guid: 134e22ca1a22ae24d9849a472bfb5e4e, type: 3}
+--- !u!114 &1141388428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1141388425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0236f4f347ea64244b0c5dc5c1d17e70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inGameOptionsMenu: {fileID: 102900000, guid: dedaaad5e7ccbaf41810d3877051451d, type: 3}
+  loadSceneEventChannel: {fileID: 11400000, guid: 987e2c46a9978b3498f7d442d22d5b01,
+    type: 2}
+  inputReader: {fileID: 11400000, guid: 7f3cdf2a68e3d264f899e1146937e4de, type: 2}
+--- !u!114 &1141388429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1141388425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89100357ddc3fbd43b1165ec740df76c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathEventChannel: {fileID: 11400000, guid: 09cac3959e5e5b9478998e9caf131d73, type: 2}
+  deathScene: {fileID: 102900000, guid: fee74e74ca3bb8049bd2b782a6bc0399, type: 3}
+  loadSceneEventChannel: {fileID: 11400000, guid: 987e2c46a9978b3498f7d442d22d5b01,
+    type: 2}
 --- !u!114 &1182981695 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7849182323423087255, guid: cae46ec6fa76cff4eb93c37add8778ce,
@@ -20669,6 +20734,12 @@ PrefabInstance:
       propertyPath: stats
       value: 
       objectReference: {fileID: 11400000, guid: 473aeb6e63a233443996c3c50046d0e2,
+        type: 2}
+    - target: {fileID: 4085809703577258809, guid: f7db9d6726e6a0d499a3ba8cbdce4e16,
+        type: 3}
+      propertyPath: deathEventChannel
+      value: 
+      objectReference: {fileID: 11400000, guid: 09cac3959e5e5b9478998e9caf131d73,
         type: 2}
     - target: {fileID: 4085809703577258810, guid: f7db9d6726e6a0d499a3ba8cbdce4e16,
         type: 3}
