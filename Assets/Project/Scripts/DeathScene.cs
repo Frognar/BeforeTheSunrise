@@ -1,5 +1,4 @@
-﻿using UnityEditor;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace bts {
   public class DeathScene : MonoBehaviour {
@@ -23,7 +22,7 @@ namespace bts {
 
     public void BackToMenu() {
       loadSceneEventChannel.RaiseOnLoadScene(ScenesNames.MainMenu);
-      loadSceneEventChannel.OnUnloadScene(ScenesNames.DeathScene);
+      loadSceneEventChannel.RaiseOnUnloadScene(ScenesNames.DeathScene);
     }
   }
 }

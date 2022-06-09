@@ -510,8 +510,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d95cc452251359478d03c8fe127793a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menuScene: {fileID: 102900000, guid: c48a7568142aec84aa59c4d38d183d9c, type: 3}
-  deathScene: {fileID: 102900000, guid: fee74e74ca3bb8049bd2b782a6bc0399, type: 3}
   loadSceneEventChannel: {fileID: 11400000, guid: 987e2c46a9978b3498f7d442d22d5b01,
     type: 2}
   inputReader: {fileID: 11400000, guid: 7f3cdf2a68e3d264f899e1146937e4de, type: 2}
@@ -865,8 +863,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: bts.InGameOptionMenu, Assembly-CSharp
+      - m_Target: {fileID: 595040250}
+        m_TargetAssemblyTypeName: bts.DeathScene, Assembly-CSharp
         m_MethodName: BackToMenu
         m_Mode: 1
         m_Arguments:

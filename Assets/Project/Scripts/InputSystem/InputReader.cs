@@ -18,7 +18,7 @@ namespace bts {
     public event Action<Vector3> WorldPositionEvent = delegate { };
     public event Action<Vector2> ScreenPositionEvent = delegate { };
     public Vector2 ScreenPosition;
-    Ray RayToWorld => Camera.main.ScreenPointToRay(ScreenPosition);
+    Ray RayToWorld => Camera.main?.ScreenPointToRay(ScreenPosition) ?? new Ray();
     static Vector3 offWorld = new Vector3(-10000, -10000, -10000);
     public Vector3 WorldPosition => Physics.Raycast(RayToWorld, out RaycastHit hitInfo) ? hitInfo.point : offWorld;
     public event Action<float> ZoomEvent = delegate { };

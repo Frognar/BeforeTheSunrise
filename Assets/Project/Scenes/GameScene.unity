@@ -11538,7 +11538,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0236f4f347ea64244b0c5dc5c1d17e70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inGameOptionsMenu: {fileID: 102900000, guid: dedaaad5e7ccbaf41810d3877051451d, type: 3}
   loadSceneEventChannel: {fileID: 11400000, guid: 987e2c46a9978b3498f7d442d22d5b01,
     type: 2}
   inputReader: {fileID: 11400000, guid: 7f3cdf2a68e3d264f899e1146937e4de, type: 2}
@@ -11555,7 +11554,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathEventChannel: {fileID: 11400000, guid: 09cac3959e5e5b9478998e9caf131d73, type: 2}
-  deathScene: {fileID: 102900000, guid: fee74e74ca3bb8049bd2b782a6bc0399, type: 3}
   loadSceneEventChannel: {fileID: 11400000, guid: 987e2c46a9978b3498f7d442d22d5b01,
     type: 2}
 --- !u!114 &1182981695 stripped
@@ -15896,6 +15894,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d4dbdfcfdbd0ef42bde34f74fa47f48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onStartChannel: {fileID: 11400000, guid: 2aaefaa0925d20244ae8053e5b15105d, type: 2}
   <DayStarted>k__BackingField: {fileID: 11400000, guid: ba696d58e6b750a4396f8d5fba9a80ea,
     type: 2}
   <NightStarted>k__BackingField: {fileID: 11400000, guid: 3fd151616b2c6d746bca7aecc6b50f94,

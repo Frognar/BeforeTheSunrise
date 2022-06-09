@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace bts {
   public class DayTimeCycle : MonoBehaviour {
+    [SerializeField] VoidEventChannel onStartChannel;
     [field: SerializeField] public VoidEventChannel DayStarted { get; private set; }
     [field: SerializeField] public VoidEventChannel NightStarted { get; private set; }
     [field: SerializeField] public int DayDuration { get; private set; } = 80;
@@ -13,11 +14,12 @@ namespace bts {
 
     void Awake() {
       stateMachine = new DayTimeStateMachine(this);
+      ReamaningTime.value = 120;
     }
 
-    void Start() {
+    void StartCycle(object sender, EventArgs e) {
       stateMachine.Start();
-      ReamaningTime.value = 120;
+      onSecond.OnEventInvoked += UpdateCycle;
     }
 
     void UpdateCycle(object sender, EventArgs e) {
@@ -25,10 +27,11 @@ namespace bts {
     }
 
     void OnEnable() {
-      onSecond.OnEventInvoked += UpdateCycle;
+      onStartChannel.OnEventInvoked += StartCycle;
     }
 
     void OnDisable() {
+      onStartChannel.OnEventInvoked -= StartCycle;
       onSecond.OnEventInvoked -= UpdateCycle;
     }
   }

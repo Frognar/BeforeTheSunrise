@@ -291,6 +291,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ScreenPosition"",
+                    ""type"": ""Value"",
+                    ""id"": ""8369877b-8153-4190-9238-543b58d439ed"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -302,6 +311,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Close"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6f81e33e-fe49-48ff-814b-65aab1ae8f74"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ScreenPosition"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -329,6 +349,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         // Menu
         m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
         m_Menu_Close = m_Menu.FindAction("Close", throwIfNotFound: true);
+        m_Menu_ScreenPosition = m_Menu.FindAction("ScreenPosition", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -535,11 +556,13 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Menu;
     private IMenuActions m_MenuActionsCallbackInterface;
     private readonly InputAction m_Menu_Close;
+    private readonly InputAction m_Menu_ScreenPosition;
     public struct MenuActions
     {
         private @PlayerControls m_Wrapper;
         public MenuActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Close => m_Wrapper.m_Menu_Close;
+        public InputAction @ScreenPosition => m_Wrapper.m_Menu_ScreenPosition;
         public InputActionMap Get() { return m_Wrapper.m_Menu; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -552,6 +575,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Close.started -= m_Wrapper.m_MenuActionsCallbackInterface.OnClose;
                 @Close.performed -= m_Wrapper.m_MenuActionsCallbackInterface.OnClose;
                 @Close.canceled -= m_Wrapper.m_MenuActionsCallbackInterface.OnClose;
+                @ScreenPosition.started -= m_Wrapper.m_MenuActionsCallbackInterface.OnScreenPosition;
+                @ScreenPosition.performed -= m_Wrapper.m_MenuActionsCallbackInterface.OnScreenPosition;
+                @ScreenPosition.canceled -= m_Wrapper.m_MenuActionsCallbackInterface.OnScreenPosition;
             }
             m_Wrapper.m_MenuActionsCallbackInterface = instance;
             if (instance != null)
@@ -559,6 +585,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Close.started += instance.OnClose;
                 @Close.performed += instance.OnClose;
                 @Close.canceled += instance.OnClose;
+                @ScreenPosition.started += instance.OnScreenPosition;
+                @ScreenPosition.performed += instance.OnScreenPosition;
+                @ScreenPosition.canceled += instance.OnScreenPosition;
             }
         }
     }
@@ -584,5 +613,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     public interface IMenuActions
     {
         void OnClose(InputAction.CallbackContext context);
+        void OnScreenPosition(InputAction.CallbackContext context);
     }
 }

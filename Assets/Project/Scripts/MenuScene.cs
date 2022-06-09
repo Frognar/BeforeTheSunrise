@@ -1,5 +1,4 @@
 using System.Collections;
-using UnityEditor;
 using UnityEngine;
 
 namespace bts {
@@ -29,12 +28,12 @@ namespace bts {
     }
     
     public void RunGame() {
-      inputReader.EnableGameplayInput();
       if (musicCoroutine != null) {
         StopCoroutine(musicCoroutine);
       }
-      
+
       loadSceneEventChannel.RaiseOnLoadScene(ScenesNames.GameScene);
+      loadSceneEventChannel.RaiseOnLoadScene(ScenesNames.RewardScene, unloadCurrent: false);
     }
 
     public void Exit() {

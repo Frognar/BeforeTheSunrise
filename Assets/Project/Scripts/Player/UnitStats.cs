@@ -39,6 +39,10 @@ namespace bts {
       damageAmount = baseDamageAmount;
       timeBetweenAttacks = baseTimeBetweenAttacks;
       timeBetweenGathers = baseTimeBetweenGathers;
+      ResetGatherBonus();
+    }
+
+    public void ResetGatherBonus() {
       gatherBonuses = new GemstoneDictionary();
       foreach (GemstoneType type in Enum.GetValues(typeof(GemstoneType))) {
         gatherBonuses[type] = 0;

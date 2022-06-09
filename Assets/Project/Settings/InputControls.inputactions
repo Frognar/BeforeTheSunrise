@@ -269,6 +269,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "ScreenPosition",
+                    "type": "Value",
+                    "id": "8369877b-8153-4190-9238-543b58d439ed",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -280,6 +289,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Close",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6f81e33e-fe49-48ff-814b-65aab1ae8f74",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ScreenPosition",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -4,5 +4,6 @@
     public const string InGameOptions = "InGameOptionsScene";
     public const string GameScene = "GameScene";
     public const string DeathScene = "DeathScene";
+    public const string RewardScene = "RewardScene";
   }
 }

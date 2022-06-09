@@ -14,12 +14,12 @@ namespace bts {
 
     public void BackToMenu() {
       loadSceneEventChannel.RaiseOnLoadScene(ScenesNames.MainMenu);
-      loadSceneEventChannel.OnUnloadScene(ScenesNames.InGameOptions);
+      loadSceneEventChannel.RaiseOnUnloadScene(ScenesNames.InGameOptions);
     }
 
     public void CloseMenu() {
       inputReader.EnableGameplayInput();
-      loadSceneEventChannel.OnUnloadScene(ScenesNames.InGameOptions);
+      loadSceneEventChannel.RaiseOnUnloadScene(ScenesNames.InGameOptions);
     }
 
     void OnDisable() {

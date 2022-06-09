@@ -38,7 +38,7 @@ namespace bts {
         activeScene = sceneName;
       }
 
-      SceneManager.LoadScene(sceneName, LoadSceneMode.Additive);
+      _ = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
       activeScenes.Add(sceneName);
     }
 

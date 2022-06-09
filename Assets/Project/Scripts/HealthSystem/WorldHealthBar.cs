@@ -4,7 +4,12 @@ namespace bts {
   public class WorldHealthBar : MonoBehaviour {
     [SerializeField] Transform background;
     [SerializeField] Transform bar;
+    Camera cam;
     public HealthAnimated Health { get; private set; }
+
+    void Awake() {
+      cam = Camera.main;
+    }
 
     public void SetUp(Health health) {
       Health = new HealthAnimated(health);
@@ -19,7 +24,9 @@ namespace bts {
     }
 
     void LateUpdate() {
-      transform.LookAt(Camera.main.transform);
+      if (cam != null) {
+        transform.LookAt(cam.transform);
+      }
     }
 
     void OnDestroy() {
