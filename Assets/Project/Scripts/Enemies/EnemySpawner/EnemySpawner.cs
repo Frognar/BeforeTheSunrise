@@ -24,12 +24,11 @@ namespace bts {
     [field: SerializeField] public GameObject Selected { get; private set; }
     [field: SerializeField] public SelectablesEventChannel SelectablesEventChannel { get; private set; }
     public Vector3 Position => Center.position;
-    public bool IsDead => Health.HasNoHealth;
-    public bool IsIntact => Health.HasFullHealth;
-
-    [SerializeField] WorldHealthBar bar;
+    public bool IsDead => Health.IsDead;
+    public bool IsIntact => Health.IsInFullHealth;
+    Health Health => healthComponent.Health;
+    [SerializeField] HealthComponent healthComponent;
     [SerializeField] GridBuildingSystem gridBuildingSystem;
-    public Health Health { get; private set; }
     public Bounds Bounds => spawnerCollider.bounds;
     Collider spawnerCollider;
 
@@ -37,8 +36,7 @@ namespace bts {
 
     void Awake() {
       stateMachine = new EnemySpawnerStateMachine(this);
-      Health = new Health(int.MaxValue);
-      bar.SetUp(Health);
+      healthComponent.Init(float.MaxValue);
       EnemyPool = new ObjectPool<Enemy>(Create, Get, Release);
       spawnerCollider = GetComponent<Collider>();
     }
@@ -98,7 +96,7 @@ namespace bts {
       return new Dictionary<DataType, object>() {
         { DataType.Name, Name },
         { DataType.MaxHealth, Health.MaxHealth },
-        { DataType.CurrentHealth, bar.Health.CurrentHealth },
+        { DataType.CurrentHealth, Health.CurrentHealth },
       };
     }
 
@@ -106,7 +104,7 @@ namespace bts {
       Health.Damage(amount);
       OnDataChange.Invoke(new Dictionary<DataType, object>() {
         { DataType.MaxHealth, Health.MaxHealth },
-        { DataType.CurrentHealth, bar.Health.CurrentHealth }
+        { DataType.CurrentHealth, Health.CurrentHealth }
       });
       
       if (IsDead && Selected.activeSelf) {
@@ -118,7 +116,7 @@ namespace bts {
       Health.Heal(amount);
       OnDataChange.Invoke(new Dictionary<DataType, object>() {
         { DataType.MaxHealth, Health.MaxHealth },
-        { DataType.CurrentEnergy, bar.Health.CurrentHealth }
+        { DataType.CurrentEnergy, Health.CurrentHealth }
       });
     }
   }

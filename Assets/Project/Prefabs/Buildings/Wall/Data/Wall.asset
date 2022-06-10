@@ -14,9 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: Wall
   objectDescription: Blocks paths
-  prefab: {fileID: 15494893612748968, guid: 6de03e226f7b0154e9134ffb82a2dda6, type: 3}
+  prefab: {fileID: 7947330363123504098, guid: 2b1426786569a06419541b41e2e6293f, type: 3}
   width: 2
   height: 2
   objectAffiliation: 4
   objectType: 2
   customData: {fileID: 11400000, guid: e20b7ecb9ee232a4589ca2d9363450e0, type: 2}
+  limit: 0
+  placedCount: {fileID: 0}

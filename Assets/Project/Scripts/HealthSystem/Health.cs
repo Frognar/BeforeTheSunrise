@@ -2,14 +2,17 @@
 
 namespace bts {
   public class Health {
-    public event Action OnReset = delegate { };
-    public event Action OnValueChange = delegate { };
-    public event Action OnUpgrade = delegate { };
+    public event EventHandler OnCurrentHealthChange = delegate { };
+    public event EventHandler OnMaxHealthChange = delegate { };
+    public event EventHandler OnDamage = delegate { };
+    public event EventHandler OnHeal = delegate { };
+    public event EventHandler OnDie = delegate { };
+    public event EventHandler OnFullHealth = delegate { };
     public float MaxHealth { get; protected set; }
     public float CurrentHealth { get; protected set; }
     public float HealthNormalized => CurrentHealth / MaxHealth;
-    public bool HasFullHealth => CurrentHealth == MaxHealth;
-    public bool HasNoHealth => CurrentHealth == 0;
+    public bool IsInFullHealth => CurrentHealth >= MaxHealth;
+    public bool IsDead => CurrentHealth <= 0;
 
     public Health(float maxHealth) {
       MaxHealth = maxHealth;
@@ -18,33 +21,41 @@ namespace bts {
 
     public virtual void Damage(float amount) {
       CurrentHealth -= amount;
-      if (CurrentHealth < 0) {
+      if (IsDead) {
         CurrentHealth = 0;
       }
 
-      OnValueChange.Invoke();
+      OnDamage.Invoke(this, EventArgs.Empty);
+      OnCurrentHealthChange.Invoke(this, EventArgs.Empty);
+      if (IsDead) {
+        OnDie.Invoke(this, EventArgs.Empty);
+      }
     }
 
     public virtual void Heal(float amount) {
       CurrentHealth += amount;
-      if (CurrentHealth > MaxHealth) {
+      if (IsInFullHealth) {
         CurrentHealth = MaxHealth;
       }
 
-      OnValueChange.Invoke();
+      OnHeal.Invoke(this, EventArgs.Empty);
+      OnCurrentHealthChange.Invoke(this, EventArgs.Empty);
+      if (IsInFullHealth) {
+        OnFullHealth.Invoke(this, EventArgs.Empty);
+      }
     }
 
     public virtual void Reset() {
       CurrentHealth = MaxHealth;
-      OnReset.Invoke();
+      OnCurrentHealthChange.Invoke(this, EventArgs.Empty);
     }
 
-    public void Upgrade(float maxHealth) {
-      float currentDamage = MaxHealth - CurrentHealth;
+    public void ChangeMaxHealth(float maxHealth) {
+      float scale = HealthNormalized;
       MaxHealth = maxHealth;
-      CurrentHealth = maxHealth;
-      Damage(currentDamage);
-      OnUpgrade.Invoke();
+      CurrentHealth = MaxHealth * scale;
+      OnMaxHealthChange.Invoke(this, EventArgs.Empty);
+      OnCurrentHealthChange.Invoke(this, EventArgs.Empty);
     }
   }
 }

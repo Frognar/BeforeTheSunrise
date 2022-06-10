@@ -23,10 +23,10 @@ namespace bts {
     [field: SerializeField] public GameObject Selected { get; private set; }
     
     public bool IsDead { get; private set; }
-    public bool IsIntact => Health.HasFullHealth;
-    [SerializeField] WorldHealthBar bar;
-    public Health Health { get; private set; }
-    
+    public bool IsIntact => Health.IsInFullHealth;
+    public Health Health => HealthComponent.Health;
+    [field: SerializeField] public HealthComponent HealthComponent { get; private set; }
+
     public string Name => "Enemy";
     public Affiliation ObjectAffiliation => Affiliation.Enemy;
     public Type ObjectType => Type.Unit;
@@ -45,8 +45,7 @@ namespace bts {
       enemyCollider = GetComponent<Collider>();
       Pathfinder = GetComponent<Pathfinder>();
       StateMachine = new EnemyStateMachine(this);
-      Health = new Health(EnemyData.MaxHealth);
-      bar.SetUp(Health);
+      HealthComponent.Init(EnemyData.MaxHealth);
       DayStarted.OnEventInvoked += Release;
     }
 
@@ -57,7 +56,7 @@ namespace bts {
     void OnEnable() {
       IsDead = false;
       wasPooled = false;
-      Health.Upgrade(EnemyData.MaxHealth);
+      Health.ChangeMaxHealth(EnemyData.MaxHealth);
       Health.Reset();
     }
 
@@ -100,7 +99,7 @@ namespace bts {
       return new Dictionary<DataType, object>() {
         { DataType.Name, Name },
         { DataType.MaxHealth, Health.MaxHealth },
-        { DataType.CurrentHealth, bar.Health.CurrentHealth },
+        { DataType.CurrentHealth, Health.CurrentHealth },
         { DataType.DamagePerSecond, EnemyData.DamagePerSecond },
         { DataType.MovementSpeed, EnemyData.MovementSpeed },
       };
@@ -110,10 +109,10 @@ namespace bts {
       Health.Damage(amount);
       OnDataChange.Invoke(new Dictionary<DataType, object>() {
         { DataType.MaxHealth, Health.MaxHealth },
-        { DataType.CurrentHealth, bar.Health.CurrentHealth }
+        { DataType.CurrentHealth, Health.CurrentHealth }
       });
       
-      if (!IsDead && Health.HasNoHealth) {
+      if (!IsDead && Health.IsDead) {
         IsDead = true;
         if (Selected.activeSelf) {
           SelectablesEventChannel.Invoke(this);
@@ -140,7 +139,7 @@ namespace bts {
       Health.Heal(amount);
       OnDataChange.Invoke(new Dictionary<DataType, object>() {
         { DataType.MaxHealth, Health.MaxHealth },
-        { DataType.CurrentEnergy, bar.Health.CurrentHealth }
+        { DataType.CurrentEnergy, Health.CurrentHealth }
       });
     }
   }

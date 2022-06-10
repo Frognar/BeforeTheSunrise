@@ -14,9 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: Generator
   objectDescription: Generates energy
-  prefab: {fileID: 2749573904061358543, guid: 4947a3073de274a46aca269823e9a504, type: 3}
+  prefab: {fileID: 857734234466078923, guid: ea3482dc25565fc4eabbe33dc9c34a87, type: 3}
   width: 2
   height: 2
   objectAffiliation: 4
   objectType: 2
   customData: {fileID: 11400000, guid: 74944a60a9fab3e4fab6ecc91a30c378, type: 2}
+  limit: 0
+  placedCount: {fileID: 0}

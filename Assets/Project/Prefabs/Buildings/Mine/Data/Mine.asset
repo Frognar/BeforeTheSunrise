@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: Mine
   objectDescription: Give gems on start of a day
-  prefab: {fileID: 7042826916333497932, guid: 7054ae44e7bd40048b6a856be4b0118f, type: 3}
+  prefab: {fileID: 1994807667114922814, guid: 1b4e3ff476c21f943997b9710b4354a4, type: 3}
   width: 1
   height: 1
   objectAffiliation: 4

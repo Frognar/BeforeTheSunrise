@@ -14,9 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: Healer
   objectDescription: Heal nearby buildings
-  prefab: {fileID: 4978038131312063883, guid: bfec4d0df3b9c8b449ee3bbe701586df, type: 3}
+  prefab: {fileID: 2701607313025487019, guid: 9bc405df4db491c4488b6913c407cf86, type: 3}
   width: 2
   height: 2
   objectAffiliation: 4
   objectType: 2
   customData: {fileID: 11400000, guid: 92481094d096b6748bfcc8fbace3a4b8, type: 2}
+  limit: 0
+  placedCount: {fileID: 0}

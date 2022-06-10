@@ -78,7 +78,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2da8a9adb7e01a40bd3f7738b8e3662, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onTick: {fileID: 11400000, guid: c6e751abad063954ab30d73107f50070, type: 2}
   background: {fileID: 6770395562003239298}
   bar: {fileID: 6770395560150522190}
 --- !u!1 &6770395561669371116
@@ -156,7 +155,7 @@ SpriteRenderer:
   m_SortingOrder: 100
   m_Sprite: {fileID: 21300000, guid: 0c8bb5aa03650314b85214df371747d2, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 0.01, y: 0.01}

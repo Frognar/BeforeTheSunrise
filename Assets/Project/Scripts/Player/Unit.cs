@@ -61,16 +61,15 @@ namespace bts {
     public Vector3 Position => transform.position;
     Collider unitCollider;
     public Bounds Bounds => unitCollider.bounds;
-    public bool IsDead => Health.HasNoHealth;
-    public bool IsIntact => Health.HasFullHealth;
-    [SerializeField] WorldHealthBar bar;
-    public Health Health { get; private set; }
+    public bool IsDead => Health.IsDead;
+    public bool IsIntact => Health.IsInFullHealth;
+    public Health Health => HealthComponent.Health;
+    [field: SerializeField] public HealthComponent HealthComponent { get; private set; }
 
     StateMachine<Unit> stateMachine;
 
     void Awake() {
-      Health = new Health(stats.MaxHealth);
-      bar.SetUp(Health);
+      HealthComponent.Init(stats.MaxHealth);
       UICommands = CreateActions();
       GridBuildingSystem = FindObjectOfType<GridBuildingSystem>();
       Pathfinder = GetComponent<Pathfinder>();
@@ -118,7 +117,7 @@ namespace bts {
       return new Dictionary<DataType, object>() {
         { DataType.Name, Name },
         { DataType.MaxHealth, Health.MaxHealth },
-        { DataType.CurrentHealth, bar.Health.CurrentHealth },
+        { DataType.CurrentHealth, Health.CurrentHealth },
         { DataType.MovementSpeed, stats.MovementSpeed },
         { DataType.DamagePerSecond, stats.damageAmount / stats.timeBetweenAttacks },
       };
@@ -136,7 +135,7 @@ namespace bts {
       Health.Damage(amount);
       OnDataChange.Invoke(new Dictionary<DataType, object>() {
         { DataType.MaxHealth, Health.MaxHealth },
-        { DataType.CurrentHealth, bar.Health.CurrentHealth }
+        { DataType.CurrentHealth, Health.CurrentHealth }
       });
       
       if (IsDead) {
@@ -152,7 +151,7 @@ namespace bts {
       Health.Heal(amount);
       OnDataChange.Invoke(new Dictionary<DataType, object>() {
         { DataType.MaxHealth, Health.MaxHealth },
-        { DataType.CurrentHealth, bar.Health.CurrentHealth }
+        { DataType.CurrentHealth, Health.CurrentHealth }
       });
     }
 
@@ -166,7 +165,7 @@ namespace bts {
     }
 
     void UpgradeHealth() {
-      Health.Upgrade(stats.MaxHealth);
+      Health.ChangeMaxHealth(stats.MaxHealth);
     }
 
     void UpgradeSpeed() {

@@ -17,8 +17,8 @@ namespace bts {
     public virtual IEnumerable<UICommand> UICommands { get; protected set; }
     public GemstoneDictionary BuildingCosts => CalculateTotalCost();
     public Vector3 Position => Center.position;
-    public bool IsDead => health.HasNoHealth;
-    public bool IsIntact => health.HasFullHealth;
+    public bool IsDead => health.IsDead;
+    public bool IsIntact => health.IsInFullHealth;
     public Bounds Bounds => Obstacle.bounds;
 
     public int BuildingLevel { get; private set; }
@@ -51,7 +51,7 @@ namespace bts {
     public virtual void Upgrgade(GemstoneDictionary cost) {
       storage.Discard(cost);
       BuildingLevel++;
-      health.Upgrade(buildingData.healthAmount * Mathf.Pow(2, BuildingLevel));
+      health.ChangeMaxHealth(buildingData.healthAmount * Mathf.Pow(2, BuildingLevel));
       UICommands = CreateUICommands();
       SelectablesEventChannel.InvokeOnRefresh(this);
       OnDataChange.Invoke(GetDataTypesOnUpgrage());

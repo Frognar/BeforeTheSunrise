@@ -15,23 +15,22 @@ namespace bts {
     [SerializeField] DestroyConfiguration destroyConfiguration;
     readonly DestroyParameters destroyParmaeters = new DestroyParameters();
     public Vector3 Position => Center.position;
-    public bool IsDead => health.HasNoHealth;
-    public bool IsIntact => health.HasFullHealth;
+    public bool IsDead => Health.IsDead;
+    public bool IsIntact => Health.IsInFullHealth;
     public Bounds Bounds => Obstacle.bounds;
-    [SerializeField] WorldHealthBar bar;
-    Health health;
+    Health Health => healthComponent.Health;
+    [SerializeField] HealthComponent healthComponent;
 
     protected override void Start() {
       base.Start();
-      health = new Health(10f);
-      bar.SetUp(health);
+      healthComponent.Init(10f);
     }
 
     public void TakeDamage(float amount) {
-      health.Damage(amount);
+      Health.Damage(amount);
       OnDataChange.Invoke(new Dictionary<DataType, object>() {
-        { DataType.MaxHealth, health.MaxHealth },
-        { DataType.CurrentHealth, bar.Health.CurrentHealth }
+        { DataType.MaxHealth, Health.MaxHealth },
+        { DataType.CurrentHealth, Health.CurrentHealth }
       });
 
       if (IsDead) {
@@ -53,18 +52,18 @@ namespace bts {
     }
 
     public void Heal(float amount) {
-      health.Heal(amount);
+      Health.Heal(amount);
       OnDataChange.Invoke(new Dictionary<DataType, object>() {
-        { DataType.MaxHealth, health.MaxHealth },
-        { DataType.CurrentEnergy, bar.Health.CurrentHealth }
+        { DataType.MaxHealth, Health.MaxHealth },
+        { DataType.CurrentEnergy, Health.CurrentHealth }
       });
     }
 
     public override Dictionary<DataType, object> GetData() {
       return new Dictionary<DataType, object>() {
         { DataType.Name, Name },
-        { DataType.MaxHealth, health.MaxHealth },
-        { DataType.CurrentHealth, bar.Health.CurrentHealth },
+        { DataType.MaxHealth, Health.MaxHealth },
+        { DataType.CurrentHealth, Health.CurrentHealth },
       };
     }
 

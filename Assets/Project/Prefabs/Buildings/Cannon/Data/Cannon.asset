@@ -14,9 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: Cannon
   objectDescription: Uses energy to inflict damage
-  prefab: {fileID: 2749573904061358543, guid: 92cea9a8cbd0a754696d5353adb1665b, type: 3}
+  prefab: {fileID: 4761102038971108310, guid: 917b671f1f0e0b94bb1ab5585b63f181, type: 3}
   width: 2
   height: 2
   objectAffiliation: 4
   objectType: 2
   customData: {fileID: 11400000, guid: 24ae2e899086b6b4ca09fb91dbdaa283, type: 2}
+  limit: 0
+  placedCount: {fileID: 0}

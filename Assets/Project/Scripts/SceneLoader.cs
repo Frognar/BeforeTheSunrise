@@ -46,7 +46,7 @@ namespace bts {
     }
 
     void SetActiveScene(AsyncOperation p) {
-      SceneManager.SetActiveScene(SceneManager.GetSceneByName(activeScene));
+      _ = SceneManager.SetActiveScene(SceneManager.GetSceneByName(activeScene));
       p.completed -= SetActiveScene;
     }
 

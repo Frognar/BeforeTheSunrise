@@ -14,9 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: Base
   objectDescription: Base
-  prefab: {fileID: 1025271729463597256, guid: a76b2a0e24f58bd44a930d41f8f76e25, type: 3}
+  prefab: {fileID: 5172842374617651957, guid: 034cba9d6c3468644a552f4f8e5a11f1, type: 3}
   width: 3
   height: 3
   objectAffiliation: 4
   objectType: 2
   customData: {fileID: 11400000, guid: 41e1824d3b8d3824bb53eef8385c9466, type: 2}
+  limit: 0
+  placedCount: {fileID: 0}
