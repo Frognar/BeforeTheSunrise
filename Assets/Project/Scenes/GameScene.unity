@@ -1973,7 +1973,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0a30a915bf06434eb53bc5c1f87e2b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vfxEventChannel: {fileID: 11400000, guid: 138db77aafba22e48b0378c3ce8c44be, type: 2}
+  poolEventChannel: {fileID: 11400000, guid: 138db77aafba22e48b0378c3ce8c44be, type: 2}
   prefab: {fileID: 7199465356684096143, guid: fd4aa934a196c094d9a4b13b2f48c8a1, type: 3}
 --- !u!1 &185741597
 GameObject:
@@ -3830,7 +3830,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22896435ccda6944cad6a389468fae80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vfxEventChannel: {fileID: 11400000, guid: 18b7758f03a98ad4ea3a46b3419cc1e5, type: 2}
+  poolEventChannel: {fileID: 11400000, guid: 18b7758f03a98ad4ea3a46b3419cc1e5, type: 2}
   prefab: {fileID: 8498035549942007929, guid: 19dfa7ffcdf45e343af2adee74363619, type: 3}
 --- !u!1001 &346918534
 PrefabInstance:
@@ -11493,6 +11493,7 @@ Transform:
   - {fileID: 1748118273}
   - {fileID: 170338021}
   - {fileID: 1646519625}
+  - {fileID: 1735304643}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -17022,7 +17023,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f438c94a9616a549a5aefaebba2291e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vfxEventChannel: {fileID: 11400000, guid: 2d975443a730cab4c9bdb96c7505d742, type: 2}
+  poolEventChannel: {fileID: 11400000, guid: 2d975443a730cab4c9bdb96c7505d742, type: 2}
   prefab: {fileID: 6398814171252893975, guid: c6293600bc2d43643a44710e870eda6b, type: 3}
 --- !u!1001 &1664903920
 PrefabInstance:
@@ -17588,6 +17589,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b170412a7badfc74ea95a62da38d6d84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1735304642
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1735304643}
+  - component: {fileID: 1735304644}
+  m_Layer: 0
+  m_Name: PopupText Pool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1735304643
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1735304642}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1141388426}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1735304644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1735304642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8fd98b63d0e350488826c6b313de20b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poolEventChannel: {fileID: 11400000, guid: 77c020c6fa375c541a7d0b71eb927179, type: 2}
+  prefab: {fileID: 6025731755387807884, guid: 2f7d51d3c9b40124284e07d050315a51, type: 3}
 --- !u!1 &1748118272
 GameObject:
   m_ObjectHideFlags: 0
@@ -17632,7 +17679,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d329e5d8e475eb47aae779a8c8257ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vfxEventChannel: {fileID: 11400000, guid: d937debb0317b9d4996a3928dc3995e2, type: 2}
+  poolEventChannel: {fileID: 11400000, guid: d937debb0317b9d4996a3928dc3995e2, type: 2}
   prefab: {fileID: 4431185458145817739, guid: 18ecaa8a0a03f3441bd282228d265a84, type: 3}
 --- !u!114 &1749470342 stripped
 MonoBehaviour:
@@ -20728,18 +20775,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Unit
       objectReference: {fileID: 0}
-    - target: {fileID: 4085809703577258809, guid: f7db9d6726e6a0d499a3ba8cbdce4e16,
-        type: 3}
-      propertyPath: stats
-      value: 
-      objectReference: {fileID: 11400000, guid: 473aeb6e63a233443996c3c50046d0e2,
-        type: 2}
-    - target: {fileID: 4085809703577258809, guid: f7db9d6726e6a0d499a3ba8cbdce4e16,
-        type: 3}
-      propertyPath: deathEventChannel
-      value: 
-      objectReference: {fileID: 11400000, guid: 09cac3959e5e5b9478998e9caf131d73,
-        type: 2}
     - target: {fileID: 4085809703577258810, guid: f7db9d6726e6a0d499a3ba8cbdce4e16,
         type: 3}
       propertyPath: m_RootOrder

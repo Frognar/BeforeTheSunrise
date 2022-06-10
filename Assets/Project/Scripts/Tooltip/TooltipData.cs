@@ -13,5 +13,9 @@ namespace bts {
       Content = content;
       Gemstones = gemstones;
     }
+
+    public void UpdateGemstones(GemstoneDictionary gemstones) { 
+      Gemstones = gemstones;
+    }
   }
 }

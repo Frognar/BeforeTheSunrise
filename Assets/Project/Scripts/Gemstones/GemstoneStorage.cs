@@ -8,7 +8,7 @@ namespace bts {
     public event EventHandler StorageChanged;
     [field: SerializeField] public GemstoneDictionary Gemstones { get; private set; }
 
-    void OnEnable() {
+    public void Reset() {
       foreach (GemstoneType type in Enum.GetValues(typeof(GemstoneType))) {
 #if UNITY_EDITOR
         Gemstones[type] = 100;
@@ -57,6 +57,12 @@ namespace bts {
       StorageChanged?.Invoke(this, EventArgs.Empty);
     }
 
+    public GemstoneType GetRandomType() {
+      Array values = Enum.GetValues(typeof(GemstoneType));
+      GemstoneType type = (GemstoneType)values.GetValue(UnityEngine.Random.Range(0, values.Length));
+      return type;
+    }
+    
     public void StoreRandom(int amount) {
       Array values = Enum.GetValues(typeof(GemstoneType));
       GemstoneType type = (GemstoneType)values.GetValue(UnityEngine.Random.Range(0, values.Length));

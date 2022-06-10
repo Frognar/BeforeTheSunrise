@@ -52,7 +52,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa30bd7bf44d2a64fb6076234a8d3ef4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  addResourceChance: 0.3
+  popupTextEventChannel: {fileID: 11400000, guid: 77c020c6fa375c541a7d0b71eb927179,
+    type: 2}
+  addResourceChance: 0.35
   storage: {fileID: 11400000, guid: 71f3ad2114ea85541984677a4e20ebac, type: 2}
   <SFXEventChannel>k__BackingField: {fileID: 11400000, guid: dd6b72c1d5cdf0b4592d245ebc4c91da,
     type: 2}

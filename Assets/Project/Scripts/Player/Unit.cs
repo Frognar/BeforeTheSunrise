@@ -22,6 +22,7 @@ namespace bts {
     public Affiliation ObjectAffiliation => Affiliation.Player;
     public Type ObjectType => Type.Unit;
     [field: Header("")]
+    [field: SerializeField] public PopupTextEventChannel PopupTextEventChannel { get; private set; }
     [field: SerializeField] public Sprite Icon { get; private set; }
     [field: SerializeField] public GameObject Selected { get; private set; }
     [field: SerializeField] public SelectablesEventChannel SelectablesEventChannel { get; private set; }
@@ -90,6 +91,7 @@ namespace bts {
     }
 
     void Start() {
+      GemstoneStorage.Reset();
       Pathfinder.SetSpeed(stats.MovementSpeed);
       stateMachine.Start();
     }

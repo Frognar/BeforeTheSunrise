@@ -5,8 +5,9 @@ using UnityEngine.Pool;
 
 namespace bts {
   public class Enemy : MonoBehaviour, Selectable, Damageable {
+    [SerializeField] PopupTextEventChannel popupTextEventChannel;
     public event Action<Dictionary<DataType, object>> OnDataChange = delegate { };
-    [SerializeField][Range(0, 1)] float addResourceChance = 0.3f;
+    [SerializeField][Range(0, 1)] float addResourceChance = 0.35f;
     [SerializeField] GemstoneStorage storage;
     [field: SerializeField] public SFXEventChannel SFXEventChannel { get; private set; }
     [field: SerializeField] public BloodEventChannel BloodEventChannel { get; private set; }
@@ -71,7 +72,7 @@ namespace bts {
     void Release() {
       if (!wasPooled) {
         bloodParameters.Position = Position;
-        BloodEventChannel.RaiseVFXEvent(BloodConfig, bloodParameters);
+        BloodEventChannel.RaiseSpawnEvent(BloodConfig, bloodParameters);
         SFXEventChannel.RaisePlayEvent(EnemyData.EnemyDeathSFX, EnemyData.AudioConfig, Position);
         Pool.Release(this);
         wasPooled = true;
@@ -119,7 +120,16 @@ namespace bts {
         }
 
         if (UnityEngine.Random.value < addResourceChance) {
-          storage.StoreRandom(UnityEngine.Random.Range(1, 3));
+          GemstoneType type = storage.GetRandomType();
+          int count = UnityEngine.Random.Range(1, 3);
+          storage.Store(type, count);
+          PopupTextParameters popupParams = new PopupTextParameters() {
+            Position = Center.position,
+            GemstoneType = type,
+            Text = $"+{count}"
+          };
+
+          popupTextEventChannel.RaiseSpawnEvent(PopupTextConfiguration.Default, popupParams);
         }
         
         Release();

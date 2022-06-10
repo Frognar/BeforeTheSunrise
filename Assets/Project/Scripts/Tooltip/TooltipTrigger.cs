@@ -17,6 +17,13 @@ namespace bts {
       }
     }
 
+    public void UpdateGemstones(GemstoneDictionary gemstones) {
+      tooltipData.UpdateGemstones(gemstones);
+      if (isEnabled) {
+        tooltipSystem.Show(tooltipData);
+      }
+    }
+
     public void OnPointerEnter(PointerEventData eventData) {
       showTooltipCoroutine = StartCoroutine(ShowTooltip());
       entered = true;

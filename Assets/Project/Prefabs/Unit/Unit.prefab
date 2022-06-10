@@ -114,6 +114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df75ecfdea458b14ea442f032bf6e3c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathEventChannel: {fileID: 11400000, guid: 09cac3959e5e5b9478998e9caf131d73, type: 2}
   <SFXEventChannel>k__BackingField: {fileID: 11400000, guid: dd6b72c1d5cdf0b4592d245ebc4c91da,
     type: 2}
   <AudioConfig>k__BackingField: {fileID: 11400000, guid: a28c7d6ec18dac6439d381de6a7f208c,
@@ -143,6 +144,8 @@ MonoBehaviour:
     type: 2}
   <ArcBegin>k__BackingField: {fileID: 1796620831}
   <ElectricArcConfig>k__BackingField: {fileID: 11400000, guid: e2c5fe3afb0609240a99d7c281e4cbd8,
+    type: 2}
+  <PopupTextEventChannel>k__BackingField: {fileID: 11400000, guid: 77c020c6fa375c541a7d0b71eb927179,
     type: 2}
   <Icon>k__BackingField: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
   <Selected>k__BackingField: {fileID: 2050330481315874312}

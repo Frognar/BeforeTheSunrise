@@ -26,7 +26,15 @@ namespace bts {
         if (IsTimeToGather) {
           lastGatherTime = Time.time;
           GemstoneType type = StateMachine.Context.TargerGemstone.GemstoneType;
-          StateMachine.Context.GemstoneStorage.Store(type, StateMachine.Context.TargerGemstone.BaseGatherAmount + StateMachine.Context.GatherBonuses[type]);
+          int count = StateMachine.Context.TargerGemstone.BaseGatherAmount + StateMachine.Context.GatherBonuses[type];
+          StateMachine.Context.GemstoneStorage.Store(type, count);
+          PopupTextParameters popupParams = new PopupTextParameters() {
+            Position = StateMachine.Context.TargerGemstone.Center.position,
+            GemstoneType = type,
+            Text = $"+{count}"
+          };
+          
+          StateMachine.Context.PopupTextEventChannel.RaiseSpawnEvent(PopupTextConfiguration.Default, popupParams);
         }
       }
       else {

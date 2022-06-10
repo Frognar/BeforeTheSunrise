@@ -61,7 +61,7 @@ namespace bts {
     void CreateVFX() {
       parameters.Source = StateMachine.Context.ArcBegin;
       parameters.TargetPosition = StateMachine.Context.Target.Center.position;
-      StateMachine.Context.VFXEventChannel.RaiseVFXEvent(StateMachine.Context.ElectricArcConfig, parameters);
+      StateMachine.Context.VFXEventChannel.RaiseSpawnEvent(StateMachine.Context.ElectricArcConfig, parameters);
     }
 
     public override void ExitState() {

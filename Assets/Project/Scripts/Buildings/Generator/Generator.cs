@@ -64,7 +64,7 @@ namespace bts {
             devices[i].StoreEnergy(energyPerDevice);
             parameters.Source = arcBegin;
             parameters.TargetPosition = devices[i].Center.position;
-            vfxEventChannel.RaiseVFXEvent(data.electricArcConfig, parameters);
+            vfxEventChannel.RaiseSpawnEvent(data.electricArcConfig, parameters);
             StartSFX();
           }
         }

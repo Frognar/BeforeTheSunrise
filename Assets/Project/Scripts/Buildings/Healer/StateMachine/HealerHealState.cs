@@ -48,7 +48,7 @@ namespace bts {
       if (StateMachine.Context.Laser == null) {
         vfxParameters.SourcePosition = StateMachine.Context.LaserBegining.position;
         vfxParameters.Target = StateMachine.Context.Target.Center;
-        StateMachine.Context.Laser = StateMachine.Context.LaserEventChannel.RaiseVFXEventWithReference(StateMachine.Context.LaserConfig, vfxParameters);
+        StateMachine.Context.Laser = StateMachine.Context.LaserEventChannel.RaiseGetEvent(StateMachine.Context.LaserConfig, vfxParameters);
       }
     }
 

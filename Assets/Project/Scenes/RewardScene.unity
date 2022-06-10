@@ -177,7 +177,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11143b396b63b5642801aa72f5a365e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GemstoneReward:
+  <GemstoneReward>k__BackingField:
     reorderableList:
       canAdd: 1
       canRemove: 1
@@ -203,6 +203,7 @@ MonoBehaviour:
     _keyValues: 04000000
     _keys: 04000000
     _values: 01000000
+  trigger: {fileID: 8179909}
 --- !u!114 &8179906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1145,7 +1146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11143b396b63b5642801aa72f5a365e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GemstoneReward:
+  <GemstoneReward>k__BackingField:
     reorderableList:
       canAdd: 1
       canRemove: 1
@@ -1171,6 +1172,7 @@ MonoBehaviour:
     _keyValues: 01000000
     _keys: 01000000
     _values: 01000000
+  trigger: {fileID: 1731619533}
 --- !u!114 &1731619530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1479,7 +1481,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11143b396b63b5642801aa72f5a365e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GemstoneReward:
+  <GemstoneReward>k__BackingField:
     reorderableList:
       canAdd: 1
       canRemove: 1
@@ -1505,6 +1507,7 @@ MonoBehaviour:
     _keyValues: 02000000
     _keys: 02000000
     _values: 01000000
+  trigger: {fileID: 1765437446}
 --- !u!114 &1765437446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1601,7 +1604,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11143b396b63b5642801aa72f5a365e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GemstoneReward:
+  <GemstoneReward>k__BackingField:
     reorderableList:
       canAdd: 1
       canRemove: 1
@@ -1627,6 +1630,7 @@ MonoBehaviour:
     _keyValues: 10000000
     _keys: 10000000
     _values: 01000000
+  trigger: {fileID: 1787653385}
 --- !u!114 &1787653382
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2087,7 +2091,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11143b396b63b5642801aa72f5a365e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GemstoneReward:
+  <GemstoneReward>k__BackingField:
     reorderableList:
       canAdd: 1
       canRemove: 1
@@ -2110,9 +2114,10 @@ MonoBehaviour:
       elementIcon: {fileID: 0}
     reqReferences: {fileID: 0}
     isExpanded: 1
-    _keyValues: 1000000001000000020000000400000008000000
-    _keys: 1000000001000000020000000400000008000000
+    _keyValues: 0100000002000000040000000800000010000000
+    _keys: 0100000002000000040000000800000010000000
     _values: 0100000001000000010000000100000001000000
+  trigger: {fileID: 1953931880}
 --- !u!114 &1953931877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2315,7 +2320,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11143b396b63b5642801aa72f5a365e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GemstoneReward:
+  <GemstoneReward>k__BackingField:
     reorderableList:
       canAdd: 1
       canRemove: 1
@@ -2341,6 +2346,7 @@ MonoBehaviour:
     _keyValues: 08000000
     _keys: 08000000
     _values: 01000000
+  trigger: {fileID: 1995767355}
 --- !u!114 &1995767352
 MonoBehaviour:
   m_ObjectHideFlags: 0
