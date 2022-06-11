@@ -9,15 +9,15 @@ namespace bts {
     public override void UpdateState() { }
 
     protected bool CheckSwitchState() {
-      if (StateMachine.Context.IsOrderedToHeal) {
+      if (Context.IsOrderedToHeal) {
         ClearOrders();
         StateMachine.SwitchState(Factory.GetState(nameof(HealerHealState)));
         return true;
       }
 
-      if (StateMachine.Context.IsOrderedToStop) {
+      if (Context.IsOrderedToStop) {
         ClearOrders();
-        StateMachine.Context.Target = null;
+        Context.Target = null;
         StateMachine.SwitchState(Factory.GetState(nameof(HealerIdleState)));
         return true;
       }
@@ -26,8 +26,8 @@ namespace bts {
     }
 
     void ClearOrders() {
-      StateMachine.Context.IsOrderedToStop = false;
-      StateMachine.Context.IsOrderedToHeal = false;
+      Context.IsOrderedToStop = false;
+      Context.IsOrderedToHeal = false;
     }
   }
 }

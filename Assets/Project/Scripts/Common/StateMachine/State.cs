@@ -2,6 +2,7 @@
   public abstract class State<T> {
     protected StateMachine<T> StateMachine { get; }
     protected StateFactory<T> Factory { get; }
+    protected T Context => StateMachine.Context;
 
     protected State(StateMachine<T> stateMachine, StateFactory<T> factory) {
       StateMachine = stateMachine;

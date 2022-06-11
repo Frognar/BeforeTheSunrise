@@ -2,9 +2,9 @@ using UnityEngine;
 
 namespace bts {
   public class HealerHealState : HealerBaseState {
-    bool HasTarget => StateMachine.Context.Target != null && (StateMachine.Context.Target as Object) != null;
-    bool IsTargetInRange => Vector3.Distance(StateMachine.Context.Target.Position, StateMachine.Context.Position) <= StateMachine.Context.Range;
-    bool TargetIsIntact => StateMachine.Context.Target.IsIntact;
+    bool HasTarget => Context.Target != null && (Context.Target as Object) != null;
+    bool IsTargetInRange => Vector3.Distance(Context.Target.Position, Context.Position) <= Context.Range;
+    bool TargetIsIntact => Context.Target.IsIntact;
 
     readonly LaserParameters vfxParameters = new LaserParameters();
 
@@ -19,14 +19,14 @@ namespace bts {
 
       if (HasTarget && IsTargetInRange) {
         if (TargetIsIntact) {
-          StateMachine.Context.Target = null;
+          Context.Target = null;
           StateMachine.SwitchState(Factory.GetState(nameof(HealerIdleState)));
         }
-        else if (StateMachine.Context.CanAfford(StateMachine.Context.EnergyPerHeal)) {
+        else if (Context.CanAfford(Context.EnergyPerHeal)) {
           SetSFX();
           SetVFX();
-          StateMachine.Context.Target.Heal(StateMachine.Context.HealAmount);
-          StateMachine.Context.UseEnergy(StateMachine.Context.EnergyPerHeal);
+          Context.Target.Heal(Context.HealAmount);
+          Context.UseEnergy(Context.EnergyPerHeal);
         }
         else {
           StopVFX();
@@ -34,7 +34,7 @@ namespace bts {
         }
       }
       else {
-        StateMachine.Context.Target = null;
+        Context.Target = null;
         StateMachine.SwitchState(Factory.GetState(nameof(HealerIdleState)));
       }
     }
@@ -45,34 +45,34 @@ namespace bts {
     }
 
     void SetVFX() {
-      if (StateMachine.Context.Laser == null) {
-        vfxParameters.SourcePosition = StateMachine.Context.LaserBegining.position;
-        vfxParameters.Target = StateMachine.Context.Target.Center;
-        StateMachine.Context.Laser = StateMachine.Context.LaserEventChannel.RaiseGetEvent(StateMachine.Context.LaserConfig, vfxParameters);
+      if (Context.Laser == null) {
+        vfxParameters.SourcePosition = Context.LaserBegining.position;
+        vfxParameters.Target = Context.Target.Center;
+        Context.Laser = Context.LaserEventChannel.RaiseGetEvent(Context.LaserConfig, vfxParameters);
       }
     }
 
     void StopVFX() {
-      if (StateMachine.Context.Laser != null) {
-        StateMachine.Context.Laser.Release();
-        StateMachine.Context.Laser = null;
+      if (Context.Laser != null) {
+        Context.Laser.Release();
+        Context.Laser = null;
       }
     }
 
     void SetSFX() {
-      if (StateMachine.Context.SoundEmitter == null) {
-        StateMachine.Context.SoundEmitter = StateMachine.Context.SFXEventChannel.RaisePlayEventWithEmitter(
-        StateMachine.Context.HealSFX,
-        StateMachine.Context.AudioConfig,
-        StateMachine.Context.Center.position
+      if (Context.SoundEmitter == null) {
+        Context.SoundEmitter = Context.SFXEventChannel.RaisePlayEventWithEmitter(
+        Context.HealSFX,
+        Context.AudioConfig,
+        Context.Center.position
       );
       }
     }
 
     void StopSFX() {
-      if (StateMachine.Context.SoundEmitter != null) {
-        StateMachine.Context.SoundEmitter.Stop();
-        StateMachine.Context.SoundEmitter = null;
+      if (Context.SoundEmitter != null) {
+        Context.SoundEmitter.Stop();
+        Context.SoundEmitter = null;
       }
     }
   }

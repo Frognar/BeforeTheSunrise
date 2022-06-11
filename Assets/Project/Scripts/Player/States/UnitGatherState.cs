@@ -3,17 +3,17 @@
 namespace bts {
   public class UnitGatherState : UnitBaseState {
     float lastGatherTime;
-    bool IsTimeToGather => lastGatherTime + StateMachine.Context.TimeBetweenGathers <= Time.time;
-    bool InGatherRange => Vector3.Distance(StateMachine.Context.Position, TargetGemstone) <= StateMachine.Context.GatherRange;
-    Vector3 TargetGemstone => StateMachine.Context.TargerGemstone.Center.position;
+    bool IsTimeToGather => lastGatherTime + Context.TimeBetweenGathers <= Time.time;
+    bool InGatherRange => Vector3.Distance(Context.Position, TargetGemstone) <= Context.GatherRange;
+    Vector3 TargetGemstone => Context.TargerGemstone.Center.position;
 
     public UnitGatherState(StateMachine<Unit> stateMachine, StateFactory<Unit> factory)
       : base(stateMachine, factory) {
     }
 
     public override void EnterState() {
-      StateMachine.Context.Pathfinder.SetDestination(TargetGemstone);
-      StateMachine.Context.Pathfinder.SetStopDistance(StateMachine.Context.GatherRange - 2f);
+      Context.Pathfinder.SetDestination(TargetGemstone);
+      Context.Pathfinder.SetStopDistance(Context.GatherRange - 2f);
     }
 
     public override void UpdateState() {
@@ -22,29 +22,29 @@ namespace bts {
       }
 
       if (InGatherRange) {
-        StateMachine.Context.IsGathering = true;
+        Context.IsGathering = true;
         if (IsTimeToGather) {
           lastGatherTime = Time.time;
-          GemstoneType type = StateMachine.Context.TargerGemstone.GemstoneType;
-          int count = StateMachine.Context.TargerGemstone.BaseGatherAmount + StateMachine.Context.GatherBonuses[type];
-          StateMachine.Context.GemstoneStorage.Store(type, count);
+          GemstoneType type = Context.TargerGemstone.GemstoneType;
+          int count = Context.TargerGemstone.BaseGatherAmount + Context.GatherBonuses[type];
+          Context.GemstoneStorage.Store(type, count);
           PopupTextParameters popupParams = new PopupTextParameters() {
-            Position = StateMachine.Context.TargerGemstone.Center.position,
+            Position = Context.TargerGemstone.Center.position,
             GemstoneType = type,
             Text = $"+{count}"
           };
           
-          StateMachine.Context.PopupTextEventChannel.RaiseSpawnEvent(PopupTextConfiguration.Default, popupParams);
+          Context.PopupTextEventChannel.RaiseSpawnEvent(PopupTextConfiguration.Default, popupParams);
         }
       }
       else {
-        StateMachine.Context.IsGathering = false;
+        Context.IsGathering = false;
       }
     }
 
     public override void ExitState() {
-      StateMachine.Context.Pathfinder.Reset();
-      StateMachine.Context.IsGathering = false;
+      Context.Pathfinder.Reset();
+      Context.IsGathering = false;
     }
   }
 }

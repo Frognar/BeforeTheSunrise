@@ -6,7 +6,7 @@
 
     public override void EnterState() {
       base.EnterState();
-      StateMachine.Context.DayStarted.Invoke();
+      Context.DayStarted.Invoke();
     }
 
     protected override void ChangeDayTime() {

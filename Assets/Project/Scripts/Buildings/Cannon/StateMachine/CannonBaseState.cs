@@ -8,15 +8,15 @@
     public override void ExitState() { }
 
     protected bool CheckSwitchState() {
-      if (StateMachine.Context.IsOrderedToAttack) {
+      if (Context.IsOrderedToAttack) {
         ClearOrders();
         StateMachine.SwitchState(Factory.GetState(nameof(CannonAttackState)));
         return true;
       }
 
-      if (StateMachine.Context.IsOrderedToStop) {
+      if (Context.IsOrderedToStop) {
         ClearOrders();
-        StateMachine.Context.Target = null;
+        Context.Target = null;
         StateMachine.SwitchState(Factory.GetState(nameof(CannonIdleState)));
         return true;
       }
@@ -25,8 +25,8 @@
     }
 
     void ClearOrders() {
-      StateMachine.Context.IsOrderedToStop = false;
-      StateMachine.Context.IsOrderedToAttack = false;
+      Context.IsOrderedToStop = false;
+      Context.IsOrderedToAttack = false;
     }
   }
 }

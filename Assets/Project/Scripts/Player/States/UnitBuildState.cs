@@ -2,15 +2,15 @@
 
 namespace bts {
   public class UnitBuildState : UnitBaseState {
-    bool InBuildRange => Vector3.Distance(StateMachine.Context.Position, StateMachine.Context.Destination) <= StateMachine.Context.BuildRange;
+    bool InBuildRange => Vector3.Distance(Context.Position, Context.Destination) <= Context.BuildRange;
 
     public UnitBuildState(StateMachine<Unit> stateMachine, StateFactory<Unit> factory)
       : base(stateMachine, factory) {
     }
 
     public override void EnterState() {
-      StateMachine.Context.Pathfinder.SetDestination(StateMachine.Context.Destination);
-      StateMachine.Context.Pathfinder.SetStopDistance(StateMachine.Context.BuildRange - 2f);
+      Context.Pathfinder.SetDestination(Context.Destination);
+      Context.Pathfinder.SetStopDistance(Context.BuildRange - 2f);
     }
 
     public override void UpdateState() {
@@ -19,20 +19,20 @@ namespace bts {
       }
 
       if (InBuildRange) {
-        if (StateMachine.Context.GemstoneStorage.CanAfford((StateMachine.Context.BuildingToPlace.customData as CustomBuildingData).buildingCosts)) {
-          if (StateMachine.Context.GridBuildingSystem.CanBuild(StateMachine.Context.Destination, StateMachine.Context.BuildingToPlace)) {
-            StateMachine.Context.GemstoneStorage.Discard((StateMachine.Context.BuildingToPlace.customData as CustomBuildingData).buildingCosts);
-            StateMachine.Context.GridBuildingSystem.Build(StateMachine.Context.Destination, StateMachine.Context.BuildingToPlace);
+        if (Context.GemstoneStorage.CanAfford((Context.BuildingToPlace.customData as CustomBuildingData).buildingCosts)) {
+          if (Context.GridBuildingSystem.CanBuild(Context.Destination, Context.BuildingToPlace)) {
+            Context.GemstoneStorage.Discard((Context.BuildingToPlace.customData as CustomBuildingData).buildingCosts);
+            Context.GridBuildingSystem.Build(Context.Destination, Context.BuildingToPlace);
           }
         }
 
-        StateMachine.Context.BuildingToPlace = null;
+        Context.BuildingToPlace = null;
         StateMachine.SwitchState(Factory.GetState(nameof(UnitIdleState)));
       }
     }
 
     public override void ExitState() {
-      StateMachine.Context.Pathfinder.Reset();
+      Context.Pathfinder.Reset();
     }
   }
 }

@@ -8,11 +8,11 @@
     }
     
     public override void EnterState() {
-      StateMachine.Context.ReamaningTime.value = DayTimeDuration;
+      Context.ReamaningTime.value = DayTimeDuration;
     }
 
     public override void UpdateState() {
-      if (--StateMachine.Context.ReamaningTime.value <= 0) {
+      if (--Context.ReamaningTime.value <= 0) {
         ChangeDayTime();
       }
     }

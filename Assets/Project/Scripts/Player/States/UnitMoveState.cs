@@ -2,14 +2,14 @@
 
 namespace bts {
   public class UnitMoveState : UnitBaseState {
-    bool DestinationReached => Vector3.Distance(StateMachine.Context.Position, StateMachine.Context.Destination) <= StateMachine.Context.StopDistance;
+    bool DestinationReached => Vector3.Distance(Context.Position, Context.Destination) <= Context.StopDistance;
 
     public UnitMoveState(StateMachine<Unit> stateMachine, StateFactory<Unit> factory)
       : base(stateMachine, factory) {
     }
 
     public override void EnterState() {
-      StateMachine.Context.Pathfinder.SetDestination(StateMachine.Context.Destination);
+      Context.Pathfinder.SetDestination(Context.Destination);
     }
 
     public override void UpdateState() {
@@ -23,7 +23,7 @@ namespace bts {
     }
 
     public override void ExitState() {
-      StateMachine.Context.Pathfinder.Reset();
+      Context.Pathfinder.Reset();
     }
   }
 }

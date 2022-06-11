@@ -3,9 +3,9 @@
 namespace bts {
   public class UnitAttackState : UnitBaseState {
     float lastAttackTime;
-    public bool HasTarget => StateMachine.Context.Target != null && (StateMachine.Context.Target as Object) != null;
-    bool IsTimeToAttack => lastAttackTime + StateMachine.Context.TimeBetweenAttacks <= Time.time;
-    bool InAttackRange => Vector3.Distance(StateMachine.Context.Position, StateMachine.Context.Target.Position) <= StateMachine.Context.AttackRange;
+    public bool HasTarget => Context.Target != null && (Context.Target as Object) != null;
+    bool IsTimeToAttack => lastAttackTime + Context.TimeBetweenAttacks <= Time.time;
+    bool InAttackRange => Vector3.Distance(Context.Position, Context.Target.Position) <= Context.AttackRange;
     readonly ElectricArcParameters parameters = new ElectricArcParameters();
 
     public UnitAttackState(StateMachine<Unit> stateMachine, StateFactory<Unit> factory)
@@ -14,8 +14,8 @@ namespace bts {
 
     public override void EnterState() {
       if (HasTarget) {
-        StateMachine.Context.Pathfinder.SetTarget(StateMachine.Context.Target.Center);
-        StateMachine.Context.Pathfinder.SetStopDistance(StateMachine.Context.AttackRange - 2f);
+        Context.Pathfinder.SetTarget(Context.Target.Center);
+        Context.Pathfinder.SetStopDistance(Context.AttackRange - 2f);
       }
       else if (!CheckSwitchState()) {
         StateMachine.SwitchState(Factory.GetState(nameof(UnitIdleState)));
@@ -50,22 +50,22 @@ namespace bts {
     void Attack() {
       lastAttackTime = Time.time;
       CreateVFX();
-      StateMachine.Context.SFXEventChannel.RaisePlayEvent(StateMachine.Context.AttackSFX, StateMachine.Context.AudioConfig, StateMachine.Context.Position);
-      StateMachine.Context.Target.TakeDamage(StateMachine.Context.DamageAmount);
-      if (StateMachine.Context.Target.IsDead) {
-        StateMachine.Context.Target = null;
+      Context.SFXEventChannel.RaisePlayEvent(Context.AttackSFX, Context.AudioConfig, Context.Position);
+      Context.Target.TakeDamage(Context.DamageAmount);
+      if (Context.Target.IsDead) {
+        Context.Target = null;
         StateMachine.SwitchState(Factory.GetState(nameof(UnitIdleState)));
       }
     }
 
     void CreateVFX() {
-      parameters.Source = StateMachine.Context.ArcBegin;
-      parameters.TargetPosition = StateMachine.Context.Target.Center.position;
-      StateMachine.Context.VFXEventChannel.RaiseSpawnEvent(StateMachine.Context.ElectricArcConfig, parameters);
+      parameters.Source = Context.ArcBegin;
+      parameters.TargetPosition = Context.Target.Center.position;
+      Context.VFXEventChannel.RaiseSpawnEvent(Context.ElectricArcConfig, parameters);
     }
 
     public override void ExitState() {
-      StateMachine.Context.Pathfinder.Reset();
+      Context.Pathfinder.Reset();
     }
   }
 }

@@ -3,21 +3,21 @@
 namespace bts {
   public class EnemySpawnerSpawnState : EnemySpawnerBaseState {
     float lastSpawnTime;
-    bool IsTimeToSpawn => lastSpawnTime + StateMachine.Context.SpawnInterval <= Time.time;
+    bool IsTimeToSpawn => lastSpawnTime + Context.SpawnInterval <= Time.time;
       
     public EnemySpawnerSpawnState(StateMachine<EnemySpawner> stateMachine, StateFactory<EnemySpawner> factory)
       : base(stateMachine, factory) {
     }
 
     public override void EnterState() {
-      StateMachine.Context.EnemyData.Damage *= Mathf.Pow(1.15f, StateMachine.Context.DayCounter - 1);
-      StateMachine.Context.EnemyData.MaxHealth *= Mathf.Pow(1.15f, StateMachine.Context.DayCounter - 1);
+      Context.EnemyData.Damage *= Mathf.Pow(1.15f, Context.DayCounter - 1);
+      Context.EnemyData.MaxHealth *= Mathf.Pow(1.15f, Context.DayCounter - 1);
     }
 
     public override void UpdateState() {
       if (IsTimeToSpawn) {
         lastSpawnTime = Time.time;
-        _ = StateMachine.Context.EnemyPool.Get();
+        _ = Context.EnemyPool.Get();
       }
     }
   }

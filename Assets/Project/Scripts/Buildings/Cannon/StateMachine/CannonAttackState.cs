@@ -2,9 +2,9 @@
 
 namespace bts {
   public class CannonAttackState : CannonBaseState {
-    bool HasTarget => StateMachine.Context.Target != null && (StateMachine.Context.Target as Object) != null;
-    bool IsTargetInRange => Vector3.Distance(StateMachine.Context.Target.Position, StateMachine.Context.Position) <= StateMachine.Context.Range;
-    bool IsTimeToAttack => lastAttackTime + StateMachine.Context.TimeBetweenAttacks <= Time.time;
+    bool HasTarget => Context.Target != null && (Context.Target as Object) != null;
+    bool IsTargetInRange => Vector3.Distance(Context.Target.Position, Context.Position) <= Context.Range;
+    bool IsTimeToAttack => lastAttackTime + Context.TimeBetweenAttacks <= Time.time;
     float lastAttackTime;
     readonly ElectricArcParameters parameters = new ElectricArcParameters();
 
@@ -20,30 +20,30 @@ namespace bts {
       if (HasTarget) {
         if (IsTargetInRange) {
           if (IsTimeToAttack) {
-            if (StateMachine.Context.CanAfford(StateMachine.Context.EnergyPerAttack)) {
+            if (Context.CanAfford(Context.EnergyPerAttack)) {
               lastAttackTime = Time.time;
               CreateVFX();
-              StateMachine.Context.SFXEventChannel.RaisePlayEvent(StateMachine.Context.AttackSFX, StateMachine.Context.AudioConfig, StateMachine.Context.Position);
-              StateMachine.Context.UseEnergy(StateMachine.Context.EnergyPerAttack);
-              StateMachine.Context.Target.TakeDamage(StateMachine.Context.Damage);
-              if (StateMachine.Context.Target.IsDead) {
-                StateMachine.Context.Target = null;
+              Context.SFXEventChannel.RaisePlayEvent(Context.AttackSFX, Context.AudioConfig, Context.Position);
+              Context.UseEnergy(Context.EnergyPerAttack);
+              Context.Target.TakeDamage(Context.Damage);
+              if (Context.Target.IsDead) {
+                Context.Target = null;
                 StateMachine.SwitchState(Factory.GetState(nameof(CannonIdleState)));
               }
             }
           }
         }
         else {
-          StateMachine.Context.Target = null;
+          Context.Target = null;
           StateMachine.SwitchState(Factory.GetState(nameof(CannonIdleState)));
         }
       }
     }
     
     void CreateVFX() {
-      parameters.Source = StateMachine.Context.ArcBegin;
-      parameters.TargetPosition = StateMachine.Context.Target.Center.position;
-      StateMachine.Context.VFXEventChannel.RaiseSpawnEvent(StateMachine.Context.ElectricArcConfig, parameters);
+      parameters.Source = Context.ArcBegin;
+      parameters.TargetPosition = Context.Target.Center.position;
+      Context.VFXEventChannel.RaiseSpawnEvent(Context.ElectricArcConfig, parameters);
     }
   }
 }

@@ -3,9 +3,9 @@
 namespace bts {
   public class EnemyAttackState : EnemyBaseState {
     float lastAttackTime;
-    public bool HasTarget => StateMachine.Context.Target != null && (StateMachine.Context.Target as Object) != null;
-    bool IsTimeToAttack => lastAttackTime + StateMachine.Context.EnemyData.TimeBetweenAttacks <= Time.time;
-    bool InAttackRange => Vector3.Distance(StateMachine.Context.Position, StateMachine.Context.Target.Position) <= StateMachine.Context.EnemyData.AttackRange;
+    public bool HasTarget => Context.Target != null && (Context.Target as Object) != null;
+    bool IsTimeToAttack => lastAttackTime + Context.EnemyData.TimeBetweenAttacks <= Time.time;
+    bool InAttackRange => Vector3.Distance(Context.Position, Context.Target.Position) <= Context.EnemyData.AttackRange;
     float lastCheckPathTime;
     const float checkPathInterval = 2f;
     bool IsTimeToCheckPath => lastCheckPathTime + checkPathInterval <= Time.time;
@@ -16,7 +16,7 @@ namespace bts {
 
     public override void EnterState() {
       if (HasTarget) {
-        StateMachine.Context.Pathfinder.SetTarget(StateMachine.Context.Target.Center);
+        Context.Pathfinder.SetTarget(Context.Target.Center);
         lastCheckPathTime = Time.time;
       }
       else {
@@ -42,17 +42,17 @@ namespace bts {
 
     void Attack() {
       lastAttackTime = Time.time;
-      StateMachine.Context.SFXEventChannel.RaisePlayEvent(StateMachine.Context.EnemyData.EnemyAttackSFX, StateMachine.Context.EnemyData.AudioConfig, StateMachine.Context.Position);
-      StateMachine.Context.Target.TakeDamage(StateMachine.Context.EnemyData.Damage);
-      if (StateMachine.Context.Target.IsDead) {
-        StateMachine.Context.Target = null;
+      Context.SFXEventChannel.RaisePlayEvent(Context.EnemyData.EnemyAttackSFX, Context.EnemyData.AudioConfig, Context.Position);
+      Context.Target.TakeDamage(Context.EnemyData.Damage);
+      if (Context.Target.IsDead) {
+        Context.Target = null;
         StateMachine.SwitchState(Factory.GetState(nameof(EnemyLookingForTargetState)));
       }
     }
     
     void CheckPath() {
       lastCheckPathTime = Time.time;
-      if (!StateMachine.Context.Pathfinder.IsPathPossible(StateMachine.Context.Target.Bounds)) {
+      if (!Context.Pathfinder.IsPathPossible(Context.Target.Bounds)) {
         StateMachine.SwitchState(Factory.GetState(nameof(EnemyLookingForTargetState)));
       }
     }

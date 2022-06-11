@@ -9,7 +9,7 @@ namespace bts {
     }
     
     public override void EnterState() {
-      StateMachine.Context.IsIdle = true;
+      Context.IsIdle = true;
     }
 
     public override void UpdateState() {
@@ -17,7 +17,7 @@ namespace bts {
         return;
       }
 
-      Collider[] collidersInRange = Physics.OverlapSphere(StateMachine.Context.Position, StateMachine.Context.Range);
+      Collider[] collidersInRange = Physics.OverlapSphere(Context.Position, Context.Range);
       List<Damageable> enemiesInRange = new List<Damageable>();
       foreach (Collider collider in collidersInRange) {
         if (collider.TryGetComponent(out Damageable damageable) && damageable.ObjectAffiliation == Affiliation.Enemy) {
@@ -27,13 +27,13 @@ namespace bts {
 
       Damageable target = enemiesInRange.FirstOrDefault(t => !t.IsDead);
       if (target != null) {
-        StateMachine.Context.Target = target;
+        Context.Target = target;
         StateMachine.SwitchState(Factory.GetState(nameof(CannonAttackState)));
       }
     }
 
     public override void ExitState() {
-      StateMachine.Context.IsIdle = false;
+      Context.IsIdle = false;
     }
   }
 }

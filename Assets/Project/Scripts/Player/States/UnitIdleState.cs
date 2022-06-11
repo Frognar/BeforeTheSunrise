@@ -5,7 +5,7 @@
     }
 
     public override void EnterState() {
-      StateMachine.Context.IsIdle = true;
+      Context.IsIdle = true;
     }
 
     public override void UpdateState() {
@@ -15,7 +15,7 @@
     }
 
     public override void ExitState() {
-      StateMachine.Context.IsIdle = false;
+      Context.IsIdle = false;
     }
   }
 }

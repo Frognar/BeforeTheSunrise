@@ -8,7 +8,7 @@ namespace bts {
     }
 
     public override void EnterState() {
-      StateMachine.Context.Pathfinder.Reset();
+      Context.Pathfinder.Reset();
       Damageable player = Object.FindObjectOfType<Unit>();
       if (!SetAsTargetIfPathExitst(player)) {
         Building[] damageables = Object.FindObjectsOfType<Building>();
@@ -19,8 +19,8 @@ namespace bts {
         }
       }
 
-      if (StateMachine.Context.Target == null) {
-        _ = StateMachine.Context.StartCoroutine(RestartAfterWhile());
+      if (Context.Target == null) {
+        _ = Context.StartCoroutine(RestartAfterWhile());
       }
     }
 
@@ -29,8 +29,8 @@ namespace bts {
         return false;
       }
       
-      if (StateMachine.Context.Pathfinder.IsPathPossible(possibleTarget.Bounds)) {
-        StateMachine.Context.Target = possibleTarget;
+      if (Context.Pathfinder.IsPathPossible(possibleTarget.Bounds)) {
+        Context.Target = possibleTarget;
         StateMachine.SwitchState(Factory.GetState(nameof(EnemyAttackState)));
         return true;
       }
