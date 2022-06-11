@@ -39,15 +39,7 @@ namespace bts {
       }
 
       activeScenes.Add(sceneName);
-      AsyncOperation procecss = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
-      if (string.IsNullOrEmpty(activeScene) == false) {
-        procecss.completed += SetActiveScene;
-      }
-    }
-
-    void SetActiveScene(AsyncOperation p) {
-      _ = SceneManager.SetActiveScene(SceneManager.GetSceneByName(activeScene));
-      p.completed -= SetActiveScene;
+      _ = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
     }
 
     void UnloadScene(string sceneName) {

@@ -2,11 +2,10 @@
 
 namespace bts {
   public class PlaceableFactory : MonoBehaviour {
-    Transform Parent => parent == null ? (parent = new GameObject("Buildings|Obstacles").transform) : parent;
-    Transform parent;
+    [SerializeField] Transform parent;
 
     public Placeable Create(Vector3 worldPosition, Vector3Int origin, PlacedObjectType objectType, GridBuildingSystem gridBuildingSystem) {
-      Transform placedObjectTransform = Instantiate(objectType.prefab, worldPosition, Quaternion.identity, Parent);
+      Transform placedObjectTransform = Instantiate(objectType.prefab, worldPosition, Quaternion.identity, parent);
       Placeable placedObject = placedObjectTransform.GetComponent<Placeable>();
       Transform center = CreateObjectCenter(placedObject.Transform, new Vector3(objectType.width / 2, 0, objectType.height / 2));
       placedObject.Init(gridBuildingSystem, origin, center);
