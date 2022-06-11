@@ -16331,6 +16331,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputReader: {fileID: 11400000, guid: 7f3cdf2a68e3d264f899e1146937e4de, type: 2}
   showGraph: {fileID: 11400000, guid: b35fe1f3d9bfc8e488a2b4f7a13a3de7, type: 2}
+  worldSize: {fileID: 11400000, guid: 70ae6de4f6684f04eae89c875293b2c2, type: 2}
 --- !u!224 &1591852600 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5979119720794637620, guid: 52eae44a91592ce4b898c27440b0ba59,

@@ -46,6 +46,7 @@ Material:
     m_Colors:
     - _BaseColor: {r: 0.23529407, g: 0.11372546, b: 0, a: 1}
     - _BorderColor: {r: 1, g: 1, b: 1, a: 1}
+    - _GridSize: {r: 100, g: 100, b: 0, a: 0}
     - _MousePosition: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &17529691707366538
