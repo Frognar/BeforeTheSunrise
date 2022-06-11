@@ -1,4 +1,6 @@
-﻿namespace bts {
+﻿using fro.States;
+
+namespace bts {
   public class UnitIdleState : UnitBaseState {
     public UnitIdleState(StateMachine<Unit> stateMachine, StateFactory<Unit> factory)
       : base(stateMachine, factory) {

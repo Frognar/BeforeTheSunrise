@@ -1,4 +1,6 @@
-﻿namespace bts {
+﻿using fro.States;
+
+namespace bts {
   public abstract class UnitBaseState : State<Unit> {
     protected UnitBaseState(StateMachine<Unit> stateMachine, StateFactory<Unit> factory)
       : base(stateMachine, factory) {

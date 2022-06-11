@@ -1,4 +1,4 @@
-﻿namespace bts {
+﻿namespace fro.States {
   public abstract class State<T> {
     protected StateMachine<T> StateMachine { get; }
     protected StateFactory<T> Factory { get; }

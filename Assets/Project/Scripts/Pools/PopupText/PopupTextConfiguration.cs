@@ -1,4 +1,6 @@
-﻿namespace bts {
+﻿using fro.Pools;
+
+namespace bts {
   public class PopupTextConfiguration : PooledObjectConfiguration<PopupText> {
     public static PopupTextConfiguration Default = CreateInstance<PopupTextConfiguration>();
     PopupTextConfiguration() { }

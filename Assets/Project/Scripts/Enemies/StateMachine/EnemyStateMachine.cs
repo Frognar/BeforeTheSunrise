@@ -1,3 +1,5 @@
+using fro.States;
+
 namespace bts {
   public class EnemyStateMachine : StateMachine<Enemy> {
     readonly EnemyStateFactory factory;

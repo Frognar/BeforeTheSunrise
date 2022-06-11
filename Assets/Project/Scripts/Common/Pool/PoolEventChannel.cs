@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace bts {
+namespace fro.Pools {
   public abstract class PoolEventChannel<T> : ScriptableObject
     where T : MonoBehaviour, Poolable {
     public Action<PooledObjectConfiguration<T>, PooledObjectParameters<T>> OnSpawnRequest;

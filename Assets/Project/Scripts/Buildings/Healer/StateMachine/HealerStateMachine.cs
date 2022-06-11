@@ -1,3 +1,5 @@
+using fro.States;
+
 namespace bts {
   public class HealerStateMachine : StateMachine<Healer> {
     readonly HealerStateFactory factory;

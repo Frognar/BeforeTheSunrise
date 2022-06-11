@@ -1,5 +1,6 @@
-namespace bts
-{
+using fro.States;
+
+namespace bts {
   public class CannonStateMachine : StateMachine<Cannon> {
     readonly CannonStateFactory factory;
     

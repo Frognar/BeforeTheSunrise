@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace bts {
+namespace fro.States {
   public abstract class StateFactory<T> {
     protected StateMachine<T> StateMachine { get; }
-    
+    protected Dictionary<string, State<T>> States { get; }
+
     protected StateFactory(StateMachine<T> stateMachine) {
       StateMachine = stateMachine;
       States = CreateStates();
@@ -12,7 +13,6 @@ namespace bts {
 
     protected abstract Dictionary<string, State<T>> CreateStates();
 
-    protected Dictionary<string, State<T>> States { get; }
     public State<T> GetState(string name) {
       if (States.ContainsKey(name)) {
         return States[name];

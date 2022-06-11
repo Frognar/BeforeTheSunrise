@@ -1,4 +1,6 @@
-﻿namespace bts {
+﻿using fro.States;
+
+namespace bts {
   public abstract class EnemySpawnerBaseState : State<EnemySpawner> {
     protected EnemySpawnerBaseState(StateMachine<EnemySpawner> stateMachine, StateFactory<EnemySpawner> factory)
       : base(stateMachine, factory) {

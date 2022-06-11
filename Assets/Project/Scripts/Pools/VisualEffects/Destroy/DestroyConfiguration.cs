@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using fro.Pools;
+using UnityEngine;
 
 namespace bts {
   [CreateAssetMenu(menuName = "VFX/Destroy Configuration", fileName = "Destroy Configuration")]

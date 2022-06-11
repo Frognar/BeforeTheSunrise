@@ -1,4 +1,4 @@
-namespace bts {
+namespace fro.States {
   public abstract class StateMachine<T> {
     public T Context { get; }
     protected State<T> currentState;
@@ -11,7 +11,7 @@ namespace bts {
       if (currentState != null) {
         currentState.ExitState();
       }
-      
+
       currentState = newState;
       currentState.EnterState();
     }

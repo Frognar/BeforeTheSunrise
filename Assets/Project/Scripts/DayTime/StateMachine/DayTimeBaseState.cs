@@ -1,4 +1,6 @@
-﻿namespace bts {
+﻿using fro.States;
+
+namespace bts {
   public abstract class DayTimeBaseState : State<DayTimeCycle> {
     int DayTimeDuration { get; }
 

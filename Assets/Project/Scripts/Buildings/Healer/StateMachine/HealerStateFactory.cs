@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using fro.States;
 
 namespace bts {
   public class HealerStateFactory : StateFactory<Healer> {

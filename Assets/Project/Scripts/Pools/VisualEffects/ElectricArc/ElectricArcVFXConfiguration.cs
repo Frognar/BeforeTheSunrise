@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using fro.Pools;
+using UnityEngine;
 
 namespace bts {
   [CreateAssetMenu(menuName = "VFX/Electric Arc Configuration", fileName = "Electric Arc Configuration")]

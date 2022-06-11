@@ -1,4 +1,6 @@
-﻿namespace bts {
+﻿using fro.States;
+
+namespace bts {
   public class DayTimeStateMachine : StateMachine<DayTimeCycle> {
     readonly DayTimeStateFactory factory;
     

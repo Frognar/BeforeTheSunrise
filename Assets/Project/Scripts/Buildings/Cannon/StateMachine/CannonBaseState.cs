@@ -1,4 +1,6 @@
-﻿namespace bts {
+﻿using fro.States;
+
+namespace bts {
   public abstract class CannonBaseState : State<Cannon> {
     protected CannonBaseState(StateMachine<Cannon> stateMachine, StateFactory<Cannon> factory)
       : base(stateMachine, factory) {
