@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace bts {
+namespace fro.HealthSystem {
   public class Health {
     public event EventHandler OnCurrentHealthChange = delegate { };
     public event EventHandler OnMaxHealthChange = delegate { };

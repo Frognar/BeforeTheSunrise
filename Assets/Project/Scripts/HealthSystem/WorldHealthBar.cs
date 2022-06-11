@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace bts {
+namespace fro.HealthSystem {
   public class WorldHealthBar : MonoBehaviour {
     [SerializeField] Canvas healthCanvas;
     [SerializeField] Image healthBar;

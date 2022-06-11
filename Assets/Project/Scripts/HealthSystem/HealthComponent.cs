@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace bts {
+namespace fro.HealthSystem {
   public class HealthComponent : MonoBehaviour {
     [SerializeField] WorldHealthBar healthBar;
     public Health Health { get; private set; }
