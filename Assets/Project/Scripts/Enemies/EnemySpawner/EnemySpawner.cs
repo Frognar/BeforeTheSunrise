@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using fro.BuildingSystem;
 using fro.HealthSystem;
 using UnityEngine;
 using UnityEngine.Pool;
@@ -66,11 +67,11 @@ namespace bts {
     }
     
     void Start() {
-      Vector3Int cords = gridBuildingSystem.Grid.GetCords(transform.position);
+      GridCords cords = gridBuildingSystem.Grid.GetCords(transform.position);
       List<Vector3Int> gridPositions = new List<Vector3Int>();
       for (int x = 0; x < 16; x++) {
         for (int z = 0; z < 16; z++) {
-          gridPositions.Add(cords + new Vector3Int(x, 0, z));
+          gridPositions.Add(new Vector3Int(cords.X + x, 0, cords.Z + z));
         }
       }
 

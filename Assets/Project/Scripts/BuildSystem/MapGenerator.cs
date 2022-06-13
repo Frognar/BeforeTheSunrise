@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using fro.BuildingSystem;
 using UnityEngine;
 
 namespace bts {
@@ -14,7 +15,7 @@ namespace bts {
     }
 
     void Start() {
-      GridXZ<GridBuildingSystem.GridObject> grid = gridBuildingSystem.Grid;
+      GridXZ<GridObject> grid = gridBuildingSystem.Grid;
 
       for (int x = 0; x < grid.Width; x++) {
         for (int z = 0; z < grid.Height; z++) {

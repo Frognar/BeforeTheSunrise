@@ -1,3 +1,4 @@
+using fro.BuildingSystem;
 using UnityEngine;
 
 namespace bts {
@@ -11,7 +12,7 @@ namespace bts {
     [SerializeField] GameObject meshObject;
     [SerializeField] Transform rangeVisuals;
     [SerializeField] BoxCollider boxCollider;
-    GridXZ<GridBuildingSystem.GridObject> grid;
+    GridXZ<GridObject> grid;
     GridBuildingSystem buildingSystem;
     PlacedObjectType objectType;
 
@@ -24,9 +25,9 @@ namespace bts {
     }
 
     void UpdatePosition(Vector3 worldPosition) {
-      Vector3Int cords = grid.GetCords(worldPosition);
+      GridCords cords = grid.GetCords(worldPosition);
       transform.position = grid.GetWorldPosition(cords);
-      canBuild.value = buildingSystem.CanBuild(cords, objectType);
+      canBuild.value = buildingSystem.CanBuild(transform.position, objectType);
       UpdateMaterial();
     }
     
