@@ -1,18 +1,26 @@
 using System;
 using System.Collections.Generic;
+using bts.Gemstones;
 using fro.HealthSystem;
 using UnityEngine;
 
 namespace bts {
-  public abstract class Building : PlacedObject, Damageable, Selectable {
-    [SerializeField] int maxLevel = 10;
-    [SerializeField] protected GemstoneStorage storage;
-    [SerializeField] BuildingRegister register;
-    public override event Action<Dictionary<DataType, object>> OnDataChange = delegate { };
+  public abstract class Building : MonoBehaviour, Damageable, Selectable {
+    public event Action<Dictionary<DataType, object>> OnDataChange = delegate { };
     public void InvokeDataChange(Dictionary<DataType, object> data) {
       OnDataChange.Invoke(data);
     }
 
+    [SerializeField] int maxLevel = 10;
+    [SerializeField] protected GemstoneStorage storage;
+    [SerializeField] BuildingRegister register;
+
+    [field: SerializeField] public string Name { get; private set; }
+    public Affiliation ObjectAffiliation => Affiliation.Player;
+    public Type ObjectType => Type.Building;
+    [field: SerializeField] public GameObject Selected { get; private set; }
+    [field: SerializeField] public Transform Center { get; private set; }
+    
     [SerializeField] UpgradeBuildingUICommandData upgradeBuildingUICommandData;
     [SerializeField] DemolishUICommandData demolishUICommandData;
     public virtual IEnumerable<UICommand> UICommands { get; protected set; }
@@ -20,17 +28,18 @@ namespace bts {
     public Vector3 Position => Center.position;
     public bool IsDead => health.IsDead;
     public bool IsIntact => health.IsInFullHealth;
-    public Bounds Bounds => Obstacle.bounds;
+    [SerializeField] Collider buildingCollider;
+    public Bounds Bounds => buildingCollider.bounds;
 
     public int BuildingLevel { get; private set; }
+    public Sprite Icon { get; }
+    [field: SerializeField] public SelectablesEventChannel SelectablesEventChannel { get; private set; }
 
     [SerializeField] WorldHealthBar bar;
     Health health;
-    protected CustomBuildingData buildingData;
+    [SerializeField] protected CustomBuildingData buildingData;
 
-    protected override void Awake() {
-      base.Awake();
-      buildingData = PlaceableObjectType.customData as CustomBuildingData;
+    protected virtual void Awake() {
       health = new Health(buildingData.healthAmount);
       bar.SetUp(health);
       UICommands = CreateUICommands();
@@ -59,15 +68,19 @@ namespace bts {
     }
 
     protected virtual Dictionary<DataType, object> GetDataTypesOnUpgrage() {
+      Dictionary<DataType, object> data = GetHealthData();
+      data.Add(DataType.Level, BuildingLevel);
+      return data;
+    }
+
+    protected Dictionary<DataType, object> GetHealthData() {
       return new Dictionary<DataType, object> {
         { DataType.MaxHealth, health.MaxHealth },
         { DataType.CurrentHealth, bar.Health.CurrentHealth },
-        { DataType.Level, BuildingLevel }
       };
     }
 
-    protected override void OnDestroy() {
-      base.OnDestroy();
+    protected virtual void OnDestroy() {
       register.Unregister(this);
     }
 
@@ -78,35 +91,39 @@ namespace bts {
 
     public void TakeDamage(float amount) {
       health.Damage(amount);
-      InvokeDataChange(new Dictionary<DataType, object>() {
-        { DataType.MaxHealth, health.MaxHealth },
-        { DataType.CurrentHealth, bar.Health.CurrentHealth }
-      });
+      InvokeDataChange(GetHealthData());
 
       if (IsDead) {
-        GridBuildingSystem.Demolish(Position);
+        Destroy(gameObject);
       }
     }
 
     public void Heal(float amount) {
       health.Heal(amount);
-      InvokeDataChange(new Dictionary<DataType, object>() {
-        { DataType.MaxHealth, health.MaxHealth },
-        { DataType.CurrentHealth, bar.Health.CurrentHealth },
-      });
+      InvokeDataChange(GetHealthData());
     }
 
-    public void DestroySelf() {
-      GridBuildingSystem.Demolish(Position);
-    }
-
-    public override Dictionary<DataType, object> GetData() {
+    public virtual Dictionary<DataType, object> GetData() {
       return new Dictionary<DataType, object>() {
         { DataType.Name, Name },
         { DataType.MaxHealth, health.MaxHealth },
         { DataType.CurrentHealth, bar.Health.CurrentHealth },
         { DataType.Level, BuildingLevel },
       };
+    }
+
+    public virtual void Select() {
+      Selected.SetActive(true);
+    }
+
+    public virtual void Deselect() {
+      Selected.SetActive(false);
+    }
+
+    public abstract bool IsSameAs(Selectable other);
+
+    public void DestroySelf() {
+      Destroy(gameObject);
     }
   }
 }

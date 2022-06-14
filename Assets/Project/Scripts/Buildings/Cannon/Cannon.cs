@@ -38,8 +38,7 @@ namespace bts {
       stateMachine = new CannonStateMachine(this);
     }
 
-    protected override void Start() {
-      base.Start();
+    void Start() {
       stateMachine.Start();
     }
 

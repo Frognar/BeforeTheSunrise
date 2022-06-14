@@ -20,14 +20,15 @@ namespace bts {
       }
 
       if (InBuildRange) {
-        if (Context.GemstoneStorage.CanAfford((Context.BuildingToPlace.customData as CustomBuildingData).buildingCosts)) {
+        if (Context.GemstoneStorage.CanAfford(Context.CustomBuildingData.buildingCosts)) {
           if (Context.GridBuildingSystem.CanBuild(Context.Destination, Context.BuildingToPlace)) {
-            Context.GemstoneStorage.Discard((Context.BuildingToPlace.customData as CustomBuildingData).buildingCosts);
+            Context.GemstoneStorage.Discard(Context.CustomBuildingData.buildingCosts);
             Context.GridBuildingSystem.Build(Context.Destination, Context.BuildingToPlace);
           }
         }
 
         Context.BuildingToPlace = null;
+        Context.CustomBuildingData = null;
         StateMachine.SwitchState(Factory.GetState(nameof(UnitIdleState)));
       }
     }

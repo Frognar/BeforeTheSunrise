@@ -9,16 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5561f1ef99763774ba1d600990c7f8c0, type: 3}
+  m_Script: {fileID: 11500000, guid: ff3195ffb2862ed4ca7b122c409ef2dc, type: 3}
   m_Name: Base
   m_EditorClassIdentifier: 
-  objectName: Base
-  objectDescription: Base
-  prefab: {fileID: 5172842374617651957, guid: 034cba9d6c3468644a552f4f8e5a11f1, type: 3}
-  width: 3
-  height: 3
-  objectAffiliation: 4
-  objectType: 2
-  customData: {fileID: 11400000, guid: 41e1824d3b8d3824bb53eef8385c9466, type: 2}
-  limit: 0
-  placedCount: {fileID: 0}
+  <Name>k__BackingField: Base
+  <Description>k__BackingField: Upgrade tech
+  <Width>k__BackingField: 3
+  <Height>k__BackingField: 3
+  <Prefab>k__BackingField: {fileID: 6199304402769650690, guid: 034cba9d6c3468644a552f4f8e5a11f1,
+    type: 3}

@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace bts {
+namespace bts.Gemstones {
   [CreateAssetMenu()]
   public class GemstoneStorage : ScriptableObject {
     public event EventHandler StorageChanged;
@@ -35,7 +35,7 @@ namespace bts {
 
       StorageChanged?.Invoke(this, EventArgs.Empty);
     }
-    
+
     public void Store(GemstoneType type, int amount) {
       Gemstones[type] += amount;
       StorageChanged?.Invoke(this, EventArgs.Empty);
@@ -62,7 +62,7 @@ namespace bts {
       GemstoneType type = (GemstoneType)values.GetValue(UnityEngine.Random.Range(0, values.Length));
       return type;
     }
-    
+
     public void StoreRandom(int amount) {
       Array values = Enum.GetValues(typeof(GemstoneType));
       GemstoneType type = (GemstoneType)values.GetValue(UnityEngine.Random.Range(0, values.Length));

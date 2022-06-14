@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using bts.Gemstones;
+using UnityEngine;
 
 namespace bts {
   [CreateAssetMenu(fileName = "Change Aura Command Data", menuName = "UICommands/Change Aura Command Data")]

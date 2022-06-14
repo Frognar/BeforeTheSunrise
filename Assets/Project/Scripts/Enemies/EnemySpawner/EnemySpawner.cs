@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using fro.HealthSystem;
+using fro.ValueAssets;
 using UnityEngine;
 using UnityEngine.Pool;
 
@@ -29,7 +30,6 @@ namespace bts {
     public bool IsIntact => Health.IsInFullHealth;
     Health Health => healthComponent.Health;
     [SerializeField] HealthComponent healthComponent;
-    [SerializeField] GridBuildingSystem gridBuildingSystem;
     public Bounds Bounds => spawnerCollider.bounds;
     Collider spawnerCollider;
 
@@ -65,18 +65,6 @@ namespace bts {
       e.gameObject.SetActive(false);
     }
     
-    void Start() {
-      Vector3Int cords = gridBuildingSystem.Grid.GetCords(transform.position);
-      List<Vector3Int> gridPositions = new List<Vector3Int>();
-      for (int x = 0; x < 16; x++) {
-        for (int z = 0; z < 16; z++) {
-          gridPositions.Add(cords + new Vector3Int(x, 0, z));
-        }
-      }
-
-      gridBuildingSystem.Block(gridPositions);
-    }
-
     void Update() {
       stateMachine.Update();
     }
@@ -94,19 +82,14 @@ namespace bts {
     }
 
     public Dictionary<DataType, object> GetData() {
-      return new Dictionary<DataType, object>() {
-        { DataType.Name, Name },
-        { DataType.MaxHealth, Health.MaxHealth },
-        { DataType.CurrentHealth, Health.CurrentHealth },
-      };
+      Dictionary<DataType, object> data = GetHealthData();
+      data.Add(DataType.Name, Name);
+      return data;
     }
 
     public void TakeDamage(float amount) {
       Health.Damage(amount);
-      OnDataChange.Invoke(new Dictionary<DataType, object>() {
-        { DataType.MaxHealth, Health.MaxHealth },
-        { DataType.CurrentHealth, Health.CurrentHealth }
-      });
+      OnDataChange.Invoke(GetHealthData());
       
       if (IsDead && Selected.activeSelf) {
         SelectablesEventChannel.Invoke(this);
@@ -115,10 +98,14 @@ namespace bts {
 
     public void Heal(float amount) {
       Health.Heal(amount);
-      OnDataChange.Invoke(new Dictionary<DataType, object>() {
+      OnDataChange.Invoke(GetHealthData());
+    }
+
+    Dictionary<DataType, object> GetHealthData() {
+      return new Dictionary<DataType, object>() {
         { DataType.MaxHealth, Health.MaxHealth },
-        { DataType.CurrentEnergy, Health.CurrentHealth }
-      });
+        { DataType.CurrentHealth, Health.CurrentHealth }
+      };
     }
   }
 }

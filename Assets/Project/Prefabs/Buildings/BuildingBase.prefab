@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 619652724732691996}
+  - component: {fileID: 1826360176404232427}
+  - component: {fileID: 350420954700514518}
   - component: {fileID: 543681524985648091}
   m_Layer: 7
   m_Name: BuildingBase
@@ -31,9 +33,66 @@ Transform:
   m_Children:
   - {fileID: 8280956915219440526}
   - {fileID: 5896380476880714938}
+  - {fileID: 8581157019115828669}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1826360176404232427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5111799422788522321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab633296ae7c05041be04b9142133038, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnCreate:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 350420954700514518}
+        m_TargetAssemblyTypeName: bts.GridUpdater, Assembly-CSharp
+        m_MethodName: UpdateGraph
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnDemolish:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 350420954700514518}
+        m_TargetAssemblyTypeName: bts.GridUpdater, Assembly-CSharp
+        m_MethodName: UpdateGraph
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  placedObjectData: {fileID: 0}
+--- !u!114 &350420954700514518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5111799422788522321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96ad7a9978f09ae4283e01676b74e409, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectCollider: {fileID: 543681524985648091}
 --- !u!65 &543681524985648091
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -47,6 +106,37 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.95, y: 1, z: 1.95}
   m_Center: {x: 1, y: 0.5, z: 1}
+--- !u!1 &6783182345489894890
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8581157019115828669}
+  m_Layer: 7
+  m_Name: Center
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8581157019115828669
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6783182345489894890}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1, y: 0.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 619652724732691996}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &4896448404406999635
 PrefabInstance:
   m_ObjectHideFlags: 0

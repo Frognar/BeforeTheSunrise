@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using bts.Gemstones;
+using UnityEngine;
 
 namespace bts {
   [CreateAssetMenu(fileName = "Upgrgaded Building Command Data", menuName = "UICommands/Upgrgaded Building Command Data")]

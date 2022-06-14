@@ -9,7 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2610586063416816716}
+  - component: {fileID: -8867779915842375448}
+  - component: {fileID: 1887438908363649720}
   - component: {fileID: -2953132057846551189}
+  - component: {fileID: 1156983031421272437}
   - component: {fileID: 5736031156491144070}
   - component: {fileID: 7512773890473105210}
   - component: {fileID: 2610586063416816719}
@@ -39,9 +42,66 @@ Transform:
   - {fileID: 8041099556810448181}
   - {fileID: 7854090050254774583}
   - {fileID: 280146702752291152}
+  - {fileID: 8225193775617594044}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-8867779915842375448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2610586063416816720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab633296ae7c05041be04b9142133038, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnCreate:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1887438908363649720}
+        m_TargetAssemblyTypeName: bts.GridUpdater, Assembly-CSharp
+        m_MethodName: UpdateGraph
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnDemolish:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1887438908363649720}
+        m_TargetAssemblyTypeName: bts.GridUpdater, Assembly-CSharp
+        m_MethodName: UpdateGraph
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  placedObjectData: {fileID: 11400000, guid: 5c1cef9c3cd9f1a4d9f142a3d21b873e, type: 2}
+--- !u!114 &1887438908363649720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2610586063416816720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96ad7a9978f09ae4283e01676b74e409, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectCollider: {fileID: 2610586063416816719}
 --- !u!114 &-2953132057846551189
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54,15 +114,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c27e9536b718cd841b9336f5194a22d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <PlaceableObjectType>k__BackingField: {fileID: 11400000, guid: 354ecd62c9f1a0545acecae79d93af15,
-    type: 2}
+  <Center>k__BackingField: {fileID: 8225193775617594044}
   <Selected>k__BackingField: {fileID: 6907181952320486235}
+  <Icon>k__BackingField: {fileID: 21300000, guid: 52c3e67cdaec1cc43bc285aa7957c253,
+    type: 3}
   <SelectablesEventChannel>k__BackingField: {fileID: 11400000, guid: 3c1fda043d4369741a6aac78f1308909,
     type: 2}
-  popupTextEventChannel: {fileID: 11400000, guid: 77c020c6fa375c541a7d0b71eb927179,
-    type: 2}
-  addResourceChance: 0.5
-  storage: {fileID: 11400000, guid: 71f3ad2114ea85541984677a4e20ebac, type: 2}
+  obstacleCollider: {fileID: 2610586063416816719}
+  healthComponent: {fileID: 5736031156491144070}
+  randomGemstoneGiver: {fileID: 1156983031421272437}
   sfxEventChannel: {fileID: 11400000, guid: dd6b72c1d5cdf0b4592d245ebc4c91da, type: 2}
   destroySFX:
     <PickRandom>k__BackingField: 1
@@ -74,7 +134,25 @@ MonoBehaviour:
     type: 2}
   destroyConfiguration: {fileID: 11400000, guid: 81038ca21a6ae2947b2da6f266b6ddab,
     type: 2}
-  healthComponent: {fileID: 5736031156491144070}
+--- !u!114 &1156983031421272437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2610586063416816720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00941a6f7b5dcd346a1316651ff41672, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  popupTextEventChannel: {fileID: 11400000, guid: 77c020c6fa375c541a7d0b71eb927179,
+    type: 2}
+  storage: {fileID: 11400000, guid: 71f3ad2114ea85541984677a4e20ebac, type: 2}
+  addResourceChance: 0.5
+  minValue: 2
+  maxValue: 6
+  center: {fileID: 8225193775617594044}
 --- !u!114 &5736031156491144070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,6 +197,37 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.9, y: 1, z: 1.9}
   m_Center: {x: 1, y: 0.5, z: 1}
+--- !u!1 &5508152078728011573
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8225193775617594044}
+  m_Layer: 7
+  m_Name: Center
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8225193775617594044
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5508152078728011573}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1, y: 0.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2610586063416816716}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &199450944451951155
 PrefabInstance:
   m_ObjectHideFlags: 0

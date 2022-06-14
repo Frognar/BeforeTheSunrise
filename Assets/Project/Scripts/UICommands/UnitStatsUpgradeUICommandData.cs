@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using bts.Gemstones;
+using UnityEngine;
 
 namespace bts {
   public abstract class UnitStatsUpgradeUICommandData : UICommandData {

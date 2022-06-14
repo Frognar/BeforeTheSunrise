@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using RotaryHeart.Lib.SerializableDictionary;
 
-namespace bts {
+namespace bts.Gemstones {
   [Serializable]
   public class GemstoneDictionary : SerializableDictionaryBase<GemstoneType, int> {
     public static GemstoneDictionary operator *(GemstoneDictionary gemstoneDictionary, int multiplier) {
@@ -10,7 +10,7 @@ namespace bts {
       foreach (KeyValuePair<GemstoneType, int> keyValuePair in gemstoneDictionary) {
         newGemstoneDictionary.Add(keyValuePair.Key, keyValuePair.Value * multiplier);
       }
-      
+
       return newGemstoneDictionary;
     }
 

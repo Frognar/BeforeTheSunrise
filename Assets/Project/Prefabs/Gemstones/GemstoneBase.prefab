@@ -4821,8 +4821,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4077506455941635168}
-  - component: {fileID: 7259602942498594258}
   - component: {fileID: 8096196835972089138}
+  - component: {fileID: 3266229727310597236}
+  - component: {fileID: 1513889963149585120}
+  - component: {fileID: 7259602942498594258}
   m_Layer: 7
   m_Name: GemstoneBase
   m_TagString: Untagged
@@ -4845,9 +4847,79 @@ Transform:
   - {fileID: 2742884505354357128}
   - {fileID: 1973379825234866667}
   - {fileID: 3868779552140079389}
+  - {fileID: 1189421201734368311}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8096196835972089138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6476929901069258467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8defe5235fad92548b06ebbcb119431e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meshFilter: {fileID: 152965243093761720}
+  avaliableMeshes:
+  - {fileID: 4702925393065980420, guid: 7758838d4e6536e4e98f9028d209b717, type: 3}
+  - {fileID: 4702925393065980420, guid: 46f6f9becf44e49478894d4ffc46ec9f, type: 3}
+  particles: {fileID: 2050123941871923670}
+  <GemstoneType>k__BackingField: 2
+  <BaseGatherAmount>k__BackingField: 1
+  <Center>k__BackingField: {fileID: 1189421201734368311}
+  <Selected>k__BackingField: {fileID: 1220668128405100383}
+  <Icon>k__BackingField: {fileID: 21300000, guid: c5455323d1109364eae230448f3d35bb,
+    type: 3}
+  <SelectablesEventChannel>k__BackingField: {fileID: 11400000, guid: 3c1fda043d4369741a6aac78f1308909,
+    type: 2}
+--- !u!114 &3266229727310597236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6476929901069258467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab633296ae7c05041be04b9142133038, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnCreate:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1513889963149585120}
+        m_TargetAssemblyTypeName: bts.GridUpdater, Assembly-CSharp
+        m_MethodName: UpdateGraph
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnDemolish:
+    m_PersistentCalls:
+      m_Calls: []
+  placedObjectData: {fileID: 0}
+--- !u!114 &1513889963149585120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6476929901069258467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96ad7a9978f09ae4283e01676b74e409, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectCollider: {fileID: 7259602942498594258}
 --- !u!65 &7259602942498594258
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4861,27 +4933,37 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.9, y: 1, z: 1.9}
   m_Center: {x: 1, y: 0.5, z: 1}
---- !u!114 &8096196835972089138
-MonoBehaviour:
+--- !u!1 &7649830596202601165
+GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6476929901069258467}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8defe5235fad92548b06ebbcb119431e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <PlaceableObjectType>k__BackingField: {fileID: 0}
-  <Selected>k__BackingField: {fileID: 1220668128405100383}
-  <SelectablesEventChannel>k__BackingField: {fileID: 11400000, guid: 3c1fda043d4369741a6aac78f1308909,
-    type: 2}
-  avaliableMeshes:
-  - {fileID: 4702925393065980420, guid: 7758838d4e6536e4e98f9028d209b717, type: 3}
-  - {fileID: 4702925393065980420, guid: 46f6f9becf44e49478894d4ffc46ec9f, type: 3}
-  <GemstoneType>k__BackingField: 0
-  <BaseGatherAmount>k__BackingField: 1
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1189421201734368311}
+  m_Layer: 7
+  m_Name: Center
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1189421201734368311
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7649830596202601165}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1, y: 0.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4077506455941635168}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &3619227224557213430
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4956,6 +5038,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46f6f9becf44e49478894d4ffc46ec9f, type: 3}
+--- !u!33 &152965243093761720 stripped
+MeshFilter:
+  m_CorrespondingSourceObject: {fileID: -5754084199372789682, guid: 46f6f9becf44e49478894d4ffc46ec9f,
+    type: 3}
+  m_PrefabInstance: {fileID: 3619227224557213430}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3868779552140079389 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 46f6f9becf44e49478894d4ffc46ec9f,

@@ -1,0 +1,16 @@
+{
+    "name": "BuildingSystem",
+    "rootNamespace": "fro.BuildingSystem",
+    "references": [
+        "GUID:e9b2221b061eba94f8e88f651175a96c"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

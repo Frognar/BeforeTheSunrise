@@ -32,6 +32,12 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: c8dfd17ea5fe55c40a908d6bc21342bf, type: 2}
+    - target: {fileID: 3266229727310597236, guid: 988387a355fafe249927d0aaf33627e6,
+        type: 3}
+      propertyPath: placedObjectData
+      value: 
+      objectReference: {fileID: 11400000, guid: fc2befe5bece28b4e887a0aa6464607c,
+        type: 2}
     - target: {fileID: 4077506455941635168, guid: 988387a355fafe249927d0aaf33627e6,
         type: 3}
       propertyPath: m_RootOrder
@@ -97,6 +103,12 @@ PrefabInstance:
       propertyPath: gemstoneType
       value: 16
       objectReference: {fileID: 0}
+    - target: {fileID: 8096196835972089138, guid: 988387a355fafe249927d0aaf33627e6,
+        type: 3}
+      propertyPath: <Icon>k__BackingField
+      value: 
+      objectReference: {fileID: 21300000, guid: 982933034b762a3409b93af7c7f56919,
+        type: 3}
     - target: {fileID: 8096196835972089138, guid: 988387a355fafe249927d0aaf33627e6,
         type: 3}
       propertyPath: <GemstoneType>k__BackingField

@@ -13,6 +13,7 @@ namespace bts {
         ClearOrders();
         Context.Target = null;
         Context.BuildingToPlace = null;
+        Context.CustomBuildingData = null;
         Context.TargerGemstone = null;
         StateMachine.SwitchState(Factory.GetState(nameof(UnitMoveState)));
         return true;
@@ -29,6 +30,7 @@ namespace bts {
       if (Context.IsOrderedToAttack) {
         ClearOrders();
         Context.BuildingToPlace = null;
+        Context.CustomBuildingData = null;
         Context.TargerGemstone = null;
         StateMachine.SwitchState(Factory.GetState(nameof(UnitAttackState)));
         return true;
@@ -38,6 +40,7 @@ namespace bts {
         ClearOrders();
         Context.Target = null;
         Context.BuildingToPlace = null;
+        Context.CustomBuildingData = null;
         StateMachine.SwitchState(Factory.GetState(nameof(UnitGatherState)));
         return true;
       }
