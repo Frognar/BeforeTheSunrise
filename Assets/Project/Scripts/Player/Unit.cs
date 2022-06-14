@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using bts.Gemstones;
+using fro.BuildingSystem;
 using fro.HealthSystem;
 using fro.States;
 using UnityEngine;
@@ -49,7 +51,8 @@ namespace bts {
 
     public float BuildRange => 3.5f;
     public bool IsOrderedToBuild { get; set; }
-    public PlacedObjectType BuildingToPlace { get; set; }
+    public PlacedObjectData BuildingToPlace { get; set; }
+    public CustomBuildingData CustomBuildingData { get; set; }
 
     public float StopDistance => 1f;
     public bool IsOrderedToMove { get; set; }

@@ -9,16 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5561f1ef99763774ba1d600990c7f8c0, type: 3}
+  m_Script: {fileID: 11500000, guid: ff3195ffb2862ed4ca7b122c409ef2dc, type: 3}
   m_Name: Mine
   m_EditorClassIdentifier: 
-  objectName: Mine
-  objectDescription: Give gems on start of a day
-  prefab: {fileID: 1994807667114922814, guid: 1b4e3ff476c21f943997b9710b4354a4, type: 3}
-  width: 1
-  height: 1
-  objectAffiliation: 4
-  objectType: 2
-  customData: {fileID: 11400000, guid: bf92ebc8581af4144890b1dfd092e186, type: 2}
-  limit: 20
-  placedCount: {fileID: 11400000, guid: 095d080211e7e3a4b9f77e7b79b33493, type: 2}
+  <Name>k__BackingField: Mine
+  <Description>k__BackingField: Generate resourcer every day
+  <Width>k__BackingField: 1
+  <Height>k__BackingField: 1
+  <Prefab>k__BackingField: {fileID: 751821006282796489, guid: 1b4e3ff476c21f943997b9710b4354a4,
+    type: 3}

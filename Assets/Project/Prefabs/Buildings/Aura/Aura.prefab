@@ -131,6 +131,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1826360176404232427, guid: 01d637b1fdc0293498efdcac116f665c,
+        type: 3}
+      propertyPath: placedObjectData
+      value: 
+      objectReference: {fileID: 11400000, guid: 77337a332589fb74fae6de45cac00929,
+        type: 2}
     - target: {fileID: 5111799422788522321, guid: 01d637b1fdc0293498efdcac116f665c,
         type: 3}
       propertyPath: m_Name
@@ -140,6 +146,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8581157019115828669, guid: 01d637b1fdc0293498efdcac116f665c,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01d637b1fdc0293498efdcac116f665c, type: 3}
@@ -155,9 +166,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2da8a9adb7e01a40bd3f7738b8e3662, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &3908724600928972354 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 543681524985648091, guid: 01d637b1fdc0293498efdcac116f665c,
+    type: 3}
+  m_PrefabInstance: {fileID: 3581803334572834201}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4119788677118196613 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 619652724732691996, guid: 01d637b1fdc0293498efdcac116f665c,
+    type: 3}
+  m_PrefabInstance: {fileID: 3581803334572834201}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5090048342675310628 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8581157019115828669, guid: 01d637b1fdc0293498efdcac116f665c,
     type: 3}
   m_PrefabInstance: {fileID: 3581803334572834201}
   m_PrefabAsset: {fileID: 0}
@@ -185,19 +208,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d00cfd08082db4948af483f49d5da5f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <PlaceableObjectType>k__BackingField: {fileID: 11400000, guid: 2c1ee008549c43b45849795ae3f2f171,
-    type: 2}
-  <Selected>k__BackingField: {fileID: 6233325157967716340}
-  <SelectablesEventChannel>k__BackingField: {fileID: 11400000, guid: 3c1fda043d4369741a6aac78f1308909,
-    type: 2}
   maxLevel: 10
   storage: {fileID: 11400000, guid: 71f3ad2114ea85541984677a4e20ebac, type: 2}
   register: {fileID: 11400000, guid: a46e429572f1750448c03c2185fcb337, type: 2}
+  <Name>k__BackingField: Aura
+  <Selected>k__BackingField: {fileID: 6233325157967716340}
+  <Center>k__BackingField: {fileID: 5090048342675310628}
   upgradeBuildingUICommandData: {fileID: 11400000, guid: 52d69491f38836748955741800f7b39c,
     type: 2}
   demolishUICommandData: {fileID: 11400000, guid: a57fb880238e1c348a901aab017e0b09,
     type: 2}
+  buildingCollider: {fileID: 3908724600928972354}
+  <SelectablesEventChannel>k__BackingField: {fileID: 11400000, guid: 3c1fda043d4369741a6aac78f1308909,
+    type: 2}
   bar: {fileID: 1608799034922922546}
+  buildingData: {fileID: 11400000, guid: d97b2c8c8582ef64d8bdfa4fa39ae0f3, type: 2}
   ticksPerSecond: {fileID: 11400000, guid: ccce87ca0d2f89b41834d5a6e0860c1e, type: 2}
   changeAuraUICommandData:
   - {fileID: 11400000, guid: dafe06e3958fbcc4ea7ce98e2fa4b651, type: 2}

@@ -2,10 +2,10 @@ using UnityEngine;
 
 namespace bts {
   public class GridUpdater : MonoBehaviour {
-    [SerializeField] Collider coll;
+    [SerializeField] Collider objectCollider;
     
     public void UpdateGraph() {
-      AstarPath.active?.UpdateGraphs(coll.bounds);
+      AstarPath.active?.UpdateGraphs(objectCollider.bounds);
     }
   }
 }

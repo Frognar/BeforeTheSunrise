@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace bts {
+namespace fro.ValueAssets {
   [CreateAssetMenu(fileName = "Bool Asset", menuName = "Value Assets/Bool")]
   public class BoolAsset : ValueAsset<bool> {
   }

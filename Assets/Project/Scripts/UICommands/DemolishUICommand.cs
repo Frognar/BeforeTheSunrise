@@ -1,4 +1,6 @@
-﻿namespace bts {
+﻿using bts.Gemstones;
+
+namespace bts {
   public class DemolishUICommand : UICommand {
     Building Building { get; }
     GemstoneStorage GemstoneStorage { get; }

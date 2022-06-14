@@ -1,21 +1,24 @@
-﻿using UnityEngine;
+﻿using bts.Gemstones;
+using fro.BuildingSystem;
+using UnityEngine;
 
 namespace bts {
   [CreateAssetMenu(fileName = "BuildCommandData", menuName = "UICommands/Build Command Data")]
   public class BuildUICommandData : UICommandData {
-    [field: SerializeField] public PlacedObjectType BuildingType { get; private set; }
+    [field: SerializeField] public PlacedObjectData BuildingType { get; private set; }
+    [field: SerializeField] public CustomBuildingData CustomBuildingData { get; private set; }
     TooltipData tooltipData;
     public override TooltipData TooltipData => tooltipData;
 
     void OnEnable() {
       if (BuildingType != null) {
-        string header = BuildingType.objectName;
-        string content = BuildingType.objectDescription;
-        if (BuildingType.limit > 0) {
-          content += $"\nCan placed only {BuildingType.limit} of those";
+        string header = BuildingType.Name;
+        string content = BuildingType.Description;
+        if (CustomBuildingData.limit > 0) {
+          content += $"\nCan placed only {CustomBuildingData.limit} of those";
         }
         
-        GemstoneDictionary gemstones = (BuildingType.customData as CustomBuildingData).buildingCosts;
+        GemstoneDictionary gemstones = CustomBuildingData.buildingCosts;
         tooltipData = new TooltipData(header, content, gemstones);
       }
       else {

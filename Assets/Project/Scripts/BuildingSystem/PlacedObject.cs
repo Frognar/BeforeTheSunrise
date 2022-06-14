@@ -9,13 +9,8 @@ namespace fro.BuildingSystem {
     [SerializeField] PlacedObjectData placedObjectData;
     GridCords origin;
 
-    void Awake() {
-      origin = FindObjectOfType<GridBuildingSystem>().Grid.GetCords(transform.position);
-      Invoke(nameof(Destroy), 4f);
-    }
-
-    void Destroy() {
-      Destroy(gameObject);
+    public void Init(GridCords cords) {
+      origin = cords;
     }
 
     void OnEnable() {

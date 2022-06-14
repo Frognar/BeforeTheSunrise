@@ -9,16 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5561f1ef99763774ba1d600990c7f8c0, type: 3}
+  m_Script: {fileID: 11500000, guid: ff3195ffb2862ed4ca7b122c409ef2dc, type: 3}
   m_Name: Generator
   m_EditorClassIdentifier: 
-  objectName: Generator
-  objectDescription: Generates energy
-  prefab: {fileID: 857734234466078923, guid: ea3482dc25565fc4eabbe33dc9c34a87, type: 3}
-  width: 2
-  height: 2
-  objectAffiliation: 4
-  objectType: 2
-  customData: {fileID: 11400000, guid: 74944a60a9fab3e4fab6ecc91a30c378, type: 2}
-  limit: 0
-  placedCount: {fileID: 0}
+  <Name>k__BackingField: Generator
+  <Description>k__BackingField: Generate energy
+  <Width>k__BackingField: 2
+  <Height>k__BackingField: 2
+  <Prefab>k__BackingField: {fileID: 1884389774957948476, guid: ea3482dc25565fc4eabbe33dc9c34a87,
+    type: 3}

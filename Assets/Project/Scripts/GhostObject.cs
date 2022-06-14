@@ -1,4 +1,5 @@
 using fro.BuildingSystem;
+using fro.ValueAssets;
 using UnityEngine;
 
 namespace bts {
@@ -12,9 +13,14 @@ namespace bts {
     [SerializeField] GameObject meshObject;
     [SerializeField] Transform rangeVisuals;
     [SerializeField] BoxCollider boxCollider;
-    GridXZ<GridObject> grid;
     GridBuildingSystem buildingSystem;
-    PlacedObjectType objectType;
+    GridXZ<GridPlacedObject> grid;
+    PlacedObjectData objectType;
+
+    void Awake() {
+      buildingSystem = FindObjectOfType<GridBuildingSystem>();
+      grid = buildingSystem.Grid;
+    }
 
     void OnEnable() {
       inputReader.WorldPositionEvent += UpdatePosition;
@@ -35,12 +41,11 @@ namespace bts {
       meshRenderer.material = canBuild ? canPlaceMaterial : cantPlaceMaterial;
     }
 
-    public void SetUp(PlacedObjectType buildingType) {
+    public void SetUp(PlacedObjectData buildingType, CustomBuildingData buildingData) {
       objectType = buildingType;
-      boxCollider.size = new Vector3(buildingType.width - .1f, .5f, buildingType.height - .1f);
-      CustomBuildingData buildingData = buildingType.customData as CustomBuildingData;
+      boxCollider.size = new Vector3(buildingType.Width - .1f, .5f, buildingType.Height - .1f);
       meshFilter.mesh = buildingData.ghostMesh;
-      meshObject.transform.localPosition = new Vector3(buildingType.width / 2f, 0, buildingType.height / 2f);
+      meshObject.transform.localPosition = new Vector3(buildingType.Width / 2f, 0, buildingType.Height / 2f);
       UpdateMaterial();
       if (buildingData is GeneratorData generatorData) {
         rangeVisuals.gameObject.SetActive(true);
@@ -65,14 +70,6 @@ namespace bts {
       else {
         rangeVisuals.gameObject.SetActive(false);
       }
-    }
-    
-    void Awake() {
-      buildingSystem = FindObjectOfType<GridBuildingSystem>();
-    }
-
-    void Start() {
-      grid = buildingSystem.Grid;
     }
   }
 }

@@ -1,6 +1,6 @@
 using System;
 
-namespace bts {
+namespace bts.Gemstones {
   [Serializable]
   public enum GemstoneType {
     Sapphire = 1,

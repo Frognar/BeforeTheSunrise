@@ -14,34 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <ButtonIcon>k__BackingField: {fileID: 21300000, guid: 982933034b762a3409b93af7c7f56919,
     type: 3}
-  <TooltipData>k__BackingField:
-    <Header>k__BackingField: Cannon
-    <Content>k__BackingField: Uses energy to inflict damage
-    <Gemstones>k__BackingField:
-      reorderableList:
-        canAdd: 1
-        canRemove: 1
-        draggable: 1
-        expandable: 1
-        multipleSelection: 1
-        isExpanded: 1
-        label:
-          m_Text: Keys
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-        headerHeight: 18
-        footerHeight: 13
-        slideEasing: 0.15
-        verticalSpacing: 2
-        showDefaultBackground: 1
-        elementDisplayType: 0
-        elementNameProperty: 
-        elementNameOverride: 
-        elementIcon: {fileID: 0}
-      reqReferences: {fileID: 0}
-      isExpanded: 1
-      _keyValues: 10000000
-      _keys: 10000000
-      _values: 14000000
-  <BuildingType>k__BackingField: {fileID: 11400000, guid: ba20cf2e21044c04784f1616b600d962,
+  <BuildingType>k__BackingField: {fileID: 11400000, guid: d2a29c5db93120d489b2cc5b8d232d14,
+    type: 2}
+  <CustomBuildingData>k__BackingField: {fileID: 11400000, guid: 24ae2e899086b6b4ca09fb91dbdaa283,
     type: 2}

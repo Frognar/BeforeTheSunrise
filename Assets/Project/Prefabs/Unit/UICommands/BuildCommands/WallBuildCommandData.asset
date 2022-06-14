@@ -14,34 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <ButtonIcon>k__BackingField: {fileID: 21300000, guid: a2d994dab358fb545bd02b3d77a57985,
     type: 3}
-  <TooltipData>k__BackingField:
-    <Header>k__BackingField: 
-    <Content>k__BackingField: 
-    <Gemstones>k__BackingField:
-      reorderableList:
-        canAdd: 1
-        canRemove: 1
-        draggable: 1
-        expandable: 1
-        multipleSelection: 1
-        isExpanded: 1
-        label:
-          m_Text: Keys
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-        headerHeight: 18
-        footerHeight: 13
-        slideEasing: 0.15
-        verticalSpacing: 2
-        showDefaultBackground: 1
-        elementDisplayType: 0
-        elementNameProperty: 
-        elementNameOverride: 
-        elementIcon: {fileID: 0}
-      reqReferences: {fileID: 0}
-      isExpanded: 1
-      _keyValues: 01000000
-      _keys: 01000000
-      _values: 14000000
-  <BuildingType>k__BackingField: {fileID: 11400000, guid: 083d8403ac7e1654a89244f65925d29c,
+  <BuildingType>k__BackingField: {fileID: 11400000, guid: 302e9e67b8b15d948ab23941e5043425,
+    type: 2}
+  <CustomBuildingData>k__BackingField: {fileID: 11400000, guid: e20b7ecb9ee232a4589ca2d9363450e0,
     type: 2}

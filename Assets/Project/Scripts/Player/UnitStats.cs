@@ -1,4 +1,5 @@
 ﻿using System;
+using bts.Gemstones;
 using UnityEngine;
 
 namespace bts {

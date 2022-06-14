@@ -1,9 +1,7 @@
 {
-    "name": "BuildingSystem",
-    "rootNamespace": "fro.BuildingSystem",
-    "references": [
-        "GUID:e9b2221b061eba94f8e88f651175a96c"
-    ],
+    "name": "ValueAssets",
+    "rootNamespace": "fro.ValueAssets",
+    "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

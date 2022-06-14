@@ -1,4 +1,5 @@
-﻿using fro.States;
+﻿using bts.Gemstones;
+using fro.States;
 using UnityEngine;
 
 namespace bts {

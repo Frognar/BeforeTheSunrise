@@ -1,3 +1,4 @@
+using fro.ValueAssets;
 using Pathfinding;
 using UnityEngine;
 

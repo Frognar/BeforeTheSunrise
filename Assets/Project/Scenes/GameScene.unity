@@ -13689,9 +13689,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1350800139}
-  - component: {fileID: 1350800138}
-  - component: {fileID: 1350800140}
+  - component: {fileID: 1350800142}
   - component: {fileID: 1350800141}
+  - component: {fileID: 1350800140}
   m_Layer: 0
   m_Name: Grid Building System
   m_TagString: Untagged
@@ -13699,21 +13699,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1350800138
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1350800137}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8065d6facf63f5849ac47b62aec62db5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gridWidth: {fileID: 11400000, guid: 70ae6de4f6684f04eae89c875293b2c2, type: 2}
-  gridHeight: {fileID: 11400000, guid: 70ae6de4f6684f04eae89c875293b2c2, type: 2}
-  cellSize: 1
 --- !u!4 &1350800139
 Transform:
   m_ObjectHideFlags: 0
@@ -13738,16 +13723,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1350800137}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12d7a2ce9b4015342852fd5e11d303f2, type: 3}
+  m_Script: {fileID: 11500000, guid: e85725c90fedaa24bb72005b691e9bad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obstaclePrefab: {fileID: 11400000, guid: 354ecd62c9f1a0545acecae79d93af15, type: 2}
+  obstaclePrefab: {fileID: 11400000, guid: 5c1cef9c3cd9f1a4d9f142a3d21b873e, type: 2}
   resourcesPrefabs:
-  - {fileID: 11400000, guid: 84681dbc79ec6494bba3078746af2600, type: 2}
-  - {fileID: 11400000, guid: 841a352a67276444780669c9c037d315, type: 2}
-  - {fileID: 11400000, guid: 81651d0b4b6473942862d73b2cb321fe, type: 2}
-  - {fileID: 11400000, guid: 3c883a4ce9df1f54582c644a6ed027a3, type: 2}
-  - {fileID: 11400000, guid: a6a22c4fa35d7f14da2badbbd9bba843, type: 2}
+  - {fileID: 11400000, guid: d5fe38259bebdaa4697c6a67992ec9aa, type: 2}
+  - {fileID: 11400000, guid: 67e54935593a8bf469d3b9a6fb1ebba9, type: 2}
+  - {fileID: 11400000, guid: 3410934765b4beb4bad4f4f5a4af5950, type: 2}
+  - {fileID: 11400000, guid: fc2befe5bece28b4e887a0aa6464607c, type: 2}
+  - {fileID: 11400000, guid: 02c0e51c2b48fe847a3e7fe66071033f, type: 2}
 --- !u!114 &1350800141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13757,10 +13742,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 1350800137}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca508e09bd43aa44e86913d1326b7b18, type: 3}
+  m_Script: {fileID: 11500000, guid: bf7b142283b07644abcf33a21fb28df6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parent: {fileID: 1350800139}
+--- !u!114 &1350800142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1350800137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4eb18dab7e823c49bbbf2da7592ac06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <GridWidth>k__BackingField: {fileID: 11400000, guid: 70ae6de4f6684f04eae89c875293b2c2,
+    type: 2}
+  <GridHeight>k__BackingField: {fileID: 11400000, guid: 70ae6de4f6684f04eae89c875293b2c2,
+    type: 2}
+  <CellSize>k__BackingField: 1
+  factory: {fileID: 1350800141}
 --- !u!1 &1351275182
 GameObject:
   m_ObjectHideFlags: 0
@@ -17476,7 +17478,7 @@ MonoBehaviour:
   <SelectablesEventChannel>k__BackingField: {fileID: 11400000, guid: 3c1fda043d4369741a6aac78f1308909,
     type: 2}
   healthComponent: {fileID: 1712183842}
-  gridBuildingSystem: {fileID: 1350800138}
+  gridBuildingSystem: {fileID: 0}
 --- !u!4 &1712183840
 Transform:
   m_ObjectHideFlags: 0

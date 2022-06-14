@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using bts.Gemstones;
+using fro.ValueAssets;
 using UnityEngine;
 
 namespace bts {
@@ -70,6 +72,10 @@ namespace bts {
       }
 
       return data;
+    }
+
+    public override bool IsSameAs(Selectable other) {
+      return other is Mine;
     }
   }
 }

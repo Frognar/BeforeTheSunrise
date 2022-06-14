@@ -9,14 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5561f1ef99763774ba1d600990c7f8c0, type: 3}
+  m_Script: {fileID: 11500000, guid: ff3195ffb2862ed4ca7b122c409ef2dc, type: 3}
   m_Name: Sapphire
   m_EditorClassIdentifier: 
-  objectName: Resources
-  objectDescription: 
-  prefab: {fileID: 5059610452703774294, guid: 8765e47ee309a814e96ec82d0e9e6a75, type: 3}
-  width: 2
-  height: 2
-  objectAffiliation: 1
-  objectType: 8
-  customData: {fileID: 11400000, guid: d3e070d1639da8841aab07d5fb2e1654, type: 2}
+  <Width>k__BackingField: 2
+  <Height>k__BackingField: 2
+  <Prefab>k__BackingField: {fileID: 6049060816088143426, guid: 8765e47ee309a814e96ec82d0e9e6a75,
+    type: 3}

@@ -1,11 +1,14 @@
-﻿using UnityEngine;
+﻿using fro.ValueAssets;
+using fro.BuildingSystem;
+using UnityEngine;
 
 namespace bts {
   public class UnitCommander : Commander<Unit> {
     [SerializeField] BoolAsset canBuild;
     [SerializeField] BoolAsset inBuildMode;
     [SerializeField] GhostObject currentGhost;
-    PlacedObjectType buildingToPlace;
+    PlacedObjectData buildingToPlace;
+    CustomBuildingData customBuildingData;
 
     protected override void Awake() {
       base.Awake();
@@ -49,8 +52,8 @@ namespace bts {
 
     void HandleBuildCommand(Vector3 position) {
       if (receiver.IsSelected) {
-        if (canBuild && receiver.GemstoneStorage.CanAfford((buildingToPlace.customData as CustomBuildingData).buildingCosts)) {
-          SendCommand(new UnitBuildCommand(receiver, buildingToPlace, position));
+        if (canBuild && receiver.GemstoneStorage.CanAfford(customBuildingData.buildingCosts)) {
+          SendCommand(new UnitBuildCommand(receiver, buildingToPlace, customBuildingData, position));
           if (!inputReader.IsCommandQueuingEnabled) {
             ClearBuildingToBuild();
           }
@@ -67,10 +70,11 @@ namespace bts {
       currentGhost.gameObject.SetActive(false);
     }
 
-    public void SetBuildingToBuild(PlacedObjectType buildingType) {
+    public void SetBuildingToBuild(PlacedObjectData buildingType, CustomBuildingData buildingData) {
       if (receiver.IsSelected) {
         buildingToPlace = buildingType;
-        currentGhost.SetUp(buildingType);
+        customBuildingData = buildingData;
+        currentGhost.SetUp(buildingType, buildingData);
         currentGhost.gameObject.SetActive(true);
       }
     }

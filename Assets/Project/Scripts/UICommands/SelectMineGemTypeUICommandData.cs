@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using bts.Gemstones;
+using UnityEngine;
 
 namespace bts {
   [CreateAssetMenu(fileName = "Select Gem Type Command Data", menuName = "UICommands/Select Gem Type Command Data")]

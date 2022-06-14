@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using bts.Gemstones;
+using UnityEngine;
 
 namespace bts {
   [CreateAssetMenu(fileName = "DemolishCommandData", menuName = "UICommands/Demolish Command Data")]

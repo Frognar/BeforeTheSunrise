@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using bts.Gemstones;
 
 namespace bts {
   public class SelectedObjectButton : MonoBehaviour {

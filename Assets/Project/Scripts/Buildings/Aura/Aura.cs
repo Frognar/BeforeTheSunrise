@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using fro.ValueAssets;
 using UnityEngine;
 
 namespace bts {
@@ -124,12 +125,10 @@ namespace bts {
       return devicesInRange;
     }
 
-    public override void Demolish() {
+    public void OnDemolish() {
       foreach (Boostable boostable in boosted) {
         boostable.StopBoosting(BoostType);
       }
-
-      base.Demolish();
     }
 
     public override Dictionary<DataType, object> GetData() {
@@ -147,6 +146,10 @@ namespace bts {
       data.Add(DataType.CurrentEnergy, CurrentEnergy);
       data.Add(DataType.EnergyUsagePerSecond, auraData.energyPerDevicePerSecond * boosted.Count);
       return data;
+    }
+
+    public override bool IsSameAs(Selectable other) {
+      return other is Aura;
     }
   }
 }

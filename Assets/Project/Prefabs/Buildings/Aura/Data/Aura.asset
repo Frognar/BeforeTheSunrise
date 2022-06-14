@@ -9,16 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5561f1ef99763774ba1d600990c7f8c0, type: 3}
+  m_Script: {fileID: 11500000, guid: ff3195ffb2862ed4ca7b122c409ef2dc, type: 3}
   m_Name: Aura
   m_EditorClassIdentifier: 
-  objectName: Aura
-  objectDescription: Bust nearby cannon attack speed
-  prefab: {fileID: 4119788677118196613, guid: 2ef7904ed986a7a4f898944c6fc32bd7, type: 3}
-  width: 2
-  height: 2
-  objectAffiliation: 4
-  objectType: 2
-  customData: {fileID: 11400000, guid: d97b2c8c8582ef64d8bdfa4fa39ae0f3, type: 2}
-  limit: 0
-  placedCount: {fileID: 0}
+  <Name>k__BackingField: Aura
+  <Description>k__BackingField: Boose nearby cannons
+  <Width>k__BackingField: 2
+  <Height>k__BackingField: 2
+  <Prefab>k__BackingField: {fileID: 2949180185091212658, guid: 2ef7904ed986a7a4f898944c6fc32bd7,
+    type: 3}

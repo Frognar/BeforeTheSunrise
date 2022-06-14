@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <ButtonIcon>k__BackingField: {fileID: 21300000, guid: 52c3e67cdaec1cc43bc285aa7957c253,
     type: 3}
-  <BuildingType>k__BackingField: {fileID: 11400000, guid: 407defe914582f34a8bcc2ebed2da10e,
+  <BuildingType>k__BackingField: {fileID: 11400000, guid: 8e15e3873b4173049ba3bf591c09b675,
+    type: 2}
+  <CustomBuildingData>k__BackingField: {fileID: 11400000, guid: 41e1824d3b8d3824bb53eef8385c9466,
     type: 2}

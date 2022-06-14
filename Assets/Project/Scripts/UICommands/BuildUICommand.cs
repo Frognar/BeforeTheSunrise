@@ -1,18 +1,22 @@
-﻿namespace bts {
+﻿using fro.BuildingSystem;
+
+namespace bts {
 
   public class BuildUICommand : UICommand {
+    public CustomBuildingData BuildingData { get; }
     UnitCommander Commander { get; }
-    PlacedObjectType BuildingType { get; }
+    PlacedObjectData BuildingType { get; }
 
     public BuildUICommand(BuildUICommandData data, UnitCommander commander)
       : base(data) {
       Commander = commander;
+      BuildingData = data.CustomBuildingData;
       BuildingType = data.BuildingType;
     }
 
     public override void Execute() {
-      if (BuildingType.CanPlace()) {
-        Commander.SetBuildingToBuild(BuildingType);
+      if (BuildingData.CanPlace()) {
+        Commander.SetBuildingToBuild(BuildingType, BuildingData);
       }
     }
   }

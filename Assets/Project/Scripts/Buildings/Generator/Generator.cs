@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using fro.ValueAssets;
 using UnityEngine;
 
 namespace bts {
@@ -92,9 +93,8 @@ namespace bts {
       }
     }
 
-    public override void Demolish() {
+    public void OnDemolish() {
       StopSFX();
-      base.Demolish();
     }
 
     public override void Select() {

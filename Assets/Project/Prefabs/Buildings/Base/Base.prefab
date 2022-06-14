@@ -62,6 +62,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1826360176404232427, guid: 01d637b1fdc0293498efdcac116f665c,
+        type: 3}
+      propertyPath: placedObjectData
+      value: 
+      objectReference: {fileID: 11400000, guid: 8e15e3873b4173049ba3bf591c09b675,
+        type: 2}
     - target: {fileID: 5111799422788522321, guid: 01d637b1fdc0293498efdcac116f665c,
         type: 3}
       propertyPath: m_Name
@@ -107,6 +113,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 2.5
       objectReference: {fileID: 0}
+    - target: {fileID: 8581157019115828669, guid: 01d637b1fdc0293498efdcac116f665c,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01d637b1fdc0293498efdcac116f665c, type: 3}
 --- !u!1 &693572041935982008 stripped
@@ -127,19 +138,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e29e520466113994caa331a7cf96307a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <PlaceableObjectType>k__BackingField: {fileID: 11400000, guid: 407defe914582f34a8bcc2ebed2da10e,
-    type: 2}
-  <Selected>k__BackingField: {fileID: 2910721147706932868}
-  <SelectablesEventChannel>k__BackingField: {fileID: 11400000, guid: 3c1fda043d4369741a6aac78f1308909,
-    type: 2}
   maxLevel: 10
   storage: {fileID: 11400000, guid: 71f3ad2114ea85541984677a4e20ebac, type: 2}
   register: {fileID: 11400000, guid: a46e429572f1750448c03c2185fcb337, type: 2}
+  <Name>k__BackingField: Base
+  <Selected>k__BackingField: {fileID: 2910721147706932868}
+  <Center>k__BackingField: {fileID: 4055129438060833108}
   upgradeBuildingUICommandData: {fileID: 11400000, guid: 0162643e2b98b2042b04a5cb1b5a913c,
     type: 2}
   demolishUICommandData: {fileID: 11400000, guid: a57fb880238e1c348a901aab017e0b09,
     type: 2}
+  buildingCollider: {fileID: 5249887725553815346}
+  <SelectablesEventChannel>k__BackingField: {fileID: 11400000, guid: 3c1fda043d4369741a6aac78f1308909,
+    type: 2}
   bar: {fileID: 7545314365276181314}
+  buildingData: {fileID: 11400000, guid: 41e1824d3b8d3824bb53eef8385c9466, type: 2}
   statsUpgradeUICommandsDatas:
   - {fileID: 11400000, guid: af9ad46b133c40f469837946c4c7fbd4, type: 2}
   - {fileID: 11400000, guid: 3f2c8153d25cbb4479c5dabcd9a16b5f, type: 2}
@@ -158,9 +171,21 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 5715299259036196073}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &4055129438060833108 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8581157019115828669, guid: 01d637b1fdc0293498efdcac116f665c,
+    type: 3}
+  m_PrefabInstance: {fileID: 5715299259036196073}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5172842374617651957 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 619652724732691996, guid: 01d637b1fdc0293498efdcac116f665c,
+    type: 3}
+  m_PrefabInstance: {fileID: 5715299259036196073}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &5249887725553815346 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 543681524985648091, guid: 01d637b1fdc0293498efdcac116f665c,
     type: 3}
   m_PrefabInstance: {fileID: 5715299259036196073}
   m_PrefabAsset: {fileID: 0}

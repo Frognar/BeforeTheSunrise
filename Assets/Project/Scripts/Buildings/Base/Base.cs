@@ -14,5 +14,9 @@ namespace bts {
         yield return command;
       }
     }
+
+    public override bool IsSameAs(Selectable other) {
+      return other is Base;
+    }
   }
 }

@@ -1,12 +1,13 @@
 using System.Collections.Generic;
+using fro.ValueAssets;
 using UnityEngine;
 
 namespace fro.BuildingSystem {
   public class GridBuildingSystem : MonoBehaviour {
     public GridXZ<GridPlacedObject> Grid { get; private set; }
-    [field: SerializeField] public int GridWidth { get; private set; }
-    [field: SerializeField] public int GridHeight { get; private set; }
-    [field: SerializeField] public float CellSize { get; private set; }
+    [field: SerializeField] public IntAsset GridWidth { get; private set; }
+    [field: SerializeField] public IntAsset GridHeight { get; private set; }
+    [field: SerializeField][field: Range(1f, 50f)] public float CellSize { get; private set; } = 1f;
     [SerializeField] PlacedObjectFactory factory;
     Vector3 gridOrigin;
 
@@ -20,7 +21,7 @@ namespace fro.BuildingSystem {
       GridCords cords = Grid.GetCords(worldPosition);
       List<GridCords> gridPositions = objectData.GetGridPositions(cords);
       List<GridPlacedObject> gridPlacedObjects = GetGridPlacedObjects(gridPositions);
-      return gridPlacedObjects.TrueForAll(o => o.CanBuild());
+      return gridPlacedObjects.TrueForAll(o => o?.CanBuild() ?? false);
     }
 
     List<GridPlacedObject> GetGridPlacedObjects(List<GridCords> gridCords) {
@@ -34,9 +35,13 @@ namespace fro.BuildingSystem {
 
     public void Build(Vector3 worldPosition, PlacedObjectData objectData) {
       GridCords cords = Grid.GetCords(worldPosition);
+      Build(cords, objectData);
+    }
+
+    public void Build(GridCords cords, PlacedObjectData objectData) {
       List<GridCords> gridPositions = objectData.GetGridPositions(cords);
       List<GridPlacedObject> gridPlacedObjects = GetGridPlacedObjects(gridPositions);
-      if (gridPlacedObjects.TrueForAll(o => o.CanBuild())) {
+      if (gridPlacedObjects.TrueForAll(o => o?.CanBuild() ?? false)) {
         PlacedObject obj = factory.Create(cords, objectData, buildingSystem: this);
         gridPlacedObjects.ForEach(o => o.SetObject(obj));
       }

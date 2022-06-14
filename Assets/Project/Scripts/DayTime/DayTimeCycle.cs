@@ -1,5 +1,6 @@
 using System;
 using fro.States;
+using fro.ValueAssets;
 using UnityEngine;
 
 namespace bts {

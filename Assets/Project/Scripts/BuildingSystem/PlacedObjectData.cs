@@ -2,7 +2,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace fro.BuildingSystem {
+  [CreateAssetMenu(fileName="Object Data", menuName = "Building System/Object Data")]
   public class PlacedObjectData : ScriptableObject {
+    [field: SerializeField] public string Name { get; private set; }
+    [field: SerializeField] public string Description { get; private set; }
     [field: SerializeField] public int Width { get; private set; }
     [field: SerializeField] public int Height { get; private set; }
     [field: SerializeField] public PlacedObject Prefab { get; private set; }
