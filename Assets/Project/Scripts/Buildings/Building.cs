@@ -82,6 +82,7 @@ namespace bts {
 
     protected virtual void OnDestroy() {
       register.Unregister(this);
+      SelectablesEventChannel.Invoke(this);
     }
 
     protected virtual IEnumerable<UICommand> CreateUICommands() {
