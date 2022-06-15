@@ -2,14 +2,14 @@
 using UnityEngine;
 
 namespace bts {
-  public class DeathScene : MonoBehaviour {
+  public class DeathPanel : MonoBehaviour {
     [SerializeField] LoadSceneEventChannel loadSceneEventChannel;
     [SerializeField] InputReader inputReader;
     [SerializeField] IntAsset dayCounter;
     [SerializeField] TMPro.TMP_Text survived;
     [SerializeField] TMPro.TMP_Text best;
 
-    void OnEnable() {
+    public void Show() {
       inputReader.DisableGameplayInput();
       int bestNight = PlayerPrefs.GetInt("Best", 0);
       if (bestNight < dayCounter - 1) {
@@ -22,8 +22,7 @@ namespace bts {
     }
 
     public void BackToMenu() {
-      loadSceneEventChannel.RaiseOnLoadScene(ScenesNames.MainMenu);
-      loadSceneEventChannel.RaiseOnUnloadScene(ScenesNames.DeathScene);
+      loadSceneEventChannel.LoadMenu();
     }
   }
 }

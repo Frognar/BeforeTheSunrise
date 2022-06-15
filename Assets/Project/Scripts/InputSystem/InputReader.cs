@@ -140,15 +140,13 @@ namespace bts {
     public void EnableGameplayInput() {
       inputControls.Player.Enable();
       inputControls.Camera.Enable();
-      DisableMenuInput();
     }
 
-    void DisableMenuInput() {
+    public void DisableMenuInput() {
       inputControls.Menu.Disable();
     }
 
     public void EnableMenuInput() {
-      DisableGameplayInput();
       inputControls.Menu.Enable();
     }
 

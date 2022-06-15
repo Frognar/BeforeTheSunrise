@@ -32,8 +32,7 @@ namespace bts {
         StopCoroutine(musicCoroutine);
       }
 
-      loadSceneEventChannel.RaiseOnLoadScene(ScenesNames.GameScene);
-      loadSceneEventChannel.RaiseOnLoadScene(ScenesNames.RewardScene, unloadCurrent: false);
+      loadSceneEventChannel.LoadGame();
     }
 
     public void Exit() {

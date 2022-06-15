@@ -1,10 +1,9 @@
-﻿using UnityEditor;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace bts {
   public class DeathController : MonoBehaviour {
     [SerializeField] VoidEventChannel deathEventChannel;
-    [SerializeField] LoadSceneEventChannel loadSceneEventChannel;
+    [SerializeField] DeathPanel deathPanel;
 
     void OnEnable() {
       deathEventChannel.OnEventInvoked += OnDeath;
@@ -15,7 +14,7 @@ namespace bts {
     }
 
     void OnDeath(object sender, System.EventArgs e) {
-      loadSceneEventChannel.RaiseOnLoadScene(ScenesNames.DeathScene, unloadCurrent: false);
+      deathPanel.Show();
     }
   }
 }

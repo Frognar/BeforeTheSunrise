@@ -3,9 +3,9 @@ using UnityEngine;
 using UnityEngine.UI;
 
 namespace bts {
-  public class RewardPicker : MonoBehaviour {
+  public class RewardPanel : MonoBehaviour {
     [SerializeField] VoidEventChannel onStartChannel;
-    [SerializeField] LoadSceneEventChannel loadSceneEventChannel;
+    [SerializeField] Canvas rewardCanvas;
     [SerializeField] List<Button> buttons;
     [SerializeField] InputReader inputReader;
     [SerializeField] UnitStats unitStats;
@@ -15,6 +15,7 @@ namespace bts {
     int selectedIndex = -1;
 
     void Awake() {
+      inputReader.DisableGameplayInput();
       DisableAllButtons();
       const int rewardInterval = 5;
       int bestNight = PlayerPrefs.GetInt("Best", 0);
@@ -27,6 +28,8 @@ namespace bts {
           break;
         }
       }
+
+      rewardCanvas.enabled = true;
     }
 
     void DisableAllButtons() {
@@ -38,7 +41,7 @@ namespace bts {
 
     public void StartGame() {
       inputReader.EnableGameplayInput();
-      loadSceneEventChannel.RaiseOnUnloadScene(ScenesNames.RewardScene);
+      rewardCanvas.enabled = false;
       onStartChannel.Invoke();
     }
 

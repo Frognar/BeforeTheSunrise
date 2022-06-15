@@ -1,28 +1,28 @@
-﻿using UnityEditor;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace bts {
   public class InGameOptionMenu : OptionMenu {
+    [SerializeField] Canvas inGameOptionCanves;
     [SerializeField] LoadSceneEventChannel loadSceneEventChannel;
     [SerializeField] InputReader inputReader;
 
-    void OnEnable() {
+    public void ShowMenu() {
       inputReader.EnableMenuInput();
+      inputReader.DisableGameplayInput();
       inputReader.OnCloseEvent += CloseMenu;
       Time.timeScale = 0;
+      inGameOptionCanves.enabled = true;
     }
 
     public void BackToMenu() {
-      loadSceneEventChannel.RaiseOnLoadScene(ScenesNames.MainMenu);
-      loadSceneEventChannel.RaiseOnUnloadScene(ScenesNames.InGameOptions);
+      CloseMenu();
+      loadSceneEventChannel.LoadMenu();
     }
 
     public void CloseMenu() {
+      inGameOptionCanves.enabled = false;
       inputReader.EnableGameplayInput();
-      loadSceneEventChannel.RaiseOnUnloadScene(ScenesNames.InGameOptions);
-    }
-
-    void OnDisable() {
+      inputReader.DisableMenuInput();
       inputReader.OnCloseEvent -= CloseMenu;
       Time.timeScale = 1f;
     }

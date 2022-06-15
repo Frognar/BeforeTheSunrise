@@ -132,8 +132,6 @@ namespace bts {
       if (IsSelected) {
         SelectablesEventChannel.Invoke(this);
       }
-
-      deathEventChannel.Invoke();
     }
 
     public void TakeDamage(float amount) {
@@ -145,6 +143,7 @@ namespace bts {
       
       if (IsDead) {
         SFXEventChannel.RaisePlayEvent(DieSFX, AudioConfig, Position);
+        deathEventChannel.Invoke();
         Destroy(gameObject);
       }
       else {

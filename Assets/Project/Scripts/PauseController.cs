@@ -1,9 +1,8 @@
-using UnityEditor;
 using UnityEngine;
 
 namespace bts {
   public class PauseController : MonoBehaviour {
-    [SerializeField] LoadSceneEventChannel loadSceneEventChannel;
+    [SerializeField] InGameOptionMenu inGameOptionMenu;
     [SerializeField] InputReader inputReader;
 
     void OnEnable() {
@@ -15,7 +14,7 @@ namespace bts {
     }
 
     void OnEnterPause() {
-      loadSceneEventChannel.RaiseOnLoadScene(ScenesNames.InGameOptions, unloadCurrent: false);
+      inGameOptionMenu.ShowMenu();
     }
   }
 }
