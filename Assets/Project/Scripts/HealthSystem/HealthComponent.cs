@@ -10,6 +10,16 @@ namespace fro.HealthSystem {
       healthBar.SetUp(Health);
     }
 
+    public void ChangeMaxHealth(float maxHealth) {
+      Health.ChangeMaxHealth(maxHealth);
+    }
+    
+    public void ResetHealth() {
+      if (Health != null) {
+        Health.Reset();
+      }
+    }
+
     public void Damage(float amount) {
       if (Health != null) {
         Health.Damage(amount);

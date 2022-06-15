@@ -7,6 +7,9 @@ using UnityEngine.Pool;
 
 namespace bts {
   public class Enemy : MonoBehaviour, Selectable, Damageable {
+    [SerializeField] RandomGemstoneGiver randomGemstoneGiver;
+    
+    
     [SerializeField] PopupTextEventChannel popupTextEventChannel;
     public event Action<Dictionary<DataType, object>> OnDataChange = delegate { };
     [SerializeField][Range(0, 1)] float addResourceChance = 0.35f;
@@ -25,8 +28,7 @@ namespace bts {
     [field: SerializeField] public GameObject Selected { get; private set; }
     
     public bool IsDead { get; private set; }
-    public bool IsIntact => Health.IsInFullHealth;
-    public Health Health => HealthComponent.Health;
+    public bool IsIntact => HealthComponent.Health.IsInFullHealth;
     [field: SerializeField] public HealthComponent HealthComponent { get; private set; }
 
     public string Name => "Enemy";
@@ -58,8 +60,8 @@ namespace bts {
     void OnEnable() {
       IsDead = false;
       wasPooled = false;
-      Health.ChangeMaxHealth(EnemyData.MaxHealth);
-      Health.Reset();
+      HealthComponent.ChangeMaxHealth(EnemyData.MaxHealth);
+      HealthComponent.ResetHealth();
     }
 
     void OnDestroy() {
@@ -98,51 +100,37 @@ namespace bts {
     }
 
     public Dictionary<DataType, object> GetData() {
-      return new Dictionary<DataType, object>() {
-        { DataType.Name, Name },
-        { DataType.MaxHealth, Health.MaxHealth },
-        { DataType.CurrentHealth, Health.CurrentHealth },
-        { DataType.DamagePerSecond, EnemyData.DamagePerSecond },
-        { DataType.MovementSpeed, EnemyData.MovementSpeed },
-      };
+      Dictionary<DataType, object> data = GetHealthData();
+      data.Add(DataType.Name, Name);
+      data.Add(DataType.DamagePerSecond, EnemyData.DamagePerSecond);
+      data.Add(DataType.MovementSpeed, EnemyData.MovementSpeed);
+      return data;
     }
 
     public void TakeDamage(float amount) {
-      Health.Damage(amount);
-      OnDataChange.Invoke(new Dictionary<DataType, object>() {
-        { DataType.MaxHealth, Health.MaxHealth },
-        { DataType.CurrentHealth, Health.CurrentHealth }
-      });
-      
-      if (!IsDead && Health.IsDead) {
+      HealthComponent.Damage(amount);
+      OnDataChange.Invoke(GetHealthData());
+      if (!IsDead && HealthComponent.Health.IsDead) {
         IsDead = true;
         if (Selected.activeSelf) {
           SelectablesEventChannel.Invoke(this);
         }
 
-        if (UnityEngine.Random.value < addResourceChance) {
-          GemstoneType type = storage.GetRandomType();
-          int count = UnityEngine.Random.Range(1, 3);
-          storage.Store(type, count);
-          PopupTextParameters popupParams = new PopupTextParameters() {
-            Position = Center.position,
-            GemstoneType = type,
-            Text = $"+{count}"
-          };
-
-          popupTextEventChannel.RaiseSpawnEvent(PopupTextConfiguration.Default, popupParams);
-        }
-        
+        randomGemstoneGiver.Give();
         Release();
       }
     }
 
     public void Heal(float amount) {
-      Health.Heal(amount);
-      OnDataChange.Invoke(new Dictionary<DataType, object>() {
-        { DataType.MaxHealth, Health.MaxHealth },
-        { DataType.CurrentEnergy, Health.CurrentHealth }
-      });
+      HealthComponent.Heal(amount);
+      OnDataChange.Invoke(GetHealthData());
+    }
+
+    Dictionary<DataType, object> GetHealthData() {
+      return new Dictionary<DataType, object>() {
+        { DataType.MaxHealth, HealthComponent.GetMaxHealth() },
+        { DataType.CurrentHealth, HealthComponent.GetCurrentHealth() }
+      };
     }
   }
 }

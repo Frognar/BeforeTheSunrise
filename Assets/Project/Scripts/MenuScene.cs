@@ -11,6 +11,7 @@ namespace bts {
     Coroutine musicCoroutine;
 
     void Start() {
+      inputReader.DisableGameplayInput();
       inputReader.EnableMenuInput();
       RequestPlayMusic();
     }

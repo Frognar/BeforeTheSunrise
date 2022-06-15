@@ -1,14 +1,11 @@
 using System;
 using System.Collections.Generic;
 using fro.HealthSystem;
-using fro.ValueAssets;
 using UnityEngine;
 using UnityEngine.Pool;
 
 namespace bts {
   public class EnemySpawner : MonoBehaviour, Selectable, Damageable {
-    [field: SerializeField] public EnemyData EnemyData { get; private set; }
-    [field: SerializeField] public IntAsset DayCounter { get; private set; }
     public event Action<Dictionary<DataType, object>> OnDataChange = delegate { };
     [field: SerializeField] public VoidEventChannel DayStarted { get; private set; }
     [field: SerializeField] public VoidEventChannel NightStarted { get; private set; }
@@ -19,16 +16,15 @@ namespace bts {
     public ObjectPool<Enemy> EnemyPool { get; private set; }
     [field: SerializeField] public Sprite Icon { get; private set; }
 
-    public string Name => "Big Bad Boi";
+    public string Name => "Spawner";
     public Affiliation ObjectAffiliation => Affiliation.Enemy;
     public Type ObjectType => Type.Building;
     [field: SerializeField] public Transform Center { get; private set; }
     [field: SerializeField] public GameObject Selected { get; private set; }
     [field: SerializeField] public SelectablesEventChannel SelectablesEventChannel { get; private set; }
     public Vector3 Position => Center.position;
-    public bool IsDead => Health.IsDead;
-    public bool IsIntact => Health.IsInFullHealth;
-    Health Health => healthComponent.Health;
+    public bool IsDead => healthComponent.Health.IsDead;
+    public bool IsIntact => healthComponent.Health.IsInFullHealth;
     [SerializeField] HealthComponent healthComponent;
     public Bounds Bounds => spawnerCollider.bounds;
     Collider spawnerCollider;
@@ -88,7 +84,7 @@ namespace bts {
     }
 
     public void TakeDamage(float amount) {
-      Health.Damage(amount);
+      healthComponent.Damage(amount);
       OnDataChange.Invoke(GetHealthData());
       
       if (IsDead && Selected.activeSelf) {
@@ -97,14 +93,14 @@ namespace bts {
     }
 
     public void Heal(float amount) {
-      Health.Heal(amount);
+      healthComponent.Heal(amount);
       OnDataChange.Invoke(GetHealthData());
     }
 
     Dictionary<DataType, object> GetHealthData() {
       return new Dictionary<DataType, object>() {
-        { DataType.MaxHealth, Health.MaxHealth },
-        { DataType.CurrentHealth, Health.CurrentHealth }
+        { DataType.MaxHealth, healthComponent.GetMaxHealth() },
+        { DataType.CurrentHealth, healthComponent.GetCurrentHealth() }
       };
     }
   }

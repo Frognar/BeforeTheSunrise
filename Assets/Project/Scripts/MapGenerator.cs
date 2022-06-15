@@ -9,6 +9,7 @@ namespace fro.bts {
 
     [SerializeField] PlacedObjectData obstaclePrefab;
     [SerializeField] List<PlacedObjectData> resourcesPrefabs;
+    [SerializeField] PlacedObjectData spawner;
     [SerializeField] GridBuildingSystem gridBuildingSystem;
     public float Progress { get; private set; }
     public bool IsDone { get; private set; }
@@ -49,6 +50,9 @@ namespace fro.bts {
         }
       }
 
+      yield return null;
+      GridCords spawnerCords = new GridCords((grid.Width - spawner.Width) / 2, (grid.Height - spawner.Height) / 2);
+      gridBuildingSystem.Build(spawnerCords, spawner); 
       IsDone = true;
     }
   }
