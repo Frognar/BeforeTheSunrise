@@ -5,7 +5,7 @@ using fro.HealthSystem;
 using UnityEngine;
 
 namespace bts {
-  public abstract class Building : MonoBehaviour, Damageable, Selectable {
+  public abstract class Building : MonoBehaviour, Damageable, Selectable, Loggable {
     public event Action<Dictionary<DataType, object>> OnDataChange = delegate { };
     public void InvokeDataChange(Dictionary<DataType, object> data) {
       OnDataChange.Invoke(data);
@@ -125,6 +125,10 @@ namespace bts {
 
     public void DestroySelf() {
       Destroy(gameObject);
+    }
+
+    public string GetLogData() {
+      return $"{Name}: {BuildingLevel}";
     }
   }
 }

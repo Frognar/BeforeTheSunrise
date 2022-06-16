@@ -7531,6 +7531,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d95cc452251359478d03c8fe127793a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathCanvas: {fileID: 595040248}
   loadSceneEventChannel: {fileID: 11400000, guid: 987e2c46a9978b3498f7d442d22d5b01,
     type: 2}
   inputReader: {fileID: 11400000, guid: 7f3cdf2a68e3d264f899e1146937e4de, type: 2}
@@ -12664,6 +12665,98 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1073500050}
   m_CullTransparentMesh: 1
+--- !u!1 &1082369967
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1082369968}
+  - component: {fileID: 1082369972}
+  - component: {fileID: 1082369971}
+  - component: {fileID: 1082369970}
+  - component: {fileID: 1082369969}
+  m_Layer: 0
+  m_Name: Logger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1082369968
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1082369967}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1141388426}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1082369969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1082369967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51906641fd362ea4ab58cd849bd89422, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats: {fileID: 11400000, guid: 473aeb6e63a233443996c3c50046d0e2, type: 2}
+--- !u!114 &1082369970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1082369967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 755fd0b7a41dfd34c9e3ce63ff79b68c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildingRegister: {fileID: 11400000, guid: a46e429572f1750448c03c2185fcb337, type: 2}
+--- !u!114 &1082369971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1082369967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 319a0aff1e3f00a418285d3064c63542, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  storage: {fileID: 11400000, guid: 71f3ad2114ea85541984677a4e20ebac, type: 2}
+--- !u!114 &1082369972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1082369967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f3f511071b19a24f9dd049afa13cf2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onDayStarted: {fileID: 11400000, guid: ba696d58e6b750a4396f8d5fba9a80ea, type: 2}
+  onDeath: {fileID: 11400000, guid: 09cac3959e5e5b9478998e9caf131d73, type: 2}
+  storageLogger: {fileID: 1082369971}
+  buildingLogger: {fileID: 1082369970}
+  updateLogger: {fileID: 1082369969}
+  dayCounter: {fileID: 11400000, guid: 66a61fb9cba60a74681af7f063da0796, type: 2}
 --- !u!1001 &1085200097
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13711,6 +13804,7 @@ Transform:
   - {fileID: 170338021}
   - {fileID: 1646519625}
   - {fileID: 1735304643}
+  - {fileID: 1082369968}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -13756,7 +13850,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0236f4f347ea64244b0c5dc5c1d17e70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inGameOptionMenu: {fileID: 0}
+  inGameOptionMenu: {fileID: 1737759328}
   inputReader: {fileID: 11400000, guid: 7f3cdf2a68e3d264f899e1146937e4de, type: 2}
 --- !u!114 &1141388429
 MonoBehaviour:
@@ -13771,7 +13865,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathEventChannel: {fileID: 11400000, guid: 09cac3959e5e5b9478998e9caf131d73, type: 2}
-  deathPanel: {fileID: 0}
+  deathPanel: {fileID: 595040250}
 --- !u!1 &1144527818
 GameObject:
   m_ObjectHideFlags: 0

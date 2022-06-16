@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 2427241524743276545}
   - component: {fileID: 8432653381226941161}
   - component: {fileID: 4752014829890575171}
+  - component: {fileID: 2385778882336397712}
   m_Layer: 9
   m_Name: Enemy
   m_TagString: Untagged
@@ -53,6 +54,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa30bd7bf44d2a64fb6076234a8d3ef4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  randomGemstoneGiver: {fileID: 2385778882336397712}
   popupTextEventChannel: {fileID: 11400000, guid: 77c020c6fa375c541a7d0b71eb927179,
     type: 2}
   addResourceChance: 0.35
@@ -193,6 +195,25 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0.5, z: 0}
+--- !u!114 &2385778882336397712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2661493301678520050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00941a6f7b5dcd346a1316651ff41672, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  popupTextEventChannel: {fileID: 11400000, guid: 77c020c6fa375c541a7d0b71eb927179,
+    type: 2}
+  storage: {fileID: 11400000, guid: 71f3ad2114ea85541984677a4e20ebac, type: 2}
+  addResourceChance: 0.3
+  minValue: 2
+  maxValue: 5
+  center: {fileID: 2661493302193893937}
 --- !u!1 &2661493302193893942
 GameObject:
   m_ObjectHideFlags: 0

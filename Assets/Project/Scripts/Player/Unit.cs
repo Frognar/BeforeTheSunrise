@@ -66,9 +66,8 @@ namespace bts {
     public Vector3 Position => transform.position;
     Collider unitCollider;
     public Bounds Bounds => unitCollider.bounds;
-    public bool IsDead => Health.IsDead;
-    public bool IsIntact => Health.IsInFullHealth;
-    public Health Health => HealthComponent.Health;
+    public bool IsDead => HealthComponent.Health.IsDead;
+    public bool IsIntact => HealthComponent.Health.IsInFullHealth;
     [field: SerializeField] public HealthComponent HealthComponent { get; private set; }
 
     StateMachine<Unit> stateMachine;
@@ -119,13 +118,11 @@ namespace bts {
     }
 
     public Dictionary<DataType, object> GetData() {
-      return new Dictionary<DataType, object>() {
-        { DataType.Name, Name },
-        { DataType.MaxHealth, Health.MaxHealth },
-        { DataType.CurrentHealth, Health.CurrentHealth },
-        { DataType.MovementSpeed, stats.MovementSpeed },
-        { DataType.DamagePerSecond, stats.damageAmount / stats.timeBetweenAttacks },
-      };
+      Dictionary<DataType, object> data = GetHealthData();
+      data.Add(DataType.Name, Name );
+      data.Add(DataType.MovementSpeed, stats.MovementSpeed );
+      data.Add(DataType.DamagePerSecond, stats.damageAmount / stats.timeBetweenAttacks);
+      return data;
     }
 
     void OnDestroy() {
@@ -135,11 +132,8 @@ namespace bts {
     }
 
     public void TakeDamage(float amount) {
-      Health.Damage(amount);
-      OnDataChange.Invoke(new Dictionary<DataType, object>() {
-        { DataType.MaxHealth, Health.MaxHealth },
-        { DataType.CurrentHealth, Health.CurrentHealth }
-      });
+      HealthComponent.Damage(amount);
+      OnDataChange.Invoke(GetHealthData());
       
       if (IsDead) {
         SFXEventChannel.RaisePlayEvent(DieSFX, AudioConfig, Position);
@@ -152,11 +146,15 @@ namespace bts {
     }
 
     public void Heal(float amount) {
-      Health.Heal(amount);
-      OnDataChange.Invoke(new Dictionary<DataType, object>() {
-        { DataType.MaxHealth, Health.MaxHealth },
-        { DataType.CurrentHealth, Health.CurrentHealth }
-      });
+      HealthComponent.Heal(amount);
+      OnDataChange.Invoke(GetHealthData());
+    }
+
+    Dictionary<DataType, object> GetHealthData() {
+      return new Dictionary<DataType, object>() {
+        { DataType.MaxHealth, HealthComponent.GetMaxHealth() },
+        { DataType.CurrentHealth, HealthComponent.GetCurrentHealth() }
+      };
     }
 
     public bool IsFree() {
@@ -169,7 +167,7 @@ namespace bts {
     }
 
     void UpgradeHealth() {
-      Health.ChangeMaxHealth(stats.MaxHealth);
+      HealthComponent.ChangeMaxHealth(stats.MaxHealth);
     }
 
     void UpgradeSpeed() {

@@ -5,19 +5,19 @@ using UnityEngine;
 namespace bts {
   public class BuildingRegister : ScriptableObject {
     public int CurrentTechnologyLevel => Bases.Any() ? Bases.Max(b => b.BuildingLevel) : 0;
-    IEnumerable<Building> Bases => buildings.Where(b => b is Base);
-    List<Building> buildings;
+    IEnumerable<Building> Bases => Buildings.Where(b => b is Base);
+    public List<Building> Buildings { get; private set; }
 
     void OnEnable() {
-      buildings = new List<Building>();
+      Buildings = new List<Building>();
     }
 
     public void Register(Building building) {
-      buildings.Add(building);
+      Buildings.Add(building);
     }
 
     public void Unregister(Building building) {
-      _ = buildings.Remove(building);
+      _ = Buildings.Remove(building);
     }
   }
 }

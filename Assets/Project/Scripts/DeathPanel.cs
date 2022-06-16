@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace bts {
   public class DeathPanel : MonoBehaviour {
+    [SerializeField] Canvas deathCanvas;
     [SerializeField] LoadSceneEventChannel loadSceneEventChannel;
     [SerializeField] InputReader inputReader;
     [SerializeField] IntAsset dayCounter;
@@ -10,6 +11,7 @@ namespace bts {
     [SerializeField] TMPro.TMP_Text best;
 
     public void Show() {
+      deathCanvas.enabled = true;
       inputReader.DisableGameplayInput();
       int bestNight = PlayerPrefs.GetInt("Best", 0);
       if (bestNight < dayCounter - 1) {
