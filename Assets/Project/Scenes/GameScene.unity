@@ -7999,6 +7999,7 @@ GameObject:
   - component: {fileID: 657447543}
   - component: {fileID: 657447542}
   - component: {fileID: 657447544}
+  - component: {fileID: 657447545}
   m_Layer: 0
   m_Name: Selector
   m_TagString: Untagged
@@ -8137,6 +8138,20 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 1
+--- !u!114 &657447545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 657447540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8740fa102c6f4804e82fac00c00340d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputReader: {fileID: 11400000, guid: 7f3cdf2a68e3d264f899e1146937e4de, type: 2}
+  selector: {fileID: 657447542}
 --- !u!1001 &659488287
 PrefabInstance:
   m_ObjectHideFlags: 0

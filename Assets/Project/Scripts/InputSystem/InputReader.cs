@@ -155,5 +155,87 @@ namespace bts {
       inputControls.Camera.Disable();
       ScreenPosition = new Vector2(Screen.width / 2, Screen.height / 2);
     }
+
+    public class GroupSelectionEventArgs : EventArgs {
+      public int GroupId { get; }
+      public bool ShouldSave { get; }
+
+      public GroupSelectionEventArgs(int groupId, bool shouldSave) {
+        GroupId = groupId;
+        ShouldSave = shouldSave;
+      }
+    }
+
+    public event EventHandler<GroupSelectionEventArgs> GroupSelectionEvent = delegate { };
+    bool saveSelection;
+
+    public void OnSaveSelectionGroup(InputAction.CallbackContext context) {
+      if (context.performed) {
+        saveSelection = true;
+      }
+      else if (context.canceled) {
+        saveSelection = false;
+      }
+    }
+
+    public void OnSelectionGroup1(InputAction.CallbackContext context) {
+      if (context.performed) {
+        GroupSelectionEvent.Invoke(this, new GroupSelectionEventArgs(1, saveSelection));
+      }
+    }
+
+    public void OnSelectionGroup2(InputAction.CallbackContext context) {
+      if (context.performed) {
+        GroupSelectionEvent.Invoke(this, new GroupSelectionEventArgs(2, saveSelection));
+      }
+    }
+
+    public void OnSelectionGroup3(InputAction.CallbackContext context) {
+      if (context.performed) {
+        GroupSelectionEvent.Invoke(this, new GroupSelectionEventArgs(3, saveSelection));
+      }
+    }
+
+    public void OnSelectionGroup4(InputAction.CallbackContext context) {
+      if (context.performed) {
+        GroupSelectionEvent.Invoke(this, new GroupSelectionEventArgs(4, saveSelection));
+      }
+    }
+
+    public void OnSelectionGroup5(InputAction.CallbackContext context) {
+      if (context.performed) {
+        GroupSelectionEvent.Invoke(this, new GroupSelectionEventArgs(5, saveSelection));
+      }
+    }
+
+    public void OnSelectionGroup6(InputAction.CallbackContext context) {
+      if (context.performed) {
+        GroupSelectionEvent.Invoke(this, new GroupSelectionEventArgs(6, saveSelection));
+      }
+    }
+
+    public void OnSelectionGroup7(InputAction.CallbackContext context) {
+      if (context.performed) {
+        GroupSelectionEvent.Invoke(this, new GroupSelectionEventArgs(7, saveSelection));
+      }
+    }
+
+    public void OnSelectionGroup8(InputAction.CallbackContext context) {
+      if (context.performed) {
+        GroupSelectionEvent.Invoke(this, new GroupSelectionEventArgs(8, saveSelection));
+      }
+    }
+
+    public void OnSelectionGroup9(InputAction.CallbackContext context) {
+      if (context.performed) {
+        GroupSelectionEvent.Invoke(this, new GroupSelectionEventArgs(9, saveSelection));
+      }
+    }
+
+    public void OnSelectionGroup10(InputAction.CallbackContext context) {
+      if (context.performed) {
+        GroupSelectionEvent.Invoke(this, new GroupSelectionEventArgs(0, saveSelection));
+      }
+    }
   }
 }

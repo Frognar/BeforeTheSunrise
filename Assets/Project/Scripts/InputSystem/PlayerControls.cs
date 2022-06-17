@@ -89,6 +89,105 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SaveSelectionGroup"",
+                    ""type"": ""Button"",
+                    ""id"": ""70ee3ca6-87a6-45cf-bd76-5ed126c256f3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SelectionGroup1"",
+                    ""type"": ""Button"",
+                    ""id"": ""5fe60bf0-c65a-40fa-8733-f1a641bc3515"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SelectionGroup2"",
+                    ""type"": ""Button"",
+                    ""id"": ""59885f15-6116-434c-8639-42f994b75891"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SelectionGroup3"",
+                    ""type"": ""Button"",
+                    ""id"": ""a2721bc1-bfc8-48d0-aac1-cc6f5c39a0b5"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SelectionGroup4"",
+                    ""type"": ""Button"",
+                    ""id"": ""9c536be7-3103-4e4e-ac68-9c17e8583f34"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SelectionGroup5"",
+                    ""type"": ""Button"",
+                    ""id"": ""cd3332e4-04f4-435d-9a3a-3103ce6f36dd"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SelectionGroup6"",
+                    ""type"": ""Button"",
+                    ""id"": ""8fcda08a-3244-4c8a-8b7d-d81bf0ea07f8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SelectionGroup7"",
+                    ""type"": ""Button"",
+                    ""id"": ""f37cdedc-5d00-4c25-ba31-e866c0d06ac1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SelectionGroup8"",
+                    ""type"": ""Button"",
+                    ""id"": ""1944d9c5-5431-4984-b95e-43b14dc045bc"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SelectionGroup9"",
+                    ""type"": ""Button"",
+                    ""id"": ""9faabd42-cca3-4be2-a868-240f891b3132"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SelectionGroup10"",
+                    ""type"": ""Button"",
+                    ""id"": ""88564dec-e7b3-43f1-8318-a14839e11778"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -166,6 +265,127 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e44f20eb-7e2a-4af1-9c9d-1d7ebe7fb720"",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SaveSelectionGroup"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9a3cdc54-bf8e-4c4b-8473-ae0c3503572d"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SelectionGroup1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3764737e-1c0c-46ed-984a-b4d26fd83578"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SelectionGroup2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c2eee9ec-d3de-4c28-b688-fc9db45dc222"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SelectionGroup3"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""91975025-333b-42c5-a656-73ff94b18a56"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SelectionGroup4"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""62585aa7-9f3e-44c3-a63c-98672fa144ef"",
+                    ""path"": ""<Keyboard>/5"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SelectionGroup5"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e9577b80-bd17-48e7-b8da-b1d5688b0bdc"",
+                    ""path"": ""<Keyboard>/6"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SelectionGroup6"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7f5fee91-6a63-40ea-9eca-c2f7f1d2a161"",
+                    ""path"": ""<Keyboard>/7"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SelectionGroup7"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""39e95503-1569-43ea-bc16-b14271ee4324"",
+                    ""path"": ""<Keyboard>/8"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SelectionGroup8"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9707aebc-2ed1-47c7-8db3-859e6f166b72"",
+                    ""path"": ""<Keyboard>/9"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SelectionGroup9"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""73666b97-2341-445f-88e8-3cecadf2ae55"",
+                    ""path"": ""<Keyboard>/0"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SelectionGroup10"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -339,6 +559,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Player_StartSelecting = m_Player.FindAction("StartSelecting", throwIfNotFound: true);
         m_Player_StopSelecting = m_Player.FindAction("StopSelecting", throwIfNotFound: true);
         m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
+        m_Player_SaveSelectionGroup = m_Player.FindAction("SaveSelectionGroup", throwIfNotFound: true);
+        m_Player_SelectionGroup1 = m_Player.FindAction("SelectionGroup1", throwIfNotFound: true);
+        m_Player_SelectionGroup2 = m_Player.FindAction("SelectionGroup2", throwIfNotFound: true);
+        m_Player_SelectionGroup3 = m_Player.FindAction("SelectionGroup3", throwIfNotFound: true);
+        m_Player_SelectionGroup4 = m_Player.FindAction("SelectionGroup4", throwIfNotFound: true);
+        m_Player_SelectionGroup5 = m_Player.FindAction("SelectionGroup5", throwIfNotFound: true);
+        m_Player_SelectionGroup6 = m_Player.FindAction("SelectionGroup6", throwIfNotFound: true);
+        m_Player_SelectionGroup7 = m_Player.FindAction("SelectionGroup7", throwIfNotFound: true);
+        m_Player_SelectionGroup8 = m_Player.FindAction("SelectionGroup8", throwIfNotFound: true);
+        m_Player_SelectionGroup9 = m_Player.FindAction("SelectionGroup9", throwIfNotFound: true);
+        m_Player_SelectionGroup10 = m_Player.FindAction("SelectionGroup10", throwIfNotFound: true);
         // Camera
         m_Camera = asset.FindActionMap("Camera", throwIfNotFound: true);
         m_Camera_Focus = m_Camera.FindAction("Focus", throwIfNotFound: true);
@@ -416,6 +647,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_StartSelecting;
     private readonly InputAction m_Player_StopSelecting;
     private readonly InputAction m_Player_Pause;
+    private readonly InputAction m_Player_SaveSelectionGroup;
+    private readonly InputAction m_Player_SelectionGroup1;
+    private readonly InputAction m_Player_SelectionGroup2;
+    private readonly InputAction m_Player_SelectionGroup3;
+    private readonly InputAction m_Player_SelectionGroup4;
+    private readonly InputAction m_Player_SelectionGroup5;
+    private readonly InputAction m_Player_SelectionGroup6;
+    private readonly InputAction m_Player_SelectionGroup7;
+    private readonly InputAction m_Player_SelectionGroup8;
+    private readonly InputAction m_Player_SelectionGroup9;
+    private readonly InputAction m_Player_SelectionGroup10;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
@@ -427,6 +669,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @StartSelecting => m_Wrapper.m_Player_StartSelecting;
         public InputAction @StopSelecting => m_Wrapper.m_Player_StopSelecting;
         public InputAction @Pause => m_Wrapper.m_Player_Pause;
+        public InputAction @SaveSelectionGroup => m_Wrapper.m_Player_SaveSelectionGroup;
+        public InputAction @SelectionGroup1 => m_Wrapper.m_Player_SelectionGroup1;
+        public InputAction @SelectionGroup2 => m_Wrapper.m_Player_SelectionGroup2;
+        public InputAction @SelectionGroup3 => m_Wrapper.m_Player_SelectionGroup3;
+        public InputAction @SelectionGroup4 => m_Wrapper.m_Player_SelectionGroup4;
+        public InputAction @SelectionGroup5 => m_Wrapper.m_Player_SelectionGroup5;
+        public InputAction @SelectionGroup6 => m_Wrapper.m_Player_SelectionGroup6;
+        public InputAction @SelectionGroup7 => m_Wrapper.m_Player_SelectionGroup7;
+        public InputAction @SelectionGroup8 => m_Wrapper.m_Player_SelectionGroup8;
+        public InputAction @SelectionGroup9 => m_Wrapper.m_Player_SelectionGroup9;
+        public InputAction @SelectionGroup10 => m_Wrapper.m_Player_SelectionGroup10;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -457,6 +710,39 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Pause.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
                 @Pause.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
                 @Pause.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
+                @SaveSelectionGroup.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSaveSelectionGroup;
+                @SaveSelectionGroup.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSaveSelectionGroup;
+                @SaveSelectionGroup.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSaveSelectionGroup;
+                @SelectionGroup1.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectionGroup1;
+                @SelectionGroup1.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectionGroup1;
+                @SelectionGroup1.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectionGroup1;
+                @SelectionGroup2.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectionGroup2;
+                @SelectionGroup2.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectionGroup2;
+                @SelectionGroup2.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectionGroup2;
+                @SelectionGroup3.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectionGroup3;
+                @SelectionGroup3.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectionGroup3;
+                @SelectionGroup3.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectionGroup3;
+                @SelectionGroup4.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectionGroup4;
+                @SelectionGroup4.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectionGroup4;
+                @SelectionGroup4.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectionGroup4;
+                @SelectionGroup5.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectionGroup5;
+                @SelectionGroup5.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectionGroup5;
+                @SelectionGroup5.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectionGroup5;
+                @SelectionGroup6.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectionGroup6;
+                @SelectionGroup6.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectionGroup6;
+                @SelectionGroup6.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectionGroup6;
+                @SelectionGroup7.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectionGroup7;
+                @SelectionGroup7.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectionGroup7;
+                @SelectionGroup7.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectionGroup7;
+                @SelectionGroup8.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectionGroup8;
+                @SelectionGroup8.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectionGroup8;
+                @SelectionGroup8.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectionGroup8;
+                @SelectionGroup9.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectionGroup9;
+                @SelectionGroup9.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectionGroup9;
+                @SelectionGroup9.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectionGroup9;
+                @SelectionGroup10.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectionGroup10;
+                @SelectionGroup10.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectionGroup10;
+                @SelectionGroup10.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectionGroup10;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -482,6 +768,39 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Pause.started += instance.OnPause;
                 @Pause.performed += instance.OnPause;
                 @Pause.canceled += instance.OnPause;
+                @SaveSelectionGroup.started += instance.OnSaveSelectionGroup;
+                @SaveSelectionGroup.performed += instance.OnSaveSelectionGroup;
+                @SaveSelectionGroup.canceled += instance.OnSaveSelectionGroup;
+                @SelectionGroup1.started += instance.OnSelectionGroup1;
+                @SelectionGroup1.performed += instance.OnSelectionGroup1;
+                @SelectionGroup1.canceled += instance.OnSelectionGroup1;
+                @SelectionGroup2.started += instance.OnSelectionGroup2;
+                @SelectionGroup2.performed += instance.OnSelectionGroup2;
+                @SelectionGroup2.canceled += instance.OnSelectionGroup2;
+                @SelectionGroup3.started += instance.OnSelectionGroup3;
+                @SelectionGroup3.performed += instance.OnSelectionGroup3;
+                @SelectionGroup3.canceled += instance.OnSelectionGroup3;
+                @SelectionGroup4.started += instance.OnSelectionGroup4;
+                @SelectionGroup4.performed += instance.OnSelectionGroup4;
+                @SelectionGroup4.canceled += instance.OnSelectionGroup4;
+                @SelectionGroup5.started += instance.OnSelectionGroup5;
+                @SelectionGroup5.performed += instance.OnSelectionGroup5;
+                @SelectionGroup5.canceled += instance.OnSelectionGroup5;
+                @SelectionGroup6.started += instance.OnSelectionGroup6;
+                @SelectionGroup6.performed += instance.OnSelectionGroup6;
+                @SelectionGroup6.canceled += instance.OnSelectionGroup6;
+                @SelectionGroup7.started += instance.OnSelectionGroup7;
+                @SelectionGroup7.performed += instance.OnSelectionGroup7;
+                @SelectionGroup7.canceled += instance.OnSelectionGroup7;
+                @SelectionGroup8.started += instance.OnSelectionGroup8;
+                @SelectionGroup8.performed += instance.OnSelectionGroup8;
+                @SelectionGroup8.canceled += instance.OnSelectionGroup8;
+                @SelectionGroup9.started += instance.OnSelectionGroup9;
+                @SelectionGroup9.performed += instance.OnSelectionGroup9;
+                @SelectionGroup9.canceled += instance.OnSelectionGroup9;
+                @SelectionGroup10.started += instance.OnSelectionGroup10;
+                @SelectionGroup10.performed += instance.OnSelectionGroup10;
+                @SelectionGroup10.canceled += instance.OnSelectionGroup10;
             }
         }
     }
@@ -601,6 +920,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnStartSelecting(InputAction.CallbackContext context);
         void OnStopSelecting(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
+        void OnSaveSelectionGroup(InputAction.CallbackContext context);
+        void OnSelectionGroup1(InputAction.CallbackContext context);
+        void OnSelectionGroup2(InputAction.CallbackContext context);
+        void OnSelectionGroup3(InputAction.CallbackContext context);
+        void OnSelectionGroup4(InputAction.CallbackContext context);
+        void OnSelectionGroup5(InputAction.CallbackContext context);
+        void OnSelectionGroup6(InputAction.CallbackContext context);
+        void OnSelectionGroup7(InputAction.CallbackContext context);
+        void OnSelectionGroup8(InputAction.CallbackContext context);
+        void OnSelectionGroup9(InputAction.CallbackContext context);
+        void OnSelectionGroup10(InputAction.CallbackContext context);
     }
     public interface ICameraActions
     {

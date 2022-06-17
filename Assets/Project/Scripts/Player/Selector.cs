@@ -4,18 +4,18 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace bts {
-  public class Player : MonoBehaviour {
+  public class Selector : MonoBehaviour {
     [SerializeField] InputReader inputReader;
     [SerializeField] SelectablesEventChannel selectablesEventChannel;
+    public List<Selectable> Selected { get; private set; }
     LineRenderer lineRenderer;
-    List<Selectable> selected;
     Vector3 startPosition;
     Vector3 halfExtents = new Vector3(25f, 5f, 25f);
     bool isMouseOverUI;
 
     void Awake() {
       lineRenderer = GetComponent<LineRenderer>();
-      selected = new List<Selectable>();
+      Selected = new List<Selectable>();
       lineRenderer.enabled = false;
     }
 
@@ -40,9 +40,9 @@ namespace bts {
     }
 
     void Deselect(object sender, Selectable selectedObject) {
-      _ = selected.Remove(selectedObject);
+      _ = Selected.Remove(selectedObject);
       selectedObject.Deselect();
-      selectablesEventChannel.Invoke(selected);
+      selectablesEventChannel.Invoke(Selected);
     }
 
     private void SelectMany(Ray ray) {
@@ -51,10 +51,10 @@ namespace bts {
         if (hitInfo.transform.TryGetComponent(out Selectable selectable)) {
           Deselect();
           if (selectable.ObjectAffiliation == Affiliation.Player) {
-            selected = GetSelectablesInBox(hitInfo.point, halfExtents).Where(s => s.IsSameAs(selectable)).ToList();
+            Selected = GetSelectablesInBox(hitInfo.point, halfExtents).Where(s => s.IsSameAs(selectable)).ToList();
           }
           else {
-            selected = new List<Selectable> { selectable };
+            Selected = new List<Selectable> { selectable };
           }
 
           Select();
@@ -63,11 +63,11 @@ namespace bts {
     }
 
     void Deselect() {
-      foreach (Selectable selectable in selected) {
+      foreach (Selectable selectable in Selected) {
         selectable.Deselect();
       }
 
-      selected.Clear();
+      Selected.Clear();
     }
 
     IEnumerable<Selectable> GetSelectablesInBox(Vector3 center, Vector3 halfExtents) {
@@ -84,11 +84,11 @@ namespace bts {
     }
 
     void Select() {
-      foreach (Selectable selectable in selected) {
+      foreach (Selectable selectable in Selected) {
         selectable.Select();
       }
 
-      selectablesEventChannel.Invoke(selected);
+      selectablesEventChannel.Invoke(Selected);
     }
 
     void StartSelectingArea(Vector3 position) {
@@ -118,7 +118,7 @@ namespace bts {
         Deselect();
         (Vector3 center, Vector3 halfExtents) = GetSelectionArea(endPoint);
         IEnumerable<Selectable> selectables = GetSelectablesInBox(center, halfExtents);
-        selected = FilterSelectable(selectables);
+        Selected = FilterSelectable(selectables);
         Select();
       }
     }
@@ -142,6 +142,12 @@ namespace bts {
       }
 
       return new List<Selectable>();
+    }
+
+    public void Select(List<Selectable> newSelected) {
+      Deselect();
+      Selected = newSelected;
+      Select();
     }
   }
 }
