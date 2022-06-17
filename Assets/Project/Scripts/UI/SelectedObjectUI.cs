@@ -34,7 +34,7 @@ namespace bts {
         selectedObjectsPanel.SetUI(selected);
         if (selected.Any(s => s.UICommands.Any())) {
           commandsPanel.gameObject.SetActive(true);
-          commandsPanel.UpdateUI(selected);
+          commandsPanel.SetUpUI(selected);
         }
       }
     }

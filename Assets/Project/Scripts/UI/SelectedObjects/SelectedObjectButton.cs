@@ -15,7 +15,7 @@ namespace bts {
       tooltip.SetUp(new TooltipData(string.Empty, selected.Name, new GemstoneDictionary()));
       icon.sprite = selected.Icon;
       button.onClick.AddListener(delegate { infoPanel.SetUI(selected); });
-      button.onClick.AddListener(delegate { commandsPanel.SetUI(selected); });
+      button.onClick.AddListener(delegate { commandsPanel.SetCurrentSelected(selected); });
     }
 
     public void InvokeButtonClick() {

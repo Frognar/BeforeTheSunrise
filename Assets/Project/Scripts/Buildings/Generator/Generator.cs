@@ -108,7 +108,7 @@ namespace bts {
     }
 
     public override bool IsSameAs(Selectable other) {
-      return other is Generator;
+      return other is Generator g && BuildingLevel == g.BuildingLevel;
     }
 
     public override Dictionary<DataType, object> GetData() {

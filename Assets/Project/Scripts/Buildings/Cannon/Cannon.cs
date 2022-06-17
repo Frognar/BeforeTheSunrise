@@ -87,7 +87,7 @@ namespace bts {
     }
 
     public override bool IsSameAs(Selectable other) {
-      return other is Cannon;
+      return other is Cannon c && BuildingLevel == c.BuildingLevel;
     }
 
     public bool IsFree() {

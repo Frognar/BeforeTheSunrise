@@ -149,7 +149,7 @@ namespace bts {
     }
 
     public override bool IsSameAs(Selectable other) {
-      return other is Aura;
+      return other is Aura a && BuildingLevel == a.BuildingLevel;
     }
   }
 }

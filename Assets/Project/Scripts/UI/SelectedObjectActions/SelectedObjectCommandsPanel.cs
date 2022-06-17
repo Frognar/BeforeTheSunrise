@@ -22,20 +22,20 @@ namespace bts {
       prevPageCommand = new PrevPageUICommand(prevButtonData, this, buttons[^2], buttons[^1]);
     }
 
-    public void SetUI(Selectable selected) {
-      DisableAllButtons();
-      CurrentPage = 0;
+    public void SetCurrentSelected(Selectable selected) {
       currentSelected = selected;
-      commands.Clear();
-      commands.Add(selected, selected.UICommands.ToList());
-      SetUpCommandUI();
+      ReloadActionUI();
     }
 
-    public void UpdateUI(List<Selectable> selected) {
-      DisableAllButtons();
-      CurrentPage = 0;
+    public void SetUpUI(List<Selectable> selected) {
       commands = selected.ToDictionary(s => s, s => s.UICommands.ToList());
       currentSelected = selected.First();
+      ReloadActionUI();
+    }
+
+    public void ReloadActionUI() {
+      DisableAllButtons();
+      CurrentPage = 0;
       SetUpCommandUI();
     }
 
@@ -54,16 +54,14 @@ namespace bts {
 
     void ShowAllOnFirstPage() {
       for (int i = 0; i < commandsCount; i++) {
-        //buttons[i].SetUp(commands.Where(s => s.Key.IsSameAs(currentSelected)).Select(c => c.Value[i]).ToList());
-        buttons[i].SetUp(commands[currentSelected][i]);
+        buttons[i].SetUp(commands.Where(s => s.Key.IsSameAs(currentSelected)).Select(c => c.Value[i]).ToList());
         buttons[i].gameObject.SetActive(true);
       }
     }
 
     void ShowFirstPage() {
       for (int i = 0; i < buttons.Count - 2; i++) {
-        //buttons[i].SetUp(commands.Where(s => s.Key.IsSameAs(currentSelected)).Select(c => c.Value[i]).ToList());
-        buttons[i].SetUp(commands[currentSelected][i]);
+        buttons[i].SetUp(commands.Where(s => s.Key.IsSameAs(currentSelected)).Select(c => c.Value[i]).ToList());
         buttons[i].gameObject.SetActive(true);
       }
     }
@@ -85,8 +83,7 @@ namespace bts {
         DisableCommandButtons();
         int commandsLeft = (commandsCount - (buttons.Count - 2) * CurrentPage) % (buttons.Count - 1);
         for (int i = 0; i < commandsLeft; i++) {
-          //buttons[i].SetUp(commands.Where(s => s.Key.IsSameAs(currentSelected)).Select(c => c.Value[i + (buttons.Count - 2) * CurrentPage]).ToList());
-          buttons[i].SetUp(commands[currentSelected][i + (buttons.Count - 2) * CurrentPage]);
+          buttons[i].SetUp(commands.Where(s => s.Key.IsSameAs(currentSelected)).Select(c => c.Value[i + (buttons.Count - 2) * CurrentPage]).ToList());
           buttons[i].gameObject.SetActive(true);
         }
       }
@@ -96,8 +93,7 @@ namespace bts {
       if (CurrentPage > 0) {
         CurrentPage--;
         for (int i = 0; i < buttons.Count - 2; i++) {
-          //buttons[i].SetUp(commands.Where(s => s.Key.IsSameAs(currentSelected)).Select(c => c.Value[i + (buttons.Count - 2) * CurrentPage]).ToList());
-          buttons[i].SetUp(commands[currentSelected][i + (buttons.Count - 2) * CurrentPage]);
+          buttons[i].SetUp(commands.Where(s => s.Key.IsSameAs(currentSelected)).Select(c => c.Value[i + (buttons.Count - 2) * CurrentPage]).ToList());
           buttons[i].gameObject.SetActive(true);
         }
       }
@@ -125,7 +121,7 @@ namespace bts {
 
     void RefreshIfSelected(Selectable selectable) {
       if (currentSelected.Equals(selectable)) {
-        SetUI(selectable);
+        SetCurrentSelected(selectable);
       }
     }
   }

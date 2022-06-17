@@ -16,7 +16,7 @@ namespace bts {
     }
 
     public override bool IsSameAs(Selectable other) {
-      return other is Base;
+      return other is Base b && BuildingLevel == b.BuildingLevel;
     }
   }
 }

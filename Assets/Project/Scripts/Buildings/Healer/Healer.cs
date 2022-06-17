@@ -100,7 +100,7 @@ namespace bts {
     }
 
     public override bool IsSameAs(Selectable other) {
-      return other is Healer;
+      return other is Healer h && BuildingLevel == h.BuildingLevel;
     }
 
     public bool IsFree() {

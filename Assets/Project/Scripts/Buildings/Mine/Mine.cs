@@ -75,7 +75,10 @@ namespace bts {
     }
 
     public override bool IsSameAs(Selectable other) {
-      return other is Mine;
+      return other is Mine m
+        && BuildingLevel == m.BuildingLevel
+        && isSet == m.isSet
+        && gemstoneType == m.gemstoneType;
     }
   }
 }
