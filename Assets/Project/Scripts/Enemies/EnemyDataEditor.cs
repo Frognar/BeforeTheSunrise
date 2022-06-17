@@ -13,11 +13,45 @@ namespace bts {
     [SerializeField] DataModifier endingModifier;
 
     void Awake() {
-      if (File.Exists("data.json")) {
-        enemyDataForNights = JsonUtility.FromJson<EnemyDataForNights>(File.ReadAllText("data.json"));
+      const string file = "data.json";
+      if (File.Exists(file)) {
+        enemyDataForNights = JsonUtility.FromJson<EnemyDataForNights>(File.ReadAllText(file));
       }
       else {
-        File.Create("data.json");
+        enemyDataForNights = new EnemyDataForNights(
+          new List<DataModifier> {
+            new DataModifier(1.5f, 15.0f),
+            new DataModifier(1.65f, 16.5f),
+            new DataModifier(1.8f, 18.0f),
+            new DataModifier(1.95f, 19.5f),
+            new DataModifier(2.1f, 21.0f),
+            new DataModifier(2.25f, 22.5f),
+            new DataModifier(2.5f, 25.0f),
+            new DataModifier(2.64f, 26.35f),
+            new DataModifier(2.77f, 27.7f),
+            new DataModifier(2.9f, 29.05f),
+            new DataModifier(3.04f, 30.4f),
+            new DataModifier(3.18f, 31.75f),
+            new DataModifier(3.31f, 33.1f),
+            new DataModifier(3.45f, 34.45f),
+            new DataModifier(3.58f, 35.8f),
+            new DataModifier(3.72f, 37.15f),
+            new DataModifier(3.85f, 38.5f),
+            new DataModifier(3.99f, 39.85f),
+            new DataModifier(4.12f, 41.2f),
+            new DataModifier(4.26f, 42.55f),
+            new DataModifier(4.39f, 43.9f),
+            new DataModifier(4.53f, 45.25f),
+            new DataModifier(4.66f, 46.6f),
+            new DataModifier(4.8f, 47.95f),
+            new DataModifier(5.0f, 50.0f),
+            new DataModifier(5.2f, 52.0f),
+            new DataModifier(5.4f, 54.0f),
+            new DataModifier(5.6f, 56.0f),
+            new DataModifier(5.8f, 58.0f),
+            new DataModifier(6.0f, 60.0f)
+          });
+        File.WriteAllText(file, JsonUtility.ToJson(enemyDataForNights));
       }
     }
     
