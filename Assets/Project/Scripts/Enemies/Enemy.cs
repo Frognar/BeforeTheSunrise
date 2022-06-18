@@ -8,12 +8,7 @@ using UnityEngine.Pool;
 namespace bts {
   public class Enemy : MonoBehaviour, Selectable, Damageable {
     [SerializeField] RandomGemstoneGiver randomGemstoneGiver;
-    
-    
-    [SerializeField] PopupTextEventChannel popupTextEventChannel;
     public event Action<Dictionary<DataType, object>> OnDataChange = delegate { };
-    [SerializeField][Range(0, 1)] float addResourceChance = 0.35f;
-    [SerializeField] GemstoneStorage storage;
     [field: SerializeField] public SFXEventChannel SFXEventChannel { get; private set; }
     [field: SerializeField] public BloodEventChannel BloodEventChannel { get; private set; }
     [field: SerializeField] public BloodConfiguration BloodConfig { get; private set; }
