@@ -154,16 +154,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01d637b1fdc0293498efdcac116f665c, type: 3}
---- !u!114 &1608799034922922546 stripped
+--- !u!114 &3904807719335790782 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2875131737817976747, guid: 01d637b1fdc0293498efdcac116f665c,
+  m_CorrespondingSourceObject: {fileID: 542040306580944167, guid: 01d637b1fdc0293498efdcac116f665c,
     type: 3}
   m_PrefabInstance: {fileID: 3581803334572834201}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 8594518842571402440}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2da8a9adb7e01a40bd3f7738b8e3662, type: 3}
+  m_Script: {fileID: 11500000, guid: b9163cd5d155a56438a38d73ee31e7d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!65 &3908724600928972354 stripped
@@ -221,7 +221,7 @@ MonoBehaviour:
   buildingCollider: {fileID: 3908724600928972354}
   <SelectablesEventChannel>k__BackingField: {fileID: 11400000, guid: 3c1fda043d4369741a6aac78f1308909,
     type: 2}
-  bar: {fileID: 1608799034922922546}
+  healthComponent: {fileID: 3904807719335790782}
   buildingData: {fileID: 11400000, guid: d97b2c8c8582ef64d8bdfa4fa39ae0f3, type: 2}
   ticksPerSecond: {fileID: 11400000, guid: ccce87ca0d2f89b41834d5a6e0860c1e, type: 2}
   changeAuraUICommandData:

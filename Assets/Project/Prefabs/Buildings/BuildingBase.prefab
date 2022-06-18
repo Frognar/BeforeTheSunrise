@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 619652724732691996}
   - component: {fileID: 1826360176404232427}
   - component: {fileID: 350420954700514518}
+  - component: {fileID: 542040306580944167}
   - component: {fileID: 543681524985648091}
   m_Layer: 7
   m_Name: BuildingBase
@@ -93,6 +94,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectCollider: {fileID: 543681524985648091}
+--- !u!114 &542040306580944167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5111799422788522321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9163cd5d155a56438a38d73ee31e7d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBar: {fileID: 2875131737817976747}
 --- !u!65 &543681524985648091
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -351,6 +365,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: edf8f2d6b6f656c4cbda32124a47567d, type: 3}
+--- !u!114 &2875131737817976747 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6418254373367492457, guid: edf8f2d6b6f656c4cbda32124a47567d,
+    type: 3}
+  m_PrefabInstance: {fileID: 9148144885696372930}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2da8a9adb7e01a40bd3f7738b8e3662, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &8280956915219440526 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 873525967891792716, guid: edf8f2d6b6f656c4cbda32124a47567d,

@@ -26,8 +26,8 @@ namespace bts {
     public virtual IEnumerable<UICommand> UICommands { get; protected set; }
     public GemstoneDictionary BuildingCosts => CalculateTotalCost();
     public Vector3 Position => Center.position;
-    public bool IsDead => health.IsDead;
-    public bool IsIntact => health.IsInFullHealth;
+    public bool IsDead => healthComponent.Health.IsDead;
+    public bool IsIntact => healthComponent.Health.IsInFullHealth;
     [SerializeField] Collider buildingCollider;
     public Bounds Bounds => buildingCollider.bounds;
 
@@ -35,17 +35,24 @@ namespace bts {
     public Sprite Icon { get; }
     [field: SerializeField] public SelectablesEventChannel SelectablesEventChannel { get; private set; }
 
-    [SerializeField] WorldHealthBar bar;
-    Health health;
+    [SerializeField] HealthComponent healthComponent;
     [SerializeField] protected CustomBuildingData buildingData;
 
     protected virtual void Awake() {
-      health = new Health(buildingData.healthAmount);
-      bar.SetUp(health);
+      healthComponent.Init(buildingData.healthAmount);
+      healthComponent.Health.OnCurrentHealthChange += OnCurrentHealthChange;
       UICommands = CreateUICommands();
       register.Register(this);
     }
 
+    void OnCurrentHealthChange(object sender, EventArgs e) {
+      InvokeDataChange(GetHealthData());
+    }
+
+    void OnDie(object sender, EventArgs e) {
+      Destroy(gameObject);
+    }
+    
     protected virtual GemstoneDictionary CalculateTotalCost() {
       return buildingData.buildingCosts;
     }
@@ -61,7 +68,7 @@ namespace bts {
     public virtual void Upgrgade(GemstoneDictionary cost) {
       storage.Discard(cost);
       BuildingLevel++;
-      health.ChangeMaxHealth(buildingData.healthAmount * Mathf.Pow(2, BuildingLevel));
+      healthComponent.ChangeMaxHealth(buildingData.healthAmount * Mathf.Pow(2, BuildingLevel));
       UICommands = CreateUICommands();
       SelectablesEventChannel.InvokeOnRefresh(this);
       OnDataChange.Invoke(GetDataTypesOnUpgrage());
@@ -75,8 +82,8 @@ namespace bts {
 
     protected Dictionary<DataType, object> GetHealthData() {
       return new Dictionary<DataType, object> {
-        { DataType.MaxHealth, health.MaxHealth },
-        { DataType.CurrentHealth, bar.Health.CurrentHealth },
+        { DataType.MaxHealth, healthComponent.GetMaxHealth() },
+        { DataType.CurrentHealth, healthComponent.GetCurrentHealth() },
       };
     }
 
@@ -91,26 +98,18 @@ namespace bts {
     }
 
     public void TakeDamage(float amount) {
-      health.Damage(amount);
-      InvokeDataChange(GetHealthData());
-
-      if (IsDead) {
-        Destroy(gameObject);
-      }
+      healthComponent.Damage(amount);
     }
-
+    
     public void Heal(float amount) {
-      health.Heal(amount);
-      InvokeDataChange(GetHealthData());
+      healthComponent.Heal(amount);
     }
 
     public virtual Dictionary<DataType, object> GetData() {
-      return new Dictionary<DataType, object>() {
-        { DataType.Name, Name },
-        { DataType.MaxHealth, health.MaxHealth },
-        { DataType.CurrentHealth, bar.Health.CurrentHealth },
-        { DataType.Level, BuildingLevel },
-      };
+      Dictionary<DataType, object> data = GetHealthData();
+      data.Add(DataType.Name, Name);
+      data.Add(DataType.Level, BuildingLevel);
+      return data;
     }
 
     public virtual void Select() {

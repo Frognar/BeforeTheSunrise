@@ -197,18 +197,18 @@ MonoBehaviour:
   buildingCollider: {fileID: 7014478955530602021}
   <SelectablesEventChannel>k__BackingField: {fileID: 11400000, guid: 3c1fda043d4369741a6aac78f1308909,
     type: 2}
-  bar: {fileID: 4698768509197032021}
+  healthComponent: {fileID: 7013884506018930905}
   buildingData: {fileID: 11400000, guid: e20b7ecb9ee232a4589ca2d9363450e0, type: 2}
---- !u!114 &4698768509197032021 stripped
+--- !u!114 &7013884506018930905 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2875131737817976747, guid: 01d637b1fdc0293498efdcac116f665c,
+  m_CorrespondingSourceObject: {fileID: 542040306580944167, guid: 01d637b1fdc0293498efdcac116f665c,
     type: 3}
   m_PrefabInstance: {fileID: 7409516524151281150}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 2315736933142611119}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2da8a9adb7e01a40bd3f7738b8e3662, type: 3}
+  m_Script: {fileID: 11500000, guid: b9163cd5d155a56438a38d73ee31e7d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!65 &7014478955530602021 stripped

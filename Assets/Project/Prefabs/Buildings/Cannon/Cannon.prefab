@@ -326,7 +326,7 @@ MonoBehaviour:
   buildingCollider: {fileID: 5548483935043788305}
   <SelectablesEventChannel>k__BackingField: {fileID: 11400000, guid: 3c1fda043d4369741a6aac78f1308909,
     type: 2}
-  bar: {fileID: 7884996866362753633}
+  healthComponent: {fileID: 5552394099307985133}
   buildingData: {fileID: 11400000, guid: 24ae2e899086b6b4ca09fb91dbdaa283, type: 2}
   <VFXEventChannel>k__BackingField: {fileID: 11400000, guid: 18b7758f03a98ad4ea3a46b3419cc1e5,
     type: 2}
@@ -358,15 +358,15 @@ BoxCollider:
     type: 3}
   m_PrefabInstance: {fileID: 5371571468767940042}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7884996866362753633 stripped
+--- !u!114 &5552394099307985133 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2875131737817976747, guid: 01d637b1fdc0293498efdcac116f665c,
+  m_CorrespondingSourceObject: {fileID: 542040306580944167, guid: 01d637b1fdc0293498efdcac116f665c,
     type: 3}
   m_PrefabInstance: {fileID: 5371571468767940042}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 899424388717354139}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2da8a9adb7e01a40bd3f7738b8e3662, type: 3}
+  m_Script: {fileID: 11500000, guid: b9163cd5d155a56438a38d73ee31e7d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

@@ -215,24 +215,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01d637b1fdc0293498efdcac116f665c, type: 3}
---- !u!114 &721136975610337564 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2875131737817976747, guid: 01d637b1fdc0293498efdcac116f665c,
-    type: 3}
-  m_PrefabInstance: {fileID: 3307748065635522231}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2da8a9adb7e01a40bd3f7738b8e3662, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &2701607313025487019 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 619652724732691996, guid: 01d637b1fdc0293498efdcac116f665c,
     type: 3}
   m_PrefabInstance: {fileID: 3307748065635522231}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3054229577359664016 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 542040306580944167, guid: 01d637b1fdc0293498efdcac116f665c,
+    type: 3}
+  m_PrefabInstance: {fileID: 3307748065635522231}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7716840080805693414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9163cd5d155a56438a38d73ee31e7d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!65 &3057082268599616876 stripped
 BoxCollider:
   m_CorrespondingSourceObject: {fileID: 543681524985648091, guid: 01d637b1fdc0293498efdcac116f665c,
@@ -327,7 +327,7 @@ MonoBehaviour:
   buildingCollider: {fileID: 3057082268599616876}
   <SelectablesEventChannel>k__BackingField: {fileID: 11400000, guid: 3c1fda043d4369741a6aac78f1308909,
     type: 2}
-  bar: {fileID: 721136975610337564}
+  healthComponent: {fileID: 3054229577359664016}
   buildingData: {fileID: 11400000, guid: 92481094d096b6748bfcc8fbace3a4b8, type: 2}
   <LaserEventChannel>k__BackingField: {fileID: 11400000, guid: d937debb0317b9d4996a3928dc3995e2,
     type: 2}
