@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace bts {
   [Serializable]
-  public struct TooltipData {
+  public class TooltipData {
     [field: SerializeField] public string Header { get; private set; }
     [field: SerializeField] public string Content { get; private set; }
     [field: SerializeField] public GemstoneDictionary Gemstones { get; private set; }
