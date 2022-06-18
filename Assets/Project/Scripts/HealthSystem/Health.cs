@@ -20,6 +20,10 @@ namespace fro.HealthSystem {
     }
 
     public virtual void Damage(float amount) {
+      if (IsDead) {
+        return;
+      }
+
       CurrentHealth -= amount;
       if (IsDead) {
         CurrentHealth = 0;
@@ -33,6 +37,10 @@ namespace fro.HealthSystem {
     }
 
     public virtual void Heal(float amount) {
+      if (IsInFullHealth) {
+        return;
+      }
+
       CurrentHealth += amount;
       if (IsInFullHealth) {
         CurrentHealth = MaxHealth;
