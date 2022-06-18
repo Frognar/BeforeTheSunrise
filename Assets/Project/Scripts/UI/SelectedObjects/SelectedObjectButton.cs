@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using bts.Gemstones;
+using fro.ValueAssets;
 
 namespace bts {
   public class SelectedObjectButton : MonoBehaviour {
@@ -10,6 +11,8 @@ namespace bts {
     [SerializeField] Image background;
     [SerializeField] Image icon;
     [SerializeField] TooltipTrigger tooltip;
+    [SerializeField] ColorAsset normalColor;
+    [SerializeField] ColorAsset selectedColor;
 
     public void SetUp(Selectable selected) {
       tooltip.SetUp(new TooltipData(string.Empty, selected.Name, new GemstoneDictionary()));
@@ -27,11 +30,11 @@ namespace bts {
     }
 
     public void DiselectButton() {
-      background.color = Color.white;
+      background.color = normalColor;
     }
 
     public void SelectButton() {
-      background.color = Color.green;
+      background.color = selectedColor;
     }
   }
 }

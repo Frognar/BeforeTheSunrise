@@ -184,6 +184,8 @@ MonoBehaviour:
   background: {fileID: 7849182323423087249}
   icon: {fileID: 7849182325011158850}
   tooltip: {fileID: 7849182323423087251}
+  normalColor: {fileID: 11400000, guid: 643cb77ec8111c340a65fd00f946bd06, type: 2}
+  selectedColor: {fileID: 11400000, guid: 38691a92aee4043458285a5e849c72c6, type: 2}
 --- !u!1 &7849182325011158860
 GameObject:
   m_ObjectHideFlags: 0

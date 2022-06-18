@@ -1,4 +1,5 @@
 ﻿using bts.Gemstones;
+using fro.ValueAssets;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,9 +12,9 @@ namespace bts {
     [SerializeField] Image image;
     [SerializeField] Image buttonImage;
     [SerializeField] Button button;
-    [SerializeField] Color disabledColor;
-    [SerializeField] Color enabledColor;
-    [SerializeField] Color selectedColor;
+    [SerializeField] ColorAsset disabledColor;
+    [SerializeField] ColorAsset normalColor;
+    [SerializeField] ColorAsset selectedColor;
 
     void Start() {
       trigger.SetUp(new TooltipData(string.Empty, $"Requires survival of at least {NightRequired} nights", GemstoneReward));
@@ -23,7 +24,7 @@ namespace bts {
     public void Init(int survivedNights) {
       if (survivedNights >= NightRequired) {
         button.interactable = true;
-        buttonImage.color = enabledColor;
+        buttonImage.color = normalColor;
       }
       else {
         button.interactable = false;
@@ -36,7 +37,7 @@ namespace bts {
     }
     
     public void Deselect() {
-      buttonImage.color = enabledColor;
+      buttonImage.color = normalColor;
     }
   }
 }
