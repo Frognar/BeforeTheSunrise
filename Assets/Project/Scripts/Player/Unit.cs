@@ -9,27 +9,27 @@ using UnityEngine;
 namespace bts {
   public class Unit : MonoBehaviour, Selectable, Damageable, CommandReceiver {
     [SerializeField] VoidEventChannel deathEventChannel;
+    [field: SerializeField] public PopupTextEventChannel PopupTextEventChannel { get; private set; }
+    [field: SerializeField] public SelectablesEventChannel SelectablesEventChannel { get; private set; }
     public event Action<Dictionary<DataType, object>> OnDataChange = delegate { };
+    
     [field: Header("SFX")]
-    [field: SerializeField] public SFXEventChannel SFXEventChannel { get; private set; }
-    [field: SerializeField] public AudioConfiguration AudioConfig { get; private set; }
+    [field: SerializeField] public AudioRequester AudioRequester { get; private set; }
     [field: SerializeField] public AudioClipsGroup AttackSFX { get; private set; }
     [field: SerializeField] public AudioClipsGroup TakeDamageSFX { get; private set; }
     [field: SerializeField] public AudioClipsGroup DieSFX { get; private set; }
+    
     [field: Header("VFX")]
-    [field: SerializeField] public ElectricArcEventChannel VFXEventChannel { get; private set; }
-    [field: SerializeField] public Transform ArcBegin { get; private set; }
-    [field: SerializeField] public ElectricArcVFXConfiguration ElectricArcConfig { get; private set; }
+    [field: SerializeField] public ElectricArcRequester ElectricArcRequester { get; private set; }
     
     public string Name => "Unit";
     public Transform Center => transform;
     public Affiliation ObjectAffiliation => Affiliation.Player;
     public Type ObjectType => Type.Unit;
-    [field: Header("")]
-    [field: SerializeField] public PopupTextEventChannel PopupTextEventChannel { get; private set; }
+    
+    [field: Space]
     [field: SerializeField] public Sprite Icon { get; private set; }
     [field: SerializeField] public GameObject Selected { get; private set; }
-    [field: SerializeField] public SelectablesEventChannel SelectablesEventChannel { get; private set; }
     [SerializeField] List<BuildUICommandData> buildCommandsData;
     [SerializeField] CancelBuildUICommandData cancelBuildCommandData;
     public IEnumerable<UICommand> UICommands { get; private set; }
@@ -39,10 +39,10 @@ namespace bts {
 
     public bool IsIdle { get; set; }
     public bool IsGathering { get; set; }
-
     
     [field: SerializeField] public GemstoneStorage GemstoneStorage { get; private set; }
     [SerializeField] UnitStats stats;
+    
     public float GatherRange => 3f;
     public float TimeBetweenGathers => stats.timeBetweenGathers;
     public GemstoneDictionary GatherBonuses => stats.gatherBonuses;
@@ -63,6 +63,7 @@ namespace bts {
     public float AttackRange => 4f;
     public bool IsOrderedToAttack { get; set; }
     public Damageable Target { get; set; }
+    
     public Vector3 Position => transform.position;
     Collider unitCollider;
     public Bounds Bounds => unitCollider.bounds;
@@ -89,7 +90,6 @@ namespace bts {
       }
 
       commands.Add(new CancelBuildUICommand(cancelBuildCommandData, commander));
-
       return commands;
     }
 
@@ -136,12 +136,12 @@ namespace bts {
       OnDataChange.Invoke(GetHealthData());
       
       if (IsDead) {
-        SFXEventChannel.RaisePlayEvent(DieSFX, AudioConfig, Position);
+        AudioRequester.RequestSFX(DieSFX, Position);
         deathEventChannel.Invoke();
         Destroy(gameObject);
       }
       else {
-        SFXEventChannel.RaisePlayEvent(TakeDamageSFX, AudioConfig, Position);
+        AudioRequester.RequestSFX(TakeDamageSFX, Position);
       }
     }
 
@@ -166,17 +166,17 @@ namespace bts {
       stats.OnHealthUpgrade += UpgradeHealth;
     }
 
+    void OnDisable() {
+      stats.OnSpeedUpgrade -= UpgradeSpeed;
+      stats.OnHealthUpgrade -= UpgradeHealth;
+    }
+
     void UpgradeHealth() {
       HealthComponent.ChangeMaxHealth(stats.MaxHealth);
     }
 
     void UpgradeSpeed() {
       Pathfinder.SetSpeed(stats.MovementSpeed);
-    }
-
-    void OnDisable() {
-      stats.OnSpeedUpgrade -= UpgradeSpeed;
-      stats.OnHealthUpgrade -= UpgradeHealth;
     }
   }
 }

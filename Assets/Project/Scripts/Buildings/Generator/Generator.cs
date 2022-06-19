@@ -1,100 +1,71 @@
 using System;
 using System.Collections.Generic;
+using bts.Gemstones;
 using fro.ValueAssets;
 using UnityEngine;
 
 namespace bts {
+  [RequireComponent(typeof(GeneratorComponent))]
   public class Generator : Building {
-    [SerializeField] SFXEventChannel sfxEventChannel;
-    [SerializeField] ElectricArcEventChannel vfxEventChannel;
-    [SerializeField] Transform arcBegin;
-    [SerializeField] IntAsset ticksPerSecond;
+    [Header("Tick")]
     [SerializeField] VoidEventChannel onTick;
+    [SerializeField] IntAsset ticksPerSecond;
+    
+    [Header("SFX")]
+    [SerializeField] AudioRequester audioRequester;
+    [SerializeField] AudioClipsGroup generateSFX;
+
+    [Header("Visuals")]
     [SerializeField] GameObject rangeVisuals;
-    public float Range => data.range;
-    float EnergyPerSecond => data.energyPerSecond * Mathf.Pow(2, BuildingLevel);
-    int MaxDevices => data.maxDevices;
+    [SerializeField] ElectricArcRequester electricArc;
+
+    [Space]
+    [SerializeField] GeneratorComponent generator;
     GeneratorData data;
+    float EnergyPerSecond => data.EnergyPerSecond * Mathf.Pow(2, BuildingLevel);
     float EnergyPerTick => EnergyPerSecond / ticksPerSecond;
-    SoundEmitter soundEmitter;
-    readonly ElectricArcParameters parameters = new ElectricArcParameters();
 
     protected override void Awake() {
       base.Awake();
       data = buildingData as GeneratorData;
-      rangeVisuals.transform.localScale = new Vector3(Range * 2, Range * 2, 1f);
+      generator.SetUp(data.Range, EnergyPerTick, data.MaxDevices);
+      rangeVisuals.transform.localScale = new Vector3(data.Range * 2, data.Range * 2, 1f);
       rangeVisuals.SetActive(false);
     }
 
-    List<ElectricDevice> GetDevicesInRange() {
-      Collider[] collidersInRange = Physics.OverlapSphere(Position, Range);
-      List<ElectricDevice> devicesInRange = new List<ElectricDevice>();
-      foreach (Collider collider in collidersInRange) {
-        if (collider.TryGetComponent(out ElectricDevice device)) {
-          devicesInRange.Add(device);
-        }
-      }
-
-      return devicesInRange;
+    public override void Upgrgade(GemstoneDictionary cost) {
+      base.Upgrgade(cost);
+      generator.SetUp(data.Range, EnergyPerTick, data.MaxDevices);
     }
 
     void OnEnable() {
       onTick.OnEventInvoked += Generate;
+      generator.OnStartCharging += StartSound;
+      generator.OnStopCharging += StopSound;
+      generator.OnCharge += CreateElectricArc;
     }
 
     void OnDisable() {
       onTick.OnEventInvoked -= Generate;
-    }
-
-    protected override void OnDestroy() {
-      base.OnDestroy();
-      onTick.OnEventInvoked -= Generate;
+      generator.OnStartCharging -= StartSound;
+      generator.OnStopCharging -= StopSound;
+      generator.OnCharge -= CreateElectricArc;
     }
 
     void Generate(object s, EventArgs e) {
-      List<ElectricDevice> devices = GetDevicesInRange();
-      if (devices.Count > 0) {
-        int devicesCount = devices.Count > MaxDevices ? MaxDevices : devices.Count;
-        float energyPerDevice = EnergyPerTick / devicesCount;
-        int offset = 0;
-        for (int i = 0; i < devicesCount + offset && i < devices.Count; i++) {
-          if (devices[i].IsFull) {
-            offset++;
-          }
-          else {
-            devices[i].StoreEnergy(energyPerDevice);
-            parameters.Source = arcBegin;
-            parameters.TargetPosition = devices[i].Center.position;
-            vfxEventChannel.RaiseSpawnEvent(data.electricArcConfig, parameters);
-            StartSFX();
-          }
-        }
-
-        bool allDevicesAreFull = offset == devices.Count;
-        if (allDevicesAreFull) {
-          StopSFX();
-        }
-      }
-      else {
-        StopSFX();
-      }
+      generator.Generate();
     }
 
-    void StartSFX() {
-      if (soundEmitter == null) {
-        soundEmitter = sfxEventChannel.RaisePlayEventWithEmitter(data.generateSFX, data.audioConfig, Position);
-      }
+    void CreateElectricArc(object sender, GeneratorComponent.GeneratorEventArgs args) {
+      electricArc.Create(args.DevicePosition);
     }
 
-    void StopSFX() {
-      if (soundEmitter != null) {
-        soundEmitter.Stop();
-        soundEmitter = null;
-      }
+    void StopSound(object sender, EventArgs e) {
+      audioRequester.StopSFX();
     }
 
-    public void OnDemolish() {
-      StopSFX();
+    void StartSound(object sender, EventArgs e) {
+      audioRequester.StartSFX(generateSFX, Position);
     }
 
     public override void Select() {

@@ -43,12 +43,17 @@ GameObject:
   - component: {fileID: 4843340433099357607}
   - component: {fileID: 7880791257872491866}
   - component: {fileID: 4085809703577258809}
+  - component: {fileID: 1013859711793835080}
+  - component: {fileID: 1064616076146161469}
   - component: {fileID: 4670980926367549639}
   - component: {fileID: 4085809703577258815}
   - component: {fileID: 2127252381}
   - component: {fileID: 4085809703577258808}
   - component: {fileID: 7420595103529716526}
   - component: {fileID: 3983578362227823094}
+  - component: {fileID: 97646021}
+  - component: {fileID: 97646022}
+  - component: {fileID: 3401490517567136494}
   m_Layer: 6
   m_Name: Unit
   m_TagString: Player
@@ -116,10 +121,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathEventChannel: {fileID: 11400000, guid: 09cac3959e5e5b9478998e9caf131d73, type: 2}
-  <SFXEventChannel>k__BackingField: {fileID: 11400000, guid: dd6b72c1d5cdf0b4592d245ebc4c91da,
+  <PopupTextEventChannel>k__BackingField: {fileID: 11400000, guid: 77c020c6fa375c541a7d0b71eb927179,
     type: 2}
-  <AudioConfig>k__BackingField: {fileID: 11400000, guid: a28c7d6ec18dac6439d381de6a7f208c,
+  <SelectablesEventChannel>k__BackingField: {fileID: 11400000, guid: 3c1fda043d4369741a6aac78f1308909,
     type: 2}
+  <AudioRequester>k__BackingField: {fileID: 1013859711793835080}
   <AttackSFX>k__BackingField:
     <PickRandom>k__BackingField: 1
     <AllowImmediateRepeat>k__BackingField: 0
@@ -141,17 +147,10 @@ MonoBehaviour:
     <AllowImmediateRepeat>k__BackingField: 0
     <Clips>k__BackingField:
     - {fileID: 8300000, guid: 05f6b555b6a0c56469c7d8bfe607cb26, type: 3}
-  <VFXEventChannel>k__BackingField: {fileID: 11400000, guid: 18b7758f03a98ad4ea3a46b3419cc1e5,
-    type: 2}
-  <ArcBegin>k__BackingField: {fileID: 1796620831}
-  <ElectricArcConfig>k__BackingField: {fileID: 11400000, guid: e2c5fe3afb0609240a99d7c281e4cbd8,
-    type: 2}
-  <PopupTextEventChannel>k__BackingField: {fileID: 11400000, guid: 77c020c6fa375c541a7d0b71eb927179,
-    type: 2}
-  <Icon>k__BackingField: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  <ElectricArcRequester>k__BackingField: {fileID: 1064616076146161469}
+  <Icon>k__BackingField: {fileID: 21300000, guid: 52c3e67cdaec1cc43bc285aa7957c253,
+    type: 3}
   <Selected>k__BackingField: {fileID: 2050330481315874312}
-  <SelectablesEventChannel>k__BackingField: {fileID: 11400000, guid: 3c1fda043d4369741a6aac78f1308909,
-    type: 2}
   buildCommandsData:
   - {fileID: 11400000, guid: e98738b8a87bb064a92ff91a431b1a22, type: 2}
   - {fileID: 11400000, guid: 2c80e35079c4c6c48a7e4f2a9e1541d7, type: 2}
@@ -166,6 +165,35 @@ MonoBehaviour:
     type: 2}
   stats: {fileID: 11400000, guid: 473aeb6e63a233443996c3c50046d0e2, type: 2}
   <HealthComponent>k__BackingField: {fileID: 4670980926367549639}
+--- !u!114 &1013859711793835080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4085809703577258788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acea6107c2cfb9046aab62a2aa38ae2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sfxEventChannel: {fileID: 11400000, guid: dd6b72c1d5cdf0b4592d245ebc4c91da, type: 2}
+  audioConfiguration: {fileID: 11400000, guid: a28c7d6ec18dac6439d381de6a7f208c, type: 2}
+--- !u!114 &1064616076146161469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4085809703577258788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6391b248a65bd9743b7f175ae9b14df6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  configuration: {fileID: 11400000, guid: e2c5fe3afb0609240a99d7c281e4cbd8, type: 2}
+  channel: {fileID: 11400000, guid: 18b7758f03a98ad4ea3a46b3419cc1e5, type: 2}
+  arcBegin: {fileID: 1796620831}
 --- !u!114 &4670980926367549639
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -288,6 +316,52 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &97646021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4085809703577258788}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5722c95b8d6ae34cae2cae3434a348c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onTick: {fileID: 11400000, guid: c6e751abad063954ab30d73107f50070, type: 2}
+  ticksPerSecond: {fileID: 11400000, guid: ccce87ca0d2f89b41834d5a6e0860c1e, type: 2}
+  electricArc: {fileID: 3401490517567136494}
+  range: 4
+  energyPerSecond: 90
+  maxDevices: 3
+--- !u!114 &97646022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4085809703577258788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a976993eca799404e8a3aaf35ca2c3a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  center: {fileID: 4085809703577258810}
+--- !u!114 &3401490517567136494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4085809703577258788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6391b248a65bd9743b7f175ae9b14df6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  configuration: {fileID: 11400000, guid: 877df11b6a8864d428f0bc6295af943b, type: 2}
+  channel: {fileID: 11400000, guid: 18b7758f03a98ad4ea3a46b3419cc1e5, type: 2}
+  arcBegin: {fileID: 1796620831}
 --- !u!1 &4085809704516008739
 GameObject:
   m_ObjectHideFlags: 0

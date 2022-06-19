@@ -49,7 +49,7 @@ namespace bts {
       UpdateMaterial();
       if (buildingData is GeneratorData generatorData) {
         rangeVisuals.gameObject.SetActive(true);
-        float range = generatorData.range * 2f;
+        float range = generatorData.Range * 2f;
         rangeVisuals.localScale = new Vector3(range, range, 1f);
       }
       else if (buildingData is CannonData cannonData) {

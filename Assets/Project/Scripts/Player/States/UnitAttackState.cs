@@ -7,7 +7,6 @@ namespace bts {
     public bool HasTarget => Context.Target != null && (Context.Target as Object) != null;
     bool IsTimeToAttack => lastAttackTime + Context.TimeBetweenAttacks <= Time.time;
     bool InAttackRange => Vector3.Distance(Context.Position, Context.Target.Position) <= Context.AttackRange;
-    readonly ElectricArcParameters parameters = new ElectricArcParameters();
 
     public UnitAttackState(StateMachine<Unit> stateMachine, StateFactory<Unit> factory)
       : base(stateMachine, factory) {
@@ -50,19 +49,13 @@ namespace bts {
 
     void Attack() {
       lastAttackTime = Time.time;
-      CreateVFX();
-      Context.SFXEventChannel.RaisePlayEvent(Context.AttackSFX, Context.AudioConfig, Context.Position);
+      Context.ElectricArcRequester.Create(Context.Target.Center.position);
+      Context.AudioRequester.RequestSFX(Context.AttackSFX, Context.Position);
       Context.Target.TakeDamage(Context.DamageAmount);
       if (Context.Target.IsDead) {
         Context.Target = null;
         StateMachine.SwitchState(Factory.GetState(nameof(UnitIdleState)));
       }
-    }
-
-    void CreateVFX() {
-      parameters.Source = Context.ArcBegin;
-      parameters.TargetPosition = Context.Target.Center.position;
-      Context.VFXEventChannel.RaiseSpawnEvent(Context.ElectricArcConfig, parameters);
     }
 
     public override void ExitState() {

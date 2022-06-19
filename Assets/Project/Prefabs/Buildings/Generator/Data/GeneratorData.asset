@@ -42,13 +42,8 @@ MonoBehaviour:
   healthAmount: 25
   ghostMesh: {fileID: -2698757342573874753, guid: 9859d4adc26374940a7970a73fbde2db,
     type: 3}
-  range: 8
-  energyPerSecond: 45
-  maxDevices: 5
-  electricArcConfig: {fileID: 11400000, guid: 877df11b6a8864d428f0bc6295af943b, type: 2}
-  audioConfig: {fileID: 11400000, guid: a28c7d6ec18dac6439d381de6a7f208c, type: 2}
-  generateSFX:
-    <PickRandom>k__BackingField: 1
-    <AllowImmediateRepeat>k__BackingField: 0
-    <Clips>k__BackingField:
-    - {fileID: 8300000, guid: 48095f1422d75114296ca6c679e64e1b, type: 3}
+  limit: 0
+  placedCount: {fileID: 0}
+  <Range>k__BackingField: 8
+  <EnergyPerSecond>k__BackingField: 45
+  <MaxDevices>k__BackingField: 5

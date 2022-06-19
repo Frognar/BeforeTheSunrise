@@ -141,6 +141,19 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 251702827544565463}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1349527104354922351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5012216245435107206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a976993eca799404e8a3aaf35ca2c3a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  center: {fileID: 8388058464688989034}
 --- !u!114 &8006312266966757238
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,12 +181,49 @@ MonoBehaviour:
     type: 2}
   healthComponent: {fileID: 359035257874424816}
   buildingData: {fileID: 11400000, guid: 74944a60a9fab3e4fab6ecc91a30c378, type: 2}
-  sfxEventChannel: {fileID: 11400000, guid: dd6b72c1d5cdf0b4592d245ebc4c91da, type: 2}
-  vfxEventChannel: {fileID: 11400000, guid: 18b7758f03a98ad4ea3a46b3419cc1e5, type: 2}
-  arcBegin: {fileID: 2188780081442679710}
-  ticksPerSecond: {fileID: 11400000, guid: ccce87ca0d2f89b41834d5a6e0860c1e, type: 2}
   onTick: {fileID: 11400000, guid: c6e751abad063954ab30d73107f50070, type: 2}
+  ticksPerSecond: {fileID: 11400000, guid: ccce87ca0d2f89b41834d5a6e0860c1e, type: 2}
+  audioRequester: {fileID: 1232959744418254265}
+  generateSFX:
+    <PickRandom>k__BackingField: 1
+    <AllowImmediateRepeat>k__BackingField: 0
+    <Clips>k__BackingField:
+    - {fileID: 8300000, guid: 48095f1422d75114296ca6c679e64e1b, type: 3}
   rangeVisuals: {fileID: 6039394507979124769}
+  electricArc: {fileID: 3033639822341494642}
+  range: 8
+  energyPerSecond: 45
+  maxDevices: 5
+  generator: {fileID: 1349527104354922351}
+--- !u!114 &3033639822341494642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5012216245435107206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6391b248a65bd9743b7f175ae9b14df6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  configuration: {fileID: 11400000, guid: 877df11b6a8864d428f0bc6295af943b, type: 2}
+  channel: {fileID: 11400000, guid: 18b7758f03a98ad4ea3a46b3419cc1e5, type: 2}
+  arcBegin: {fileID: 2188780081442679710}
+--- !u!114 &1232959744418254265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5012216245435107206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acea6107c2cfb9046aab62a2aa38ae2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sfxEventChannel: {fileID: 11400000, guid: dd6b72c1d5cdf0b4592d245ebc4c91da, type: 2}
+  audioConfiguration: {fileID: 11400000, guid: a28c7d6ec18dac6439d381de6a7f208c, type: 2}
 --- !u!1 &7226620919721981114 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7436611849244516973, guid: 01d637b1fdc0293498efdcac116f665c,
