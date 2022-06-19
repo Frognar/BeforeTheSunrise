@@ -7,7 +7,7 @@ namespace bts {
       Collider[] collidersInRange = Physics.OverlapSphere(origin, range);
       List<T> list = new List<T>();
       foreach (Collider collider in collidersInRange) {
-        if (collider.TryGetComponent(out T component)) {
+        if (collider.TryGetComponent(out T component) && Vector3.Distance(origin, collider.bounds.center) <= range) {
           list.Add(component);
         }
       }
