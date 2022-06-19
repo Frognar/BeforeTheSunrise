@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using fro.States;
-using UnityEngine;
 
 namespace bts {
   public class CannonIdleState : CannonBaseState {
@@ -18,14 +17,7 @@ namespace bts {
         return;
       }
 
-      Collider[] collidersInRange = Physics.OverlapSphere(Context.Position, Context.Range);
-      List<Damageable> enemiesInRange = new List<Damageable>();
-      foreach (Collider collider in collidersInRange) {
-        if (collider.TryGetComponent(out Damageable damageable) && damageable.ObjectAffiliation == Affiliation.Enemy) {
-          enemiesInRange.Add(damageable);
-        }
-      }
-
+      List<Damageable> enemiesInRange = InRangeFinder.Find<Damageable>(Context.Position, Context.Range);
       Damageable target = enemiesInRange.FirstOrDefault(t => !t.IsDead);
       if (target != null) {
         Context.Target = target;
