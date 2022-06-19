@@ -5,16 +5,22 @@ using UnityEngine.UI;
 
 namespace bts {
   public class UICommandButton : MonoBehaviour {
+    [SerializeField] SelectedObjectCommandsPanel uiPanel;
     [SerializeField] Button button;
     [SerializeField] Image icon;
     [SerializeField] TooltipTrigger tooltip;
     
     public void SetUp(List<UICommand> commands) {
       if (commands.Count > 0) {
-        tooltip.SetUp(commands.First().TooltipData);
-        icon.sprite = commands.First().ButtonIcon;
-        button.interactable = commands.First().CanExecute();
-        button.onClick.AddListener(delegate { commands.ForEach(c => c.Execute()); });
+        UICommand first = commands.First();
+        tooltip.SetUp(first.TooltipData);
+        icon.sprite = first.ButtonIcon;
+        button.interactable = first.CanExecute();
+        button.onClick.AddListener(delegate {
+          commands.ForEach(c => c.Execute());
+          tooltip.SetUp(first.TooltipData);
+          uiPanel.ReloadActionUI();
+        });
       }
     }
     
@@ -22,8 +28,11 @@ namespace bts {
       tooltip.SetUp(command.TooltipData);
       icon.sprite = command.ButtonIcon;
       button.interactable = command.CanExecute();
-      button.onClick.AddListener(delegate { command.Execute(); });
-      button.onClick.AddListener(delegate { tooltip.SetUp(command.TooltipData); });
+      button.onClick.AddListener(delegate {
+        command.Execute();
+        tooltip.SetUp(command.TooltipData);
+        uiPanel.ReloadActionUI();
+      });
     }
     
     void OnDisable() {

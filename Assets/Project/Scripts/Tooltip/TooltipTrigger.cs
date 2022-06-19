@@ -1,5 +1,4 @@
 using System.Collections;
-using bts.Gemstones;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -13,13 +12,6 @@ namespace bts {
 
     public void SetUp(TooltipData data) {
       tooltipData = data;
-      if (isEnabled) {
-        tooltipSystem.Show(tooltipData);
-      }
-    }
-
-    public void UpdateGemstones(GemstoneDictionary gemstones) {
-      tooltipData.UpdateGemstones(gemstones);
       if (isEnabled) {
         tooltipSystem.Show(tooltipData);
       }
