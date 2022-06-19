@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75c9a1fe66b6c344cae49cb79549a6fc, type: 3}
   m_Name: ReamaningTime
   m_EditorClassIdentifier: 
-  value: 120
+  value: 86

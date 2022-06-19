@@ -41,6 +41,7 @@ namespace bts {
     protected virtual void Awake() {
       healthComponent.Init(buildingData.healthAmount);
       healthComponent.Health.OnCurrentHealthChange += OnCurrentHealthChange;
+      healthComponent.Health.OnDie += OnDie;
       UICommands = CreateUICommands();
       register.Register(this);
     }
@@ -88,6 +89,8 @@ namespace bts {
     }
 
     protected virtual void OnDestroy() {
+      healthComponent.Health.OnCurrentHealthChange -= OnCurrentHealthChange;
+      healthComponent.Health.OnDie -= OnDie;
       register.Unregister(this);
       SelectablesEventChannel.Invoke(this);
     }
