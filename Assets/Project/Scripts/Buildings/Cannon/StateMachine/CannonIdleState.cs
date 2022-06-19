@@ -18,7 +18,7 @@ namespace bts {
       }
 
       List<Damageable> enemiesInRange = InRangeFinder.Find<Damageable>(Context.Position, Context.Range);
-      Damageable target = enemiesInRange.FirstOrDefault(t => !t.IsDead);
+      Damageable target = enemiesInRange.FirstOrDefault(t => t.ObjectAffiliation == Affiliation.Enemy && t.IsDead == false);
       if (target != null) {
         Context.Target = target;
         StateMachine.SwitchState(Factory.GetState(nameof(CannonAttackState)));
