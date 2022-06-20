@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using fro.States;
 
@@ -17,13 +18,14 @@ namespace bts {
         return;
       }
 
-      List<Damageable> enemiesInRange = InRangeFinder.Find<Damageable>(Context.Position, Context.Range);
-      Damageable target = enemiesInRange.FirstOrDefault(t => t.ObjectAffiliation == Affiliation.Enemy && t.IsDead == false);
-      if (target != null) {
-        Context.Target = target;
+      List<Damageable> enemiesInRange = InRangeFinder.Find(Context.Position, Context.Range, customPredicate: livingEnemy);
+      if (enemiesInRange.Count > 0) {
+        Context.Target = enemiesInRange[0];
         StateMachine.SwitchState(Factory.GetState(nameof(CannonAttackState)));
       }
     }
+
+    readonly Func<Damageable, bool> livingEnemy = t => t.ObjectAffiliation == Affiliation.Enemy && t.IsDead == false;
 
     public override void ExitState() {
       Context.IsIdle = false;
