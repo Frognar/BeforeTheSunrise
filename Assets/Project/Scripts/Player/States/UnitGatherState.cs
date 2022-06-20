@@ -24,24 +24,30 @@ namespace bts {
       }
 
       if (InGatherRange) {
-        Context.IsGathering = true;
+        Context.Pathfinder.Reset();
         if (IsTimeToGather) {
-          lastGatherTime = Time.time;
-          GemstoneType type = Context.TargerGemstone.GemstoneType;
-          int count = Context.TargerGemstone.BaseGatherAmount + Context.GatherBonuses[type];
-          Context.GemstoneStorage.Store(type, count);
-          PopupTextParameters popupParams = new PopupTextParameters() {
-            Position = Context.TargerGemstone.Center.position,
-            GemstoneType = type,
-            Text = $"+{count}"
-          };
-          
-          Context.PopupTextEventChannel.RaiseSpawnEvent(PopupTextConfiguration.Default, popupParams);
+          Gather();
         }
       }
-      else {
-        Context.IsGathering = false;
-      }
+    }
+    
+    void Gather() {
+      Context.IsGathering = true;
+      lastGatherTime = Time.time;
+      GemstoneType type = Context.TargerGemstone.GemstoneType;
+      int count = Context.TargerGemstone.BaseGatherAmount + Context.GatherBonuses[type];
+      Context.GemstoneStorage.Store(type, count);
+      ShowPopup(type, count);
+    }
+
+    void ShowPopup(GemstoneType gemType, int gemCount) {
+      PopupTextParameters popupParams = new PopupTextParameters() {
+        Position = Context.TargerGemstone.Center.position,
+        GemstoneType = gemType,
+        Text = $"+{gemCount}"
+      };
+
+      Context.PopupTextEventChannel.RaiseSpawnEvent(PopupTextConfiguration.Default, popupParams);
     }
 
     public override void ExitState() {

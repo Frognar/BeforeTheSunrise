@@ -28,6 +28,7 @@ namespace bts {
       }
 
       if (InAttackRange) {
+        Context.Pathfinder.Reset();
         if (IsTimeToAttack) {
           Attack();
         }
