@@ -6244,6 +6244,123 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66abad7918dce19468008ee1b791a524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &452278753
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 452278754}
+  - component: {fileID: 452278758}
+  - component: {fileID: 452278757}
+  - component: {fileID: 452278756}
+  - component: {fileID: 452278755}
+  m_Layer: 5
+  m_Name: SpecialPanel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &452278754
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 452278753}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 3958917780519269713}
+  m_Father: {fileID: 1639112177}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 195, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &452278755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 452278753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 2
+  m_VerticalFit: 2
+--- !u!114 &452278756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 452278753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 15
+    m_Right: 15
+    m_Top: 15
+    m_Bottom: 15
+  m_ChildAlignment: 0
+  m_StartCorner: 0
+  m_StartAxis: 0
+  m_CellSize: {x: 100, y: 100}
+  m_Spacing: {x: 15, y: 15}
+  m_Constraint: 0
+  m_ConstraintCount: 2
+--- !u!114 &452278757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 452278753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.6698113, g: 0.6698113, b: 0.6698113, a: 0.78431374}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 52c3e67cdaec1cc43bc285aa7957c253, type: 3}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &452278758
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 452278753}
+  m_CullTransparentMesh: 1
 --- !u!1001 &455430827
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9312,6 +9429,17 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8348858341830564008, guid: 37c005e18843f9944bc767e3b0aa36dd,
         type: 3}
+      propertyPath: icon
+      value: 
+      objectReference: {fileID: 21300000, guid: 83f3d887d5b6e9e43b068474c6740991,
+        type: 3}
+    - target: {fileID: 8348858341830564008, guid: 37c005e18843f9944bc767e3b0aa36dd,
+        type: 3}
+      propertyPath: nightRequired
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8348858341830564008, guid: 37c005e18843f9944bc767e3b0aa36dd,
+        type: 3}
       propertyPath: <Icon>k__BackingField
       value: 
       objectReference: {fileID: 21300000, guid: 83f3d887d5b6e9e43b068474c6740991,
@@ -9344,7 +9472,7 @@ PrefabInstance:
     - target: {fileID: 8348858341830564009, guid: 37c005e18843f9944bc767e3b0aa36dd,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8348858341830564009, guid: 37c005e18843f9944bc767e3b0aa36dd,
         type: 3}
@@ -9449,7 +9577,7 @@ PrefabInstance:
     - target: {fileID: 8348858341830564012, guid: 37c005e18843f9944bc767e3b0aa36dd,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetSelectedButton
+      value: SetSelectedGemstoneGatherRewardButton
       objectReference: {fileID: 0}
     - target: {fileID: 8348858341830564012, guid: 37c005e18843f9944bc767e3b0aa36dd,
         type: 3}
@@ -9474,7 +9602,7 @@ PrefabInstance:
     - target: {fileID: 8348858341830564013, guid: 37c005e18843f9944bc767e3b0aa36dd,
         type: 3}
       propertyPath: m_Name
-      value: RewardButton
+      value: GemstoneGatherRewardButton
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37c005e18843f9944bc767e3b0aa36dd, type: 3}
@@ -10261,6 +10389,17 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8348858341830564008, guid: 37c005e18843f9944bc767e3b0aa36dd,
         type: 3}
+      propertyPath: icon
+      value: 
+      objectReference: {fileID: 21300000, guid: 22787a7333403934cab896dc59234093,
+        type: 3}
+    - target: {fileID: 8348858341830564008, guid: 37c005e18843f9944bc767e3b0aa36dd,
+        type: 3}
+      propertyPath: nightRequired
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8348858341830564008, guid: 37c005e18843f9944bc767e3b0aa36dd,
+        type: 3}
       propertyPath: <Icon>k__BackingField
       value: 
       objectReference: {fileID: 21300000, guid: 22787a7333403934cab896dc59234093,
@@ -10293,7 +10432,7 @@ PrefabInstance:
     - target: {fileID: 8348858341830564009, guid: 37c005e18843f9944bc767e3b0aa36dd,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8348858341830564009, guid: 37c005e18843f9944bc767e3b0aa36dd,
         type: 3}
@@ -10398,7 +10537,7 @@ PrefabInstance:
     - target: {fileID: 8348858341830564012, guid: 37c005e18843f9944bc767e3b0aa36dd,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetSelectedButton
+      value: SetSelectedGemstoneGatherRewardButton
       objectReference: {fileID: 0}
     - target: {fileID: 8348858341830564012, guid: 37c005e18843f9944bc767e3b0aa36dd,
         type: 3}
@@ -10423,7 +10562,7 @@ PrefabInstance:
     - target: {fileID: 8348858341830564013, guid: 37c005e18843f9944bc767e3b0aa36dd,
         type: 3}
       propertyPath: m_Name
-      value: RewardButton
+      value: GemstoneGatherRewardButton
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37c005e18843f9944bc767e3b0aa36dd, type: 3}
@@ -10757,7 +10896,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1882493490}
+  - {fileID: 1639112177}
   m_Father: {fileID: 724389000}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -17517,18 +17656,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1368521673}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1795365558}
-  m_Father: {fileID: 1882493490}
-  m_RootOrder: 0
+  m_Father: {fileID: 1639112177}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 120, y: 50}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1368521675
@@ -17543,7 +17682,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_IgnoreLayout: 1
+  m_IgnoreLayout: 0
   m_MinWidth: -1
   m_MinHeight: -1
   m_PreferredWidth: -1
@@ -17984,6 +18123,17 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8348858341830564008, guid: 37c005e18843f9944bc767e3b0aa36dd,
         type: 3}
+      propertyPath: icon
+      value: 
+      objectReference: {fileID: 21300000, guid: a3d41957ab3fac246a13464cee253e59,
+        type: 3}
+    - target: {fileID: 8348858341830564008, guid: 37c005e18843f9944bc767e3b0aa36dd,
+        type: 3}
+      propertyPath: nightRequired
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8348858341830564008, guid: 37c005e18843f9944bc767e3b0aa36dd,
+        type: 3}
       propertyPath: <Icon>k__BackingField
       value: 
       objectReference: {fileID: 21300000, guid: a3d41957ab3fac246a13464cee253e59,
@@ -18016,7 +18166,7 @@ PrefabInstance:
     - target: {fileID: 8348858341830564009, guid: 37c005e18843f9944bc767e3b0aa36dd,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8348858341830564009, guid: 37c005e18843f9944bc767e3b0aa36dd,
         type: 3}
@@ -18121,7 +18271,7 @@ PrefabInstance:
     - target: {fileID: 8348858341830564012, guid: 37c005e18843f9944bc767e3b0aa36dd,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetSelectedButton
+      value: SetSelectedGemstoneGatherRewardButton
       objectReference: {fileID: 0}
     - target: {fileID: 8348858341830564012, guid: 37c005e18843f9944bc767e3b0aa36dd,
         type: 3}
@@ -18146,7 +18296,7 @@ PrefabInstance:
     - target: {fileID: 8348858341830564013, guid: 37c005e18843f9944bc767e3b0aa36dd,
         type: 3}
       propertyPath: m_Name
-      value: RewardButton
+      value: GemstoneGatherRewardButton
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37c005e18843f9944bc767e3b0aa36dd, type: 3}
@@ -20877,6 +21027,127 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b170412a7badfc74ea95a62da38d6d84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1639112176
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1639112177}
+  - component: {fileID: 1639112181}
+  - component: {fileID: 1639112180}
+  - component: {fileID: 1639112179}
+  - component: {fileID: 1639112178}
+  m_Layer: 5
+  m_Name: MainPanel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1639112177
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1639112176}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1882493490}
+  - {fileID: 452278754}
+  - {fileID: 1368521674}
+  m_Father: {fileID: 918915753}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1639112178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1639112176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.7735849, g: 0.7735849, b: 0.7735849, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 52c3e67cdaec1cc43bc285aa7957c253, type: 3}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1639112179
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1639112176}
+  m_CullTransparentMesh: 1
+--- !u!114 &1639112180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1639112176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 15
+    m_Right: 15
+    m_Top: 15
+    m_Bottom: 15
+  m_ChildAlignment: 1
+  m_Spacing: 0
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 1
+  m_ChildControlWidth: 0
+  m_ChildControlHeight: 0
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0
+--- !u!114 &1639112181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1639112176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 2
+  m_VerticalFit: 2
 --- !u!1 &1646519624
 GameObject:
   m_ObjectHideFlags: 0
@@ -22930,7 +23201,7 @@ GameObject:
   - component: {fileID: 1882493494}
   - component: {fileID: 1882493493}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: GemGatherPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22943,24 +23214,23 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1882493489}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1368521674}
   - {fileID: 1765437444}
   - {fileID: 856894325}
   - {fileID: 1399140265}
   - {fileID: 755980350}
   - {fileID: 1981877117}
   - {fileID: 2060671145}
-  m_Father: {fileID: 918915753}
+  m_Father: {fileID: 1639112177}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 195, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1882493491
@@ -23031,7 +23301,7 @@ MonoBehaviour:
     m_Left: 15
     m_Right: 15
     m_Top: 15
-    m_Bottom: 70
+    m_Bottom: 15
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
@@ -24505,6 +24775,17 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8348858341830564008, guid: 37c005e18843f9944bc767e3b0aa36dd,
         type: 3}
+      propertyPath: icon
+      value: 
+      objectReference: {fileID: 21300000, guid: ba1fb6d8908c0b946a368f10c26bcb9b,
+        type: 3}
+    - target: {fileID: 8348858341830564008, guid: 37c005e18843f9944bc767e3b0aa36dd,
+        type: 3}
+      propertyPath: nightRequired
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8348858341830564008, guid: 37c005e18843f9944bc767e3b0aa36dd,
+        type: 3}
       propertyPath: <Icon>k__BackingField
       value: 
       objectReference: {fileID: 21300000, guid: ba1fb6d8908c0b946a368f10c26bcb9b,
@@ -24537,7 +24818,7 @@ PrefabInstance:
     - target: {fileID: 8348858341830564009, guid: 37c005e18843f9944bc767e3b0aa36dd,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8348858341830564009, guid: 37c005e18843f9944bc767e3b0aa36dd,
         type: 3}
@@ -24642,7 +24923,7 @@ PrefabInstance:
     - target: {fileID: 8348858341830564012, guid: 37c005e18843f9944bc767e3b0aa36dd,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetSelectedButton
+      value: SetSelectedGemstoneGatherRewardButton
       objectReference: {fileID: 0}
     - target: {fileID: 8348858341830564012, guid: 37c005e18843f9944bc767e3b0aa36dd,
         type: 3}
@@ -24667,7 +24948,7 @@ PrefabInstance:
     - target: {fileID: 8348858341830564013, guid: 37c005e18843f9944bc767e3b0aa36dd,
         type: 3}
       propertyPath: m_Name
-      value: RewardButton
+      value: GemstoneGatherRewardButton
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37c005e18843f9944bc767e3b0aa36dd, type: 3}
@@ -25414,6 +25695,17 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8348858341830564008, guid: 37c005e18843f9944bc767e3b0aa36dd,
         type: 3}
+      propertyPath: icon
+      value: 
+      objectReference: {fileID: 21300000, guid: c5455323d1109364eae230448f3d35bb,
+        type: 3}
+    - target: {fileID: 8348858341830564008, guid: 37c005e18843f9944bc767e3b0aa36dd,
+        type: 3}
+      propertyPath: nightRequired
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 8348858341830564008, guid: 37c005e18843f9944bc767e3b0aa36dd,
+        type: 3}
       propertyPath: <Icon>k__BackingField
       value: 
       objectReference: {fileID: 21300000, guid: c5455323d1109364eae230448f3d35bb,
@@ -25511,7 +25803,7 @@ PrefabInstance:
     - target: {fileID: 8348858341830564009, guid: 37c005e18843f9944bc767e3b0aa36dd,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8348858341830564009, guid: 37c005e18843f9944bc767e3b0aa36dd,
         type: 3}
@@ -25616,7 +25908,7 @@ PrefabInstance:
     - target: {fileID: 8348858341830564012, guid: 37c005e18843f9944bc767e3b0aa36dd,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetSelectedButton
+      value: SetSelectedGemstoneGatherRewardButton
       objectReference: {fileID: 0}
     - target: {fileID: 8348858341830564012, guid: 37c005e18843f9944bc767e3b0aa36dd,
         type: 3}
@@ -25641,7 +25933,7 @@ PrefabInstance:
     - target: {fileID: 8348858341830564013, guid: 37c005e18843f9944bc767e3b0aa36dd,
         type: 3}
       propertyPath: m_Name
-      value: RewardButton
+      value: GemstoneGatherRewardButton
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37c005e18843f9944bc767e3b0aa36dd, type: 3}
@@ -25991,6 +26283,176 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1001 &2949138753100398673
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 452278754}
+    m_Modifications:
+    - target: {fileID: 2170054066635764992, guid: 12e472b8c888c5b4e831d53cd4cf07ee,
+        type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2170054066635764992, guid: 12e472b8c888c5b4e831d53cd4cf07ee,
+        type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2170054066635764992, guid: 12e472b8c888c5b4e831d53cd4cf07ee,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2170054066635764992, guid: 12e472b8c888c5b4e831d53cd4cf07ee,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2170054066635764992, guid: 12e472b8c888c5b4e831d53cd4cf07ee,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2170054066635764992, guid: 12e472b8c888c5b4e831d53cd4cf07ee,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2170054066635764992, guid: 12e472b8c888c5b4e831d53cd4cf07ee,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2170054066635764992, guid: 12e472b8c888c5b4e831d53cd4cf07ee,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2170054066635764992, guid: 12e472b8c888c5b4e831d53cd4cf07ee,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2170054066635764992, guid: 12e472b8c888c5b4e831d53cd4cf07ee,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2170054066635764992, guid: 12e472b8c888c5b4e831d53cd4cf07ee,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2170054066635764992, guid: 12e472b8c888c5b4e831d53cd4cf07ee,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2170054066635764992, guid: 12e472b8c888c5b4e831d53cd4cf07ee,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2170054066635764992, guid: 12e472b8c888c5b4e831d53cd4cf07ee,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2170054066635764992, guid: 12e472b8c888c5b4e831d53cd4cf07ee,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2170054066635764992, guid: 12e472b8c888c5b4e831d53cd4cf07ee,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2170054066635764992, guid: 12e472b8c888c5b4e831d53cd4cf07ee,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2170054066635764992, guid: 12e472b8c888c5b4e831d53cd4cf07ee,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2170054066635764992, guid: 12e472b8c888c5b4e831d53cd4cf07ee,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2170054066635764992, guid: 12e472b8c888c5b4e831d53cd4cf07ee,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2170054066635764992, guid: 12e472b8c888c5b4e831d53cd4cf07ee,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2170054066635764996, guid: 12e472b8c888c5b4e831d53cd4cf07ee,
+        type: 3}
+      propertyPath: m_Name
+      value: SpecialRewardButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 2170054066635764997, guid: 12e472b8c888c5b4e831d53cd4cf07ee,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2170054066635764997, guid: 12e472b8c888c5b4e831d53cd4cf07ee,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 918915754}
+    - target: {fileID: 2170054066635764997, guid: 12e472b8c888c5b4e831d53cd4cf07ee,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 918915754}
+    - target: {fileID: 2170054066635764997, guid: 12e472b8c888c5b4e831d53cd4cf07ee,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetSelectedSpecialRewardButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 2170054066635764997, guid: 12e472b8c888c5b4e831d53cd4cf07ee,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: bts.RewardPanel, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2170054066635764997, guid: 12e472b8c888c5b4e831d53cd4cf07ee,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6070628502530695980, guid: 12e472b8c888c5b4e831d53cd4cf07ee,
+        type: 3}
+      propertyPath: icon
+      value: 
+      objectReference: {fileID: 21300000, guid: e29eedbff7e583544a95f4a5a42ea9ef,
+        type: 3}
+    - target: {fileID: 6070628502530695980, guid: 12e472b8c888c5b4e831d53cd4cf07ee,
+        type: 3}
+      propertyPath: nightRequired
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6070628502530695980, guid: 12e472b8c888c5b4e831d53cd4cf07ee,
+        type: 3}
+      propertyPath: moduleToEnable
+      value: 
+      objectReference: {fileID: 4085809705026302188}
+    - target: {fileID: 6070628502530695980, guid: 12e472b8c888c5b4e831d53cd4cf07ee,
+        type: 3}
+      propertyPath: customTooltipContent
+      value: Portable Generator
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 12e472b8c888c5b4e831d53cd4cf07ee, type: 3}
 --- !u!1 &2979242353663693766
 GameObject:
   m_ObjectHideFlags: 0
@@ -26124,6 +26586,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2979242353663693766}
   m_CullTransparentMesh: 1
+--- !u!224 &3958917780519269713 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 2170054066635764992, guid: 12e472b8c888c5b4e831d53cd4cf07ee,
+    type: 3}
+  m_PrefabInstance: {fileID: 2949138753100398673}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4085809705026302187
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26198,6 +26666,18 @@ PrefabInstance:
       objectReference: {fileID: 833708074}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7db9d6726e6a0d499a3ba8cbdce4e16, type: 3}
+--- !u!114 &4085809705026302188 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 97646021, guid: f7db9d6726e6a0d499a3ba8cbdce4e16,
+    type: 3}
+  m_PrefabInstance: {fileID: 4085809705026302187}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5722c95b8d6ae34cae2cae3434a348c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4445089964789952192
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26885,6 +27365,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1882493490}
     m_Modifications:
+    - target: {fileID: 8348858341830564008, guid: 37c005e18843f9944bc767e3b0aa36dd,
+        type: 3}
+      propertyPath: icon
+      value: 
+      objectReference: {fileID: 21300000, guid: d0085bdf85761294096c4fa901fd0519,
+        type: 3}
+    - target: {fileID: 8348858341830564008, guid: 37c005e18843f9944bc767e3b0aa36dd,
+        type: 3}
+      propertyPath: nightRequired
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8348858341830564009, guid: 37c005e18843f9944bc767e3b0aa36dd,
         type: 3}
       propertyPath: m_Pivot.x
@@ -26898,7 +27389,7 @@ PrefabInstance:
     - target: {fileID: 8348858341830564009, guid: 37c005e18843f9944bc767e3b0aa36dd,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8348858341830564009, guid: 37c005e18843f9944bc767e3b0aa36dd,
         type: 3}
@@ -27000,10 +27491,20 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 918915754}
+    - target: {fileID: 8348858341830564012, guid: 37c005e18843f9944bc767e3b0aa36dd,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetSelectedGemstoneGatherRewardButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 8348858341830564012, guid: 37c005e18843f9944bc767e3b0aa36dd,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: bts.RewardPanel, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 8348858341830564013, guid: 37c005e18843f9944bc767e3b0aa36dd,
         type: 3}
       propertyPath: m_Name
-      value: RewardButton
+      value: GemstoneGatherRewardButton
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37c005e18843f9944bc767e3b0aa36dd, type: 3}
