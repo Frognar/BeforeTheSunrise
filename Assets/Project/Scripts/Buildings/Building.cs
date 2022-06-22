@@ -96,7 +96,10 @@ namespace bts {
     }
 
     protected virtual IEnumerable<UICommand> CreateUICommands() {
-      yield return new UpgradeBuildingUICommand(this, upgradeBuildingUICommandData);
+      if (upgradeBuildingUICommandData != null) {
+        yield return new UpgradeBuildingUICommand(this, upgradeBuildingUICommandData);
+      }
+
       yield return new DemolishUICommand(demolishUICommandData, this);
     }
 

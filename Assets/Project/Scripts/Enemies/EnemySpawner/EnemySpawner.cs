@@ -6,6 +6,7 @@ using UnityEngine.Pool;
 
 namespace bts {
   public class EnemySpawner : MonoBehaviour, Selectable, Damageable {
+    [SerializeField] VoidEventChannel spawnerDeathEventChannel;
     public event Action<Dictionary<DataType, object>> OnDataChange = delegate { };
     [field: SerializeField] public VoidEventChannel DayStarted { get; private set; }
     [field: SerializeField] public VoidEventChannel NightStarted { get; private set; }
@@ -36,6 +37,15 @@ namespace bts {
       healthComponent.Init(float.MaxValue);
       EnemyPool = new ObjectPool<Enemy>(Create, Get, Release);
       spawnerCollider = GetComponent<Collider>();
+      healthComponent.Health.OnDie += OnDie;
+    }
+
+    private void OnDie(object sender, EventArgs e) {
+      if (Selected.activeSelf) {
+        SelectablesEventChannel.Invoke(this);
+      }
+
+      spawnerDeathEventChannel.Invoke();
     }
 
     Enemy Create() {
@@ -86,10 +96,6 @@ namespace bts {
     public void TakeDamage(float amount) {
       healthComponent.Damage(amount);
       OnDataChange.Invoke(GetHealthData());
-      
-      if (IsDead && Selected.activeSelf) {
-        SelectablesEventChannel.Invoke(this);
-      }
     }
 
     public void Heal(float amount) {

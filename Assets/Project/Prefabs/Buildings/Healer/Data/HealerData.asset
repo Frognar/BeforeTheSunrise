@@ -38,10 +38,10 @@ MonoBehaviour:
     isExpanded: 1
     _keyValues: 04000000
     _keys: 04000000
-    _values: 14000000
+    _values: 10000000
   healthAmount: 10
   ghostMesh: {fileID: 50404739200888968, guid: 912f7ef0eb71609498f47c9a5cb6da7c, type: 3}
-  range: 5
+  <Range>k__BackingField: 5
   healAmount: 3
   energyPerHeal: 5
   maxEnergy: 25

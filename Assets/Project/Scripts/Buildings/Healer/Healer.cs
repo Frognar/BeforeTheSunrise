@@ -22,7 +22,7 @@ namespace bts {
     [SerializeField] IntAsset ticksPerSecond;
     [SerializeField] GameObject rangeVisuals;
     HealerData data;
-    public float Range => data.range;
+    public float Range => data.Range;
     public float EnergyPerHeal => data.energyPerHeal * Mathf.Pow(1.5f, BuildingLevel);
     public float MaxEnergy => data.maxEnergy * Mathf.Pow(2, BuildingLevel);
     public float HealAmount => data.healAmount * Mathf.Pow(2, BuildingLevel);

@@ -10,7 +10,7 @@ namespace bts {
     [SerializeField] List<ChangeAuraUICommandData> changeAuraUICommandData;
     [SerializeField] VoidEventChannel onTick;
     [SerializeField] GameObject rangeVisuals;
-    public float Range => auraData.range;
+    public float Range => auraData.Range;
     public float MaxEnergy => auraData.maxEnergy;
     public float EnergyPerDevice => auraData.energyPerDevicePerSecond / ticksPerSecond;
     public float CurrentEnergy { get; private set; }

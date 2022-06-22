@@ -93,8 +93,6 @@ GameObject:
   m_Component:
   - component: {fileID: 15494893612748968}
   - component: {fileID: -1955304222128801676}
-  - component: {fileID: 9199683872321090193}
-  - component: {fileID: 5873865600717795842}
   m_Layer: 8
   m_Name: BuildingGhost
   m_TagString: Untagged
@@ -139,36 +137,6 @@ MonoBehaviour:
   meshRenderer: {fileID: 2043843969351875301}
   meshObject: {fileID: 5892943204597337517}
   rangeVisuals: {fileID: 7126657706578550427}
-  boxCollider: {fileID: 9199683872321090193}
---- !u!65 &9199683872321090193
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7037293398815512519}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.9, y: 0.5, z: 1.9}
-  m_Center: {x: 1, y: 0.3, z: 1}
---- !u!54 &5873865600717795842
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7037293398815512519}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 126
-  m_CollisionDetection: 0
 --- !u!1001 &8124900825594787954
 PrefabInstance:
   m_ObjectHideFlags: 0

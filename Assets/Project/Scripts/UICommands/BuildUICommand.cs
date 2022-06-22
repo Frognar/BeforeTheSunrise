@@ -15,7 +15,7 @@ namespace bts {
     }
 
     public override void Execute() {
-      if (BuildingData.CanPlace()) {
+      if (BuildingData is not Limited limited || limited.CanPlace()) {
         Commander.SetBuildingToBuild(BuildingType, BuildingData);
       }
     }

@@ -53,6 +53,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 681177175a9d19f459a4f407a345b403, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnerDeathEventChannel: {fileID: 11400000, guid: 5bdb582e829b7e84798684ad73d933f6,
+    type: 2}
   <DayStarted>k__BackingField: {fileID: 11400000, guid: ba696d58e6b750a4396f8d5fba9a80ea,
     type: 2}
   <NightStarted>k__BackingField: {fileID: 11400000, guid: 3fd151616b2c6d746bca7aecc6b50f94,

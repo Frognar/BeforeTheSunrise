@@ -159,6 +159,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: dcde5be36a18b6546bfdc3274ff6efca, type: 2}
   - {fileID: 11400000, guid: 27b0d1a01b997094a9a866aae240d98c, type: 2}
   - {fileID: 11400000, guid: 69c96b4985e8aa0429cc38b5618aef46, type: 2}
+  - {fileID: 11400000, guid: 61ba8b1f98d17ea4c86b26a4ec457f5a, type: 2}
   cancelBuildCommandData: {fileID: 11400000, guid: ff800fd855e31464ab01c02c2f77241d,
     type: 2}
   <GemstoneStorage>k__BackingField: {fileID: 11400000, guid: 71f3ad2114ea85541984677a4e20ebac,

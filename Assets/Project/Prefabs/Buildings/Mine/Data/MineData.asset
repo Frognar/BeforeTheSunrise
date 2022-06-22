@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1244d3725e317c04f9a8877a2015977e, type: 3}
-  m_Name: Mine Data
+  m_Script: {fileID: 11500000, guid: 4f8001ae76c66cd4eae6ce5eb096b029, type: 3}
+  m_Name: MineData
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: c5455323d1109364eae230448f3d35bb, type: 3}
   buildingCosts:
@@ -42,3 +42,6 @@ MonoBehaviour:
   healthAmount: 1
   ghostMesh: {fileID: -801319282681951034, guid: 17fe242fcd862ce4aaa464465dfc6038,
     type: 3}
+  <Limit>k__BackingField: 20
+  <PlacedCount>k__BackingField: {fileID: 11400000, guid: 095d080211e7e3a4b9f77e7b79b33493,
+    type: 2}

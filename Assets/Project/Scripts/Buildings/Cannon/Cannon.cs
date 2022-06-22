@@ -13,7 +13,7 @@ namespace bts {
     float BaseDamage => data.damage * Mathf.Pow(2, BuildingLevel);
     public float Damage => boosts.ContainsKey(BoostType.Damage) ? BaseDamage * boosts[BoostType.Damage] : BaseDamage;
     public float EnergyPerAttack => data.energyPerAttack * Mathf.Pow(1.5f, BuildingLevel);
-    public float Range => boosts.ContainsKey(BoostType.Range) ? data.range * boosts[BoostType.Range] : data.range;
+    public float Range => boosts.ContainsKey(BoostType.Range) ? data.Range * boosts[BoostType.Range] : data.Range;
     public float MaxEnergy => data.maxEnergy * (int)Mathf.Pow(2, BuildingLevel);
     public float TimeBetweenAttacks => boosts.ContainsKey(BoostType.AttackSpeed) ? data.timeBetweenAttacks / boosts[BoostType.AttackSpeed] : data.timeBetweenAttacks;
     CannonData data;

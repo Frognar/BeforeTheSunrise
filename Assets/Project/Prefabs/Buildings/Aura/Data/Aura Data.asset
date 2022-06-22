@@ -42,6 +42,8 @@ MonoBehaviour:
   healthAmount: 16
   ghostMesh: {fileID: 6883124084952408774, guid: 08e00622f7c7b854b93a6653ef276718,
     type: 3}
-  range: 4
+  limit: 0
+  placedCount: {fileID: 0}
+  <Range>k__BackingField: 4
   maxEnergy: 50
   energyPerDevicePerSecond: 5

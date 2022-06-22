@@ -216,7 +216,7 @@ MonoBehaviour:
   <SelectablesEventChannel>k__BackingField: {fileID: 11400000, guid: 3c1fda043d4369741a6aac78f1308909,
     type: 2}
   healthComponent: {fileID: 1491323793889861637}
-  buildingData: {fileID: 11400000, guid: bf92ebc8581af4144890b1dfd092e186, type: 2}
+  buildingData: {fileID: 11400000, guid: f11cda86881a33a4c9453f0a6df2be5d, type: 2}
   onDayStarted: {fileID: 11400000, guid: ba696d58e6b750a4396f8d5fba9a80ea, type: 2}
   mineAmount: 32
   selectMineGemTypeUICommandsData:

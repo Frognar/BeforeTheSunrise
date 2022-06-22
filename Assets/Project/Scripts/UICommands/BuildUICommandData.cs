@@ -14,8 +14,8 @@ namespace bts {
       if (BuildingType != null) {
         string header = BuildingType.Name;
         string content = BuildingType.Description;
-        if (CustomBuildingData.limit > 0) {
-          content += $"\nCan placed only {CustomBuildingData.limit} of those";
+        if (CustomBuildingData is Limited limited) {
+          content += $"\nCan placed only {limited.Limit} of those";
         }
         
         GemstoneDictionary gemstones = CustomBuildingData.buildingCosts;

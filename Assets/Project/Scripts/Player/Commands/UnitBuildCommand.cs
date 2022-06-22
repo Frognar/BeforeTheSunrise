@@ -16,7 +16,7 @@ namespace bts {
     }
 
     public void Execute() {
-      if (CustomBuildingData.CanPlace()) {
+      if (CustomBuildingData is not Limited limited || limited.CanPlace()) {
         Unit.IsOrderedToBuild = true;
         Unit.BuildingToPlace = BuildingType;
         Unit.CustomBuildingData = CustomBuildingData;
