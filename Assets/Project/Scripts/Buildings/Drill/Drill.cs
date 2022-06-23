@@ -44,7 +44,7 @@ namespace bts {
           StartVFX();
           StartSFX();
           UseEnergy(energyPerAttack);
-          spawner.TakeDamage(damage);
+          spawner.TakeDamage(damage * Time.deltaTime);
         }
         else {
           StopVFX();
@@ -126,6 +126,15 @@ namespace bts {
       base.OnDestroy();
       StopVFX();
       StopSFX();
+    }
+
+    public override Dictionary<DataType, object> GetData() {
+      Dictionary<DataType, object> data = base.GetData();
+      data.Add(DataType.MaxEnergy, MaxEnergy);
+      data.Add(DataType.CurrentEnergy, CurrentEnergy);
+      data.Add(DataType.DamagePerSecond, damage);
+      data.Add(DataType.EnergyUsagePerSecond, energyPerAttack);
+      return data;
     }
   }
 }

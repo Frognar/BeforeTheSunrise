@@ -15,6 +15,7 @@ namespace bts {
 
     void OnDeath(object sender, System.EventArgs e) {
       deathPanel.Show();
+      Time.timeScale = 0;
     }
   }
 }

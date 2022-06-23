@@ -238,7 +238,7 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 4b310c21cd753e844ad21a2fa812f101, type: 3}
   <MaxEnergy>k__BackingField: 500000
   energyPerAttack: 1000
-  damage: 3.402823e+35
+  damage: 3.3e+28
 --- !u!4 &6957931853986889760 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8581157019115828669, guid: 01d637b1fdc0293498efdcac116f665c,

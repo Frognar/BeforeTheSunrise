@@ -27,6 +27,7 @@ namespace bts {
     public bool IsDead => healthComponent.Health.IsDead;
     public bool IsIntact => healthComponent.Health.IsInFullHealth;
     [SerializeField] HealthComponent healthComponent;
+    [SerializeField] float maxHealth = 1e30f;
     public Bounds Bounds => spawnerCollider.bounds;
     Collider spawnerCollider;
 
@@ -34,7 +35,7 @@ namespace bts {
 
     void Awake() {
       stateMachine = new EnemySpawnerStateMachine(this);
-      healthComponent.Init(float.MaxValue);
+      healthComponent.Init(maxHealth);
       EnemyPool = new ObjectPool<Enemy>(Create, Get, Release);
       spawnerCollider = GetComponent<Collider>();
       healthComponent.Health.OnDie += OnDie;

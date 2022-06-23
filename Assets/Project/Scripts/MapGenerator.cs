@@ -29,19 +29,20 @@ namespace fro.bts {
         for (int z = 0; z < grid.Height; z++) {
           current++;
           Progress = (float)current / total;
-          if (z <= grid.Height / 2 + 15
-           && z >= grid.Height / 2 - 16
-           && x <= grid.Width / 2 + 15
-           && x >= grid.Width / 2 - 16) {
+          if (current % (total / 10) == 0) {
+            yield return null;
+          }
+
+          if (z <= grid.Height / 2 + 16
+           && z >= grid.Height / 2 - 17
+           && x <= grid.Width / 2 + 16
+           && x >= grid.Width / 2 - 17) {
             continue;
           }
 
-          if (Random.value <= .85f) {
+          if (Random.value <= .65f) {
             if (Random.value > .95f) {
               gridBuildingSystem.Build(new GridCords(x, z), RandomResource);
-              if (current % 500 == 0) {
-                yield return null;
-              }
             }
             else {
               gridBuildingSystem.Build(new GridCords(x, z), obstaclePrefab);

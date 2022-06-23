@@ -15,6 +15,7 @@ namespace bts {
 
     void OnWin(object sender, System.EventArgs e) {
       winPanel.Show();
+      Time.timeScale = 0;
     }
   }
 }
