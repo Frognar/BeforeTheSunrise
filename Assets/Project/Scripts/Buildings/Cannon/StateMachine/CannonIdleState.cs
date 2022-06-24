@@ -20,7 +20,7 @@ namespace bts {
 
       List<Damageable> enemiesInRange = InRangeFinder.Find(Context.Position, Context.Range, customPredicate: livingEnemy);
       if (enemiesInRange.Count > 0) {
-        Context.Target = enemiesInRange[0];
+        Context.Target = enemiesInRange.First();
         StateMachine.SwitchState(Factory.GetState(nameof(CannonAttackState)));
       }
     }

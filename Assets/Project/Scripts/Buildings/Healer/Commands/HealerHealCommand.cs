@@ -1,9 +1,9 @@
 namespace bts {
   public class HealerHealCommand : Command {
     Healer Healer { get; }
-    Damageable Target { get; }
+    Healable Target { get; }
 
-    public HealerHealCommand(Healer healer, Damageable target) {
+    public HealerHealCommand(Healer healer, Healable target) {
       Healer = healer;
       Target = target;
     }

@@ -21,9 +21,8 @@ namespace bts {
     public Sprite Icon => EnemyData.Icon;
     [field: SerializeField] public EnemyData EnemyData { get; private set; }
     [field: SerializeField] public GameObject Selected { get; private set; }
-    
-    public bool IsDead { get; private set; }
-    public bool IsIntact => HealthComponent.Health.IsInFullHealth;
+
+    public bool IsDead => HealthComponent.Health.IsDead;
     [field: SerializeField] public HealthComponent HealthComponent { get; private set; }
 
     public string Name => "Enemy";
@@ -31,13 +30,13 @@ namespace bts {
     public Type ObjectType => Type.Unit;
     public Transform Center => transform;
     public Vector3 Position => Center.position;
-    
+
     public EnemyStateMachine StateMachine { get; private set; }
     public Damageable Target { get; set; }
-    
+
     public Bounds Bounds => enemyCollider.bounds;
     Collider enemyCollider;
-    
+
     public Pathfinder Pathfinder { get; private set; }
 
     void Awake() {
@@ -45,6 +44,8 @@ namespace bts {
       Pathfinder = GetComponent<Pathfinder>();
       StateMachine = new EnemyStateMachine(this);
       HealthComponent.Init(EnemyData.MaxHealth);
+      HealthComponent.Health.OnCurrentHealthChange += OnCurrentHealthChange;
+      HealthComponent.Health.OnDie += OnDie;
       DayStarted.OnEventInvoked += Release;
     }
 
@@ -52,8 +53,11 @@ namespace bts {
       Pathfinder.SetSpeed(EnemyData.MovementSpeed);
     }
 
+    void Update() {
+      StateMachine.Update();
+    }
+
     void OnEnable() {
-      IsDead = false;
       wasPooled = false;
       HealthComponent.ChangeMaxHealth(EnemyData.MaxHealth);
       HealthComponent.ResetHealth();
@@ -61,6 +65,8 @@ namespace bts {
 
     void OnDestroy() {
       DayStarted.OnEventInvoked -= Release;
+      HealthComponent.Health.OnCurrentHealthChange -= OnCurrentHealthChange;
+      HealthComponent.Health.OnDie -= OnDie;
     }
 
     void Release(object s, EventArgs e) {
@@ -77,8 +83,17 @@ namespace bts {
       }
     }
 
-    void Update() {
-      StateMachine.Update();
+    void OnDie(object sender, EventArgs e) {
+      if (Selected.activeSelf) {
+        SelectablesEventChannel.Invoke(this);
+      }
+
+      randomGemstoneGiver.Give();
+      Release();
+    }
+
+    void OnCurrentHealthChange(object sender, EventArgs e) {
+      OnDataChange.Invoke(GetHealthData());
     }
 
     public void Select() {
@@ -102,30 +117,15 @@ namespace bts {
       return data;
     }
 
-    public void TakeDamage(float amount) {
-      HealthComponent.Damage(amount);
-      OnDataChange.Invoke(GetHealthData());
-      if (!IsDead && HealthComponent.Health.IsDead) {
-        IsDead = true;
-        if (Selected.activeSelf) {
-          SelectablesEventChannel.Invoke(this);
-        }
-
-        randomGemstoneGiver.Give();
-        Release();
-      }
-    }
-
-    public void Heal(float amount) {
-      HealthComponent.Heal(amount);
-      OnDataChange.Invoke(GetHealthData());
-    }
-
     Dictionary<DataType, object> GetHealthData() {
       return new Dictionary<DataType, object>() {
         { DataType.MaxHealth, HealthComponent.GetMaxHealth() },
         { DataType.CurrentHealth, HealthComponent.GetCurrentHealth() }
       };
+    }
+
+    public void TakeDamage(float amount) {
+      HealthComponent.Damage(amount);
     }
   }
 }

@@ -5,7 +5,7 @@ using fro.HealthSystem;
 using UnityEngine;
 
 namespace bts {
-  public abstract class Building : MonoBehaviour, Damageable, Selectable, Loggable {
+  public abstract class Building : MonoBehaviour, Damageable, Healable, Selectable, Loggable {
     public event Action<Dictionary<DataType, object>> OnDataChange = delegate { };
     public void InvokeDataChange(Dictionary<DataType, object> data) {
       OnDataChange.Invoke(data);

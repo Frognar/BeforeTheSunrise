@@ -26,7 +26,7 @@ namespace bts {
     public float EnergyPerHeal => data.energyPerHeal * Mathf.Pow(1.5f, BuildingLevel);
     public float MaxEnergy => data.maxEnergy * Mathf.Pow(2, BuildingLevel);
     public float HealAmount => data.healAmount * Mathf.Pow(2, BuildingLevel);
-    public Damageable Target { get; set; }
+    public Healable Target { get; set; }
     public bool IsOrderedToStop { get; set; }
     public bool IsOrderedToHeal { get; set; }
     public bool IsSelected { get; private set; }

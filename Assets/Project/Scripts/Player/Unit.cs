@@ -7,7 +7,7 @@ using fro.States;
 using UnityEngine;
 
 namespace bts {
-  public class Unit : MonoBehaviour, Selectable, Damageable, CommandReceiver {
+  public class Unit : MonoBehaviour, Selectable, Damageable, Healable, CommandReceiver {
     [SerializeField] VoidEventChannel deathEventChannel;
     [field: SerializeField] public PopupTextEventChannel PopupTextEventChannel { get; private set; }
     [field: SerializeField] public SelectablesEventChannel SelectablesEventChannel { get; private set; }
@@ -33,7 +33,7 @@ namespace bts {
     [SerializeField] List<BuildUICommandData> buildCommandsData;
     [SerializeField] CancelBuildUICommandData cancelBuildCommandData;
     public IEnumerable<UICommand> UICommands { get; private set; }
-    public bool IsSelected { get; private set; }
+    public bool IsSelected => Selected.activeSelf;
     public GridBuildingSystem GridBuildingSystem { get; private set; }
     public Pathfinder Pathfinder { get; private set; }
 
@@ -80,6 +80,43 @@ namespace bts {
       Pathfinder = GetComponent<Pathfinder>();
       unitCollider = GetComponent<Collider>();
       stateMachine = new UnitStateMachine(this);
+
+      HealthComponent.Health.OnCurrentHealthChange += OnCurrentHealthChange;
+      HealthComponent.Health.OnDie += OnDie;
+      stats.OnSpeedUpgrade += UpgradeSpeed;
+      stats.OnHealthUpgrade += UpgradeHealth;
+    }
+
+    void Start() {
+      GemstoneStorage.Reset();
+      Pathfinder.SetSpeed(stats.MovementSpeed);
+      stateMachine.Start();
+    }
+
+    void Update() {
+      stateMachine.Update();
+    }
+
+    void OnDestroy() {
+      if (IsSelected) {
+        SelectablesEventChannel.Invoke(this);
+      }
+
+      HealthComponent.Health.OnCurrentHealthChange -= OnCurrentHealthChange;
+      HealthComponent.Health.OnDie -= OnDie;
+      stats.OnSpeedUpgrade -= UpgradeSpeed;
+      stats.OnHealthUpgrade -= UpgradeHealth;
+    }
+
+    void OnDie(object sender, EventArgs e) {
+      AudioRequester.RequestSFX(DieSFX, Position);
+      deathEventChannel.Invoke();
+      Destroy(gameObject);
+    }
+
+    void OnCurrentHealthChange(object sender, EventArgs e) {
+      AudioRequester.RequestSFX(TakeDamageSFX, Position);
+      OnDataChange.Invoke(GetHealthData());
     }
 
     List<UICommand> CreateActions() {
@@ -93,28 +130,16 @@ namespace bts {
       return commands;
     }
 
-    void Start() {
-      GemstoneStorage.Reset();
-      Pathfinder.SetSpeed(stats.MovementSpeed);
-      stateMachine.Start();
-    }
-
-    void Update() {
-      stateMachine.Update();
-    }
-
-    public void Select() {
-      Selected.SetActive(true);
-      IsSelected = true;
-    }
-
     public bool IsSameAs(Selectable other) {
       return other is Unit;
     }
 
+    public void Select() {
+      Selected.SetActive(true);
+    }
+
     public void Deselect() {
       Selected.SetActive(false);
-      IsSelected = false;
     }
 
     public Dictionary<DataType, object> GetData() {
@@ -123,31 +148,6 @@ namespace bts {
       data.Add(DataType.MovementSpeed, stats.MovementSpeed );
       data.Add(DataType.DamagePerSecond, stats.damageAmount / stats.timeBetweenAttacks);
       return data;
-    }
-
-    void OnDestroy() {
-      if (IsSelected) {
-        SelectablesEventChannel.Invoke(this);
-      }
-    }
-
-    public void TakeDamage(float amount) {
-      HealthComponent.Damage(amount);
-      OnDataChange.Invoke(GetHealthData());
-      
-      if (IsDead) {
-        AudioRequester.RequestSFX(DieSFX, Position);
-        deathEventChannel.Invoke();
-        Destroy(gameObject);
-      }
-      else {
-        AudioRequester.RequestSFX(TakeDamageSFX, Position);
-      }
-    }
-
-    public void Heal(float amount) {
-      HealthComponent.Heal(amount);
-      OnDataChange.Invoke(GetHealthData());
     }
 
     Dictionary<DataType, object> GetHealthData() {
@@ -161,14 +161,12 @@ namespace bts {
       return IsIdle || IsGathering;
     }
 
-    void OnEnable() {
-      stats.OnSpeedUpgrade += UpgradeSpeed;
-      stats.OnHealthUpgrade += UpgradeHealth;
+    public void TakeDamage(float amount) {
+      HealthComponent.Damage(amount);
     }
 
-    void OnDisable() {
-      stats.OnSpeedUpgrade -= UpgradeSpeed;
-      stats.OnHealthUpgrade -= UpgradeHealth;
+    public void Heal(float amount) {
+      HealthComponent.Heal(amount);
     }
 
     void UpgradeHealth() {

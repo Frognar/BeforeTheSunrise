@@ -4,7 +4,7 @@ using UnityEngine;
 namespace bts {
   public class HealerHealState : HealerBaseState {
     bool HasTarget => Context.Target != null && (Context.Target as Object) != null;
-    bool IsTargetInRange => Vector3.Distance(Context.Target.Position, Context.Position) <= Context.Range;
+    bool IsTargetInRange => Vector3.Distance(Context.Target.Center.position, Context.Position) <= Context.Range;
     bool TargetIsIntact => Context.Target.IsIntact;
 
     readonly LaserParameters vfxParameters = new LaserParameters();

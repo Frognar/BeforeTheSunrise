@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using fro.States;
@@ -18,20 +19,15 @@ namespace bts {
         return;
       }
 
-      Collider[] collidersInRange = Physics.OverlapSphere(Context.Position, Context.Range);
-      List<Damageable> buildingsInRange = new List<Damageable>();
-      foreach (Collider collider in collidersInRange) {
-        if (collider.TryGetComponent(out Damageable damageable) && damageable.ObjectAffiliation == Affiliation.Player) {
-          buildingsInRange.Add(damageable);
-        }
-      }
-
-      Damageable target = buildingsInRange.FirstOrDefault(t => !t.IsDead && !t.IsIntact);
-      if (target != null) {
-        Context.Target = target;
+      
+      List<Healable> healableInRange = InRangeFinder.Find(Context.Position, Context.Range, customPredicate: injuredAlly);
+      if (healableInRange.Count > 0) {
+        Context.Target = healableInRange.First();
         StateMachine.SwitchState(Factory.GetState(nameof(HealerHealState)));
       }
     }
+
+    readonly Func<Healable, bool> injuredAlly = t => t.ObjectAffiliation == Affiliation.Player && t.IsIntact == false;
 
     public override void ExitState() {
       Context.IsIdle = false;

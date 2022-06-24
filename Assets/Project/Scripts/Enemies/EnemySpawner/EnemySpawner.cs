@@ -25,7 +25,6 @@ namespace bts {
     [field: SerializeField] public SelectablesEventChannel SelectablesEventChannel { get; private set; }
     public Vector3 Position => Center.position;
     public bool IsDead => healthComponent.Health.IsDead;
-    public bool IsIntact => healthComponent.Health.IsInFullHealth;
     [SerializeField] HealthComponent healthComponent;
     [SerializeField] float maxHealth = 1e30f;
     public Bounds Bounds => spawnerCollider.bounds;
@@ -38,15 +37,30 @@ namespace bts {
       healthComponent.Init(maxHealth);
       EnemyPool = new ObjectPool<Enemy>(Create, Get, Release);
       spawnerCollider = GetComponent<Collider>();
+      healthComponent.Health.OnCurrentHealthChange += OnCurrentHealthChange;
       healthComponent.Health.OnDie += OnDie;
     }
 
-    private void OnDie(object sender, EventArgs e) {
+    void Update() {
+      stateMachine.Update();
+    }
+
+    void OnDestroy() {
+      healthComponent.Health.OnCurrentHealthChange -= OnCurrentHealthChange;
+      healthComponent.Health.OnDie -= OnDie;
+    }
+
+    void OnCurrentHealthChange(object sender, EventArgs e) {
+      OnDataChange.Invoke(GetHealthData());
+    }
+
+    void OnDie(object sender, EventArgs e) {
       if (Selected.activeSelf) {
         SelectablesEventChannel.Invoke(this);
       }
 
       spawnerDeathEventChannel.Invoke();
+      Destroy(gameObject);
     }
 
     Enemy Create() {
@@ -71,10 +85,6 @@ namespace bts {
       e.Target = null;
       e.gameObject.SetActive(false);
     }
-    
-    void Update() {
-      stateMachine.Update();
-    }
 
     public void Select() {
       Selected.SetActive(true);
@@ -94,21 +104,15 @@ namespace bts {
       return data;
     }
 
-    public void TakeDamage(float amount) {
-      healthComponent.Damage(amount);
-      OnDataChange.Invoke(GetHealthData());
-    }
-
-    public void Heal(float amount) {
-      healthComponent.Heal(amount);
-      OnDataChange.Invoke(GetHealthData());
-    }
-
     Dictionary<DataType, object> GetHealthData() {
       return new Dictionary<DataType, object>() {
         { DataType.MaxHealth, healthComponent.GetMaxHealth() },
         { DataType.CurrentHealth, healthComponent.GetCurrentHealth() }
       };
+    }
+
+    public void TakeDamage(float amount) {
+      healthComponent.Damage(amount);
     }
   }
 }
