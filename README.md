@@ -7,6 +7,7 @@ To achieve this you need to collect resources to build and upgrade your base.
 
 ## Other
 ![image](https://user-images.githubusercontent.com/32631585/170843669-7c32bad3-6e3e-4194-ae46-1b9acc5bcdb5.png)
+![image](https://user-images.githubusercontent.com/32631585/200112011-7d4e2e9a-9e74-4ea5-8682-365488826ce8.png)
 Build of the project can be found [here](https://drive.google.com/drive/folders/1lKqO5SHU0g500x14ffBRujEP9wpzRpPt)
 
 ## License
