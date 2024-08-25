@@ -2,25 +2,25 @@
 using System.Collections.Generic;
 using fro.BuildingSystem;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace fro.bts {
   public class MapGenerator : MonoBehaviour {
     public static MapGenerator instance;
 
-    [SerializeField] PlacedObjectData obstaclePrefab;
-    [SerializeField] List<PlacedObjectData> resourcesPrefabs;
-    [SerializeField] PlacedObjectData spawner;
-    [SerializeField] GridBuildingSystem gridBuildingSystem;
+    [SerializeField] private PlacedObjectData obstaclePrefab;
+    [SerializeField] private List<PlacedObjectData> resourcesPrefabs;
+    [SerializeField] private PlacedObjectData spawner;
+    [SerializeField] private GridBuildingSystem gridBuildingSystem;
+
     public float Progress { get; private set; }
     public bool IsDone { get; private set; }
 
-    PlacedObjectData RandomResource => resourcesPrefabs[Random.Range(0, resourcesPrefabs.Count)];
-
-    void Awake() {
+    private void Awake() {
       instance = this;
     }
 
-    IEnumerator Start() {
+    private IEnumerator Start() {
       GridXZ<GridPlacedObject> grid = gridBuildingSystem.Grid;
 
       int total = grid.Width * grid.Height;
@@ -33,28 +33,63 @@ namespace fro.bts {
             yield return null;
           }
 
-          if (z <= grid.Height / 2 + 16
-           && z >= grid.Height / 2 - 17
-           && x <= grid.Width / 2 + 16
-           && x >= grid.Width / 2 - 17) {
+          if (IsInMapCenterArea(x, z, grid.Height, grid.Width)) {
             continue;
           }
 
-          if (Random.value <= .65f) {
-            if (Random.value > .95f) {
-              gridBuildingSystem.Build(new GridCords(x, z), RandomResource);
-            }
-            else {
-              gridBuildingSystem.Build(new GridCords(x, z), obstaclePrefab);
-            }
-          }
+          GenerateObject(DetermineGenerationType(), x, z);
         }
       }
 
       yield return null;
-      GridCords spawnerCords = new GridCords((grid.Width - spawner.Width) / 2, (grid.Height - spawner.Height) / 2);
-      gridBuildingSystem.Build(spawnerCords, spawner); 
+      GenerateMapCenterSpawner(grid.Width, grid.Height);
       IsDone = true;
+    }
+    
+    private static bool IsInMapCenterArea(int x, int z, int mapHeight, int mapWidth) {
+      const int centerMargin = 16;
+      int middleHeight = mapHeight / 2;
+      int middleWidth = mapWidth / 2;
+      return z <= middleHeight + centerMargin
+             && z >= middleHeight - (centerMargin + 1)
+             && x <= middleWidth + centerMargin
+             && x >= middleWidth - (centerMargin + 1);
+    }
+
+    private void GenerateObject(GenerationType generationType, int x, int z) {
+      switch (generationType)
+      {
+        case GenerationType.Resource:
+          gridBuildingSystem.Build(new GridCords(x, z), resourcesPrefabs[Random.Range(0, resourcesPrefabs.Count)]);
+          break;
+        case GenerationType.Obstacle:
+          gridBuildingSystem.Build(new GridCords(x, z), obstaclePrefab);
+          break;
+        case GenerationType.Spawner:
+          gridBuildingSystem.Build(new GridCords(x, z), spawner);
+          break;
+      }
+    }
+
+    private void GenerateMapCenterSpawner(int mapWidth, int mapHeight) {
+      int centerX = (mapWidth - spawner.Width) / 2;
+      int centerZ = (mapHeight - spawner.Height) / 2;
+      GenerateObject(GenerationType.Spawner, centerX, centerZ);
+    }
+    
+    private static GenerationType DetermineGenerationType() {
+      return Random.value switch {
+        > .95f => GenerationType.Resource,
+        > .35f => GenerationType.Obstacle,
+        _ => GenerationType.Nothing,
+      };
+    }
+
+    private enum GenerationType {
+      Nothing,
+      Obstacle,
+      Resource,
+      Spawner,
     }
   }
 }
