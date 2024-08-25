@@ -260,7 +260,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""f571fdeb-ae5a-4907-b2f3-c73f1168ea92"",
-                    ""path"": ""<Keyboard>/pause"",
+                    ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

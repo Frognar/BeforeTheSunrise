@@ -4,8 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7f6f520a-bb2e-495e-a5d6-99e2a7e5398d" name="Changes" comment="Update unity files">
+    <list default="true" id="7f6f520a-bb2e-495e-a5d6-99e2a7e5398d" name="Changes" comment="Fix time freeze after death game restart">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BeforeTheSunrise/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BeforeTheSunrise/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/ScriptableObject/ReamaningTime.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/ScriptableObject/ReamaningTime.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Settings/URP/URP-Balanced.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Settings/URP/URP-Balanced.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Settings/URP/URP-HighFidelity.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Settings/URP/URP-HighFidelity.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Settings/URP/URP-Performant.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Settings/URP/URP-Performant.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +36,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/409025951014491eb4bc01a84c939537176200/11/05104b2b/PlayerPrefs.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock:///home/frognar/dev/BeforeTheSunrise/Assets/Project/Scripts/MapGenerator.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/frognar/dev/BeforeTheSunrise/Assets/Project/Scripts/SceneLoader.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///home/frognar/dev/BeforeTheSunrise/Assets/Project/Settings/URP/URP-Performant.asset" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///home/frognar/dev/BeforeTheSunrise/Packages/manifest.json" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock:///home/frognar/dev/BeforeTheSunrise/Packages/packages-lock.json" root0="FORCE_HIGHLIGHTING" />
@@ -58,6 +65,14 @@
   }
 }]]></component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="$PROJECT_DIR$/Build/build.x86_64" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Build" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <method v="2" />
+    </configuration>
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="$USER_HOME$/Unity/Hub/Editor/2022.3.43f1/Editor/Unity" />
       <option name="PROGRAM_PARAMETERS" value="-projectPath $PROJECT_DIR$ -debugCodeOptimization" />
@@ -105,7 +120,7 @@
       <updated>1724566842887</updated>
       <workItem from="1724566844177" duration="155000" />
       <workItem from="1724567007676" duration="13000" />
-      <workItem from="1724586383397" duration="3787000" />
+      <workItem from="1724586383397" duration="4769000" />
     </task>
     <task id="LOCAL-00001" summary="Install rider package">
       <option name="closed" value="true" />
@@ -131,7 +146,15 @@
       <option name="project" value="LOCAL" />
       <updated>1724590216333</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Fix time freeze after death game restart">
+      <option name="closed" value="true" />
+      <created>1724590746608</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1724590746608</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -151,6 +174,7 @@
     <MESSAGE value="Install rider package" />
     <MESSAGE value="Reformat map generator" />
     <MESSAGE value="Update unity files" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update unity files" />
+    <MESSAGE value="Fix time freeze after death game restart" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix time freeze after death game restart" />
   </component>
 </project>
