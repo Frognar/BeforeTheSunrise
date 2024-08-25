@@ -36,6 +36,7 @@ namespace bts {
       loadingScreen.SetActive(true);
       scenesLoading.Add(SceneManager.UnloadSceneAsync(ScenesNames.MainMenuScene));
       scenesLoading.Add(SceneManager.LoadSceneAsync(ScenesNames.GameScene, LoadSceneMode.Additive));
+      Time.timeScale = 1f;
       _ = StartCoroutine(GetSceneLoadProgress());
       _ = StartCoroutine(GetTotalProgress());
     }

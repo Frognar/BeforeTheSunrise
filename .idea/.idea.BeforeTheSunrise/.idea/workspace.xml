@@ -4,13 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7f6f520a-bb2e-495e-a5d6-99e2a7e5398d" name="Changes" comment="Reformat map generator">
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Settings/URP/URP-Balanced.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Settings/URP/URP-Balanced.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Settings/URP/URP-Performant.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Settings/URP/URP-Performant.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2022.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2022.dwlt" afterDir="false" />
+    <list default="true" id="7f6f520a-bb2e-495e-a5d6-99e2a7e5398d" name="Changes" comment="Update unity files">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.BeforeTheSunrise/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BeforeTheSunrise/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,7 +28,11 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/409025951014491eb4bc01a84c939537176200/11/05104b2b/PlayerPrefs.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock:///home/frognar/dev/BeforeTheSunrise/Assets/Project/Scripts/MapGenerator.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/frognar/dev/BeforeTheSunrise/Assets/Project/Settings/URP/URP-Performant.asset" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/frognar/dev/BeforeTheSunrise/Packages/manifest.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///home/frognar/dev/BeforeTheSunrise/Packages/packages-lock.json" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock:///home/frognar/dev/BeforeTheSunrise/Packages/packages-lock.json" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
@@ -106,7 +105,7 @@
       <updated>1724566842887</updated>
       <workItem from="1724566844177" duration="155000" />
       <workItem from="1724567007676" duration="13000" />
-      <workItem from="1724586383397" duration="3433000" />
+      <workItem from="1724586383397" duration="3787000" />
     </task>
     <task id="LOCAL-00001" summary="Install rider package">
       <option name="closed" value="true" />
@@ -124,7 +123,15 @@
       <option name="project" value="LOCAL" />
       <updated>1724590200805</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Update unity files">
+      <option name="closed" value="true" />
+      <created>1724590216333</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1724590216333</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -143,6 +150,7 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="Install rider package" />
     <MESSAGE value="Reformat map generator" />
-    <option name="LAST_COMMIT_MESSAGE" value="Reformat map generator" />
+    <MESSAGE value="Update unity files" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update unity files" />
   </component>
 </project>
